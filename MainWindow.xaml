@@ -195,7 +195,9 @@
                                             <ListView.ItemContainerStyle>
                                                 <Style TargetType="ListViewItem">
                                                     <EventSetter Event="MouseEnter" Handler="CelestialBodyListItem_MouseEnter"/>
-                                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CelestialBodyListView_Select"/>
+                                                    <EventSetter
+                                                        Event="PreviewMouseLeftButtonDown"
+                                                        Handler="CelestialBodyListView_Select"/>
                                                 </Style>
                                             </ListView.ItemContainerStyle>
                                         </ListView>
@@ -440,7 +442,7 @@
                                         Name="lifeformNotesTextBlock"
                                         FontSize="17"
                                         TextWrapping="Wrap"
-                                        Text="Looks disgusting.&#10;Some details:&#10;- Wary&#10;- Found in Hills, Volcanic, Frozen Dunes&#10;- 150 HP">
+                                        Text="Placeholder sample text">
                                     </TextBlock>
                                 </Label>
                             </Grid>
