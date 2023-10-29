@@ -40,5 +40,6 @@ subprocess.run(['python', './import_flora_fauna_counts.py'], check=True)
 
 parent_path = os.path.abspath(os.path.join(db_path, os.pardir))
 parent_of_parent = os.path.abspath(os.path.join(parent_path, os.pardir))
-print(f'Copying to project directory {parent_of_parent}')
-shutil.copy2(db_path, parent_of_parent)
+destination = os.path.join(parent_of_parent, 'Database')
+print(f'Copying to project directory {destination}')
+shutil.copy2(db_path, destination)

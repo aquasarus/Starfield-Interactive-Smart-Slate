@@ -7,7 +7,7 @@ namespace Starfield_Interactive_Smart_Slate
 {
     public static class DatabaseInitializer
     {
-        public static readonly string DatabaseName = "DataSlate.db";
+        public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
 
         public static string UserDatabaseFolder()
         {
@@ -28,8 +28,9 @@ namespace Starfield_Interactive_Smart_Slate
                 Directory.CreateDirectory(UserDatabaseFolder());
             }
 
-            if (!File.Exists(UserDatabasePath())) { 
-                File.Copy(DatabaseName, UserDatabasePath());
+            if (!File.Exists(UserDatabasePath()))
+            {
+                File.Copy(DefaultDatabasePath, UserDatabasePath());
             }
         }
 

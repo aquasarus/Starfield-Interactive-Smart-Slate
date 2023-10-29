@@ -12,10 +12,10 @@
 		<Platforms>AnyCPU;x64</Platforms></PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="NewFolder\**" />
-		<EmbeddedResource Remove="NewFolder\**" />
-		<None Remove="NewFolder\**" />
-		<Page Remove="NewFolder\**" />
+	  <Compile Remove="NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
+	  <None Remove="NewFolder\**" />
+	  <Page Remove="NewFolder\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -111,8 +111,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="DataSlate.db">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<None Update="Database\DataSlate.db">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
