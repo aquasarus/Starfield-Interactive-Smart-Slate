@@ -1,0 +1,107 @@
+﻿<Window x:Class="Starfield_Interactive_Smart_Slate.LifeformEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Starfield_Interactive_Smart_Slate"
+        mc:Ignorable="d"
+        Style="{StaticResource SofiaSansStyle}"
+        Title="Edit Lifeform" Height="600" Width="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            Style="{StaticResource ContentSubtitleStyle}"
+            Margin="0"
+            Name="lifeformNameTitle"
+            Content="Lifeform Name"
+            ToolTipService.InitialShowDelay="200"
+            >
+            <Label.ToolTip>
+                <ToolTip
+                    Content="{Binding LifeformTypeString}"
+                    ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear.">
+                </ToolTip>
+            </Label.ToolTip>
+        </Label>
+        <Grid
+            Grid.Row="1">
+            <TextBox
+                Style="{StaticResource ContentTitleStyle}"
+                Name="lifeformNameTextbox"
+                Margin="5,10,5,0"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                TextChanged="lifeformNameTextboxChanged">
+            </TextBox>
+            <Label
+                Style="{StaticResource ContentTitleStyle}"
+                Name="matchIndicatorLabel"
+                Content="🧬"
+                Visibility="Hidden"
+                VerticalContentAlignment="Center"
+                Margin="5,10,5,0"
+                Padding="10"
+                HorizontalAlignment="Right">
+            </Label>
+        </Grid>
+        
+        <Label
+            Grid.Row="2"
+            Style="{StaticResource ContentSubtitleStyle}"
+            Content="Resource"
+            >
+        </Label>
+        <ComboBox
+            Grid.Row="3"
+            Name="lifeformResourceComboBox"
+            Margin="5,10,5,0"
+            >
+        </ComboBox>
+        <Label
+            Grid.Row="4"
+            Style="{StaticResource ContentSubtitleStyle}"
+            Content="Notes"
+            >
+        </Label>
+        <TextBox
+            Grid.Row="5"
+            Name="lifeformNotesTextbox"
+            Margin="5,10,5,0"
+            Padding="7"
+            FontSize="17"
+            AcceptsReturn="True"
+            >
+        </TextBox>
+        <Button
+            Grid.Row="6"
+            Name="SaveButton"
+            Content="Save"
+            HorizontalAlignment="Right"
+            Margin="0,10,75,0"
+            Width="70"
+            Height="30"
+            Click="SaveClicked"
+            >
+        </Button>
+        <Button
+            Grid.Row="6"
+            Content="Cancel"
+            HorizontalAlignment="Right"
+            Margin="0,10,0,0"
+            Width="70"
+            Height="30"
+            Click="CancelClicked"
+            >
+        </Button>
+    </Grid>
+</Window>

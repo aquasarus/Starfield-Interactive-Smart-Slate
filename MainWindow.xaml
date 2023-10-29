@@ -1,0 +1,525 @@
+﻿<Window x:Class="Starfield_Interactive_Smart_Slate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Starfield_Interactive_Smart_Slate"
+        mc:Ignorable="d"
+        Style="{StaticResource SofiaSansStyle}"
+        Title="Starfield Interactive Smart Slate" Height="1000" Width="1400">
+
+    <Grid>
+        <TabControl>
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="TabItem">
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+            </TabControl.ItemContainerStyle>
+
+            <TabItem Header="Planetary Data">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MaxWidth="400"/>
+                        <ColumnDefinition Width="*" MaxWidth="280"/>
+                        <ColumnDefinition Width="*" MaxWidth="280"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Column="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Style="{StaticResource HeaderStyle}"
+                            Grid.Row="0"
+                            Content="Celestial Body Overview"
+                            Height="35"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            BorderBrush="Gray"
+                            BorderThickness="1"/>
+                        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="0,1,0,0" Padding="15,5,15,0">
+                            <Grid Name="celestialBodyOverviewGrid" Visibility="Hidden">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Height="55">
+                                    <Label
+                                        Grid.Row="0"
+                                        Style="{StaticResource ContentTitleStyle}"
+                                        Name="celestialBodyTitleLabel"
+                                        VerticalContentAlignment="Top"
+                                        Content="{Binding DisplayedCelestialBodyName}"
+                                        >
+                                    </Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Name="celestialBodyMiniTitleLabel"
+                                        VerticalContentAlignment="Bottom"
+                                        Content="{Binding DisplayedSolarSystemName}"
+                                        ContentStringFormat="{}· {0} System"
+                                        FontSize="15"
+                                        >
+                                    </Label>
+                                </Grid>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Style="{StaticResource ContentSubtitleStyle}"
+                                    Content="Overview"
+                                    >
+                                </Label>
+
+                                <Label Grid.Row="2">
+                                    <TextBlock Name="celestialBodyOverview" FontSize="20" TextWrapping="Wrap">
+                                    </TextBlock>
+                                </Label>
+
+                                <Label
+                                    Grid.Row="3"
+                                    Style="{StaticResource ContentSubtitleStyle}"
+                                    Content="Resources"
+                                    >
+                                </Label>
+
+                                <Label Grid.Row="4">
+                                    <TextBlock Name="celestialBodyResourcesLabel" FontSize="20" TextWrapping="Wrap">
+                                    </TextBlock>
+                                </Label>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Button
+                            Style="{StaticResource ThinHeaderStyle}"
+                            Grid.Row="0"
+                            Height="35"
+                            Margin="1,0,0,1"
+                            Content="Discover New System"
+                            Click="DiscoverNewSystemClicked"/>
+                        <TextBox
+                            Grid.Row="1"
+                            Name="SolarSystemFilterTextBox"
+                            Margin="5"
+                            Padding="5"
+                            TextChanged="SolarSystemFilterChanged">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                    <Style.Resources>
+                                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <Label
+                                                    FontFamily="/Fonts/#Sofia Sans"
+                                                    Content="Search for a solar system..."
+                                                    Foreground="Gray"/>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Style.Resources>
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                        </Trigger>
+                                        <Trigger Property="IsKeyboardFocused" Value="True">
+                                            <Setter Property="Background" Value="White" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <ListView
+                            Name="solarSystemsListView"
+                            BorderThickness="1"
+                            Grid.Row="2"
+                            Margin="1,0,0,0"
+                            BorderBrush="Gray"
+                            HorizontalContentAlignment="Stretch"
+                            ScrollViewer.CanContentScroll="False">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,3,0,0">
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} (Level {1})">
+                                                        <Binding Path="SystemName"/>
+                                                        <Binding Path="SystemLevel"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+
+                                            </TextBlock>
+                                        </Label>
+                                        <ListView
+                                            Grid.Row="1"
+                                            Padding="5"
+                                            ItemsSource="{Binding CelestialBodies}"
+                                            PreviewMouseWheel="CelestialBodyListView_PreviewMouseWheel"
+                                            SelectionMode="Single">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Text" Value="{Binding FormattedBodyName}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsMoon}" Value="True">
+                                                                        <Setter Property="Margin" Value="25,0,0,0" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <EventSetter Event="MouseEnter" Handler="CelestialBodyListItem_MouseEnter"/>
+                                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CelestialBodyListView_Select"/>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Control.Template">
+                                        <!--this disables the hover effect on the Solar System parent list-->
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </Grid>
+
+
+                    <Grid Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Style="{StaticResource HeaderStyle}"
+                                    Grid.Column="0"
+                                    Content="Faunas"
+                                    Height="35"
+                                    Margin="1,0,1,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1"
+                                    />
+                                <Button
+                                    Name="addFaunaButton"
+                                    Style="{StaticResource ThinHeaderStyle}"
+                                    Grid.Column="1"
+                                    Width="65"
+                                    Content="Add"
+                                    Click="AddFaunaClicked"
+                                    IsEnabled="false"
+                                    ></Button>
+                            </Grid>
+
+                            <ListView
+                                Grid.Row="1"
+                                Name="faunasListView"
+                                Margin="1,1,0,0"
+                                Padding="5"
+                                SelectionMode="Single"
+                                >
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <EventSetter Event="MouseEnter" Handler="FaunaListItem_MouseEnter"/>
+                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FaunaListView_Select"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding FaunaName}">
+                                            </TextBlock>
+                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}">
+                                            </TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,1,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Style="{StaticResource HeaderStyle}"
+                                    Grid.Column="0"
+                                    Content="Floras"
+                                    Height="35"
+                                    Margin="1,0,1,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1"
+                                    />
+                                <Button
+                                    Name="addFloraButton"
+                                    Style="{StaticResource ThinHeaderStyle}"
+                                    Grid.Column="1"
+                                    Width="65"
+                                    Content="Add"
+                                    Click="AddFloraClicked"
+                                    IsEnabled="false"
+                                    ></Button>
+                            </Grid>
+                            <ListView
+                                Grid.Row="1"
+                                Name="florasListView"
+                                Margin="1,1,0,0"
+                                Padding="5"
+                                SelectionMode="Single"
+                                >
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <EventSetter Event="MouseEnter" Handler="FloraListItem_MouseEnter"/>
+                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FloraListView_Select"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding FloraName}">
+                                            </TextBlock>
+                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}">
+                                            </TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+
+
+                    <Grid Grid.Column="3" Margin="1,0,0,0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Style="{StaticResource HeaderStyle}"
+                                Content="Lifeform Overview"
+                                Height="35"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                BorderBrush="Gray"
+                                BorderThickness="1"
+                                />
+                            <Button
+                                Grid.Column="1"
+                                Name="editLifeformButton"
+                                Style="{StaticResource ThinHeaderStyle}"
+                                Width="65"
+                                Margin="1,0,0,0"
+                                Content="Edit"
+                                Click="EditLifeformClicked"
+                                IsEnabled="false"
+                                ></Button>
+                        </Grid>
+                        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="0,1,0,0" Padding="15,5,15,0">
+                            <Grid Name="lifeformOverviewGrid" Visibility="Hidden">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" Height="55">
+                                    <Label
+                                        Grid.Row="0"
+                                        Style="{StaticResource ContentTitleStyle}"
+                                        Name="lifeformTitleLabel"
+                                        VerticalContentAlignment="Top"
+                                        Content="Pack Octomaggot"
+                                        >
+                                    </Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Name="lifeformSubtitleLabel"
+                                        VerticalContentAlignment="Bottom"
+                                        FontSize="15"
+                                        >
+                                    </Label>
+                                </Grid>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Style="{StaticResource ContentSubtitleStyle}"
+                                    Name="lifeformResourceTitleLabel"
+                                    Content="Resource"
+                                    >
+                                </Label>
+                                <Label
+                                    Grid.Row="2"
+                                    Name="lifeformResourceLabel"
+                                    Content="Amino Acids"
+                                    FontSize="20"
+                                    >
+                                </Label>
+                                <Label
+                                    Grid.Row="3"
+                                    Style="{StaticResource ContentSubtitleStyle}"
+                                    Name="lifeformNotesTitle"
+                                    Content="Notes"
+                                    >
+                                </Label>
+                                <Label
+                                    Grid.Row="4"
+                                    >
+                                    <TextBlock
+                                        Name="lifeformNotesTextBlock"
+                                        FontSize="17"
+                                        TextWrapping="Wrap"
+                                        Text="Looks disgusting.&#10;Some details:&#10;- Wary&#10;- Found in Hills, Volcanic, Frozen Dunes&#10;- 150 HP">
+                                    </TextBlock>
+                                </Label>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Inorganic Resource Search">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBox
+                        Grid.Row="0"
+                        Name="inorganicResourceFilter"
+                        Margin="10"
+                        Padding="5"
+                        Height="Auto"
+                        Width="Auto"
+                        TextChanged="inorganicResourceFilterChanged">
+                    </TextBox>
+                    <ListView Name="inorganicResourceListView" Grid.Row="1">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Resource Name" DisplayMemberBinding="{Binding FullName}" Width="250"/>
+                                <GridViewColumn Header="Rarity" DisplayMemberBinding="{Binding RarityString}" Width="125"/>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="GridViewColumnHeader">
+                                        <Setter Property="Height" Value="30"/>
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Height" Value="30"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Organic Resource Search">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBox
+                        Grid.Row="0"
+                        Name="organicResourceFilter"
+                        Margin="10"
+                        Padding="5"
+                        Height="Auto"
+                        Width="Auto"
+                        TextChanged="organicResourceFilterChanged"/>
+                    <ListView Name="organicResourceListView" Grid.Row="1">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Resource Name" DisplayMemberBinding="{Binding FullName}" Width="250"/>
+                                <GridViewColumn Header="Rarity" DisplayMemberBinding="{Binding RarityString}" Width="125"/>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="GridViewColumnHeader">
+                                        <Setter Property="Height" Value="30"/>
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                            </GridView>
+                        </ListView.View>
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Height" Value="30"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

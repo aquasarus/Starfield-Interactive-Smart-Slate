@@ -1,0 +1,1693 @@
+BodyName,Magnetosphere,Water
+Frost,Very strong,Safe
+Akila,Very strong,Biological
+Antharum,None,None
+Bindi,None,None
+Codos,Weak,Safe
+Skink,Weak,None
+Burran,Very strong,None
+Rell,None,None
+Grizzit,None,None
+Washakie,Weak,Heavy metal
+Smet,None,None
+Montara,Extreme,None
+Montara Luna,Average,Chemical
+Heilo,None,None
+Kalira,None,Safe
+Thren,None,Chemical
+Wellish,None,Chemical
+Agamon,Weak,None
+Agamon A,None,Safe
+Agamon B,None,Chemical
+Agamon C,None,Safe
+Agamon D,None,Chemical
+Stellis,Powerful,None
+Stellis A,None,Chemical
+Stellis B,None,Chemical
+Stellis C,None,Safe
+Stellis D,None,Safe
+Fenn,Powerful,None
+Tahrnis,None,Safe
+Cragg,None,None
+Navaha,Powerful,None
+Hardpoint,None,Chemical
+Belwah,None,None
+Laramie,None,Heavy metal
+Olaran,None,Heavy metal
+Bismark,None,Safe
+Maheo I,Weak,Safe
+Maheo II,Average,Safe
+Maheo III,Very strong,None
+Maheo III-a,None,None
+Maheo III-b,None,None
+Maheo IV,Powerful,None
+Maheo IV-a,None,Safe
+Maheo IV-b,None,Chemical
+Maheo IV-c,None,Safe
+Maheo IV-d,None,Safe
+Maheo V,Extreme,None
+Maheo V-a,None,Safe
+Maheo VI,Powerful,None
+Maheo VI-a,None,None
+Maheo VII,None,Heavy metal
+Maheo VII-a,None,Safe
+Anselon,Powerful,None
+Kreet,Very strong,Biological
+Vectera,Weak,Safe
+Magreth,Very strong,None
+Hyperia,None,None
+Sumati,Very strong,Safe
+Andraphon,None,None
+Niira,None,Heavy metal
+Danra,Average,None
+Podius,None,None
+Gryphus,None,None
+Dalvik,None,None
+Deepala,Strong,None
+Grimsey,None,None
+Mercury,None,None
+Venus,None,None
+Earth,None,Safe
+Luna,None,None
+Mars,None,Safe
+Deimos,None,None
+Phobos,None,None
+Jupiter,Extreme,None
+Europa,None,None
+Callisto,None,Safe
+Io,None,None
+Ganymede,None,Chemical
+Saturn,Weak,None
+Rhea,None,Chemical
+Enceladus,None,Safe
+Iapetus,None,Safe
+Dione,None,Heavy metal
+Mimas,None,Safe
+Titan,None,Safe
+Tethys,None,Chemical
+Uranus,Weak,None
+Oberon,None,Safe
+Ariel,None,Chemical
+Titania,None,Heavy metal
+Miranda,None,Heavy metal
+Umbriel,None,Safe
+Neptune,Weak,None
+Triton,None,Chemical
+Pluto,None,Safe
+Charon,None,Chemical
+Jemison,Strong,Safe
+Kurtz,None,None
+Bondar,Powerful,None
+Curbeam,None,None
+Grissom,None,None
+Olivas,Strong,None
+Lovell,None,Heavy metal
+Voss,None,Chemical
+Chawla,None,Heavy metal
+Zamka,None,Chemical
+Hawley,None,None
+Gagarin,Powerful,Biological
+Luyten's Rock,Weak,None
+Procyon-B I,None,None
+Sirius I,None,None
+Sirius II,Average,None
+Sirius II-a,None,Safe
+Sirius III,Powerful,None
+Sirius III-a,None,Chemical
+Sirius III-b,None,Chemical
+Toliman I,None,None
+Toliman II,Average,Safe
+Toliman II-a,None,None
+Toliman II-b,None,None
+Toliman II-c,None,None
+Polvo,Average,Radioactive
+Miatha,None,None
+Navacci,None,None
+Cantra,Weak,None
+Prax,Average,None
+Hillex,Very strong,None
+Lumos,Strong,None
+Golga,None,None
+Kindi,None,None
+Shorun,None,Chemical
+Virum,None,Chemical
+Volii Alpha,Average,Safe
+Volii Beta,Average,None
+Volii Delta,None,None
+Volii Chi,None,Heavy metal
+Volii Epsilon,Weak,Chemical
+Volii Gamma,None,None
+Volii Omega,Powerful,None
+Volii Upsilon,None,Safe
+Volii Tau,Average,None
+Volii Psi,None,None
+Volii Phi,None,None
+Etherea,None,None
+Pontem,None,None
+Chthonia,None,None
+Bessel I,Weak,None
+Bessel II,Weak,None
+Bessel III,Weak,None
+Bessel III-a,None,None
+Bessel III-b,None,Biological
+Carinae I,None,None
+Carinae II,Average,Chemical
+Carinae II-a,None,None
+Carinae III,Extreme,None
+Carinae III-a,None,Heavy metal
+Carinae III-b,None,Safe
+Carinae III-c,None,Chemical
+Carinae III-d,None,Heavy metal
+Carinae IV,Strong,None
+Carinae IV-a,None,Heavy metal
+Carinae V,Powerful,None
+Carinae V-a,None,Safe
+Carinae V-b,None,Safe
+Carinae V-c,None,Chemical
+Cassiopeia I,Average,Safe
+Cassiopeia II,Average,Safe
+Cassiopeia II-a,None,Biological
+Cassiopeia III,Powerful,Safe
+Cassiopeia III-a,None,None
+Cassiopeia IV,Extreme,None
+Cassiopeia IV-a,Weak,Radioactive
+Cassiopeia IV-b,None,Safe
+Cassiopeia IV-c,None,Chemical
+Kapteyn I,None,None
+Kapteyn II,None,None
+Nesoi,Average,Biological
+Ananke,Powerful,None
+Ourea,Very strong,Safe
+Thanatos,Average,None
+Hypnos,None,Safe
+Erebus,Very strong,None
+Pontus,None,None
+Thalassa,None,None
+Aion,None,None
+Orphius,None,None
+Dionysus,None,Radioactive
+Mithras,None,Chemical
+Cybele,None,None
+Piazzi I,None,None
+Piazzi II,Very strong,Chemical
+Piazzi III,Weak,None
+Piazzi III-a,None,None
+Piazzi III-b,None,None
+Piazzi IV,Very strong,None
+Piazzi IV-a,None,None
+Piazzi IV-b,None,None
+Piazzi IV-c,Weak,Biological
+Piazzi V,Very weak,None
+Piazzi V-a,None,None
+Piazzi V-b,None,None
+Piazzi V-c,None,None
+Piazzi VI,Very strong,None
+Piazzi VI-a,None,None
+Piazzi VI-b,None,None
+Piazzi VI-c,None,Chemical
+Piazzi VII,Extreme,None
+Piazzi VII-a,None,Chemical
+Piazzi VII-b,None,Safe
+Piazzi VII-c,None,Safe
+Procyon I,Average,None
+Procyon I-a,None,None
+Procyon II,Average,None
+Procyon III,Average,Chemical
+Procyon III-a,None,None
+Procyon IV,Average,Safe
+Procyon IV-a,None,None
+Procyon V,Strong,None
+Procyon V-a,None,Chemical
+Procyon V-b,None,Chemical
+Procyon V-c,None,Heavy metal
+Procyon VI,Powerful,None
+Procyon VI-a,None,Chemical
+Procyon VI-b,Average,Biological
+Procyon VI-c,None,Safe
+Tau Ceti I,Powerful,None
+Tau Ceti II,Average,Biological
+Tau Ceti II-a,None,None
+Tau Ceti III,Average,Heavy metal
+Tau Ceti IV,Weak,Safe
+Tau Ceti IV-a,None,None
+Tau Ceti IV-b,None,None
+Tau Ceti V,None,None
+Tau Ceti VI,Weak,None
+Tau Ceti VI-a,None,None
+Tau Ceti VII,Average,None
+Tau Ceti VII-a,Average,None
+Tau Ceti VIII,Weak,None
+Tau Ceti VIII-a,None,Chemical
+Tau Ceti VIII-b,Average,Chemical
+Tau Ceti VIII-c,None,Safe
+Tau Ceti VIII-d,None,Safe
+Tau Ceti IX,Average,None
+Pup I,None,None
+Van Maanen I,None,None
+Altair I,Weak,None
+Altair II,Powerful,Safe
+Altair III,Weak,Safe
+Altair III-a,None,None
+Altair III-b,None,None
+Altair III-c,None,None
+Altair IV,Powerful,None
+Altair IV-a,None,Safe
+Altair IV-b,None,Heavy metal
+Altair IV-c,None,Chemical
+Altair IV-d,None,Safe
+Altair V,Weak,None
+Altair V-a,None,Chemical
+Andromas I,Average,None
+Andromas II,Powerful,Chemical
+Andromas III,Very strong,Safe
+Andromas IV,Strong,None
+Andromas IV-a,None,Safe
+Andromas V,Strong,None
+Andromas V-a,None,Chemical
+Andromas V-b,None,Biological
+Andromas VI,Strong,None
+Andromas VI-a,None,Chemical
+Andromas VI-b,None,None
+Aranae I,Weak,None
+Aranae II,Weak,None
+Aranae II-a,None,None
+Aranae II-b,None,None
+Aranae III,Weak,None
+Aranae IV,Extreme,None
+Aranae IV-a,None,None
+Aranae IV-b,None,None
+Aranae IV-c,None,Chemical
+Aranae IV-d,None,Chemical
+Aranae V,None,Chemical
+Arcturus I,Very weak,None
+Arcturus II,Average,Chemical
+Arcturus III,Weak,None
+Arcturus III-a,None,Chemical
+Muphrid I,Weak,None
+Muphrid I-a,None,None
+Muphrid II,Very strong,None
+Muphrid II-a,None,None
+Muphrid III,Very weak,None
+Muphrid III-a,None,None
+Muphrid III-b,None,None
+Muphrid III-c,None,None
+Muphrid IV,Average,Radioactive
+Muphrid V,Extreme,None
+Muphrid V-a,None,Chemical
+Muphrid V-b,Weak,Chemical
+Muphrid V-c,None,Safe
+Muphrid V-d,None,Safe
+Muphrid VI,Extreme,None
+Muphrid VI-a,None,Heavy metal
+Muphrid VI-b,None,None
+Muphrid VI-c,None,None
+Muphrid VI-d,None,Safe
+Muphrid VII,Strong,None
+Muphrid VII-a,None,Safe
+Muphrid VII-b,None,Chemical
+Muphrid VII-c,None,Safe
+Muphrid VIII,Weak,None
+Muphrid VIII-a,None,None
+Muphrid VIII-b,None,None
+Muphrid VIII-c,None,Biological
+Muphrid VIII-d,None,Heavy metal
+Sagan I,None,None
+Bonner,None,None
+Mir II,None,None
+Beta Andraste I,Powerful,None
+Beta Andraste I-a,Very weak,Radioactive
+Beta Andraste I-b,None,None
+Beta Andraste I-c,None,None
+Beta Andraste I-d,None,None
+Bradbury I,None,None
+Bradbury I-a,None,None
+Bradbury I-b,None,None
+Bradbury II,Powerful,None
+Bradbury III,Average,Biological
+Bradbury IV,Average,Chemical
+Bradbury IV-a,None,None
+Bradbury V,Extreme,None
+Bradbury V-a,None,Chemical
+Eridani I,Powerful,None
+Eridani II,Average,Safe
+Eridani III,Average,Heavy metal
+Eridani III-a,None,None
+Eridani III-b,None,Safe
+Eridani III-c,None,None
+Eridani IV,Weak,Chemical
+Eridani IV-a,None,None
+Eridani IV-b,None,None
+Eridani IV-c,None,None
+Eridani V,Weak,Safe
+Eridani VI,Weak,None
+Eridani VI-a,None,Safe
+Eridani VII,Strong,None
+Eridani VII-a,None,Safe
+Eridani VII-b,None,Chemical
+Eridani VII-c,None,Chemical
+Eridani VIII,Powerful,None
+Eridani VIII-a,None,None
+Eridani VIII-b,None,Heavy metal
+Eridani VIII-c,None,Chemical
+Eridani VIII-d,None,Safe
+Eridani IX,None,Chemical
+Guniibuu I,None,None
+Guniibuu I-a,None,None
+Guniibuu I-b,None,None
+Guniibuu II,Weak,Radioactive
+Guniibuu III,Average,Chemical
+Guniibuu III-a,None,None
+Guniibuu III-b,None,None
+Guniibuu III-c,None,None
+Guniibuu IV,Very strong,Safe
+Guniibuu IV-a,None,None
+Guniibuu IV-b,None,None
+Guniibuu V,Extreme,None
+Guniibuu V-a,None,Safe
+Guniibuu V-b,None,Safe
+Guniibuu V-c,None,Chemical
+Guniibuu V-d,None,Safe
+Guniibuu V-e,None,Safe
+Guniibuu VI,Extreme,None
+Guniibuu VI-a,None,Chemical
+Guniibuu VI-b,Weak,Biological
+Guniibuu VI-c,None,None
+Guniibuu VI-d,None,Safe
+Guniibuu VI-e,None,Safe
+Guniibuu VII,Strong,None
+Guniibuu VII-a,None,Chemical
+Guniibuu VII-b,None,Safe
+Guniibuu VII-c,None,Safe
+Indum I,Average,None
+Indum I-a,None,None
+Indum II,Very strong,Safe
+Indum III,Powerful,None
+Indum III-a,None,Chemical
+Indum III-b,None,Safe
+Indum III-c,None,Safe
+Indum III-d,None,Safe
+Indum IV,Powerful,None
+Indum IV-a,None,Safe
+Indum IV-b,None,Safe
+Indum IV-c,None,Heavy metal
+Indum IV-d,None,Radioactive
+Indum V,Strong,None
+Indum V-a,None,None
+Suvorov,Powerful,Chemical
+Neebas,Weak,Biological
+Max,None,None
+Rocklock,None,None
+Candore,None,None
+Nox,None,None
+Boron,None,None
+Ice,None,Chemical
+McClure I,None,None
+McClure I-a,None,None
+McClure II,Average,Safe
+McClure II-a,None,None
+McClure II-b,None,None
+McClure II-c,None,None
+McClure III,Powerful,Chemical
+Oborum I,Very weak,Biological
+Oborum II,Weak,None
+Oborum II-a,None,None
+Oborum II-b,None,Safe
+Oborum III,Weak,None
+Oborum III-a,None,Heavy metal
+Oborum III-b,None,None
+Oborum III-c,None,Safe
+Oborum III-d,None,Safe
+Oborum IV,Weak,None
+Ursa Minor I,Very strong,None
+Ursa Minor I-a,None,None
+Ursa Minor I-b,None,None
+Ursa Minor II,Weak,Chemical
+Ursa Minor II-a,None,None
+Ursa Minor III,Average,Safe
+Curie,None,None
+Magnar,Weak,Safe
+Arachna,Average,Chemical
+Worthless,None,None
+Bitsy,None,None
+Itsy,None,None
+Nascent,Very strong,None
+Rudiment,None,None
+Fundament,None,None
+Gamow,Average,Chemical
+Bose,None,None
+Bode,Weak,None
+Herald,None,None
+Augur,None,Chemical
+Faraday,Extreme,None
+Coulomb,None,Safe
+Ampere,None,Biological
+Volt,None,Chemical
+Ohm,None,Chemical
+Groombridge I,Weak,None
+Groombridge II,Average,Safe
+Groombridge II-a,None,None
+Groombridge II-b,None,Heavy metal
+Groombridge II-c,None,None
+Groombridge III,Powerful,Chemical
+Groombridge III-a,None,None
+Groombridge IV,Average,None
+Groombridge IV-a,None,None
+Groombridge V,Strong,None
+Groombridge V-a,None,Safe
+Groombridge V-b,None,Chemical
+Groombridge V-c,None,Safe
+Groombridge V-d,None,Safe
+Groombridge V-e,None,Heavy metal
+Groombridge VI,Extreme,None
+Groombridge VI-a,None,Safe
+Groombridge VI-b,None,Chemical
+Groombridge VII,Powerful,None
+Groombridge VII-a,None,Chemical
+Groombridge VII-b,None,Safe
+Groombridge VIII,Extreme,None
+Groombridge VIII-a,Weak,Biological
+Groombridge VIII-b,None,Chemical
+Groombridge VIII-c,None,Safe
+Groombridge VIII-d,None,Heavy metal
+Kumasi I,Very strong,Heavy metal
+Kumasi I-a,None,None
+Kumasi II,Very weak,Biological
+Kumasi II-a,None,None
+Kumasi III,Average,Chemical
+Kumasi III-a,None,None
+Kumasi IV,Average,Safe
+Kumasi IV-a,None,None
+Kumasi V,Strong,None
+Kumasi V-a,None,Safe
+Kumasi V-b,None,Safe
+Kumasi V-c,None,Safe
+Kumasi V-d,None,Chemical
+Kumasi V-e,None,None
+Kumasi VI,Average,None
+Kumasi VI-a,None,Chemical
+Kumasi VII,Extreme,None
+Kumasi VII-a,None,None
+Kumasi VII-b,None,Chemical
+Kumasi VII-c,None,None
+Kumasi VII-d,None,Chemical
+Kumasi VIII,Strong,None
+Kumasi VIII-a,None,Safe
+Kumasi VIII-b,None,None
+Kumasi VIII-c,None,Chemical
+Kumasi VIII-d,None,None
+Kumasi IX,None,Chemical
+Kumasi IX-a,None,Chemical
+Vesta,Weak,Biological
+Vesta Lunaris,None,None
+Numitor,None,None
+Remus,None,None
+Romulus,None,None
+Petria,Average,None
+Earrach,None,None
+Gaea,Weak,None
+Crius,None,None
+Coeus,None,None
+Cassini,Weak,None
+Lillius,None,Chemical
+Abetti,None,Chemical
+Gasparis,None,Safe
+Okoro,Extreme,None
+Okoro Alpha,None,Safe
+Okoro Beta,None,Chemical
+Okoro Delta,None,Safe
+Okoro Epsilon,None,Safe
+Okoro Gamma,None,Chemical
+Cthol,Very strong,None
+Nyarloth,None,None
+Uvhan,None,Chemical
+Az-Valok,None,None
+Reva's World,Average,None
+Oborum Proxima I,Very strong,Safe
+Vega I,Strong,None
+Vega I-a,None,None
+Vega I-b,None,None
+Vega I-c,None,None
+Vega II,Extreme,None
+Vega II-a,None,Chemical
+Vega II-b,None,Chemical
+Vega II-c,Weak,Safe
+Vega II-d,None,Biological
+Vega II-e,None,Chemical
+Alpha Andraste I,None,None
+Alpha Andraste I-a,None,None
+Alpha Andraste II,Weak,None
+Alpha Andraste III,Powerful,Heavy metal
+Alpha Andraste IV,Very weak,Chemical
+Alpha Andraste V,Average,None
+Alpha Andraste VI,Powerful,None
+Copernicus I,Powerful,None
+Copernicus II,Average,Safe
+Copernicus III,Very strong,Safe
+Copernicus III-a,None,None
+Copernicus IV,Weak,Biological
+Copernicus V,Very strong,Chemical
+Copernicus VI,Very strong,None
+Copernicus VII,Extreme,None
+Copernicus VII-a,None,Biological
+Copernicus VII-b,None,Chemical
+Copernicus VIII,Strong,None
+Copernicus VIII-a,None,Chemical
+Copernicus VIII-b,None,Safe
+Copernicus VIII-c,None,None
+Copernicus VIII-d,None,Safe
+Copernicus Minor I,Weak,None
+Copernicus Minor I-a,Very weak,Safe
+Copernicus Minor I-b,None,None
+Denebola I,Average,None
+Denebola I-a,None,None
+Denebola I-b,Weak,Chemical
+Denebola II,Extreme,None
+Denebola III,Powerful,None
+Denebola III-a,None,Chemical
+Denebola III-b,None,Chemical
+Lantana I,None,None
+Lantana II,Weak,None
+Lantana III,Powerful,Heavy metal
+Lantana III-a,None,None
+Lantana IV,Powerful,Biological
+Lantana V,Extreme,None
+Lantana V-a,None,Chemical
+Lantana V-b,None,Safe
+Lantana VI,Weak,Safe
+Lantana VII,Very weak,None
+Lantana VIII,Average,None
+Lantana VIII-a,None,Chemical
+Lantana VIII-b,Weak,Biological
+Lantana VIII-c,None,None
+Lantana VIII-d,None,Safe
+Lantana IX,Strong,None
+Lantana IX-a,None,Safe
+Lantana IX-b,None,Heavy metal
+Lantana IX-c,None,Safe
+Lantana IX-d,None,Chemical
+Lantana IX-e,None,Safe
+Porrima I,Very weak,None
+Porrima I-a,None,None
+Porrima I-b,None,None
+Porrima II,Powerful,Safe
+Porrima II-a,None,None
+Porrima II-b,None,None
+Porrima II-c,None,None
+Porrima III,Average,Safe
+Porrima III-a,None,None
+Porrima III-b,None,None
+Porrima IV,Strong,None
+Porrima IV-a,None,Safe
+Porrima IV-b,None,Safe
+Porrima IV-c,Weak,Radioactive
+Porrima IV-d,None,Biological
+Porrima V,Extreme,None
+Porrima V-a,None,Safe
+Porrima V-b,None,Safe
+Porrima V-c,None,Chemical
+Porrima VI,None,Heavy metal
+Porrima VI-a,None,Safe
+Ursa Major I,Average,None
+Ursa Major I-a,None,None
+Ursa Major I-b,Average,None
+Ursa Major I-c,None,None
+Ursa Major II,Average,Radioactive
+Ursa Major III,None,Safe
+Al-Battani I,None,None
+Al-Battani I-a,None,None
+Al-Battani I-b,None,None
+Al-Battani I-c,None,None
+Al-Battani II,Weak,Safe
+Al-Battani III,Very strong,None
+Al-Battani III-a,None,None
+Al-Battani III-b,None,None
+Al-Battani IV,Very strong,Chemical
+Al-Battani IV-a,None,None
+Al-Battani IV-b,None,None
+Al-Battani V,Weak,None
+Al-Battani V-a,None,None
+Al-Battani VI,Strong,None
+Al-Battani VI-a,None,Heavy metal
+Al-Battani VI-b,None,Safe
+Al-Battani VII,Weak,None
+Al-Battani VII-a,None,None
+Al-Battani VIII,Weak,None
+Al-Battani VIII-a,None,Chemical
+Tirna I,Weak,None
+Tirna II,Powerful,Safe
+Tirna II-a,None,None
+Tirna III,Powerful,Chemical
+Tirna III-a,None,None
+Tirna III-b,None,None
+Tirna III-c,None,None
+Tirna IV,Very strong,Safe
+Tirna IV-a,None,None
+Tirna V,Average,Safe
+Tirna VI,Strong,None
+Tirna VI-a,None,None
+Tirna VI-b,None,Chemical
+Tirna VI-c,None,Safe
+Tirna VI-d,None,Chemical
+Tirna VI-e,None,Safe
+Tirna VII,Powerful,None
+Tirna VII-a,None,Safe
+Tirna VII-b,None,Safe
+Tirna VII-c,None,Chemical
+Tirna VIII,Strong,None
+Tirna VIII-a,None,Safe
+Tirna VIII-b,None,Safe
+Tirna VIII-c,Weak,Radioactive
+Tirna VIII-d,None,Biological
+Tirna VIII-e,None,Safe
+Tirna IX,None,Safe
+Tirna X,Very strong,None
+Tirna X-a,Very weak,Biological
+Tirna X-b,None,Chemical
+Tirna X-c,None,Chemical
+Tirna B,None,None
+Bolivar I,Weak,Biological
+Jaffa I,Weak,None
+Jaffa I-a,None,None
+Jaffa II,Very strong,Biological
+Jaffa II-a,None,None
+Jaffa III,Average,Biological
+Jaffa IV,Average,Safe
+Jaffa IV-a,None,None
+Jaffa V,Average,None
+Jaffa V-a,None,Safe
+Jaffa VI,Average,None
+Jaffa VI-a,None,Heavy metal
+Jaffa VI-b,None,Heavy metal
+Jaffa VI-c,None,None
+Jaffa VII,Extreme,None
+Jaffa VII-a,None,None
+Jaffa VII-b,None,None
+Jaffa VII-c,None,Safe
+Jaffa VII-d,None,Chemical
+Jaffa VII-e,None,Safe
+Jaffa VIII,None,Safe
+Nemeria I,Average,Biological
+Nemeria II,Very strong,Chemical
+Nemeria II-a,None,None
+Nemeria II-b,None,None
+Nemeria III,Weak,None
+Nemeria III-a,None,None
+Nemeria IV,Extreme,None
+Nemeria IV-a,Average,Safe
+Nemeria IV-b,None,Chemical
+Nemeria V,Weak,None
+Nemeria V-a,None,Heavy metal
+Nemeria V-b,None,Safe
+Nemeria V-c,None,Safe
+Nemeria VI,Strong,None
+Nemeria VI-a,None,None
+Nemeria VI-b,None,None
+Nemeria VI-c,None,Safe
+Nemeria VI-d,None,Chemical
+Nemeria VII,None,Safe
+Rivera I,Weak,Heavy metal
+Rivera I-a,None,None
+Rivera II,Very strong,None
+Rivera II-a,None,None
+Rivera II-b,None,None
+Rivera II-c,None,None
+Rivera III,Average,None
+Rivera IV,Powerful,None
+Rivera IV-a,None,None
+Rivera V,Average,None
+Rivera V-a,None,Chemical
+Shoza I,Weak,None
+Shoza I-a,None,None
+Shoza II,Average,Biological
+Shoza II-a,None,None
+Shoza III,Powerful,Safe
+Shoza III-a,None,None
+Shoza IV,Average,Chemical
+Shoza V,Average,None
+Shoza VI,Weak,None
+Shoza VI-a,None,Safe
+Shoza VII,Powerful,None
+Shoza VII-a,None,None
+Shoza VII-b,None,Safe
+Shoza VII-c,None,Chemical
+Shoza VIII,Weak,None
+Shoza VIII-a,None,Chemical
+Shoza VIII-b,None,None
+Shoza VIII-c,None,Safe
+Shoza VIII-d,None,Chemical
+Shoza IX,None,Safe
+Beta Ternion I,Powerful,Chemical
+Beta Ternion I-a,None,None
+Beta Ternion II,Powerful,Chemical
+Beta Ternion III,Powerful,Heavy metal
+Beta Ternion III-a,None,None
+Freya I,Average,None
+Freya II,Very strong,None
+Freya III,Very weak,Heavy metal
+Freya IV,Weak,Safe
+Freya IV-a,None,None
+Freya IV-b,None,None
+Freya IV-c,None,None
+Freya V,Weak,Chemical
+Freya VI,Weak,None
+Freya VII,Extreme,None
+Freya VII-a,None,Radioactive
+Freya VIII,Powerful,None
+Freya VIII-a,None,Safe
+Freya IX,Powerful,None
+Freya IX-a,None,None
+Freya IX-b,Very weak,Safe
+Freya IX-c,None,Safe
+Hyla I,Average,None
+Hyla I-a,None,None
+Hyla II,Average,Biological
+Hyla II-a,None,None
+Hyla II-b,None,None
+Hyla III,Weak,Chemical
+Hyla IV,Extreme,None
+Hyla IV-a,None,Safe
+Hyla IV-b,None,Safe
+Hyla V,Weak,Safe
+Hyla V-a,None,Heavy metal
+Hyla VI,Powerful,None
+Hyla VI-a,None,Safe
+Hyla VI-b,None,Chemical
+Hyla VII,Weak,None
+Hyla VII-a,None,None
+Hyla VIII,Strong,None
+Hyla VIII-a,None,Chemical
+Hyla VIII-b,None,Chemical
+Hyla VIII-c,None,Safe
+Hyla VIII-d,None,Biological
+Hyla VIII-e,None,Safe
+Ixyll I,Very weak,None
+Ixyll II,Average,Safe
+Ixyll II-a,None,None
+Ixyll III,Weak,Safe
+Ixyll III-a,None,None
+Ixyll III-b,Weak,Safe
+Ixyll IV,Very strong,Chemical
+Ixyll V,Very strong,Chemical
+Ixyll VI,Powerful,None
+Ixyll VI-a,None,Chemical
+Ixyll VI-b,None,Safe
+Ixyll VI-c,None,Radioactive
+Ixyll VI-d,None,Safe
+Ixyll VI-e,None,Biological
+Ixyll VII,Average,None
+Ixyll VII-a,None,Safe
+Ixyll VII-b,None,None
+Ixyll VII-c,None,Heavy metal
+Ixyll VIII,Strong,None
+Ixyll VIII-a,None,None
+Ixyll VIII-b,None,Chemical
+Ixyll IX,Powerful,None
+Ixyll IX-a,None,Chemical
+Ixyll IX-b,None,Chemical
+Ixyll IX-c,None,Safe
+Ixyll IX-d,None,None
+Khayyam I,None,None
+Khayyam I-a,None,None
+Khayyam II,Powerful,Chemical
+Khayyam II-a,None,None
+Khayyam III,Average,Safe
+Khayyam III-a,None,None
+Khayyam III-b,None,None
+Khayyam III-c,None,None
+Khayyam IV,Weak,Safe
+Khayyam IV-a,None,None
+Khayyam V,Weak,None
+Khayyam V-a,None,Heavy metal
+Khayyam VI,Strong,None
+Khayyam VI-a,None,Chemical
+Khayyam VI-b,None,Chemical
+Khayyam VI-c,None,Chemical
+Khayyam VI-d,None,Chemical
+Khayyam VI-e,None,Chemical
+Moloch I,Weak,None
+Moloch I-a,None,None
+Moloch II,Average,Heavy metal
+Moloch III,Average,Safe
+Moloch IV,Weak,None
+Moloch V,Strong,None
+Moloch V-a,None,Safe
+Moloch V-b,None,Safe
+Moloch V-c,None,Safe
+Moloch V-d,None,Chemical
+Moloch VI,Powerful,None
+Moloch VI-a,None,Chemical
+Moloch VI-b,None,Safe
+Moloch VII,None,Safe
+Nikola I,Very weak,Chemical
+Nikola II,Average,None
+Nikola II-a,None,None
+Nikola III,Average,Safe
+Nikola III-a,None,None
+Nikola III-b,None,None
+Nikola IV,Average,None
+Nikola IV-a,None,None
+Nikola V,Weak,None
+Nikola VI,Very strong,None
+Nikola VI-a,None,None
+Nikola VI-b,None,None
+Nikola VII,Powerful,None
+Nikola VII-a,None,Chemical
+Nikola VIII,Very strong,None
+Nikola VIII-a,None,Chemical
+Nikola IX,Average,None
+Nikola X,Weak,None
+Nikola X-a,None,Heavy metal
+Nirvana I,Average,None
+Nirvana II,Very strong,Heavy metal
+Nirvana II-a,None,None
+Nirvana III,Average,Chemical
+Nirvana III-a,None,None
+Nirvana IV,Strong,None
+Nirvana IV-a,None,Safe
+Rasalhague I,Average,None
+Rasalhague I-a,None,None
+Rasalhague II,Very strong,Chemical
+Rasalhague III,Strong,None
+Rasalhague III-a,None,Safe
+Rasalhague III-b,None,Safe
+Rasalhague IV,Average,None
+Alpha Marae I,Average,None
+Alpha Marae II,Strong,None
+Alpha Marae II-a,None,Chemical
+Alpha Marae III,Extreme,None
+Alpha Marae III-a,None,Chemical
+Alpha Marae III-b,None,Safe
+Alpha Marae III-c,None,Chemical
+Alpha Marae III-d,None,Heavy metal
+Alpha Marae IV,Strong,None
+Alpha Marae IV-a,None,Chemical
+Alpha Marae IV-b,None,Safe
+Alpha Marae V,Very weak,None
+Bara I,None,None
+Bara II,Very strong,None
+Bara II-a,None,None
+Bara III,Average,Biological
+Bara III-a,None,None
+Bara IV,Weak,None
+Bara V,Weak,None
+Bara V-a,None,Safe
+Bara VI,Powerful,None
+Bara VI-a,None,Safe
+Bara VI-b,None,Heavy metal
+Bara VI-c,None,Chemical
+Bara VII,Weak,None
+Bara VII-a,None,Safe
+Bara VII-b,None,Safe
+Bara VII-c,None,Safe
+Bara VII-d,None,Safe
+Beta Marae I,Very strong,Chemical
+Beta Marae I-a,None,None
+Beta Marae II,Weak,Safe
+Beta Marae II-a,None,None
+Beta Marae II-b,None,None
+Beta Marae III,Average,Chemical
+Beta Marae III-a,None,None
+Beta Marae IV,Strong,None
+Beta Marae IV-a,None,Chemical
+Beta Marae IV-b,None,Safe
+Beta Marae IV-c,None,Heavy metal
+Beta Marae IV-d,None,Safe
+Beta Marae V,Strong,None
+Beta Marae V-a,None,None
+Beta Marae V-b,None,Safe
+Beta Marae V-c,None,Chemical
+Beta Marae V-d,None,Safe
+Beta Marae VI,Powerful,None
+Beta Marae VI-a,None,Safe
+Beta Marae VI-b,None,Chemical
+Beta Marae VI-c,None,Chemical
+Linnaeus I,Average,None
+Linnaeus II,Weak,Chemical
+Linnaeus II-a,None,None
+Linnaeus III,Average,Chemical
+Linnaeus III-a,None,None
+Linnaeus IV,Extreme,None
+Linnaeus IV-a,None,None
+Linnaeus IV-b,None,Biological
+Linnaeus IV-c,None,Heavy metal
+Linnaeus V,Very strong,None
+Linnaeus VI,None,Safe
+Linnaeus VII,Average,None
+Ophion I,Extreme,None
+Ophion I-a,None,None
+Rutherford I,None,None
+Rutherford I-a,None,None
+Rutherford I-b,None,None
+Rutherford II,Very strong,None
+Rutherford II-a,None,None
+Rutherford III,Very strong,Heavy metal
+Rutherford III-a,None,None
+Rutherford IV,Extreme,None
+Rutherford IV-a,None,Chemical
+Rutherford IV-b,None,Safe
+Rutherford IV-c,None,Chemical
+Rutherford IV-d,None,Heavy metal
+Rutherford IV-e,None,Safe
+Rutherford V,Weak,None
+Rutherford V-a,None,Safe
+Rutherford V-b,None,Chemical
+Rutherford VI,Extreme,None
+Rutherford VI-a,None,Chemical
+Rutherford VI-b,None,Heavy metal
+Rutherford VI-c,None,Safe
+Rutherford VI-d,None,Chemical
+Tidacha I,Very strong,Chemical
+Tidacha I-a,None,None
+Tidacha I-b,None,None
+Tidacha I-c,None,None
+Alchiba I,Average,None
+Alchiba II,Average,None
+Alchiba II-a,None,None
+Alchiba III,Average,None
+Alchiba III-a,None,None
+Alchiba III-b,None,None
+Alchiba III-c,None,Safe
+Alchiba IV,Weak,Safe
+Alchiba IV-a,None,Chemical
+Alchiba V,Powerful,Chemical
+Alchiba V-a,None,None
+Alchiba VI,Weak,None
+Alchiba VI-a,None,Chemical
+Alchiba VI-b,None,Safe
+Alchiba VI-c,None,Safe
+Alchiba VII,Average,None
+Alchiba VII-a,None,Chemical
+Alchiba VII-b,None,Safe
+Alchiba VII-c,None,Chemical
+Alchiba VII-d,None,Safe
+Alchiba VIII,Very strong,None
+Alchiba VIII-a,None,Safe
+Alchiba VIII-b,None,None
+Alchiba IX,Strong,None
+Alchiba IX-a,None,Safe
+Alchiba X,Strong,None
+Alchiba X-a,None,Chemical
+Alchiba X-b,None,Biological
+Bannoc III-a,None,None
+Bannoc IV,Extreme,None
+Bannoc IV-a,None,Chemical
+Bannoc IV-b,None,Heavy metal
+Bannoc Secondus I,None,None
+Delta Vulpes I,Weak,None
+Delta Vulpes II,Average,Safe
+Delta Vulpes III,Very weak,None
+Delta Vulpes III-a,None,None
+Delta Vulpes IV,Strong,None
+Delta Vulpes IV-a,None,Safe
+Delta Vulpes V,Powerful,None
+Delta Vulpes V-a,None,Chemical
+Delta Vulpes V-b,None,Chemical
+Delta Vulpes V-c,Very weak,Safe
+Delta Vulpes V-d,None,Chemical
+Delta Vulpes V-e,None,Safe
+Delta Vulpes VI,Weak,None
+Delta Vulpes VI-a,None,Chemical
+Delta Vulpes VII,Weak,None
+Gamma Vulpes I,Weak,Safe
+Gamma Vulpes II,Average,None
+Gamma Vulpes II-a,Average,Chemical
+Gamma Vulpes II-b,None,Safe
+Gamma Vulpes II-c,None,Chemical
+Gamma Vulpes II-d,None,None
+Gamma Vulpes III,Weak,None
+Gamma Vulpes III-a,None,Chemical
+Gamma Vulpes IV,Extreme,None
+Gamma Vulpes IV-a,None,Biological
+Gamma Vulpes IV-b,None,None
+Gamma Vulpes IV-c,None,Safe
+Gamma Vulpes IV-d,None,None
+Xi Ophiuchi I,None,None
+Xi Ophiuchi II,Average,None
+Xi Ophiuchi III,Powerful,None
+Xi Ophiuchi III-a,None,None
+Xi Ophiuchi IV,Average,Chemical
+Xi Ophiuchi V,Very strong,Chemical
+Xi Ophiuchi V-a,None,None
+Xi Ophiuchi VI,Powerful,None
+Xi Ophiuchi VI-a,None,Chemical
+Xi Ophiuchi VI-b,None,Chemical
+Xi Ophiuchi VI-c,None,Safe
+Xi Ophiuchi VI-d,None,Chemical
+Xi Ophiuchi VI-e,None,Heavy metal
+Xi Ophiuchi VII,Powerful,None
+Xi Ophiuchi VII-a,None,Biological
+Xi Ophiuchi VII-b,None,Chemical
+Xi Ophiuchi VIII,Strong,None
+Xi Ophiuchi VIII-a,None,Safe
+Xi Ophiuchi VIII-b,Weak,Chemical
+Xi Ophiuchi VIII-c,None,Biological
+Xi Ophiuchi VIII-d,None,Safe
+Xi Ophiuchi VIII-e,None,None
+XI Ophiuchi IX,Very strong,None
+Zeta Ophiuchi I,Very strong,Safe
+Zeta Ophiuchi II,Average,None
+Zeta Ophiuchi III,Powerful,None
+Zeta Ophiuchi III-a,None,None
+Zeta Ophiuchi IV,Powerful,None
+Zeta Ophiuchi IV-a,None,None
+Zeta Ophiuchi IV-b,None,None
+Zeta Ophiuchi IV-c,None,Safe
+Zeta Ophiuchi IV-d,None,None
+Zeta Ophiuchi IV-e,None,Chemical
+Zeta Ophiuchi V,Powerful,None
+Zeta Ophiuchi V-a,None,Safe
+Zeta Ophiuchi V-b,None,Chemical
+Zeta Ophiuchi VI,Strong,None
+Zeta Ophiuchi VI-a,Very weak,Biological
+Zeta Ophiuchi VI-b,None,Chemical
+Zeta Ophiuchi VI-c,None,Chemical
+Zeta Ophiuchi VI-d,None,Safe
+Zeta Ophiuchi VI-e,None,Biological
+Zosma I,Powerful,None
+Zosma I-a,Weak,None
+Zosma II,Weak,Chemical
+Zosma III,Very strong,None
+Zosma III-a,None,Chemical
+Zosma IV,Average,None
+Zosma IV-a,None,Chemical
+Zosma IV-b,None,Safe
+Zosma IV-c,None,Heavy metal
+Zosma V,Extreme,None
+Zosma V-a,Weak,Chemical
+Zosma V-b,None,Chemical
+Zosma V-c,None,Chemical
+Bel I,Weak,Chemical
+Bel I-a,None,None
+Bel II,Average,Biological
+Bel II-a,None,None
+Bel III,Average,Chemical
+Bel III-a,None,None
+Bel III-b,None,None
+Bel III-c,None,None
+Bel IV,Powerful,None
+Bel IV-a,None,Chemical
+Bel IV-b,None,Heavy metal
+Bel IV-c,None,Safe
+Bel IV-d,None,None
+Bel IV-e,None,Safe
+Bel V,Weak,None
+Bel V-a,None,Safe
+Bel VI,Weak,None
+Bel VII,None,Safe
+Feynman I,None,None
+Feynman II,Weak,None
+Feynman III,Powerful,Safe
+Feynman IV,Powerful,Safe
+Feynman V,Powerful,Chemical
+Feynman V-a,None,None
+Feynman V-b,None,None
+Feynman VI,Strong,None
+Feynman VI-a,None,Safe
+Feynman VI-b,None,None
+Feynman VI-c,None,Chemical
+Feynman VII,Extreme,None
+Feynman VII-a,None,Safe
+Feynman VII-b,None,Safe
+Feynman VII-c,None,Safe
+Feynman VIII,Powerful,None
+Feynman VIII-a,None,Heavy metal
+Feynman VIII-b,None,Safe
+Feynman VIII-c,None,None
+Feynman VIII-d,None,None
+Feynman VIII-e,None,Chemical
+Feynman IX,Weak,None
+Feynman IX-a,None,Chemical
+Heisenberg I,Weak,None
+Heisenberg II,Weak,Biological
+Heisenberg III,Average,Biological
+Heisenberg IV,Powerful,Safe
+Heisenberg V,Average,Safe
+Heisenberg V-a,Weak,Safe
+Heisenberg VI,Powerful,None
+Heisenberg VI-a,None,Safe
+Heisenberg VI-b,None,Chemical
+Heisenberg VI-c,None,Safe
+Heisenberg VII,Average,None
+Heisenberg VII-a,None,Safe
+Heisenberg VIII,Strong,None
+Heisenberg VIII-a,None,Chemical
+Heisenberg VIII-b,None,Safe
+Heisenberg VIII-c,None,Safe
+Heisenberg VIII-d,None,Safe
+Heisenberg IX,Weak,None
+Heisenberg X,None,Safe
+Leviathan I,None,None
+Leviathan II,Average,None
+Leviathan III,Average,None
+Leviathan IV,Powerful,Biological
+Leviathan V,Weak,None
+Leviathan V-a,None,Chemical
+Leviathan VI,Extreme,None
+Leviathan VI-a,None,Safe
+Leviathan VI-b,None,Safe
+Leviathan VII,Very strong,None
+Newton I,None,None
+Newton I-a,None,None
+Newton II,Average,Biological
+Newton II-a,None,None
+Newton II-b,None,None
+Newton III,Average,Chemical
+Newton IV,Weak,Chemical
+Newton V,Extreme,None
+Newton V-a,None,Safe
+Newton V-b,None,Biological
+Newton V-c,None,Safe
+Newton VI,Weak,None
+Lontrah,None,None
+Delah,Weak,None
+Kazarah,Very strong,None
+Ka'zaal,Powerful,Biological
+Nirah Prime,Strong,None
+N'raal,Very strong,None
+Umanah,None,None
+Serpentis I,Weak,None
+Serpentis II,Average,Biological
+Serpentis II-a,None,None
+Serpentis II-b,None,None
+Serpentis III,Average,Biological
+Serpentis IV,Average,Chemical
+Serpentis IV-a,None,None
+Serpentis V,Extreme,None
+Serpentis V-a,None,Heavy metal
+Serpentis V-b,None,Safe
+Serpentis V-c,None,Chemical
+Serpentis V-d,None,Safe
+Serpentis VI,Strong,None
+Syrma I,Average,None
+Syrma I-a,None,None
+Syrma I-b,None,None
+Syrma II,Powerful,None
+Syrma II-a,None,None
+Syrma III,Weak,Chemical
+Syrma IV,Average,Safe
+Syrma IV-a,None,None
+Syrma V,Average,Safe
+Syrma VI,Powerful,None
+Syrma VI-a,None,Chemical
+Syrma VI-b,None,Safe
+Syrma VI-c,None,Biological
+Syrma VI-d,None,Safe
+Syrma VII,Extreme,None
+Syrma VII-a,Average,Safe
+Syrma VII-b,None,Safe
+Ternion I,None,None
+Ternion II,Powerful,None
+Ternion III,Powerful,Safe
+Ternion III-a,None,None
+Ternion IV,Powerful,Chemical
+Ternion V,Powerful,Chemical
+Ternion V-a,None,Safe
+Ternion V-b,None,None
+Ternion VI,Very weak,Safe
+Ternion VI-a,None,None
+Ternion VII,Very strong,Safe
+Ternion VIII,None,Chemical
+Ternion IX,Weak,None
+Ternion IX-a,None,Chemical
+Ternion IX-b,None,Chemical
+Ternion IX-c,None,Chemical
+Ternion IX-d,None,Safe
+Decaran I,Weak,Safe
+Decaran II,Average,None
+Decaran III,Average,None
+Decaran IV,Weak,None
+Decaran V,Weak,None
+Decaran V-a,None,None
+Decaran V-b,None,None
+Decaran VI,Extreme,None
+Decaran VI-a,None,Chemical
+Decaran VII,Weak,None
+Decaran VII-a,None,Safe
+Decaran VII-b,None,None
+Decaran VIII,Weak,None
+Decaran VIII-a,None,None
+Decaran VIII-b,None,Safe
+Decaran IX,Weak,None
+Foucault I,None,None
+Foucault I-a,None,None
+Foucault I-b,None,None
+Foucault II,Powerful,None
+Foucault II-a,None,None
+Foucault II-b,None,None
+Foucault III,Average,None
+Foucault III-a,None,None
+Foucault III-b,None,None
+Foucault IV,Weak,None
+Foucault V,Extreme,None
+Foucault V-a,None,Chemical
+Foucault V-b,None,Chemical
+Foucault V-c,None,Chemical
+Foucault V-d,None,Chemical
+Foucault VI,Extreme,None
+Foucault VI-a,None,Chemical
+Foucault VI-b,None,Chemical
+Foucault VI-c,None,Safe
+Foucault VI-d,None,Safe
+Foucault VI-e,None,Safe
+Foucault VII,Extreme,None
+Foucault VII-a,None,Radioactive
+Foucault VII-b,None,Chemical
+Foucault VII-c,None,Heavy metal
+Foucault VII-d,None,None
+Foucault VII-e,None,Chemical
+Foucault VIII,None,Safe
+Foucault VIII-a,None,Chemical
+Kang I,None,None
+Kang II,None,None
+Kang III,Very strong,Safe
+Kang IV,Weak,Safe
+Kang IV-a,None,Safe
+Kang IV-b,None,None
+Kang IV-c,None,None
+Kang V,Powerful,Chemical
+Kang VI,Weak,Chemical
+Kang VI-a,None,None
+Kang VII,Strong,None
+Kang VII-a,None,Safe
+Kang VII-b,None,None
+Kang VII-c,None,Safe
+Kang VII-d,None,Safe
+Kang VIII,Weak,None
+Kang VIII-a,None,None
+Kang VIII-b,None,Safe
+Kang VIII-c,Very weak,Safe
+Kang VIII-d,None,Chemical
+Maal I,None,None
+Maal I-a,None,None
+Maal I-b,None,None
+Maal II,Very strong,None
+Maal II-a,None,None
+Maal III,Powerful,None
+Maal III-a,None,None
+Maal IV,Weak,Biological
+Maal V,Weak,Safe
+Maal V-a,None,None
+Maal VI,Extreme,None
+Maal VI-a,None,Safe
+Maal VI-b,None,Chemical
+Maal VI-c,None,Safe
+Maal VII,Powerful,Chemical
+Maal VIII,Weak,Chemical
+Maal VIII-a,None,Safe
+Maal IX,Powerful,None
+Maal IX-a,None,Safe
+Maal IX-b,Very weak,Radioactive
+Maal IX-c,None,Safe
+Maal IX-d,None,Chemical
+Maal X,None,Chemical
+Sparta I,Very strong,None
+Sparta II,Very strong,None
+Sparta II-a,None,None
+Sparta II-b,None,None
+Sparta III,Weak,Safe
+Sparta III-a,None,None
+Sparta IV,Average,Safe
+Sparta V,Weak,Safe
+Sparta V-a,None,None
+Sparta VI,Powerful,None
+Sparta VI-a,None,Chemical
+Sparta VI-b,None,Safe
+Sparta VI-c,None,Heavy metal
+Sparta VII,Extreme,None
+Sparta VII-a,None,Biological
+Sparta VII-b,None,Heavy metal
+Sparta VII-c,None,Chemical
+Sparta VIII,Strong,None
+Sparta VIII-a,None,Safe
+Sparta VIII-b,None,Chemical
+Sparta VIII-c,None,Chemical
+Zelazny I,Powerful,None
+Zelazny II,Average,Biological
+Zelazny II-a,None,None
+Zelazny III,Powerful,Biological
+Zelazny IV,Weak,None
+Zelazny V,Weak,Safe
+Zelazny VI,Average,Chemical
+Zelazny VII,Strong,None
+Zelazny VII-a,None,Heavy metal
+Zelazny VII-b,None,Safe
+Zelazny VII-c,None,Safe
+Zelazny VII-d,None,Chemical
+Zelazny VIII,Strong,None
+Zelazny VIII-a,None,Safe
+Zelazny VIII-b,None,Chemical
+Zelazny VIII-c,None,Safe
+Zelazny VIII-d,None,Chemical
+Zelazny VIII-e,None,Chemical
+Charybdis I,Powerful,None
+Charybdis II,Weak,Safe
+Charybdis III,Powerful,Biological
+Charybdis IV,Average,None
+Charybdis IV-a,None,None
+Charybdis V,Weak,Safe
+Charybdis V-a,None,None
+Charybdis VI,Powerful,Safe
+Charybdis VI-a,None,None
+Charybdis VI-b,None,Safe
+Charybdis VII,Extreme,None
+Charybdis VII-a,None,None
+Charybdis VII-b,None,Chemical
+Charybdis VII-c,None,Heavy metal
+Charybdis VII-d,None,Chemical
+Charybdis VIII,Extreme,None
+Charybdis VIII-a,None,Safe
+Charybdis VIII-b,None,Heavy metal
+Charybdis IX,None,Chemical
+Enlil I,Very strong,None
+Enlil I-a,Average,None
+Enlil II,Very strong,Heavy metal
+Enlil II-a,None,None
+Enlil III,Average,Safe
+Enlil IV,Average,Safe
+Enlil IV-a,None,None
+Enlil V,Very strong,Chemical
+Enlil VI,Strong,None
+Enlil VI-a,None,Safe
+Enlil VI-b,None,Biological
+Enlil VI-c,None,Safe
+Enlil VI-d,None,Chemical
+Enlil VII,Weak,None
+Enlil VII-a,None,None
+Leonis I,Weak,None
+Leonis I-a,None,None
+Leonis I-b,None,None
+Leonis II,Average,None
+Leonis II-a,None,None
+Leonis III,Average,Safe
+Leonis IV,Weak,Biological
+Leonis V,Powerful,Biological
+Leonis V-a,None,None
+Leonis VI,Weak,None
+Leonis VII,Powerful,Chemical
+Leonis VIII,Weak,None
+Leonis VIII-a,None,Radioactive
+Leonis VIII-b,None,Chemical
+Leonis VIII-c,None,Biological
+Leonis IX,None,Safe
+Proxima Ternion I,Strong,None
+Proxima Ternion I-a,None,None
+Proxima Ternion I-b,None,None
+Proxima Ternion I-c,None,None
+Proxima Ternion II,Weak,None
+Proxima Ternion III,Powerful,Safe
+Proxima Ternion IV,Powerful,Chemical
+Proxima Ternion IV-a,None,None
+Rana I,Powerful,None
+Rana I-a,None,None
+Rana I-b,None,None
+Rana I-c,None,None
+Rana II,Very strong,None
+Rana II-a,None,None
+Rana III,Very strong,Chemical
+Rana III-a,None,None
+Rana IV,Very strong,Chemical
+Rana V,Average,Safe
+Rana V-a,None,None
+Rana VI,Powerful,None
+Rana VI-a,Average,Biological
+Rana VI-b,None,Chemical
+Rana VI-c,None,Chemical
+Rana VI-d,None,Safe
+Rana VI-e,None,Safe
+Rana VII,Strong,None
+Rana VII-a,None,Chemical
+Rana VII-b,None,Chemical
+Rana VIII,None,Chemical
+Rana IX,Weak,None
+Rana IX-a,None,Safe
+Rana IX-b,None,Safe
+Schrodinger I,None,None
+Schrodinger I-a,None,None
+Schrodinger II,Powerful,None
+Schrodinger III,Average,Safe
+Schrodinger III-a,None,None
+Schrodinger IV,Weak,Safe
+Schrodinger V,Average,Safe
+Schrodinger V-a,None,None
+Schrodinger VI,Extreme,None
+Schrodinger VI-a,None,Chemical
+Schrodinger VI-b,None,Chemical
+Schrodinger VI-c,None,Safe
+Schrodinger VII,Weak,None
+Schrodinger VII-a,None,None
+Schrodinger VII-b,None,Safe
+Schrodinger VII-c,None,Chemical
+Schrodinger VIII,Strong,None
+Schrodinger VIII-a,Weak,Safe
+Schrodinger VIII-b,None,Chemical
+Schrodinger VIII-c,None,Chemical
+Schrodinger VIII-d,None,Safe
+Schrodinger VIII-e,None,Safe
+Algorab I,Weak,None
+Algorab II,Powerful,Safe
+Algorab III,Strong,None
+Algorab III-a,None,Chemical
+Algorab III-b,Average,Radioactive
+Algorab III-c,None,Chemical
+Algorab III-d,None,Safe
+Algorab III-e,None,Safe
+Bardeen I,None,None
+Bardeen I-a,None,None
+Bardeen II,Average,None
+Bardeen III,Weak,Safe
+Bardeen III-a,None,None
+Bardeen III-b,None,None
+Bardeen IV,Weak,None
+Bardeen IV-a,None,Safe
+Bardeen V,Extreme,None
+Bardeen V-a,None,Chemical
+Bardeen V-b,None,None
+Bardeen V-c,Average,Biological
+Bardeen V-d,Very weak,None
+Bardeen V-e,None,Heavy metal
+Bardeen V-f,None,Heavy metal
+Bardeen VI,None,Chemical
+Bardeen VI-a,None,Heavy metal
+Bardeen VI-b,None,Chemical
+Bardeen VII,Average,None
+Bardeen VII-a,None,Safe
+Celebrai I,Weak,None
+Celebrai II,Average,Heavy metal
+Celebrai III,Powerful,None
+Celebrai III-a,None,Chemical
+Celebrai III-b,None,None
+Celebrai III-c,None,Heavy metal
+Celebrai IV,Weak,None
+Marduk I,Average,None
+Marduk I-a,None,None
+Marduk II,Average,None
+Marduk III,Average,None
+Marduk III-a,None,None
+Marduk IV,Average,Chemical
+Marduk V,Weak,Safe
+Marduk V-a,None,None
+Marduk VI,Weak,Chemical
+Marduk VII,Powerful,None
+Marduk VII-a,None,Chemical
+Marduk VII-b,None,Chemical
+Marduk VII-c,None,Chemical
+Marduk VII-d,None,Chemical
+Marduk VIII,None,Safe
+Marduk IX,None,Chemical
+Marduk IX-a,None,Safe
+Marduk IX-b,None,Safe
+Pyraas I,Very strong,None
+Pyraas II,Average,Biological
+Pyraas II-a,None,None
+Pyraas III,Weak,Chemical
+Pyraas III-a,None,None
+Pyraas III-b,None,None
+Pyraas IV,Average,Chemical
+Pyraas V,Powerful,Chemical
+Pyraas VI,Average,None
+Pyraas VI-a,None,None
+Pyraas VI-b,None,Chemical
+Pyraas VI-c,None,Safe
+Pyraas VI-d,None,Safe
+Pyraas VII,Weak,None
+Pyraas VII-a,None,Chemical
+Pyraas VII-b,Weak,Biological
+Pyraas VIII,Powerful,None
+Pyraas VIII-a,Very weak,Biological
+Pyraas VIII-b,None,None
+Pyraas VIII-c,None,Chemical
+Pyraas VIII-d,None,Safe
+Strix I,Average,Safe
+Strix I-a,None,None
+Strix II,None,Heavy metal
+Strix III,Strong,None
+Strix III-a,Weak,Safe
+Strix III-b,None,Chemical
+Strix III-c,None,Chemical
+Strix III-d,None,Safe
+Strix IV,Powerful,Chemical
+Strix IV-a,None,None
+Strix V,Powerful,None
+Strix VI,Powerful,None
+Strix VI-a,None,Safe
+Strix VI-b,None,Chemical
+Strix VI-c,None,Safe
+Verne I,Average,None
+Verne I-a,None,None
+Verne II,Average,Safe
+Verne II-a,None,None
+Verne III,Weak,Chemical
+Verne III-a,None,None
+Verne IV,Average,Safe
+Verne V,Weak,Safe
+Verne VI,Strong,None
+Verne VI-a,None,None
+Verne VI-b,None,Heavy metal
+Verne VII,Powerful,None
+Verne VII-a,None,Chemical
+Verne VII-b,None,Safe
+Verne VII-c,None,None
+Verne VII-d,None,Safe
+Verne VII-e,None,Chemical
+Archimedes I,Powerful,None
+Archimedes I-a,None,None
+Archimedes II,Average,Radioactive
+Archimedes III,Weak,Safe
+Archimedes IV,Very strong,Heavy metal
+Archimedes IV-a,None,None
+Archimedes V,Weak,None
+Archimedes V-a,Average,Heavy metal
+Archimedes V-b,None,None
+Archimedes VI,Weak,Chemical
+Archimedes VI-a,None,Chemical
+Archimedes VI-b,None,Chemical
+Bohr I,Weak,None
+Bohr I-a,None,None
+Bohr II,Average,Chemical
+Bohr III,Powerful,Chemical
+Bohr III-a,None,None
+Bohr III-b,None,None
+Bohr IV,Average,None
+Bohr V,Average,Heavy metal
+Bohr VI,Strong,None
+Bohr VI-a,None,Safe
+Bohr VI-b,None,Safe
+Bohr VI-c,None,None
+Bohr VI-d,None,Safe
+Bohr VII,Average,None
+Bohr VIII,None,Chemical
+Fermi I,Weak,None
+Fermi II,Powerful,None
+Fermi II-a,None,None
+Fermi III,Average,Heavy metal
+Fermi III-a,None,None
+Fermi III-b,None,None
+Fermi IV,Average,Chemical
+Fermi IV-a,None,None
+Fermi IV-b,None,None
+Fermi V,Weak,None
+Fermi V-a,None,None
+Fermi VI,Very weak,Safe
+Fermi VI-a,None,None
+Fermi VII,Strong,None
+Fermi VII-a,Very weak,Safe
+Fermi VII-b,None,None
+Fermi VII-c,None,Chemical
+Fermi VIII,Powerful,None
+Fermi VIII-a,None,Heavy metal
+Fermi VIII-b,None,None
+Fermi VIII-c,None,Safe
+Fermi VIII-d,None,Safe
+Fermi IX,Extreme,None
+Fermi IX-a,None,Chemical
+Fermi IX-b,None,Safe
+Fermi IX-c,None,Chemical
+Fermi IX-d,None,None
+Fermi IX-e,None,Chemical
+Fermi X,Weak,None
+Hawking I,Weak,Safe
+Hawking I-a,None,None
+Hawking II,Weak,Chemical
+Hawking III,Average,Safe
+Hawking IV,Weak,Safe
+Hawking IV-a,None,None
+Hawking V,Weak,None
+Hawking V-a,None,Chemical
+Hawking VI,Strong,None
+Hawking VI-a,None,Safe
+Hawking VI-b,None,Safe
+Huygens I,Weak,None
+Huygens I-a,None,None
+Huygens I-b,None,None
+Huygens II,Powerful,None
+Huygens II-a,None,None
+Huygens II-b,None,None
+Huygens III,Average,Safe
+Huygens IV,Average,Biological
+Huygens V,Extreme,None
+Huygens V-a,None,None
+Huygens V-b,None,Chemical
+Huygens VI,Weak,Safe
+Huygens VI-a,None,None
+Huygens VII,Powerful,None
+Huygens VII-a,None,Biological
+Huygens VII-b,Very strong,Safe
+Huygens VII-c,None,None
+Huygens VII-d,None,Chemical
+Huygens VII-e,None,Chemical
+Huygens VIII,Very weak,None
+Katydid I,Strong,None
+Katydid I-a,Average,Safe
+Katydid I-b,Average,None
+Katydid II,Very strong,Safe
+Katydid III,Average,Chemical
+Masada I,None,None
+Masada II,Average,None
+Masada III,Average,Safe
+Masada IV,Very strong,Chemical
+Masada IV-a,None,None
+Masada V,Strong,None
+Masada V-a,None,Safe
+Masada V-b,None,Chemical
+Masada V-c,None,Safe
+Masada VI,Weak,None
+Masada VI-a,None,Heavy metal
+Masada VII,Weak,None
+Masada VII-a,None,Heavy metal
+Masada VII-b,None,Safe
+Masada VIII,None,Chemical
+Masada VIII-a,None,Heavy metal
+Masada IX,Weak,None
+Bannoc I,Average,None
+Bannoc II,Weak,Biological
+Bannoc III,Average,Heavy metal
+Heinlein I,Weak,None
+Heinlein II,Average,None
+Heinlein II-a,None,None
+Heinlein II-b,None,None
+Heinlein III,Average,Chemical
+Heinlein III-a,None,None
+Heinlein IV,Extreme,None
+Heinlein IV-a,None,Chemical
+Heinlein IV-b,Very strong,Radioactive
+Heinlein IV-c,None,Biological
+Heinlein IV-d,None,Safe
+Heinlein IV-e,None,Heavy metal
+Heinlein V,Average,Safe
+Heinlein V-a,None,Chemical
+Heinlein V-b,None,None
+Heinlein V-c,None,None
+Heinlein VI,Extreme,None
+Heinlein VI-a,Weak,Biological
+Heinlein VI-b,None,Chemical
+Heinlein VI-c,None,Safe
+Heinlein VI-d,None,Chemical
+Heinlein VI-e,None,Chemical
+Heinlein VII,None,Chemical
+Denebola II-a,None,Chemical
+Leonis VI-a,None,None
+Muphrid I-b,None,None
+Cruth,None,Chemical
+Serpentis VI-a,None,Heavy metal
+Serpentis VI-b,None,Chemical
+Syrma V-a,None,None

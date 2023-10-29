@@ -1,0 +1,1693 @@
+System,Name,CelestialType,Type,Gravity,Temperature,Atmosphere
+Barnard's Star,Frost,Planet,Rock,1.58,Deep Freeze,Extr N2
+Cheyenne,Skink,Planet,Rock,1.02,Inferno,Std CO2
+Cheyenne,Akila,Planet,Rock,1.51,Temperate,High O2
+Cheyenne,Codos,Moon,Rock,0.4,Temperate,Std O2
+Cheyenne,Bindi,Moon,Barren,0.23,Temperate,None
+Cheyenne,Antharum,Moon,Barren,0.11,Temperate,None
+Cheyenne,Washakie,Planet,Rock,0.69,Frozen,Std M
+Cheyenne,Smet,Moon,Barren,0.19,Frozen,None
+Cheyenne,Burran,Planet,Barren,1.09,Frozen,None
+Cheyenne,Rell,Moon,Barren,0.18,Frozen,None
+Cheyenne,Grizzit,Moon,Barren,0.13,Frozen,None
+Cheyenne,Montara,Planet,Gas Giant,2.66,Deep Freeze,H2
+Cheyenne,Wellish,Moon,Ice,0.1,Deep Freeze,None
+Cheyenne,Heilo,Moon,Ice,0.08,Deep Freeze,None
+Cheyenne,Thren,Moon,Ice,0.03,Deep Freeze,None
+Cheyenne,Montara Luna,Moon,Rock,0.39,Temperate,Thin O2
+Cheyenne,Kalira,Moon,Ice,0.09,Deep Freeze,None
+Cheyenne,Agamon,Planet,Ice Giant,1.56,Deep Freeze,H2
+Cheyenne,Agamon A,Moon,Ice,0.13,Deep Freeze,None
+Cheyenne,Agamon B,Moon,Ice,0.3,Deep Freeze,None
+Cheyenne,Agamon C,Moon,Ice,0.19,Deep Freeze,None
+Cheyenne,Agamon D,Moon,Ice,0.26,Deep Freeze,None
+Cheyenne,Stellis,Planet,Gas Giant,4.19,Deep Freeze,H2
+Cheyenne,Stellis A,Moon,Ice,0.4,Deep Freeze,Thin N2
+Cheyenne,Stellis B,Moon,Ice,0.05,Deep Freeze,None
+Cheyenne,Stellis C,Moon,Ice,0.35,Deep Freeze,None
+Cheyenne,Stellis D,Moon,Ice,0.07,Deep Freeze,None
+Cheyenne,Fenn,Planet,Gas Giant,5.16,Deep Freeze,H2
+Cheyenne,Tahrnis,Moon,Ice,0.02,Deep Freeze,None
+Cheyenne,Cragg,Moon,Rock,0.44,Deep Freeze,None
+Cheyenne,Navaha,Planet,Gas Giant,1.66,Deep Freeze,H2
+Cheyenne,Olaran,Moon,Ice,0.28,Deep Freeze,None
+Cheyenne,Hardpoint,Moon,Rock,0.31,Deep Freeze,Thin N2
+Cheyenne,Laramie,Moon,Ice,0.33,Deep Freeze,Thin N2
+Cheyenne,Bismark,Moon,Ice,0.03,Deep Freeze,None
+Cheyenne,Belwah,Moon,Rock,0.5,Deep Freeze,None
+Maheo,Maheo I,Planet,Rock,0.39,Temperate,Thin M
+Maheo,Maheo II,Planet,Rock,0.52,Frozen,Thin N2
+Maheo,Maheo III,Planet,Barren,1.85,Frozen,None
+Maheo,Maheo III-a,Moon,Barren,0.17,Frozen,None
+Maheo,Maheo III-b,Moon,Barren,0.1,Frozen,None
+Maheo,Maheo IV,Planet,Gas Giant,4.04,Deep Freeze,H2
+Maheo,Maheo IV-a,Moon,Ice,0.06,Deep Freeze,None
+Maheo,Maheo IV-b,Moon,Ice,0.16,Deep Freeze,None
+Maheo,Maheo IV-c,Moon,Rock,0.68,Cold,Std O2
+Maheo,Maheo IV-d,Moon,Ice,0.24,Deep Freeze,None
+Maheo,Maheo V,Planet,Gas Giant,3.34,Deep Freeze,H2
+Maheo,Maheo V-a,Moon,Ice,0.43,Deep Freeze,None
+Maheo,Maheo VI,Planet,Barren,0.71,Deep Freeze,None
+Maheo,Maheo VI-a,Moon,Barren,0.18,Deep Freeze,None
+Maheo,Maheo VII,Planet,Ice,0.27,Deep Freeze,None
+Maheo,Maheo VII-a,Moon,Ice,0.07,Deep Freeze,None
+Narion,Niira,Planet,Rock,0.61,Temperate,Std M (tox)
+Narion,Sumati,Planet,Rock,0.89,Temperate,Std M
+Narion,Andraphon,Moon,Barren,0.12,Temperate,None
+Narion,Danra,Planet,Barren,1.44,Frozen,None
+Narion,Podius,Moon,Barren,0.15,Frozen,None
+Narion,Gryphus,Moon,Barren,0.13,Frozen,None
+Narion,Magreth,Planet,Barren,0.98,Deep Freeze,None
+Narion,Hyperia,Moon,Barren,0.08,Deep Freeze,None
+Narion,Deepala,Planet,Gas Giant,1.39,Deep Freeze,H2
+Narion,Grimsey,Moon,Ice,0.09,Frozen,None
+Narion,Dalvik,Moon,Rock,0.34,Deep Freeze,None
+Narion,Anselon,Planet,Gas Giant,1.81,Deep Freeze,H2
+Narion,Vectera,Moon,Rock,0.91,Deep Freeze,Thin CO2
+Narion,Kreet,Moon,Rock,0.55,Temperate,Std O2
+Narion,Cruth,Planet,Ice,0.2,Deep Freeze,None
+Sol,Mercury,Planet,Barren,0.38,Inferno,None
+Sol,Venus,Planet,Rock,0.9,Inferno,Extr CO2 (cor)
+Sol,Earth,Planet,Rock,1,Cold,Thin CO2
+Sol,Luna,Moon,Barren,0.17,Temperate,None
+Sol,Mars,Planet,Rock,0.38,Cold,Thin CO2
+Sol,Phobos,Moon,Asteroid,0.01,Cold,None
+Sol,Deimos,Moon,Asteroid,0.01,Cold,None
+Sol,Jupiter,Planet,Gas Giant,2.65,Frozen,H2
+Sol,Io,Moon,Barren,0.18,Frozen,None
+Sol,Europa,Moon,Ice,0.13,Frozen,None
+Sol,Ganymede,Moon,Ice,0.15,Frozen,None
+Sol,Callisto,Moon,Ice,0.13,Frozen,None
+Sol,Saturn,Planet,Gas Giant,1.14,Deep Freeze,H2
+Sol,Mimas,Moon,Ice,0.01,Deep Freeze,None
+Sol,Enceladus,Moon,Ice,0.01,Deep Freeze,None
+Sol,Tethys,Moon,Ice,0.01,Deep Freeze,None
+Sol,Dione,Moon,Ice,0.02,Deep Freeze,None
+Sol,Rhea,Moon,Ice,0.03,Deep Freeze,None
+Sol,Titan,Moon,Rock,0.14,Deep Freeze,Std N2
+Sol,Iapetus,Moon,Ice,0.02,Deep Freeze,None
+Sol,Uranus,Planet,Ice Giant,0.92,Deep Freeze,H2
+Sol,Miranda,Moon,Ice,0.01,Deep Freeze,None
+Sol,Ariel,Moon,Ice,0.03,Deep Freeze,None
+Sol,Umbriel,Moon,Ice,0.02,Deep Freeze,None
+Sol,Titania,Moon,Ice,0.04,Deep Freeze,None
+Sol,Oberon,Moon,Ice,0.04,Deep Freeze,None
+Sol,Neptune,Planet,Ice Giant,1.15,Deep Freeze,H2
+Sol,Triton,Moon,Ice,0.08,Deep Freeze,None
+Sol,Pluto,Planet,Ice,0.06,Deep Freeze,None
+Sol,Charon,Moon,Ice,0.03,Deep Freeze,None
+Alpha Centauri,Bondar,Planet,Rock,1.84,Inferno,Extr CO2
+Alpha Centauri,Curbeam,Moon,Barren,0.18,Inferno,None
+Alpha Centauri,Grissom,Moon,Barren,0.29,Inferno,None
+Alpha Centauri,Gagarin,Planet,Rock,0.89,Temperate,O2
+Alpha Centauri,Jemison,Planet,Rock,0.91,Temperate,Std O2
+Alpha Centauri,Kurtz,Moon,Barren,0.11,Temperate,None
+Alpha Centauri,Olivas,Planet,Gas Giant,1.34,Frozen,H2
+Alpha Centauri,Zamka,Moon,Rock,0.42,Frozen,Thin M
+Alpha Centauri,Voss,Moon,Rock,0.41,Frozen,Thin N2
+Alpha Centauri,Hawley,Moon,Rock,0.5,Frozen,Thin M
+Alpha Centauri,Chawla,Moon,Ice,0.43,Frozen,CO2
+Alpha Centauri,Lovell,Moon,Ice,0.08,Frozen,None
+Luyten's Star,Luyten's Rock,Planet,Rock,1.3,Temperate,Std CO2
+Procyon B,Procyon-B I,Planet,Barren,0.21,Scorched,None
+Sirius,Sirius I,Planet,Barren,0.54,Inferno,None
+Sirius,Sirius II,Planet,Rock,1.38,Cold,Std M
+Sirius,Sirius II-a,Moon,Rock,0.35,Cold,Thin CO2
+Sirius,Sirius III,Planet,Gas Giant,5.9,Frozen,H2
+Sirius,Sirius III-a,Moon,Rock,0.42,Cold,Thin N2
+Sirius,Sirius III-b,Moon,Ice,0.07,Frozen,None
+Toliman,Toliman I,Planet,Barren,1,Inferno,None
+Toliman,Toliman II,Planet,Rock,1,Cold,Std O2
+Toliman,Toliman II-a,Moon,Barren,0.09,Cold,None
+Toliman,Toliman II-b,Moon,Barren,0.09,Cold,None
+Toliman,Toliman II-c,Moon,Barren,0.17,Cold,None
+Valo,Polvo,Planet,Rock,0.81,Temperate,Std O2
+Valo,Miatha,Moon,Barren,0.07,Temperate,None
+Valo,Navacci,Moon,Barren,0.14,Temperate,None
+Valo,Cantra,Planet,Barren,1.08,Frozen,None
+Valo,Prax,Planet,Barren,0.8,Deep Freeze,None
+Valo,Hillex,Planet,Barren,1.31,Deep Freeze,None
+Valo,Lumos,Planet,Gas Giant,2.41,Deep Freeze,H2
+Valo,Golga,Moon,Barren,0.51,Deep Freeze,None
+Valo,Kindi,Moon,Barren,0.3,Deep Freeze,None
+Valo,Shorun,Moon,Ice,0.11,Deep Freeze,None
+Valo,Virum,Moon,Ice,0.12,Deep Freeze,None
+Volii,Volii Beta,Planet,Rock,0.58,Scorched,None
+Volii,Volii Delta,Moon,Asteroid,0.06,Scorched,None
+Volii,Volii Alpha,Planet,Rock,1.47,Temperate,High O2
+Volii,Volii Epsilon,Planet,Rock,0.46,Cold,Thin M
+Volii,Volii Gamma,Moon,Barren,0.07,Cold,None
+Volii,Volii Tau,Planet,Rock,1.37,Deep Freeze,None
+Volii,Volii Psi,Moon,Barren,0.17,Deep Freeze,None
+Volii,Volii Phi,Moon,Barren,0.18,Deep Freeze,None
+Volii,Volii Omega,Planet,Gas Giant,4.93,Deep Freeze,H2
+Volii,Volii Upsilon,Moon,Ice,0.07,Deep Freeze,None
+Volii,Volii Chi,Planet,Ice,0.29,Deep Freeze,None
+Wolf,Chthonia,Planet,Barren,1.25,Inferno,None
+Wolf,Etherea,Planet,Gas Giant,1.54,Inferno,H2
+Wolf,Pontem,Moon,Ice,0.09,Deep Freeze,None
+Bessel,Bessel I,Planet,Ice Giant,1.72,Frozen,H2
+Bessel,Bessel II,Planet,Barren,0.9,Deep Freeze,None
+Bessel,Bessel III,Planet,Barren,1.12,Deep Freeze,None
+Bessel,Bessel III-a,Moon,Barren,0.15,Deep Freeze,None
+Bessel,Bessel III-b,Moon,Rock,0.43,Cold,Thin M
+Carinae,Carinae I,Planet,Barren,0.87,Deep Freeze,None
+Carinae,Carinae II,Planet,Rock,0.89,Deep Freeze,None
+Carinae,Carinae II-a,Moon,Barren,0.27,Scorched,None
+Carinae,Carinae III,Planet,Gas Giant,2.46,Deep Freeze,H2
+Carinae,Carinae III-a,Moon,Rock,0.36,Frozen,Thin N2
+Carinae,Carinae III-b,Moon,Ice,0.28,Deep Freeze,None
+Carinae,Carinae III-c,Moon,Ice,0.31,Deep Freeze,None
+Carinae,Carinae III-d,Moon,Ice,0.12,Deep Freeze,None
+Carinae,Carinae IV,Planet,Gas Giant,2.01,Deep Freeze,H2
+Carinae,Carinae IV-a,Moon,Ice,0.05,Deep Freeze,None
+Carinae,Carinae V,Planet,Gas Giant,4.7,Deep Freeze,H2
+Carinae,Carinae V-a,Moon,Ice,0.07,Deep Freeze,None
+Carinae,Carinae V-b,Moon,Ice,0.3,Deep Freeze,None
+Carinae,Carinae V-c,Moon,Rock,0.58,Deep Freeze,None
+Eta Cassiopeia,Cassiopeia I,Planet,Rock,1.04,Temperate,Std O2
+Eta Cassiopeia,Cassiopeia II,Planet,Rock,1.12,Cold,High M
+Eta Cassiopeia,Cassiopeia II-a,Moon,Rock,0.47,Temperate,Thin CO2
+Eta Cassiopeia,Cassiopeia III,Planet,Rock,0.83,Frozen,Std N2
+Eta Cassiopeia,Cassiopeia III-a,Moon,Barren,0.05,Frozen,None
+Eta Cassiopeia,Cassiopeia IV,Planet,Gas Giant,1.57,Deep Freeze,H2
+Eta Cassiopeia,Cassiopeia IV-a,Moon,Rock,0.46,Temperate,Thin M (cor)
+Eta Cassiopeia,Cassiopeia IV-b,Moon,Ice,0.07,Deep Freeze,None
+Eta Cassiopeia,Cassiopeia IV-c,Moon,Ice,0.08,Deep Freeze,None
+Kapteyn's Star,Kapteyn I,Planet,Barren,1.92,Cold,None
+Kapteyn's Star,Kapteyn II,Planet,Gas Giant,0.94,Frozen,H2
+Olympus,Nesoi,Planet,Rock,1.04,Temperate,Std O2
+Olympus,Ourea,Planet,Rock,0.98,Frozen,Std M
+Olympus,Erebus,Planet,Rock,1.24,Frozen,High N2
+Olympus,Pontus,Moon,Barren,0.08,Frozen,None
+Olympus,Thalassa,Moon,Barren,0.34,Frozen,None
+Olympus,Ananke,Planet,Barren,1.12,Deep Freeze,High N2
+Olympus,Thanatos,Planet,Ice Giant,0.94,Deep Freeze,H2
+Olympus,Hypnos,Moon,Ice,0.25,Deep Freeze,None
+Olympus,Aion,Planet,Gas Giant,2.42,Deep Freeze,H2
+Olympus,Cybele,Moon,Barren,0.31,Deep Freeze,None
+Olympus,Dionysus,Moon,Rock,0.63,Temperate,Std O2 (tox)
+Olympus,Orphius,Moon,Barren,0.4,Deep Freeze,None
+Olympus,Mithras,Moon,Ice,0.14,Deep Freeze,None
+Piazzi,Piazzi I,Planet,Rock,1.08,Temperate,Std O2
+Piazzi,Piazzi II,Planet,Rock,1.14,Frozen,Std M
+Piazzi,Piazzi III,Planet,Barren,0.62,Frozen,None
+Piazzi,Piazzi III-a,Moon,Barren,0.36,Frozen,None
+Piazzi,Piazzi III-b,Moon,Barren,0.19,Frozen,None
+Piazzi,Piazzi IV,Planet,Gas Giant,1.43,Frozen,H2
+Piazzi,Piazzi IV-a,Moon,Barren,0.11,Frozen,None
+Piazzi,Piazzi IV-b,Moon,Barren,0.29,Frozen,None
+Piazzi,Piazzi IV-c,Moon,Rock,0.48,Cold,Std O2
+Piazzi,Piazzi V,Planet,Barren,0.68,Deep Freeze,None
+Piazzi,Piazzi V-a,Moon,Barren,0.28,Deep Freeze,None
+Piazzi,Piazzi V-b,Moon,Barren,0.16,Deep Freeze,None
+Piazzi,Piazzi V-c,Moon,Barren,0.21,Deep Freeze,None
+Piazzi,Piazzi VI,Planet,Barren,1.11,Deep Freeze,None
+Piazzi,Piazzi VI-a,Moon,Barren,0.26,Deep Freeze,None
+Piazzi,Piazzi VI-b,Moon,Barren,0.21,Deep Freeze,None
+Piazzi,Piazzi VI-c,Moon,Ice,0.04,Deep Freeze,None
+Piazzi,Piazzi VII,Planet,Gas Giant,2.36,Deep Freeze,H2
+Piazzi,Piazzi VII-a,Moon,Ice,0.07,Deep Freeze,None
+Piazzi,Piazzi VII-b,Moon,Ice,0.08,Deep Freeze,None
+Piazzi,Piazzi VII-c,Moon,Ice,0.37,Deep Freeze,None
+Procyon A,Procyon I,Planet,Rock,1.24,Inferno,Std CO2 (cor)
+Procyon A,Procyon I-a,Moon,Asteroid,0.07,Inferno,None
+Procyon A,Procyon II,Planet,Rock,0.96,Inferno,Extr CO2
+Procyon A,Procyon III,Planet,Rock,1.07,Cold,High O2
+Procyon A,Procyon III-a,Moon,Barren,0.1,Cold,None
+Procyon A,Procyon IV,Planet,Rock,1.16,Cold,High N2
+Procyon A,Procyon IV-a,Moon,Barren,0.25,Cold,None
+Procyon A,Procyon V,Planet,Gas Giant,1.48,Frozen,H2
+Procyon A,Procyon V-a,Moon,Ice,0.14,Frozen,None
+Procyon A,Procyon V-b,Moon,Ice,0.31,Frozen,None
+Procyon A,Procyon V-c,Moon,Ice,0.27,Frozen,None
+Procyon A,Procyon VI,Planet,Gas Giant,5.49,Deep Freeze,H2
+Procyon A,Procyon VI-a,Moon,Ice,0.06,Deep Freeze,None
+Procyon A,Procyon VI-b,Moon,Rock,0.53,Frozen,Std O2
+Procyon A,Procyon VI-c,Moon,Rock,0.34,Frozen,Thin CO2
+Tau Ceti,Tau Ceti I,Planet,Rock,1.53,Inferno,Extr CO2
+Tau Ceti,Tau Ceti II,Planet,Rock,1,Temperate,Thin O2
+Tau Ceti,Tau Ceti II-a,Moon,Barren,0.17,Temperate,None
+Tau Ceti,Tau Ceti III,Planet,Rock,0.61,Cold,Std CO2
+Tau Ceti,Tau Ceti IV,Planet,Rock,0.5,Frozen,Thin CO2
+Tau Ceti,Tau Ceti IV-a,Moon,Barren,0.19,Frozen,None
+Tau Ceti,Tau Ceti IV-b,Moon,Barren,0.07,Frozen,None
+Tau Ceti,Tau Ceti V,Planet,Rock,1.71,Frozen,Extr N2
+Tau Ceti,Tau Ceti VI,Planet,Barren,0.87,Frozen,None
+Tau Ceti,Tau Ceti VI-a,Moon,Barren,0.08,Frozen,None
+Tau Ceti,Tau Ceti VII,Planet,Barren,0.93,Deep Freeze,None
+Tau Ceti,Tau Ceti VII-a,Moon,Barren,0.11,Deep Freeze,None
+Tau Ceti,Tau Ceti VIII,Planet,Ice Giant,1.31,Deep Freeze,H2
+Tau Ceti,Tau Ceti VIII-a,Moon,Ice,0.11,Deep Freeze,None
+Tau Ceti,Tau Ceti VIII-b,Moon,Rock,0.57,Temperate,Thin M
+Tau Ceti,Tau Ceti VIII-c,Moon,Ice,0.31,Deep Freeze,None
+Tau Ceti,Tau Ceti VIII-d,Moon,Ice,0.14,Deep Freeze,None
+Tau Ceti,Tau Ceti IX,Planet,Ice Giant,1.36,Deep Freeze,H2
+The Pup,Pup I,Planet,Barren,0.06,Deep Freeze,None
+Van Maanen's Star,Van Maanen I,Planet,Ice,0.03,Deep Freeze,None
+Altair,Altair I,Planet,Rock,0.8,Scorched,Std CO2
+Altair,Altair II,Planet,Rock,1.34,Cold,High O2
+Altair,Altair III,Planet,Rock,0.93,Frozen,Std M
+Altair,Altair III-a,Moon,Asteroid,0.06,Cold,None
+Altair,Altair III-b,Moon,Barren,0.16,Frozen,None
+Altair,Altair III-c,Moon,Barren,0.07,Frozen,None
+Altair,Altair IV,Planet,Gas Giant,3.04,Frozen,H2
+Altair,Altair IV-a,Moon,Ice,0.11,Frozen,None
+Altair,Altair IV-b,Moon,Ice,0.14,Frozen,None
+Altair,Altair IV-c,Moon,Rock,0.6,Cold,Std M
+Altair,Altair IV-d,Moon,Ice,0.05,Frozen,None
+Altair,Altair V,Planet,Barren,0.55,Deep Freeze,None
+Altair,Altair V-a,Moon,Ice,0.11,Deep Freeze,None
+Andromas,Andromas I,Planet,Rock,0.51,Inferno,Thin CO2
+Andromas,Andromas II,Planet,Rock,1.5,Temperate,Extr O2
+Andromas,Andromas III,Planet,Rock,0.35,Temperate,Thin O2
+Andromas,Andromas IV,Planet,Gas Giant,3.41,Frozen,H2
+Andromas,Andromas IV-a,Moon,Ice,0.07,Frozen,None
+Andromas,Andromas V,Planet,Gas Giant,1.87,Deep Freeze,H2
+Andromas,Andromas V-a,Moon,Ice,0.03,Deep Freeze,None
+Andromas,Andromas V-b,Moon,Rock,0.7,Temperate,Std O2
+Andromas,Andromas VI,Planet,Gas Giant,1.57,Deep Freeze,H2
+Andromas,Andromas VI-a,Moon,Ice,0.06,Deep Freeze,None
+Andromas,Andromas VI-b,Moon,Rock,0.35,Deep Freeze,Thin N2
+Aranae,Aranae I,Planet,Barren,1.02,Deep Freeze,Std M
+Aranae,Aranae II,Planet,Barren,0.73,Deep Freeze,None
+Aranae,Aranae II-a,Moon,Barren,0.13,Deep Freeze,None
+Aranae,Aranae II-b,Moon,Barren,0.25,Deep Freeze,None
+Aranae,Aranae III,Planet,Barren,0.6,Deep Freeze,None
+Aranae,Aranae IV,Planet,Gas Giant,3.91,Deep Freeze,H2
+Aranae,Aranae IV-a,Moon,Barren,0.31,Deep Freeze,None
+Aranae,Aranae IV-b,Moon,Barren,0.43,Deep Freeze,None
+Aranae,Aranae IV-c,Moon,Ice,0.23,Deep Freeze,None
+Aranae,Aranae IV-d,Moon,Ice,0.3,Deep Freeze,None
+Aranae,Aranae V,Planet,Ice,0.37,Deep Freeze,None
+Arcturus,Arcturus I,Planet,Rock,0.87,Inferno,Std CO2
+Arcturus,Arcturus II,Planet,Rock,0.95,Temperate,Std O2
+Arcturus,Arcturus III,Planet,Ice Giant,0.91,Cold,H2
+Arcturus,Arcturus III-a,Moon,Ice,0.4,Cold,Thin CO2
+Muphrid,Muphrid I,Planet,Rock,0.8,Inferno,Std CO2
+Muphrid,Muphrid I-a,Moon,Barren,0.08,Inferno,None
+Muphrid,Muphrid I-b,Moon,Rock,1.09,Inferno,None
+Muphrid,Muphrid II,Planet,Rock,0.49,Temperate,Std CO2
+Muphrid,Muphrid II-a,Moon,Rock,0.52,Inferno,None
+Muphrid,Muphrid III,Planet,Barren,0.2,Scorched,Thin CO2
+Muphrid,Muphrid III-a,Moon,Barren,0.19,Inferno,None
+Muphrid,Muphrid III-b,Moon,Barren,0.17,Inferno,None
+Muphrid,Muphrid III-c,Moon,Barren,0.17,Inferno,None
+Muphrid,Muphrid IV,Planet,Rock,0.85,Temperate,Std O2
+Muphrid,Muphrid V,Planet,Gas Giant,2.99,Frozen,H2
+Muphrid,Muphrid V-a,Moon,Ice,0.25,Cold,None
+Muphrid,Muphrid V-b,Moon,Rock,0.46,Cold,Thin O2
+Muphrid,Muphrid V-c,Moon,Ice,0.05,Cold,None
+Muphrid,Muphrid V-d,Moon,Rock,0.39,Cold,Thin CO2
+Muphrid,Muphrid VI,Planet,Gas Giant,2.91,Frozen,H2
+Muphrid,Muphrid VI-a,Moon,Ice,0.26,Frozen,None
+Muphrid,Muphrid VI-b,Moon,Rock,0.4,Frozen,Thin M (cor)
+Muphrid,Muphrid VI-c,Moon,Barren,0.29,Frozen,None
+Muphrid,Muphrid VI-d,Moon,Ice,0.2,Frozen,None
+Muphrid,Muphrid VII,Planet,Gas Giant,3.12,Deep Freeze,H2
+Muphrid,Muphrid VII-a,Moon,Ice,0.2,Deep Freeze,None
+Muphrid,Muphrid VII-b,Moon,Rock,0.39,Deep Freeze,Thin N2
+Muphrid,Muphrid VII-c,Moon,Ice,0.29,Deep Freeze,None
+Muphrid,Muphrid VIII,Planet,Ice Giant,0.89,Deep Freeze,H2
+Muphrid,Muphrid VIII-a,Moon,Rock,0.5,Deep Freeze,None
+Muphrid,Muphrid VIII-b,Moon,Ice,0.37,Deep Freeze,Thin N2
+Muphrid,Muphrid VIII-c,Moon,Rock,0.62,Cold,Std CO2
+Muphrid,Muphrid VIII-d,Moon,Rock,0.24,Deep Freeze,None
+Sagan,Sagan I,Planet,Ice,0.11,Deep Freeze,None
+Sakharov,Bonner,Planet,Gas Giant,1.2,Deep Freeze,H2
+Sakharov,Mir II,Moon,Barren,0.09,Deep Freeze,None
+Beta Andraste,Beta Andraste I,Planet,Gas Giant,1.33,Deep Freeze,H2
+Beta Andraste,Beta Andraste I-a,Moon,Rock,0.48,Cold,Thin O2
+Beta Andraste,Beta Andraste I-b,Moon,Ice,0.05,Frozen,None
+Beta Andraste,Beta Andraste I-c,Moon,Ice,0.22,Deep Freeze,None
+Beta Andraste,Beta Andraste I-d,Moon,Ice,0.13,Deep Freeze,None
+Bradbury,Bradbury I,Planet,Barren,0.65,Inferno,None
+Bradbury,Bradbury I-a,Moon,Barren,0.12,Inferno,None
+Bradbury,Bradbury I-b,Moon,Barren,0.17,Inferno,None
+Bradbury,Bradbury II,Planet,Rock,0.59,Inferno,Thin CO2
+Bradbury,Bradbury III,Planet,Rock,1.46,Temperate,High O2
+Bradbury,Bradbury IV,Planet,Rock,1.04,Cold,Std O2
+Bradbury,Bradbury IV-a,Moon,Barren,0.12,Cold,None
+Bradbury,Bradbury V,Planet,Gas Giant,3.41,Frozen,H2
+Bradbury,Bradbury V-a,Moon,Ice,0.17,Frozen,None
+Eridani,Eridani I,Planet,Rock,0.77,Inferno,Extr CO2 (cor)
+Eridani,Eridani II,Planet,Rock,0.86,Temperate,Std O2
+Eridani,Eridani III,Planet,Rock,1.94,Temperate,Std O2
+Eridani,Eridani III-a,Moon,Barren,0.2,Temperate,None
+Eridani,Eridani III-b,Moon,Rock,0.41,Temperate,Thin CO2
+Eridani,Eridani III-c,Moon,Barren,0.1,Cold,None
+Eridani,Eridani IV,Planet,Rock,0.8,Cold,Std M (cor)
+Eridani,Eridani IV-a,Moon,Barren,0.21,Cold,None
+Eridani,Eridani IV-b,Moon,Barren,0.25,Cold,None
+Eridani,Eridani IV-c,Moon,Barren,0.13,Cold,None
+Eridani,Eridani V,Planet,Rock,0.54,Cold,Std M
+Eridani,Eridani VI,Planet,Ice Giant,1,Deep Freeze,H2
+Eridani,Eridani VI-a,Moon,Ice,0.19,Deep Freeze,None
+Eridani,Eridani VII,Planet,Gas Giant,2.78,Deep Freeze,H2
+Eridani,Eridani VII-a,Moon,Ice,0.04,Deep Freeze,None
+Eridani,Eridani VII-b,Moon,Ice,0.1,Deep Freeze,None
+Eridani,Eridani VII-c,Moon,Rock,0.33,Deep Freeze,Thin CO2
+Eridani,Eridani VIII,Planet,Gas Giant,4.21,Deep Freeze,H2
+Eridani,Eridani VIII-a,Moon,Ice,0.35,Deep Freeze,None
+Eridani,Eridani VIII-b,Moon,Rock,0.39,Deep Freeze,Thin CO2
+Eridani,Eridani VIII-c,Moon,Ice,0.1,Deep Freeze,None
+Eridani,Eridani VIII-d,Moon,Rock,0.5,Deep Freeze,Thin CO2
+Eridani,Eridani IX,Planet,Ice,0.15,Deep Freeze,None
+Guniibuu,Guniibuu I,Planet,Barren,0.46,Inferno,None
+Guniibuu,Guniibuu I-a,Moon,Barren,0.21,Inferno,None
+Guniibuu,Guniibuu I-b,Moon,Barren,0.11,Inferno,None
+Guniibuu,Guniibuu II,Planet,Rock,1.3,Temperate,High O2 (cor)
+Guniibuu,Guniibuu III,Planet,Rock,0.74,Frozen,Std O2
+Guniibuu,Guniibuu III-a,Moon,Asteroid,0.07,Frozen,None
+Guniibuu,Guniibuu III-b,Moon,Barren,0.14,Frozen,None
+Guniibuu,Guniibuu III-c,Moon,Barren,0.22,Frozen,None
+Guniibuu,Guniibuu IV,Planet,Rock,1.22,Frozen,Std N2
+Guniibuu,Guniibuu IV-a,Moon,Barren,0.1,Frozen,None
+Guniibuu,Guniibuu IV-b,Moon,Barren,0.08,Frozen,None
+Guniibuu,Guniibuu V,Planet,Gas Giant,2.98,Deep Freeze,H2
+Guniibuu,Guniibuu V-a,Moon,Ice,0.13,Deep Freeze,None
+Guniibuu,Guniibuu V-b,Moon,Ice,0.22,Deep Freeze,None
+Guniibuu,Guniibuu V-c,Moon,Rock,0.39,Deep Freeze,Thin N2
+Guniibuu,Guniibuu V-d,Moon,Ice,0.23,Deep Freeze,None
+Guniibuu,Guniibuu V-e,Moon,Ice,0.25,Deep Freeze,None
+Guniibuu,Guniibuu VI,Planet,Gas Giant,2.83,Deep Freeze,H2
+Guniibuu,Guniibuu VI-a,Moon,Ice,0.29,Deep Freeze,None
+Guniibuu,Guniibuu VI-b,Moon,Rock,0.55,Cold,Thin M
+Guniibuu,Guniibuu VI-c,Moon,Barren,0.31,Deep Freeze,None
+Guniibuu,Guniibuu VI-d,Moon,Rock,0.63,Temperate,Std O2 (tox)
+Guniibuu,Guniibuu VI-e,Moon,Ice,0.11,Deep Freeze,None
+Guniibuu,Guniibuu VII,Planet,Gas Giant,1.46,Deep Freeze,H2
+Guniibuu,Guniibuu VII-a,Moon,Ice,0.24,Deep Freeze,None
+Guniibuu,Guniibuu VII-b,Moon,Ice,0.22,Deep Freeze,None
+Guniibuu,Guniibuu VII-c,Moon,Ice,0.1,Deep Freeze,None
+Indum,Indum I,Planet,Rock,0.51,Scorched,Thin CO2
+Indum,Indum I-a,Moon,Barren,0.23,Scorched,None
+Indum,Indum II,Planet,Rock,1.24,Cold,Std O2
+Indum,Indum III,Planet,Gas Giant,5.35,Deep Freeze,H2
+Indum,Indum III-a,Moon,Ice,0.21,Deep Freeze,None
+Indum,Indum III-b,Moon,Rock,0.73,Cold,Std O2
+Indum,Indum III-c,Moon,Ice,0.19,Deep Freeze,None
+Indum,Indum III-d,Moon,Ice,0.06,Deep Freeze,None
+Indum,Indum IV,Planet,Gas Giant,6.68,Deep Freeze,H2
+Indum,Indum IV-a,Moon,Ice,0.07,Deep Freeze,None
+Indum,Indum IV-b,Moon,Ice,0.04,Deep Freeze,None
+Indum,Indum IV-c,Moon,Ice,0.07,Deep Freeze,None
+Indum,Indum IV-d,Moon,Rock,0.51,Cold,Std M (cor)
+Indum,Indum V,Planet,Gas Giant,2.05,Deep Freeze,H2
+Indum,Indum V-a,Moon,Barren,0.3,Deep Freeze,None
+Kryx,Suvorov,Planet,Rock,1.04,Frozen,Std O2
+Kryx,Neebas,Moon,Rock,0.61,Frozen,Std O2
+Kryx,Nox,Moon,Barren,0.06,Frozen,None
+Kryx,Max,Moon,Rock,0.66,Temperate,Std O2
+Kryx,Boron,Moon,Barren,0.26,Frozen,None
+Kryx,Candore,Moon,Barren,0.08,Frozen,None
+Kryx,Rocklock,Moon,Barren,0.26,Frozen,None
+Kryx,Ice,Moon,Ice,0.04,Frozen,None
+McClure,McClure I,Planet,Barren,0.96,Inferno,None
+McClure,McClure I-a,Moon,Barren,0.1,Inferno,None
+McClure,McClure II,Planet,Rock,0.4,Cold,Thin O2
+McClure,McClure II-a,Moon,Barren,0.06,Cold,None
+McClure,McClure II-b,Moon,Barren,0.1,Cold,None
+McClure,McClure II-c,Moon,Asteroid,0.09,Cold,None
+McClure,McClure III,Planet,Rock,0.71,Frozen,Std N2
+Oborum Prime,Oborum I,Planet,Rock,0.51,Temperate,Thin M
+Oborum Prime,Oborum II,Planet,Ice Giant,1.12,Deep Freeze,H2
+Oborum Prime,Oborum II-a,Moon,Rock,0.48,Cold,Std M
+Oborum Prime,Oborum II-b,Moon,Ice,0.4,Deep Freeze,None
+Oborum Prime,Oborum III,Planet,Ice Giant,1.28,Deep Freeze,H2
+Oborum Prime,Oborum III-a,Moon,Ice,0.25,Deep Freeze,None
+Oborum Prime,Oborum III-b,Moon,Barren,0.28,Deep Freeze,None
+Oborum Prime,Oborum III-c,Moon,Ice,0.23,Deep Freeze,None
+Oborum Prime,Oborum III-d,Moon,Ice,0.04,Deep Freeze,None
+Oborum Prime,Oborum IV,Planet,Ice Giant,1.57,Deep Freeze,H2
+Ursae Minoris,Ursa Minor I,Planet,Rock,1.1,Inferno,Extr CO2
+Ursae Minoris,Ursa Minor I-a,Moon,Barren,0.15,Inferno,None
+Ursae Minoris,Ursa Minor I-b,Moon,Barren,0.06,Inferno,None
+Ursae Minoris,Ursa Minor II,Planet,Rock,0.41,Cold,Thin O2
+Ursae Minoris,Ursa Minor II-a,Moon,Barren,0.09,Cold,None
+Ursae Minoris,Ursa Minor III,Planet,Rock,1.52,Frozen,Extr M
+Delta Pavonis,Curie,Planet,Barren,0.99,Inferno,None
+Delta Pavonis,Magnar,Planet,Rock,1.21,Temperate,Extr M
+Delta Pavonis,Arachna,Planet,Rock,1.04,Cold,Std O2
+Delta Pavonis,Worthless,Moon,Barren,0.19,Cold,None
+Delta Pavonis,Bitsy,Moon,Barren,0.06,Cold,None
+Delta Pavonis,Itsy,Moon,Asteroid,0.05,Cold,None
+Delta Pavonis,Gamow,Planet,Rock,0.84,Frozen,Std N2
+Delta Pavonis,Bose,Moon,Barren,0.09,Frozen,None
+Delta Pavonis,Nascent,Planet,Barren,0.53,Deep Freeze,None
+Delta Pavonis,Rudiment,Moon,Barren,0.12,Deep Freeze,None
+Delta Pavonis,Fundament,Moon,Asteroid,0.04,Deep Freeze,None
+Delta Pavonis,Bode,Planet,Barren,0.44,Deep Freeze,None
+Delta Pavonis,Herald,Moon,Barren,0.19,Deep Freeze,None
+Delta Pavonis,Augur,Moon,Ice,0.05,Deep Freeze,None
+Delta Pavonis,Faraday,Planet,Gas Giant,3.38,Deep Freeze,H2
+Delta Pavonis,Coulomb,Moon,Ice,0.09,Deep Freeze,None
+Delta Pavonis,Ampere,Moon,Rock,0.48,Temperate,Thin M
+Delta Pavonis,Volt,Moon,Rock,0.42,Deep Freeze,None
+Delta Pavonis,Ohm,Moon,Ice,0.05,Deep Freeze,None
+Groombridge,Groombridge I,Planet,Rock,0.57,Temperate,Std CO2
+Groombridge,Groombridge II,Planet,Rock,2.18,Frozen,Extr M
+Groombridge,Groombridge II-a,Moon,Barren,0.2,Frozen,None
+Groombridge,Groombridge II-b,Moon,Rock,0.39,Frozen,Thin M
+Groombridge,Groombridge II-c,Moon,Barren,0.07,Frozen,None
+Groombridge,Groombridge III,Planet,Rock,1.03,Frozen,Std N2
+Groombridge,Groombridge III-a,Moon,Asteroid,0.08,Frozen,None
+Groombridge,Groombridge IV,Planet,Barren,0.87,Deep Freeze,None
+Groombridge,Groombridge IV-a,Moon,Barren,0.19,Deep Freeze,None
+Groombridge,Groombridge V,Planet,Gas Giant,2.37,Deep Freeze,H2
+Groombridge,Groombridge V-a,Moon,Ice,0.05,Deep Freeze,None
+Groombridge,Groombridge V-b,Moon,Ice,0.12,Deep Freeze,None
+Groombridge,Groombridge V-c,Moon,Ice,0.05,Deep Freeze,None
+Groombridge,Groombridge V-d,Moon,Ice,0.03,Deep Freeze,None
+Groombridge,Groombridge V-e,Moon,Ice,0.23,Deep Freeze,None
+Groombridge,Groombridge VI,Planet,Gas Giant,1.8,Deep Freeze,H2
+Groombridge,Groombridge VI-a,Moon,Rock,0.28,Deep Freeze,None
+Groombridge,Groombridge VI-b,Moon,Ice,0.09,Deep Freeze,None
+Groombridge,Groombridge VII,Planet,Ice Giant,1.2,Deep Freeze,H2
+Groombridge,Groombridge VII-a,Moon,Ice,0.13,Deep Freeze,None
+Groombridge,Groombridge VII-b,Moon,Ice,0.23,Deep Freeze,None
+Groombridge,Groombridge VIII,Planet,Gas Giant,3.29,Deep Freeze,H2
+Groombridge,Groombridge VIII-a,Moon,Rock,0.48,Temperate,Thin CO2
+Groombridge,Groombridge VIII-b,Moon,Ice,0.16,Deep Freeze,None
+Groombridge,Groombridge VIII-c,Moon,Rock,0.55,Temperate,Thin O2
+Groombridge,Groombridge VIII-d,Moon,Rock,0.74,Temperate,Std O2
+Kumasi,Kumasi I,Planet,Rock,1.69,Temperate,High O2
+Kumasi,Kumasi I-a,Moon,Barren,0.32,Temperate,None
+Kumasi,Kumasi II,Planet,Rock,0.96,Temperate,Std O2
+Kumasi,Kumasi II-a,Moon,Asteroid,0.08,Temperate,None
+Kumasi,Kumasi III,Planet,Rock,0.57,Cold,Thin M
+Kumasi,Kumasi III-a,Moon,Asteroid,0.05,Cold,None
+Kumasi,Kumasi IV,Planet,Rock,1.51,Frozen,High N2
+Kumasi,Kumasi IV-a,Moon,Barren,0.27,Frozen,None
+Kumasi,Kumasi V,Planet,Gas Giant,3.15,Deep Freeze,H2
+Kumasi,Kumasi V-a,Moon,Ice,0.26,Deep Freeze,None
+Kumasi,Kumasi V-b,Moon,Ice,0.17,Deep Freeze,None
+Kumasi,Kumasi V-c,Moon,Ice,0.04,Deep Freeze,None
+Kumasi,Kumasi V-d,Moon,Ice,0.06,Deep Freeze,None
+Kumasi,Kumasi V-e,Moon,Ice,0.08,Deep Freeze,None
+Kumasi,Kumasi VI,Planet,Rock,1.56,Deep Freeze,None
+Kumasi,Kumasi VI-a,Moon,Ice,0.06,Deep Freeze,None
+Kumasi,Kumasi VII,Planet,Gas Giant,1.77,Deep Freeze,H2
+Kumasi,Kumasi VII-a,Moon,Barren,0.31,Deep Freeze,None
+Kumasi,Kumasi VII-b,Moon,Ice,0.08,Deep Freeze,None
+Kumasi,Kumasi VII-c,Moon,Barren,0.29,Deep Freeze,None
+Kumasi,Kumasi VII-d,Moon,Ice,0.13,Deep Freeze,None
+Kumasi,Kumasi VIII,Planet,Gas Giant,2.47,Deep Freeze,H2
+Kumasi,Kumasi VIII-a,Moon,Rock,0.31,Deep Freeze,None
+Kumasi,Kumasi VIII-b,Moon,Rock,0.42,Deep Freeze,None
+Kumasi,Kumasi VIII-c,Moon,Ice,0.04,Deep Freeze,None
+Kumasi,Kumasi VIII-d,Moon,Rock,0.44,Deep Freeze,None
+Kumasi,Kumasi IX,Planet,Ice,0.15,Deep Freeze,None
+Kumasi,Kumasi IX-a,Moon,Ice,0.07,Deep Freeze,None
+Lunara,Numitor,Planet,Barren,0.89,Inferno,None
+Lunara,Romulus,Moon,Barren,0.11,Inferno,None
+Lunara,Remus,Moon,Barren,0.08,Inferno,None
+Lunara,Vesta,Planet,Rock,0.63,Temperate,Std O2 (tox)
+Lunara,Vesta Lunaris,Moon,Barren,0.15,Temperate,None
+Lunara,Petria,Planet,Rock,1.06,Cold,Std M
+Lunara,Earrach,Moon,Barren,0.26,Cold,None
+Lunara,Gaea,Planet,Barren,0.71,Frozen,None
+Lunara,Coeus,Moon,Barren,0.23,Frozen,None
+Lunara,Crius,Moon,Barren,0.33,Frozen,None
+Lunara,Cassini,Planet,Ice Giant,1.19,Deep Freeze,H2
+Lunara,Lillius,Moon,Ice,0.27,Deep Freeze,None
+Lunara,Gasparis,Moon,Ice,0.43,Deep Freeze,None
+Lunara,Abetti,Moon,Ice,0.22,Deep Freeze,None
+Lunara,Okoro,Planet,Gas Giant,2.51,Deep Freeze,H2
+Lunara,Okoro Alpha,Moon,Ice,0.07,Deep Freeze,None
+Lunara,Okoro Beta,Moon,Ice,0.05,Deep Freeze,None
+Lunara,Okoro Delta,Moon,Ice,0.38,Deep Freeze,None
+Lunara,Okoro Gamma,Moon,Ice,0.05,Deep Freeze,None
+Lunara,Okoro Epsilon,Moon,Ice,0.11,Deep Freeze,None
+Lunara,Cthol,Planet,Ice Giant,1.44,Deep Freeze,H2
+Lunara,Uvhan,Moon,Ice,0.25,Deep Freeze,None
+Lunara,Nyarloth,Moon,Barren,0.39,Deep Freeze,None
+Lunara,Az-Valok,Moon,Barren,0.36,Deep Freeze,None
+Lunara,Reva's World,Planet,Barren,0.18,Deep Freeze,None
+Oborum Proxima,Oborum Proxima I,Planet,Rock,0.79,Frozen,Std N2
+Vega,Vega I,Planet,Gas Giant,1.21,Temperate,H2
+Vega,Vega I-a,Moon,Barren,0.07,Hot,None
+Vega,Vega I-b,Moon,Barren,0.23,Temperate,None
+Vega,Vega I-c,Moon,Barren,0.15,Hot,None
+Vega,Vega II,Planet,Gas Giant,3.4,Cold,H2
+Vega,Vega II-a,Moon,Ice,0.02,Cold,None
+Vega,Vega II-b,Moon,Ice,0.04,Cold,None
+Vega,Vega II-c,Moon,Rock,0.72,Cold,Std O2
+Vega,Vega II-d,Moon,Rock,0.6,Cold,Std M
+Vega,Vega II-e,Moon,Rock,0.64,Cold,Std M
+Alpha Andraste,Alpha Andraste I,Planet,Barren,0.54,Inferno,None
+Alpha Andraste,Alpha Andraste I-a,Moon,Barren,0.06,Inferno,None
+Alpha Andraste,Alpha Andraste II,Planet,Rock,0.37,Hot,Thin CO2
+Alpha Andraste,Alpha Andraste III,Planet,Rock,1.44,Temperate,High O2
+Alpha Andraste,Alpha Andraste IV,Planet,Rock,0.85,Frozen,High M
+Alpha Andraste,Alpha Andraste V,Planet,Rock,1.18,Frozen,Std O2
+Alpha Andraste,Alpha Andraste VI,Planet,Rock,1.67,Deep Freeze,Extr N2
+Copernicus,Copernicus I,Planet,Rock,0.7,Scorched,Std CO2
+Copernicus,Copernicus II,Planet,Rock,0.53,Temperate,Thin O2 (tox)
+Copernicus,Copernicus III,Planet,Rock,0.62,Temperate,Std O2
+Copernicus,Copernicus III-a,Moon,Barren,0.06,Temperate,None
+Copernicus,Copernicus IV,Planet,Rock,0.42,Cold,Thin CO2
+Copernicus,Copernicus V,Planet,Rock,0.86,Frozen,Std O2
+Copernicus,Copernicus VI,Planet,Barren,0.59,Frozen,None
+Copernicus,Copernicus VII,Planet,Gas Giant,3.58,Deep Freeze,H2
+Copernicus,Copernicus VII-a,Moon,Rock,0.64,Temperate,Std O2
+Copernicus,Copernicus VII-b,Moon,Ice,0.19,Deep Freeze,None
+Copernicus,Copernicus VIII,Planet,Gas Giant,2.37,Deep Freeze,H2
+Copernicus,Copernicus VIII-a,Moon,Ice,0.25,Deep Freeze,None
+Copernicus,Copernicus VIII-b,Moon,Ice,0.05,Deep Freeze,None
+Copernicus,Copernicus VIII-c,Moon,Rock,0.48,Deep Freeze,None
+Copernicus,Copernicus VIII-d,Moon,Ice,0.26,Deep Freeze,None
+Copernicus Minor,Copernicus Minor I,Planet,Ice Giant,0.66,Frozen,H2
+Copernicus Minor,Copernicus Minor I-a,Moon,Ice,0.36,Frozen,Thin CO2
+Copernicus Minor,Copernicus Minor I-b,Moon,Rock,0.55,Frozen,Thin M
+Denebola,Denebola I,Planet,Hot Gas Giant,1.85,Scorched,H2
+Denebola,Denebola I-a,Moon,Barren,0.16,Scorched,None
+Denebola,Denebola I-b,Moon,Rock,0.64,Temperate,Std M
+Denebola,Denebola II,Planet,Gas Giant,3.89,Frozen,H2
+Denebola,Denebola II-a,Moon,Rock,0.37,Frozen,Thin CO2
+Denebola,Denebola III,Planet,Gas Giant,5.85,Deep Freeze,H2
+Denebola,Denebola III-a,Moon,Rock,0.41,Frozen,Thin M (cor)
+Denebola,Denebola III-b,Moon,Ice,0.1,Deep Freeze,None
+Lantana,Lantana I,Planet,Barren,0.22,Inferno,None
+Lantana,Lantana II,Planet,Rock,0.66,Inferno,Std CO2
+Lantana,Lantana III,Planet,Rock,0.9,Temperate,Std O2
+Lantana,Lantana III-a,Moon,Barren,0.09,Temperate,None
+Lantana,Lantana IV,Planet,Rock,1.11,Temperate,Std O2
+Lantana,Lantana V,Planet,Gas Giant,3.83,Frozen,H2
+Lantana,Lantana V-a,Moon,Ice,0.03,Frozen,None
+Lantana,Lantana V-b,Moon,Ice,0.01,Frozen,None
+Lantana,Lantana VI,Planet,Rock,0.9,Frozen,Std N2
+Lantana,Lantana VII,Planet,Rock,0.45,Frozen,Std N2
+Lantana,Lantana VIII,Planet,Ice Giant,1.81,Deep Freeze,H2
+Lantana,Lantana VIII-a,Moon,Ice,0.27,Deep Freeze,None
+Lantana,Lantana VIII-b,Moon,Rock,0.48,Cold,Thin O2
+Lantana,Lantana VIII-c,Moon,Rock,0.36,Frozen,Thin O2
+Lantana,Lantana VIII-d,Moon,Rock,0.35,Frozen,Thin CO2
+Lantana,Lantana IX,Planet,Gas Giant,2.98,Deep Freeze,H2
+Lantana,Lantana IX-a,Moon,Ice,0.14,Deep Freeze,None
+Lantana,Lantana IX-b,Moon,Ice,0.25,Deep Freeze,None
+Lantana,Lantana IX-c,Moon,Ice,0.1,Deep Freeze,None
+Lantana,Lantana IX-d,Moon,Ice,0.07,Deep Freeze,None
+Lantana,Lantana IX-e,Moon,Rock,0.47,Cold,Thin M
+Porrima,Porrima I,Planet,Barren,0.38,Scorched,None
+Porrima,Porrima I-a,Moon,Barren,0.21,Scorched,None
+Porrima,Porrima I-b,Moon,Barren,0.09,Scorched,None
+Porrima,Porrima II,Planet,Rock,1.24,Temperate,Extr O2
+Porrima,Porrima II-a,Moon,Asteroid,0.05,Temperate,None
+Porrima,Porrima II-b,Moon,Barren,0.41,Temperate,Thin M
+Porrima,Porrima II-c,Moon,Rock,0.34,Temperate,Thin CO2
+Porrima,Porrima III,Planet,Rock,2.01,Cold,Thin M
+Porrima,Porrima III-a,Moon,Barren,0.1,Cold,None
+Porrima,Porrima III-b,Moon,Barren,0.15,Cold,None
+Porrima,Porrima IV,Planet,Gas Giant,2.17,Frozen,H2
+Porrima,Porrima IV-a,Moon,Ice,0.18,Frozen,None
+Porrima,Porrima IV-b,Moon,Ice,0.08,Frozen,None
+Porrima,Porrima IV-c,Moon,Rock,0.52,Cold,Thin O2
+Porrima,Porrima IV-d,Moon,Rock,0.55,Temperate,Std O2
+Porrima,Porrima V,Planet,Gas Giant,3.11,Deep Freeze,H2
+Porrima,Porrima V-a,Moon,Rock,0.4,Deep Freeze,Std N2
+Porrima,Porrima V-b,Moon,Ice,0.07,Deep Freeze,None
+Porrima,Porrima V-c,Moon,Ice,0.15,Deep Freeze,None
+Porrima,Porrima VI,Planet,Ice,0.09,Deep Freeze,None
+Porrima,Porrima VI-a,Planet,Ice,0.08,Deep Freeze,None
+Ursae Majoris,Ursa Major I,Planet,Rock,0.66,Temperate,Std CO2
+Ursae Majoris,Ursa Major I-a,Moon,Barren,0.08,Scorched,None
+Ursae Majoris,Ursa Major I-b,Moon,Barren,0.06,Temperate,Std CO2
+Ursae Majoris,Ursa Major I-c,Moon,Barren,0.13,Hot,None
+Ursae Majoris,Ursa Major II,Planet,Rock,0.58,Temperate,Std O2
+Ursae Majoris,Ursa Major III,Planet,Ice,0.09,Deep Freeze,None
+Al-Battani,Al-Battani I,Planet,Barren,1,Inferno,None
+Al-Battani,Al-Battani I-a,Moon,Barren,0.23,Inferno,None
+Al-Battani,Al-Battani I-b,Moon,Barren,0.27,Inferno,None
+Al-Battani,Al-Battani I-c,Moon,Barren,0.16,Inferno,None
+Al-Battani,Al-Battani II,Planet,Rock,0.84,Temperate,Std O2 (tox)
+Al-Battani,Al-Battani III,Planet,Rock,1.51,Cold,Extr M
+Al-Battani,Al-Battani III-a,Moon,Barren,0.15,Cold,None
+Al-Battani,Al-Battani III-b,Moon,Barren,0.13,Cold,None
+Al-Battani,Al-Battani IV,Planet,Rock,0.79,Frozen,Std N2
+Al-Battani,Al-Battani IV-a,Moon,Barren,0.07,Frozen,None
+Al-Battani,Al-Battani IV-b,Moon,Asteroid,0.07,Frozen,None
+Al-Battani,Al-Battani V,Planet,Barren,0.77,Deep Freeze,None
+Al-Battani,Al-Battani V-a,Moon,Barren,0.15,Deep Freeze,None
+Al-Battani,Al-Battani VI,Planet,Gas Giant,1.99,Deep Freeze,H2
+Al-Battani,Al-Battani VI-a,Moon,Ice,0.28,Deep Freeze,None
+Al-Battani,Al-Battani VI-b,Moon,Ice,0.03,Deep Freeze,None
+Al-Battani,Al-Battani VII,Planet,Ice Giant,0.81,Deep Freeze,H2
+Al-Battani,Al-Battani VII-a,Moon,Barren,0.42,Deep Freeze,None
+Al-Battani,Al-Battani VIII,Planet,Barren,0.49,Deep Freeze,None
+Al-Battani,Al-Battani VIII-a,Moon,Ice,0.03,Deep Freeze,None
+Alpha Tirna,Tirna I,Planet,Barren,0.22,Scorched,Thin CO2
+Alpha Tirna,Tirna II,Planet,Rock,0.88,Temperate,Std O2
+Alpha Tirna,Tirna II-a,Moon,Barren,0.18,Temperate,None
+Alpha Tirna,Tirna III,Planet,Rock,1.29,Cold,High M (cor)
+Alpha Tirna,Tirna III-a,Moon,Barren,0.18,Cold,None
+Alpha Tirna,Tirna III-b,Moon,Barren,0.08,Cold,None
+Alpha Tirna,Tirna III-c,Moon,Barren,0.14,Cold,None
+Alpha Tirna,Tirna IV,Planet,Rock,0.8,Cold,Std M
+Alpha Tirna,Tirna IV-a,Moon,Barren,0.16,Cold,None
+Alpha Tirna,Tirna V,Planet,Rock,0.89,Frozen,Std N2
+Alpha Tirna,Tirna VI,Planet,Gas Giant,1.86,Deep Freeze,H2
+Alpha Tirna,Tirna VI-a,Moon,Ice,0.16,Deep Freeze,None
+Alpha Tirna,Tirna VI-b,Moon,Rock,0.45,Frozen,Thin CO2
+Alpha Tirna,Tirna VI-c,Moon,Ice,0.06,Deep Freeze,None
+Alpha Tirna,Tirna VI-d,Moon,Ice,0.21,Deep Freeze,None
+Alpha Tirna,Tirna VI-e,Moon,Ice,0.33,Deep Freeze,None
+Alpha Tirna,Tirna VII,Planet,Gas Giant,3.81,Deep Freeze,H2
+Alpha Tirna,Tirna VII-a,Moon,Ice,0.23,Deep Freeze,None
+Alpha Tirna,Tirna VII-b,Moon,Ice,0.31,Deep Freeze,None
+Alpha Tirna,Tirna VII-c,Moon,Ice,0.14,Deep Freeze,None
+Alpha Tirna,Tirna VIII,Planet,Gas Giant,1.7,Deep Freeze,H2
+Alpha Tirna,Tirna VIII-a,Moon,Rock,0.35,Deep Freeze,None
+Alpha Tirna,Tirna VIII-b,Moon,Ice,0.19,Deep Freeze,None
+Alpha Tirna,Tirna VIII-c,Moon,Rock,0.57,Temperate,Thin M
+Alpha Tirna,Tirna VIII-d,Moon,Rock,0.65,Temperate,Std O2
+Alpha Tirna,Tirna VIII-e,Moon,Rock,0.5,Deep Freeze,None
+Alpha Tirna,Tirna IX,Planet,Ice,0.22,Deep Freeze,None
+Alpha Tirna,Tirna X,Planet,Ice Giant,1.79,Deep Freeze,H2
+Alpha Tirna,Tirna X-a,Moon,Rock,0.54,Deep Freeze,None
+Alpha Tirna,Tirna X-b,Moon,Ice,0.2,Deep Freeze,None
+Alpha Tirna,Tirna X-c,Moon,Ice,0.22,Deep Freeze,None
+Beta Tirna,Tirna B,Planet,Barren,0.04,Deep Freeze,None
+Bolivar,Bolivar I,Planet,Rock,0.82,Temperate,Std O2
+Jaffa,Jaffa I,Planet,Rock,0.68,Scorched,Std CO2
+Jaffa,Jaffa I-a,Moon,Barren,0.07,Scorched,None
+Jaffa,Jaffa II,Planet,Rock,1.61,Temperate,Extr O2
+Jaffa,Jaffa II-a,Moon,Rock,0.41,Temperate,Std CO2
+Jaffa,Jaffa III,Planet,Rock,1.8,Cold,High O2
+Jaffa,Jaffa IV,Planet,Rock,0.72,Cold,Thin CO2
+Jaffa,Jaffa IV-a,Moon,Barren,0.11,Cold,None
+Jaffa,Jaffa V,Planet,Ice Giant,1.64,Frozen,H2
+Jaffa,Jaffa V-a,Moon,Ice,0.3,Frozen,None
+Jaffa,Jaffa VI,Planet,Ice Giant,1.77,Deep Freeze,H2
+Jaffa,Jaffa VI-a,Moon,Rock,0.66,Deep Freeze,Std O2 (tox)
+Jaffa,Jaffa VI-b,Moon,Ice,0.2,Deep Freeze,None
+Jaffa,Jaffa VI-c,Moon,Barren,0.36,Deep Freeze,None
+Jaffa,Jaffa VII,Planet,Gas Giant,2.98,Deep Freeze,H2
+Jaffa,Jaffa VII-a,Moon,Barren,0.41,Deep Freeze,None
+Jaffa,Jaffa VII-b,Moon,Rock,0.45,Temperate,Thin M
+Jaffa,Jaffa VII-c,Moon,Ice,0.13,Deep Freeze,None
+Jaffa,Jaffa VII-d,Moon,Ice,0.04,Deep Freeze,None
+Jaffa,Jaffa VII-e,Moon,Ice,0.19,Deep Freeze,None
+Jaffa,Jaffa VIII,Planet,Ice,0.33,Deep Freeze,None
+Nemeria,Nemeria I,Planet,Rock,1.21,Temperate,High O2
+Nemeria,Nemeria II,Planet,Rock,0.75,Temperate,Thin O2
+Nemeria,Nemeria II-a,Moon,Barren,0.25,Temperate,None
+Nemeria,Nemeria II-b,Moon,Rock,0.38,Temperate,Thin CO2 (cor)
+Nemeria,Nemeria III,Planet,Barren,0.89,Frozen,None
+Nemeria,Nemeria III-a,Moon,Barren,0.14,Temperate,None
+Nemeria,Nemeria IV,Planet,Gas Giant,2.78,Frozen,H2
+Nemeria,Nemeria IV-a,Moon,Rock,0.4,Temperate,Thin O2
+Nemeria,Nemeria IV-b,Moon,Rock,0.41,Frozen,Thin N2
+Nemeria,Nemeria V,Planet,Ice Giant,0.88,Deep Freeze,H2
+Nemeria,Nemeria V-a,Moon,Ice,0.42,Deep Freeze,None
+Nemeria,Nemeria V-b,Moon,Ice,0.15,Deep Freeze,None
+Nemeria,Nemeria V-c,Moon,Rock,0.55,Frozen,Thin M
+Nemeria,Nemeria VI,Planet,Gas Giant,2.56,Deep Freeze,H2
+Nemeria,Nemeria VI-a,Moon,Barren,0.29,Deep Freeze,None
+Nemeria,Nemeria VI-b,Moon,Rock,0.56,Deep Freeze,None
+Nemeria,Nemeria VI-c,Moon,Ice,0.04,Deep Freeze,None
+Nemeria,Nemeria VI-d,Moon,Ice,0.12,Deep Freeze,None
+Nemeria,Nemeria VII,Planet,Ice,0.29,Deep Freeze,None
+Rivera,Rivera I,Planet,Rock,1.81,Cold,Extr M
+Rivera,Rivera I-a,Moon,Rock,0.46,Temperate,None
+Rivera,Rivera II,Planet,Rock,1.06,Deep Freeze,None
+Rivera,Rivera II-a,Moon,Barren,0.16,Deep Freeze,None
+Rivera,Rivera II-b,Moon,Barren,0.09,Deep Freeze,None
+Rivera,Rivera II-c,Moon,Barren,0.1,Deep Freeze,None
+Rivera,Rivera III,Planet,Barren,0.65,Deep Freeze,None
+Rivera,Rivera IV,Planet,Barren,0.73,Deep Freeze,None
+Rivera,Rivera IV-a,Moon,Barren,0.15,Deep Freeze,None
+Rivera,Rivera V,Planet,Ice Giant,1.02,Deep Freeze,H2
+Rivera,Rivera V-a,Moon,Ice,0.03,Deep Freeze,None
+Shoza,Shoza I,Planet,Rock,0.63,Inferno,Std CO2
+Shoza,Shoza I-a,Moon,Barren,0.1,Inferno,None
+Shoza,Shoza II,Planet,Rock,1.52,Temperate,Extr O2
+Shoza,Shoza II-a,Moon,Rock,0.42,Temperate,Thin CO2
+Shoza,Shoza III,Planet,Rock,1.25,Temperate,High O2
+Shoza,Shoza III-a,Moon,Barren,0.16,Temperate,None
+Shoza,Shoza IV,Planet,Rock,1.64,Temperate,High O2
+Shoza,Shoza V,Planet,Rock,1.48,Cold,High M
+Shoza,Shoza VI,Planet,Ice Giant,1.39,Deep Freeze,H2
+Shoza,Shoza VI-a,Moon,Ice,0.12,Deep Freeze,None
+Shoza,Shoza VII,Planet,Gas Giant,5.88,Deep Freeze,H2
+Shoza,Shoza VII-a,Moon,Rock,0.37,Deep Freeze,Thin N2
+Shoza,Shoza VII-b,Moon,Rock,0.36,Deep Freeze,Thin N2
+Shoza,Shoza VII-c,Moon,Rock,0.46,Temperate,Thin N2
+Shoza,Shoza VIII,Planet,Ice Giant,1.2,Deep Freeze,H2
+Shoza,Shoza VIII-a,Moon,Ice,0.32,Deep Freeze,None
+Shoza,Shoza VIII-b,Moon,Rock,0.39,Deep Freeze,Thin N2
+Shoza,Shoza VIII-c,Moon,Ice,0.05,Deep Freeze,None
+Shoza,Shoza VIII-d,Moon,Rock,0.66,Cold,Thin M
+Shoza,Shoza IX,Planet,Ice,0.08,Deep Freeze,None
+Beta Ternion,Beta Ternion I,Planet,Rock,1.35,Temperate,High O2
+Beta Ternion,Beta Ternion I-a,Moon,Asteroid,0.05,Temperate,None
+Beta Ternion,Beta Ternion II,Planet,Rock,1.34,Temperate,Std O2
+Beta Ternion,Beta Ternion III,Planet,Rock,1.34,Cold,Std N2
+Beta Ternion,Beta Ternion III-a,Planet,Rock,0.35,Cold,Thin CO2
+Freya,Freya I,Planet,Barren,0.96,Inferno,None
+Freya,Freya II,Planet,Rock,1.32,Scorched,High CO2
+Freya,Freya III,Planet,Rock,0.82,Temperate,Std O2
+Freya,Freya IV,Planet,Rock,0.38,Cold,Thin M
+Freya,Freya IV-a,Moon,Barren,0.06,Cold,None
+Freya,Freya IV-b,Moon,Barren,0.1,Cold,None
+Freya,Freya IV-c,Moon,Barren,0.14,Cold,None
+Freya,Freya V,Planet,Rock,0.39,Frozen,Thin N2 (cor)
+Freya,Freya VI,Planet,Barren,0.68,Frozen,None
+Freya,Freya VII,Planet,Gas Giant,4.72,Deep Freeze,H2
+Freya,Freya VII-a,Moon,Rock,0.58,Deep Freeze,None
+Freya,Freya VIII,Planet,Gas Giant,4.75,Deep Freeze,H2
+Freya,Freya VIII-a,Moon,Ice,0.09,Deep Freeze,None
+Freya,Freya IX,Planet,Gas Giant,4.93,Deep Freeze,H2
+Freya,Freya IX-a,Moon,Ice,0.09,Deep Freeze,None
+Freya,Freya IX-b,Moon,Rock,0.56,Deep Freeze,None
+Freya,Freya IX-c,Moon,Barren,0.28,Deep Freeze,None
+Hyla,Hyla I,Planet,Rock,0.58,Temperate,Std CO2
+Hyla,Hyla I-a,Moon,Barren,0.11,Hot,None
+Hyla,Hyla II,Planet,Rock,1.35,Temperate,High O2
+Hyla,Hyla II-a,Moon,Barren,0.14,Temperate,None
+Hyla,Hyla II-b,Moon,Asteroid,0.07,Temperate,None
+Hyla,Hyla III,Planet,Rock,0.41,Frozen,None
+Hyla,Hyla IV,Planet,Gas Giant,3.47,Frozen,H2
+Hyla,Hyla IV-a,Moon,Ice,0.25,Frozen,None
+Hyla,Hyla IV-b,Moon,Ice,0.31,Frozen,None
+Hyla,Hyla V,Planet,Rock,1.44,Deep Freeze,None
+Hyla,Hyla V-a,Moon,Rock,0.4,Deep Freeze,Thin M (cor)
+Hyla,Hyla VI,Planet,Gas Giant,3.55,Deep Freeze,H2
+Hyla,Hyla VI-a,Moon,Ice,0.43,Deep Freeze,Thin N2
+Hyla,Hyla VI-b,Moon,Ice,0.14,Deep Freeze,None
+Hyla,Hyla VII,Planet,Ice Giant,0.83,Deep Freeze,H2
+Hyla,Hyla VII-a,Moon,Rock,0.44,Deep Freeze,None
+Hyla,Hyla VIII,Planet,Gas Giant,3.09,Deep Freeze,H2
+Hyla,Hyla VIII-a,Moon,Ice,0.02,Deep Freeze,None
+Hyla,Hyla VIII-b,Moon,Ice,0.14,Deep Freeze,None
+Hyla,Hyla VIII-c,Moon,Ice,0.06,Deep Freeze,None
+Hyla,Hyla VIII-d,Moon,Rock,0.71,Cold,Std O2
+Hyla,Hyla VIII-e,Moon,Ice,0.34,Deep Freeze,None
+Ixyll,Ixyll I,Planet,Rock,0.66,Temperate,Std CO2
+Ixyll,Ixyll II,Planet,Rock,0.74,Temperate,Std O2
+Ixyll,Ixyll II-a,Moon,Asteroid,0.04,Temperate,None
+Ixyll,Ixyll III,Planet,Rock,1.04,Frozen,High M
+Ixyll,Ixyll III-a,Moon,Barren,0.09,Frozen,None
+Ixyll,Ixyll III-b,Moon,Rock,0.65,Cold,Thin M
+Ixyll,Ixyll IV,Planet,Rock,1.11,Frozen,High N2
+Ixyll,Ixyll V,Planet,Rock,1.68,Frozen,Extr CO2
+Ixyll,Ixyll VI,Planet,Gas Giant,5.62,Deep Freeze,H2
+Ixyll,Ixyll VI-a,Moon,Ice,0.34,Deep Freeze,Thin N2
+Ixyll,Ixyll VI-b,Moon,Ice,0.1,Deep Freeze,None
+Ixyll,Ixyll VI-c,Moon,Rock,0.49,Deep Freeze,Thin N2
+Ixyll,Ixyll VI-d,Moon,Ice,0.28,Deep Freeze,None
+Ixyll,Ixyll VI-e,Moon,Rock,0.46,Temperate,Thin O2
+Ixyll,Ixyll VII,Planet,Ice Giant,1.87,Deep Freeze,H2
+Ixyll,Ixyll VII-a,Moon,Rock,0.39,Deep Freeze,Thin N2
+Ixyll,Ixyll VII-b,Moon,Rock,0.53,Deep Freeze,None
+Ixyll,Ixyll VII-c,Moon,Ice,0.04,Deep Freeze,None
+Ixyll,Ixyll VIII,Planet,Gas Giant,2.5,Deep Freeze,H2
+Ixyll,Ixyll VIII-a,Moon,Rock,0.34,Deep Freeze,None
+Ixyll,Ixyll VIII-b,Moon,Ice,0.06,Deep Freeze,None
+Ixyll,Ixyll IX,Planet,Gas Giant,1.08,Deep Freeze,H2
+Ixyll,Ixyll IX-a,Moon,Ice,0.36,Frozen,Thin CO2
+Ixyll,Ixyll IX-b,Moon,Ice,0.22,Deep Freeze,None
+Ixyll,Ixyll IX-c,Moon,Ice,0.27,Deep Freeze,None
+Ixyll,Ixyll IX-d,Moon,Rock,0.42,Deep Freeze,Thin N2
+Khayyam,Khayyam I,Planet,Barren,1.24,Inferno,High CO2
+Khayyam,Khayyam I-a,Moon,Asteroid,0.07,Inferno,None
+Khayyam,Khayyam II,Planet,Rock,1.05,Temperate,Std O2
+Khayyam,Khayyam II-a,Moon,Barren,0.15,Temperate,None
+Khayyam,Khayyam III,Planet,Rock,0.58,Cold,Thin O2
+Khayyam,Khayyam III-a,Moon,Barren,0.09,Cold,None
+Khayyam,Khayyam III-b,Moon,Barren,0.07,Cold,None
+Khayyam,Khayyam III-c,Moon,Barren,0.11,Cold,None
+Khayyam,Khayyam IV,Planet,Rock,0.16,Frozen,Std N2
+Khayyam,Khayyam IV-a,Moon,Barren,0.09,Frozen,None
+Khayyam,Khayyam V,Planet,Ice Giant,1.33,Deep Freeze,H2
+Khayyam,Khayyam V-a,Moon,Ice,0.22,Deep Freeze,None
+Khayyam,Khayyam VI,Planet,Gas Giant,2.41,Deep Freeze,H2
+Khayyam,Khayyam VI-a,Moon,Ice,0.35,Deep Freeze,None
+Khayyam,Khayyam VI-b,Moon,Ice,0.25,Deep Freeze,None
+Khayyam,Khayyam VI-c,Moon,Ice,0.05,Deep Freeze,None
+Khayyam,Khayyam VI-d,Moon,Ice,0.07,Deep Freeze,None
+Khayyam,Khayyam VI-e,Moon,Ice,0.04,Deep Freeze,None
+Moloch,Moloch I,Planet,Rock,0.87,Inferno,Std CO2
+Moloch,Moloch I-a,Moon,Barren,0.17,Inferno,None
+Moloch,Moloch II,Planet,Rock,1.33,Temperate,High O2
+Moloch,Moloch III,Planet,Rock,0.75,Cold,Std N2
+Moloch,Moloch IV,Planet,Barren,0.29,Frozen,None
+Moloch,Moloch V,Planet,Gas Giant,1.58,Deep Freeze,H2
+Moloch,Moloch V-a,Moon,Ice,0.34,Deep Freeze,None
+Moloch,Moloch V-b,Moon,Ice,0.15,Deep Freeze,None
+Moloch,Moloch V-c,Moon,Rock,0.41,Deep Freeze,Thin N2
+Moloch,Moloch V-d,Moon,Rock,0.3,Deep Freeze,None
+Moloch,Moloch VI,Planet,Gas Giant,1.42,Deep Freeze,H2
+Moloch,Moloch VI-a,Moon,Ice,0.05,Deep Freeze,None
+Moloch,Moloch VI-b,Moon,Rock,0.35,Deep Freeze,Thin N2
+Moloch,Moloch VII,Planet,Ice,0.67,Deep Freeze,None
+Nikola,Nikola I,Planet,Rock,0.71,Cold,Thin O2
+Nikola,Nikola II,Planet,Rock,0.69,Deep Freeze,Std N2
+Nikola,Nikola II-a,Moon,Barren,0.17,Deep Freeze,None
+Nikola,Nikola III,Planet,Rock,1.19,Deep Freeze,None
+Nikola,Nikola III-a,Moon,Barren,0.15,Deep Freeze,None
+Nikola,Nikola III-b,Moon,Barren,0.27,Deep Freeze,None
+Nikola,Nikola IV,Planet,Barren,0.67,Deep Freeze,None
+Nikola,Nikola IV-a,Moon,Barren,0.17,Deep Freeze,None
+Nikola,Nikola V,Planet,Barren,0.78,Deep Freeze,None
+Nikola,Nikola VI,Planet,Barren,0.62,Deep Freeze,None
+Nikola,Nikola VI-a,Moon,Barren,0.08,Deep Freeze,None
+Nikola,Nikola VI-b,Moon,Barren,0.11,Deep Freeze,None
+Nikola,Nikola VII,Planet,Gas Giant,1.91,Deep Freeze,H2
+Nikola,Nikola VII-a,Moon,Rock,0.49,Cold,Thin N2 (cor)
+Nikola,Nikola VIII,Planet,Barren,1.09,Deep Freeze,None
+Nikola,Nikola VIII-a,Moon,Ice,0.07,Deep Freeze,None
+Nikola,Nikola IX,Planet,Barren,0.34,Deep Freeze,None
+Nikola,Nikola X,Planet,Ice Giant,1.24,Deep Freeze,H2
+Nikola,Nikola X-a,Moon,Ice,0.04,Deep Freeze,None
+Nirvana,Nirvana I,Planet,Rock,1.04,Inferno,Extr CO2
+Nirvana,Nirvana II,Planet,Rock,1.83,Temperate,High O2
+Nirvana,Nirvana II-a,Moon,Barren,0.26,Temperate,None
+Nirvana,Nirvana III,Planet,Rock,1.83,Cold,Extr M
+Nirvana,Nirvana III-a,Moon,Barren,0.12,Cold,None
+Nirvana,Nirvana IV,Planet,Gas Giant,3.11,Deep Freeze,H2
+Nirvana,Nirvana IV-a,Moon,Ice,0.18,Deep Freeze,None
+Rasalhague,Rasalhague I,Planet,Rock,1.19,Inferno,Std CO2
+Rasalhague,Rasalhague I-a,Moon,Barren,0.11,Inferno,None
+Rasalhague,Rasalhague II,Planet,Rock,1.09,Temperate,High O2
+Rasalhague,Rasalhague III,Planet,Gas Giant,1.96,Cold,H2
+Rasalhague,Rasalhague III-a,Moon,Ice,0.17,Cold,None
+Rasalhague,Rasalhague III-b,Moon,Ice,0.05,Cold,None
+Rasalhague,Rasalhague IV,Planet,Barren,0.78,Deep Freeze,None
+Alpha Marae,Alpha Marae I,Planet,Rock,1.08,Scorched,Std CO2
+Alpha Marae,Alpha Marae II,Planet,Gas Giant,1.79,Cold,H2
+Alpha Marae,Alpha Marae II-a,Moon,Ice,0.12,Cold,None
+Alpha Marae,Alpha Marae III,Planet,Gas Giant,3.05,Deep Freeze,H2
+Alpha Marae,Alpha Marae III-a,Moon,Ice,0.12,Deep Freeze,None
+Alpha Marae,Alpha Marae III-b,Moon,Ice,0.24,Deep Freeze,None
+Alpha Marae,Alpha Marae III-c,Moon,Ice,0.38,Deep Freeze,None
+Alpha Marae,Alpha Marae III-d,Moon,Rock,0.72,Cold,Thin O2
+Alpha Marae,Alpha Marae IV,Planet,Gas Giant,2.63,Deep Freeze,H2
+Alpha Marae,Alpha Marae IV-a,Moon,Ice,0.2,Deep Freeze,None
+Alpha Marae,Alpha Marae IV-b,Moon,Rock,0.51,Temperate,Std M
+Alpha Marae,Alpha Marae V,Planet,Barren,0.2,Deep Freeze,None
+Bara,Bara I,Planet,Barren,0.29,Inferno,None
+Bara,Bara II,Planet,Rock,1.7,Inferno,Extr CO2
+Bara,Bara II-a,Moon,Barren,0.08,Temperate,None
+Bara,Bara III,Planet,Rock,0.47,Cold,Std CO2
+Bara,Bara III-a,Moon,Barren,0.08,Cold,None
+Bara,Bara IV,Planet,Barren,0.39,Cold,None
+Bara,Bara V,Planet,Ice Giant,1.39,Frozen,H2
+Bara,Bara V-a,Moon,Ice,0.19,Deep Freeze,None
+Bara,Bara VI,Planet,Gas Giant,5.88,Deep Freeze,H2
+Bara,Bara VI-a,Moon,Ice,0.11,Deep Freeze,None
+Bara,Bara VI-b,Moon,Ice,0.23,Deep Freeze,None
+Bara,Bara VI-c,Moon,Ice,0.34,Deep Freeze,Thin O2
+Bara,Bara VII,Planet,Ice Giant,1.2,Deep Freeze,H2
+Bara,Bara VII-a,Moon,Ice,0.11,Deep Freeze,None
+Bara,Bara VII-b,Moon,Ice,0.11,Deep Freeze,None
+Bara,Bara VII-c,Moon,Ice,0.2,Deep Freeze,None
+Bara,Bara VII-d,Moon,Rock,0.56,Cold,Thin CO2
+Beta Marae,Beta Marae I,Planet,Rock,1.21,Temperate,High O2
+Beta Marae,Beta Marae I-a,Moon,Barren,0.24,Temperate,None
+Beta Marae,Beta Marae II,Planet,Rock,0.89,Frozen,Std M
+Beta Marae,Beta Marae II-a,Moon,Barren,0.31,Frozen,None
+Beta Marae,Beta Marae II-b,Moon,Asteroid,0.05,Frozen,None
+Beta Marae,Beta Marae III,Planet,Rock,0.9,Frozen,Std N2
+Beta Marae,Beta Marae III-a,Moon,Barren,0.16,Frozen,None
+Beta Marae,Beta Marae IV,Planet,Gas Giant,1.17,Deep Freeze,H2
+Beta Marae,Beta Marae IV-a,Moon,Ice,0.13,Deep Freeze,None
+Beta Marae,Beta Marae IV-b,Moon,Rock,0.51,Cold,Std M
+Beta Marae,Beta Marae IV-c,Moon,Ice,0.21,Deep Freeze,None
+Beta Marae,Beta Marae IV-d,Moon,Ice,0.19,Deep Freeze,None
+Beta Marae,Beta Marae V,Planet,Gas Giant,2.91,Deep Freeze,H2
+Beta Marae,Beta Marae V-a,Moon,Barren,0.32,Deep Freeze,None
+Beta Marae,Beta Marae V-b,Moon,Ice,0.05,Deep Freeze,None
+Beta Marae,Beta Marae V-c,Moon,Rock,0.42,Deep Freeze,Thin N2
+Beta Marae,Beta Marae V-d,Moon,Ice,0.16,Deep Freeze,None
+Beta Marae,Beta Marae VI,Planet,Ice Giant,1.18,Deep Freeze,H2
+Beta Marae,Beta Marae VI-a,Moon,Ice,0.31,Deep Freeze,None
+Beta Marae,Beta Marae VI-b,Moon,Ice,0.3,Deep Freeze,None
+Beta Marae,Beta Marae VI-c,Moon,Ice,0.13,Deep Freeze,None
+Linnaeus,Linnaeus I,Planet,Rock,1.61,Scorched,Extr CO2
+Linnaeus,Linnaeus II,Planet,Rock,0.52,Cold,Thin O2
+Linnaeus,Linnaeus II-a,Moon,Barren,0.09,Cold,None
+Linnaeus,Linnaeus III,Planet,Rock,1.32,Frozen,Extr M
+Linnaeus,Linnaeus III-a,Moon,Barren,0.22,Frozen,None
+Linnaeus,Linnaeus IV,Planet,Gas Giant,2.55,Deep Freeze,H2
+Linnaeus,Linnaeus IV-a,Moon,Rock,0.35,Deep Freeze,Thin CO2
+Linnaeus,Linnaeus IV-b,Moon,Rock,0.5,Temperate,Thin M
+Linnaeus,Linnaeus IV-c,Moon,Ice,0.04,Deep Freeze,None
+Linnaeus,Linnaeus V,Planet,Barren,0.41,Deep Freeze,None
+Linnaeus,Linnaeus VI,Planet,Ice,0.18,Deep Freeze,None
+Linnaeus,Linnaeus VII,Planet,Barren,0.52,Deep Freeze,None
+Ophion,Ophion I,Planet,Gas Giant,4.7,Deep Freeze,H2
+Ophion,Ophion I-a,Moon,Barren,0.12,Frozen,None
+Rutherford,Rutherford I,Planet,Barren,0.96,Inferno,Std CO2
+Rutherford,Rutherford I-a,Moon,Barren,0.25,Inferno,None
+Rutherford,Rutherford I-b,Moon,Barren,0.1,Inferno,None
+Rutherford,Rutherford II,Planet,Rock,0.76,Inferno,Extr CO2 (cor)
+Rutherford,Rutherford II-a,Moon,Barren,0.08,Scorched,None
+Rutherford,Rutherford III,Planet,Rock,0.71,Temperate,Std O2
+Rutherford,Rutherford III-a,Moon,Barren,0.11,Temperate,None
+Rutherford,Rutherford IV,Planet,Gas Giant,4.49,Frozen,H2
+Rutherford,Rutherford IV-a,Moon,Ice,0.34,Frozen,None
+Rutherford,Rutherford IV-b,Moon,Ice,0.1,Frozen,None
+Rutherford,Rutherford IV-c,Moon,Ice,0.14,Frozen,None
+Rutherford,Rutherford IV-d,Moon,Rock,0.33,Frozen,Thin M
+Rutherford,Rutherford IV-e,Moon,Ice,0.04,Frozen,None
+Rutherford,Rutherford V,Planet,Ice Giant,0.76,Frozen,H2
+Rutherford,Rutherford V-a,Moon,Rock,0.53,Deep Freeze,Thin O2
+Rutherford,Rutherford V-b,Moon,Rock,0.34,Frozen,Thin M (cor)
+Rutherford,Rutherford VI,Planet,Gas Giant,2.17,Deep Freeze,H2
+Rutherford,Rutherford VI-a,Moon,Rock,0.37,Deep Freeze,Thin N2
+Rutherford,Rutherford VI-b,Moon,Ice,0.14,Deep Freeze,None
+Rutherford,Rutherford VI-c,Moon,Ice,0.03,Deep Freeze,None
+Rutherford,Rutherford VI-d,Moon,Ice,0.15,Deep Freeze,None
+Tidacha,Tidacha I,Planet,Rock,1.41,Cold,Std O2 (tox)
+Tidacha,Tidacha I-a,Moon,Barren,0.31,Cold,None
+Tidacha,Tidacha I-b,Moon,Barren,0.28,Cold,None
+Tidacha,Tidacha I-c,Moon,Barren,0.18,Temperate,None
+Alchiba,Alchiba I,Planet,Rock,1.75,Inferno,Extr CO2
+Alchiba,Alchiba II,Planet,Rock,0.71,Inferno,Std CO2
+Alchiba,Alchiba II-a,Moon,Barren,0.08,Inferno,None
+Alchiba,Alchiba III,Planet,Gas Giant,1.24,Temperate,H2
+Alchiba,Alchiba III-a,Moon,Ice,0.15,Temperate,None
+Alchiba,Alchiba III-b,Moon,Ice,0.04,Cold,None
+Alchiba,Alchiba III-c,Moon,Barren,0.14,Temperate,None
+Alchiba,Alchiba IV,Planet,Rock,0.8,Cold,Std M
+Alchiba,Alchiba IV-a,Moon,Rock,0.36,Cold,Thin CO2
+Alchiba,Alchiba V,Planet,Rock,0.52,Frozen,Thin N2
+Alchiba,Alchiba V-a,Moon,Barren,0.08,Cold,None
+Alchiba,Alchiba VI,Planet,Ice Giant,1.11,Frozen,H2
+Alchiba,Alchiba VI-a,Moon,Ice,0.04,Frozen,None
+Alchiba,Alchiba VI-b,Moon,Ice,0.16,Frozen,None
+Alchiba,Alchiba VI-c,Moon,Ice,0.3,Frozen,None
+Alchiba,Alchiba VII,Planet,Ice Giant,1.35,Deep Freeze,H2
+Alchiba,Alchiba VII-a,Moon,Ice,0.15,Deep Freeze,None
+Alchiba,Alchiba VII-b,Moon,Rock,0.45,Cold,Thin M
+Alchiba,Alchiba VII-c,Moon,Ice,0.04,Deep Freeze,None
+Alchiba,Alchiba VII-d,Moon,Ice,0.11,Deep Freeze,None
+Alchiba,Alchiba VIII,Planet,Rock,2.07,Deep Freeze,High N2
+Alchiba,Alchiba VIII-a,Moon,Ice,0.04,Deep Freeze,None
+Alchiba,Alchiba VIII-b,Moon,Barren,0.28,Deep Freeze,None
+Alchiba,Alchiba IX,Planet,Gas Giant,3.82,Deep Freeze,H2
+Alchiba,Alchiba IX-a,Moon,Ice,0.1,Deep Freeze,None
+Alchiba,Alchiba X,Planet,Gas Giant,3.66,Deep Freeze,H2
+Alchiba,Alchiba X-a,Moon,Ice,0.31,Deep Freeze,None
+Alchiba,Alchiba X-b,Moon,Rock,0.74,Temperate,Std O2 (tox)
+Delta Vulpes,Delta Vulpes I,Planet,Hot Gas Giant,2.55,Inferno,H2
+Delta Vulpes,Delta Vulpes II,Planet,Rock,0.76,Frozen,Thin N2
+Delta Vulpes,Delta Vulpes III,Planet,Barren,0.47,Frozen,None
+Delta Vulpes,Delta Vulpes III-a,Moon,Barren,0.17,Frozen,None
+Delta Vulpes,Delta Vulpes IV,Planet,Gas Giant,2.67,Deep Freeze,H2
+Delta Vulpes,Delta Vulpes IV-a,Moon,Ice,0.24,Deep Freeze,None
+Delta Vulpes,Delta Vulpes V,Planet,Gas Giant,6.15,Deep Freeze,H2
+Delta Vulpes,Delta Vulpes V-a,Moon,Ice,0.16,Deep Freeze,None
+Delta Vulpes,Delta Vulpes V-b,Moon,Ice,0.03,Deep Freeze,None
+Delta Vulpes,Delta Vulpes V-c,Moon,Rock,0.38,Deep Freeze,Thin CO2
+Delta Vulpes,Delta Vulpes V-d,Moon,Ice,0.14,Deep Freeze,None
+Delta Vulpes,Delta Vulpes V-e,Moon,Ice,0.06,Deep Freeze,None
+Delta Vulpes,Delta Vulpes VI,Planet,Ice Giant,1.49,Deep Freeze,H2
+Delta Vulpes,Delta Vulpes VI-a,Moon,Ice,0.15,Deep Freeze,None
+Delta Vulpes,Delta Vulpes VII,Planet,Barren,0.52,Deep Freeze,None
+Gamma Vulpes,Gamma Vulpes I,Planet,Rock,1.02,Temperate,High O2
+Gamma Vulpes,Gamma Vulpes II,Planet,Ice Giant,1.43,Frozen,H2
+Gamma Vulpes,Gamma Vulpes II-a,Moon,Rock,0.61,Temperate,Std O2
+Gamma Vulpes,Gamma Vulpes II-b,Moon,Ice,0.04,Frozen,None
+Gamma Vulpes,Gamma Vulpes II-c,Moon,Ice,0.12,Frozen,None
+Gamma Vulpes,Gamma Vulpes II-d,Moon,Rock,0.59,Deep Freeze,Std N2
+Gamma Vulpes,Gamma Vulpes III,Planet,Ice Giant,1.64,Deep Freeze,H2
+Gamma Vulpes,Gamma Vulpes III-a,Moon,Ice,0.02,Deep Freeze,None
+Gamma Vulpes,Gamma Vulpes IV,Planet,Gas Giant,3.79,Deep Freeze,H2
+Gamma Vulpes,Gamma Vulpes IV-a,Moon,Rock,0.46,Temperate,Thin M
+Gamma Vulpes,Gamma Vulpes IV-b,Moon,Barren,0.32,Deep Freeze,None
+Gamma Vulpes,Gamma Vulpes IV-c,Moon,Ice,0.11,Deep Freeze,None
+Gamma Vulpes,Gamma Vulpes IV-d,Moon,Barren,0.27,Deep Freeze,None
+Xi Ophiuchi,Xi Ophiuchi I,Planet,Barren,0.79,Inferno,None
+Xi Ophiuchi,Xi Ophiuchi II,Planet,Rock,1.16,Inferno,Std CO2
+Xi Ophiuchi,Xi Ophiuchi III,Planet,Rock,0.77,Inferno,Extr CO2
+Xi Ophiuchi,Xi Ophiuchi III-a,Moon,Barren,0.08,Temperate,None
+Xi Ophiuchi,Xi Ophiuchi IV,Planet,Rock,1.08,Cold,Std M
+Xi Ophiuchi,Xi Ophiuchi V,Planet,Rock,1.21,Cold,Std M
+Xi Ophiuchi,Xi Ophiuchi V-a,Moon,Barren,0.08,Cold,None
+Xi Ophiuchi,Xi Ophiuchi VI,Planet,Gas Giant,6.43,Deep Freeze,H2
+Xi Ophiuchi,Xi Ophiuchi VI-a,Moon,Ice,0.12,Deep Freeze,None
+Xi Ophiuchi,Xi Ophiuchi VI-b,Moon,Ice,0.23,Deep Freeze,None
+Xi Ophiuchi,Xi Ophiuchi VI-c,Moon,Ice,0.07,Deep Freeze,None
+Xi Ophiuchi,Xi Ophiuchi VI-d,Moon,Rock,0.37,Deep Freeze,Thin CO2
+Xi Ophiuchi,Xi Ophiuchi VI-e,Moon,Rock,0.57,Deep Freeze,Thin M (cor)
+Xi Ophiuchi,Xi Ophiuchi VII,Planet,Gas Giant,5.27,Deep Freeze,H2
+Xi Ophiuchi,Xi Ophiuchi VII-a,Moon,Rock,0.74,Temperate,Std O2
+Xi Ophiuchi,Xi Ophiuchi VII-b,Moon,Rock,0.49,Temperate,Thin N2
+Xi Ophiuchi,Xi Ophiuchi VIII,Planet,Gas Giant,1.65,Deep Freeze,H2
+Xi Ophiuchi,Xi Ophiuchi VIII-a,Moon,Ice,0.22,Deep Freeze,None
+Xi Ophiuchi,Xi Ophiuchi VIII-b,Moon,Rock,0.35,Cold,Thin N2 (cor)
+Xi Ophiuchi,Xi Ophiuchi VIII-c,Moon,Rock,0.54,Temperate,Thin M
+Xi Ophiuchi,Xi Ophiuchi VIII-d,Moon,Ice,0.2,Deep Freeze,None
+Xi Ophiuchi,Xi Ophiuchi VIII-e,Moon,Ice,0.35,Deep Freeze,None
+Xi Ophiuchi,XI Ophiuchi IX,Planet,Barren,0.79,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi I,Planet,Rock,0.79,Temperate,Std O2
+Zeta Ophiuchi,Zeta Ophiuchi II,Planet,Barren,1.16,Frozen,None
+Zeta Ophiuchi,Zeta Ophiuchi III,Planet,Barren,0.77,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi III-a,Moon,Barren,0.1,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi IV,Planet,Gas Giant,6.43,Deep Freeze,H2
+Zeta Ophiuchi,Zeta Ophiuchi IV-a,Moon,Ice,0.23,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi IV-b,Moon,Barren,0.39,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi IV-c,Moon,Ice,0.13,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi IV-d,Moon,Barren,0.35,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi IV-e,Moon,Ice,0.05,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi V,Planet,Gas Giant,5.27,Deep Freeze,H2
+Zeta Ophiuchi,Zeta Ophiuchi V-a,Moon,Ice,0.24,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi V-b,Moon,Ice,0.14,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi VI,Planet,Gas Giant,1.65,Deep Freeze,H2
+Zeta Ophiuchi,Zeta Ophiuchi VI-a,Moon,Rock,0.65,Deep Freeze,Std M
+Zeta Ophiuchi,Zeta Ophiuchi VI-b,Moon,Ice,0.21,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi VI-c,Moon,Rock,0.69,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi VI-d,Moon,Ice,0.28,Deep Freeze,None
+Zeta Ophiuchi,Zeta Ophiuchi VI-e,Moon,Rock,0.47,Deep Freeze,None
+Zosma,Zosma I,Planet,Rock,1.74,Inferno,Extr CO2
+Zosma,Zosma I-a,Moon,Rock,1.72,Hot,High M
+Zosma,Zosma II,Planet,Rock,1.49,Cold,Std N2
+Zosma,Zosma III,Planet,Ice Giant,1.69,Frozen,H2
+Zosma,Zosma III-a,Moon,Rock,0.44,Frozen,Thin M
+Zosma,Zosma IV,Planet,Ice Giant,0.99,Deep Freeze,H2
+Zosma,Zosma IV-a,Moon,Ice,0.1,Deep Freeze,None
+Zosma,Zosma IV-b,Moon,Ice,0.07,Deep Freeze,None
+Zosma,Zosma IV-c,Moon,Rock,0.42,Deep Freeze,Thin CO2
+Zosma,Zosma V,Planet,Gas Giant,2.87,Deep Freeze,H2
+Zosma,Zosma V-a,Moon,Rock,0.49,Temperate,Std O2 (tox)
+Zosma,Zosma V-b,Moon,Ice,0.03,Deep Freeze,None
+Zosma,Zosma V-c,Moon,Ice,0.11,Deep Freeze,None
+Bel,Bel I,Planet,Rock,0.52,Temperate,Thin O2 (cor)
+Bel,Bel I-a,Moon,Barren,0.11,Temperate,None
+Bel,Bel II,Planet,Rock,1.31,Cold,High O2 (tox)
+Bel,Bel II-a,Moon,Rock,0.35,Cold,Thin CO2
+Bel,Bel III,Planet,Rock,0.95,Frozen,High M
+Bel,Bel III-a,Moon,Barren,0.12,Frozen,None
+Bel,Bel III-b,Moon,Barren,0.11,Frozen,None
+Bel,Bel III-c,Moon,Barren,0.24,Frozen,None
+Bel,Bel IV,Planet,Gas Giant,6.92,Deep Freeze,H2
+Bel,Bel IV-a,Moon,Ice,0.32,Deep Freeze,None
+Bel,Bel IV-b,Moon,Ice,0.07,Deep Freeze,None
+Bel,Bel IV-c,Moon,Rock,0.48,Temperate,Thin M (cor)
+Bel,Bel IV-d,Moon,Rock,0.36,Deep Freeze,None
+Bel,Bel IV-e,Moon,Rock,2.02,Deep Freeze,Thin M
+Bel,Bel V,Planet,Barren,0.56,Deep Freeze,None
+Bel,Bel V-a,Moon,Ice,0.09,Deep Freeze,None
+Bel,Bel VI,Planet,Ice Giant,0.58,Deep Freeze,H2
+Bel,Bel VII,Planet,Ice,0.16,Deep Freeze,None
+Feynman,Feynman I,Planet,Rock,0.64,Inferno,Std M
+Feynman,Feynman II,Planet,Rock,0.48,Scorched,Thin CO2
+Feynman,Feynman III,Planet,Rock,1.63,Temperate,High O2
+Feynman,Feynman IV,Planet,Rock,0.57,Cold,Thin O2
+Feynman,Feynman V,Planet,Rock,0.65,Cold,Std O2
+Feynman,Feynman V-a,Moon,Barren,0.06,Cold,None
+Feynman,Feynman V-b,Moon,Asteroid,0.07,Cold,None
+Feynman,Feynman VI,Planet,Gas Giant,2.45,Deep Freeze,H2
+Feynman,Feynman VI-a,Moon,Ice,0.05,Deep Freeze,None
+Feynman,Feynman VI-b,Moon,Barren,0.28,Deep Freeze,None
+Feynman,Feynman VI-c,Moon,Ice,0.28,Deep Freeze,None
+Feynman,Feynman VII,Planet,Gas Giant,4.66,Deep Freeze,H2
+Feynman,Feynman VII-a,Moon,Ice,0.19,Deep Freeze,None
+Feynman,Feynman VII-b,Moon,Rock,0.4,Deep Freeze,Thin N2
+Feynman,Feynman VII-c,Moon,Ice,0.06,Deep Freeze,None
+Feynman,Feynman VIII,Planet,Gas Giant,1.41,Deep Freeze,H2
+Feynman,Feynman VIII-a,Moon,Ice,0.03,Deep Freeze,None
+Feynman,Feynman VIII-b,Moon,Ice,0.27,Deep Freeze,None
+Feynman,Feynman VIII-c,Moon,Rock,0.44,Deep Freeze,None
+Feynman,Feynman VIII-d,Moon,Rock,0.43,Deep Freeze,None
+Feynman,Feynman VIII-e,Moon,Ice,0.03,Deep Freeze,None
+Feynman,Feynman IX,Planet,Barren,0.69,Deep Freeze,None
+Feynman,Feynman IX-a,Moon,Ice,0.07,Deep Freeze,None
+Heisenberg,Heisenberg I,Planet,Hot Gas Giant,1.96,Scorched,H2
+Heisenberg,Heisenberg II,Planet,Rock,1.09,Temperate,Std O2 (cor)
+Heisenberg,Heisenberg III,Planet,Rock,0.61,Cold,Std O2
+Heisenberg,Heisenberg IV,Planet,Rock,1.14,Frozen,Std N2
+Heisenberg,Heisenberg V,Planet,Rock,1.73,Frozen,Extr M
+Heisenberg,Heisenberg V-a,Moon,Rock,0.6,Cold,Std CO2
+Heisenberg,Heisenberg VI,Planet,Gas Giant,1.96,Deep Freeze,H2
+Heisenberg,Heisenberg VI-a,Moon,Ice,0.15,Deep Freeze,None
+Heisenberg,Heisenberg VI-b,Moon,Ice,0.12,Deep Freeze,None
+Heisenberg,Heisenberg VI-c,Moon,Ice,0.05,Deep Freeze,None
+Heisenberg,Heisenberg VII,Planet,Ice Giant,1.56,Deep Freeze,H2
+Heisenberg,Heisenberg VII-a,Moon,Ice,0.22,Deep Freeze,None
+Heisenberg,Heisenberg VIII,Planet,Gas Giant,2.33,Deep Freeze,H2
+Heisenberg,Heisenberg VIII-a,Moon,Ice,0.05,Deep Freeze,None
+Heisenberg,Heisenberg VIII-b,Moon,Ice,0.21,Deep Freeze,None
+Heisenberg,Heisenberg VIII-c,Moon,Rock,0.54,Cold,Thin M
+Heisenberg,Heisenberg VIII-d,Moon,Ice,0.12,Deep Freeze,None
+Heisenberg,Heisenberg IX,Planet,Barren,0.37,Deep Freeze,None
+Heisenberg,Heisenberg X,Planet,Ice,0.1,Deep Freeze,None
+Leviathan,Leviathan I,Planet,Barren,0.67,Inferno,None
+Leviathan,Leviathan II,Planet,Barren,0.44,Inferno,None
+Leviathan,Leviathan III,Planet,Rock,1.4,Scorched,High CO2
+Leviathan,Leviathan IV,Planet,Rock,0.68,Temperate,Std O2
+Leviathan,Leviathan V,Planet,Ice Giant,1.34,Frozen,H2
+Leviathan,Leviathan V-a,Moon,Ice,0.07,Frozen,None
+Leviathan,Leviathan VI,Planet,Gas Giant,4.71,Frozen,H2
+Leviathan,Leviathan VI-a,Moon,Ice,0.28,Frozen,None
+Leviathan,Leviathan VI-b,Moon,Rock,0.36,Frozen,Thin CO2
+Leviathan,Leviathan VII,Planet,Barren,0.34,Deep Freeze,None
+Newton,Newton I,Planet,Barren,0.71,Inferno,None
+Newton,Newton I-a,Moon,Barren,0.24,Inferno,None
+Newton,Newton II,Planet,Rock,1.48,Temperate,High M
+Newton,Newton II-a,Moon,Barren,0.33,Temperate,None
+Newton,Newton II-b,Moon,Barren,0.39,Temperate,None
+Newton,Newton III,Planet,Rock,0.55,Temperate,Thin O2
+Newton,Newton IV,Planet,Rock,0.71,Frozen,Std CO2
+Newton,Newton V,Planet,Gas Giant,2.55,Deep Freeze,H2
+Newton,Newton V-a,Moon,Ice,0.06,Deep Freeze,None
+Newton,Newton V-b,Moon,Rock,0.66,Temperate,Std M
+Newton,Newton V-c,Moon,Ice,0.04,Deep Freeze,None
+Newton,Newton VI,Planet,Barren,0.79,Deep Freeze,None
+Nirah,Lontrah,Planet,Barren,0.11,Inferno,None
+Nirah,Delah,Planet,Barren,0.44,Inferno,None
+Nirah,Kazarah,Planet,Gas Giant,2.34,Temperate,H2
+Nirah,Ka'zaal,Moon,Rock,1.44,Temperate,High M
+Nirah,Nirah Prime,Planet,Gas Giant,2.71,Deep Freeze,H2
+Nirah,N'raal,Moon,Ice,0.13,Deep Freeze,None
+Nirah,Umanah,Planet,Ice,0.08,Deep Freeze,None
+Serpentis,Serpentis I,Planet,Barren,0.31,Inferno,None
+Serpentis,Serpentis II,Planet,Rock,1.33,Temperate,High O2
+Serpentis,Serpentis II-a,Moon,Barren,0.21,Temperate,None
+Serpentis,Serpentis II-b,Moon,Barren,0.29,Temperate,None
+Serpentis,Serpentis III,Planet,Rock,1.28,Temperate,High CO2
+Serpentis,Serpentis IV,Planet,Rock,0.88,Temperate,High O2
+Serpentis,Serpentis IV-a,Moon,Barren,0.09,Temperate,None
+Serpentis,Serpentis V,Planet,Gas Giant,2.96,Frozen,H2
+Serpentis,Serpentis V-a,Moon,Ice,0.09,Frozen,None
+Serpentis,Serpentis V-b,Moon,Ice,0.14,Frozen,None
+Serpentis,Serpentis V-c,Moon,Ice,0.16,Frozen,None
+Serpentis,Serpentis V-d,Moon,Rock,0.36,Frozen,Thin N2
+Serpentis,Serpentis VI,Planet,Gas Giant,1.46,Frozen,H2
+Serpentis,Serpentis VI-a,Moon,Rock,0.67,Frozen,Std M
+Serpentis,Serpentis VI-b,Moon,Ice,0.06,Frozen,None
+Syrma,Syrma I,Planet,Rock,1.31,Inferno,Extr CO2
+Syrma,Syrma I-a,Moon,Barren,0.15,Inferno,None
+Syrma,Syrma I-b,Moon,Barren,0.21,Inferno,None
+Syrma,Syrma II,Planet,Rock,0.8,Inferno,Std CO2
+Syrma,Syrma II-a,Moon,Barren,0.27,Inferno,None
+Syrma,Syrma III,Planet,Rock,0.38,Temperate,Thin O2
+Syrma,Syrma IV,Planet,Rock,0.54,Cold,Thin M
+Syrma,Syrma IV-a,Moon,Barren,0.22,Cold,None
+Syrma,Syrma V,Planet,Rock,0.79,Cold,Std M
+Syrma,Syrma V-a,Moon,Barren,0.4,Cold,None
+Syrma,Syrma VI,Planet,Gas Giant,1.99,Frozen,H2
+Syrma,Syrma VI-a,Moon,Ice,0.09,Frozen,None
+Syrma,Syrma VI-b,Moon,Ice,0.22,Frozen,None
+Syrma,Syrma VI-c,Moon,Rock,0.64,Cold,Std O2
+Syrma,Syrma VI-d,Moon,Ice,0.02,Frozen,None
+Syrma,Syrma VII,Planet,Gas Giant,2.6,Deep Freeze,H2
+Syrma,Syrma VII-a,Moon,Rock,0.5,Deep Freeze,Std O2
+Syrma,Syrma VII-b,Moon,Ice,0.09,Deep Freeze,None
+Alpha Ternion,Ternion I,Planet,Barren,0.82,Inferno,None
+Alpha Ternion,Ternion II,Planet,Rock,1.51,Inferno,Extr CO2
+Alpha Ternion,Ternion III,Planet,Rock,1.44,Temperate,High O2
+Alpha Ternion,Ternion III-a,Moon,Barren,0.32,Temperate,None
+Alpha Ternion,Ternion IV,Planet,Rock,0.94,Frozen,Std M
+Alpha Ternion,Ternion V,Planet,Rock,1.51,Frozen,Extr M
+Alpha Ternion,Ternion V-a,Moon,Rock,0.37,Frozen,Thin CO2
+Alpha Ternion,Ternion V-b,Moon,Asteroid,0.08,Frozen,None
+Alpha Ternion,Ternion VI,Planet,Rock,0.54,Frozen,Thin N2
+Alpha Ternion,Ternion VI-a,Moon,Barren,0.21,Frozen,None
+Alpha Ternion,Ternion VII,Planet,Rock,0.58,Deep Freeze,Thin N2
+Alpha Ternion,Ternion VIII,Planet,Ice,0.29,Deep Freeze,None
+Alpha Ternion,Ternion IX,Planet,Ice Giant,1.96,Deep Freeze,H2
+Alpha Ternion,Ternion IX-a,Moon,Ice,0.1,Deep Freeze,None
+Alpha Ternion,Ternion IX-b,Moon,Ice,0.21,Deep Freeze,None
+Alpha Ternion,Ternion IX-c,Moon,Ice,0.28,Deep Freeze,None
+Alpha Ternion,Ternion IX-d,Moon,Ice,0.27,Deep Freeze,None
+Decaran,Decaran I,Planet,Rock,1.09,Cold,Std O2
+Decaran,Decaran II,Planet,Barren,0.53,Deep Freeze,None
+Decaran,Decaran III,Planet,Rock,1.02,Deep Freeze,None
+Decaran,Decaran IV,Planet,Barren,0.29,Deep Freeze,None
+Decaran,Decaran V,Planet,Barren,0.79,Deep Freeze,None
+Decaran,Decaran V-a,Moon,Barren,0.2,Deep Freeze,None
+Decaran,Decaran V-b,Moon,Barren,0.13,Deep Freeze,None
+Decaran,Decaran VI,Planet,Gas Giant,3.62,Deep Freeze,H2
+Decaran,Decaran VI-a,Moon,Ice,0.15,Deep Freeze,None
+Decaran,Decaran VII,Planet,Barren,0.55,Deep Freeze,None
+Decaran,Decaran VII-a,Moon,Ice,0.05,Deep Freeze,None
+Decaran,Decaran VII-b,Moon,Barren,0.29,Deep Freeze,None
+Decaran,Decaran VIII,Planet,Ice Giant,1.69,Deep Freeze,H2
+Decaran,Decaran VIII-a,Moon,Barren,0.43,Deep Freeze,None
+Decaran,Decaran VIII-b,Moon,Ice,0.27,Deep Freeze,None
+Decaran,Decaran IX,Planet,Barren,0.3,Deep Freeze,None
+Foucault,Foucault I,Planet,Barren,0.76,Inferno,None
+Foucault,Foucault I-a,Moon,Barren,0.17,Inferno,None
+Foucault,Foucault I-b,Moon,Barren,0.09,Inferno,None
+Foucault,Foucault II,Planet,Rock,0.59,Inferno,Thin CO2
+Foucault,Foucault II-a,Moon,Barren,0.3,Inferno,None
+Foucault,Foucault II-b,Moon,Barren,0.08,Inferno,None
+Foucault,Foucault III,Planet,Rock,1.5,Cold,High M
+Foucault,Foucault III-a,Moon,Barren,0.12,Cold,None
+Foucault,Foucault III-b,Moon,Barren,0.16,Cold,None
+Foucault,Foucault IV,Planet,Barren,0.83,Frozen,None
+Foucault,Foucault V,Planet,Gas Giant,2.84,Deep Freeze,H2
+Foucault,Foucault V-a,Moon,Ice,0.03,Deep Freeze,None
+Foucault,Foucault V-b,Moon,Rock,0.66,Deep Freeze,Std O2
+Foucault,Foucault V-c,Moon,Ice,0.22,Deep Freeze,None
+Foucault,Foucault V-d,Moon,Rock,0.51,Deep Freeze,Thin M
+Foucault,Foucault VI,Planet,Gas Giant,3.7,Deep Freeze,H2
+Foucault,Foucault VI-a,Moon,Ice,0.25,Deep Freeze,None
+Foucault,Foucault VI-b,Moon,Ice,0.32,Deep Freeze,None
+Foucault,Foucault VI-c,Moon,Barren,0.36,Deep Freeze,None
+Foucault,Foucault VI-d,Moon,Ice,0.17,Deep Freeze,None
+Foucault,Foucault VI-e,Moon,Ice,0.02,Deep Freeze,None
+Foucault,Foucault VII,Planet,Gas Giant,2.62,Deep Freeze,H2
+Foucault,Foucault VII-a,Moon,Rock,0.56,Deep Freeze,None
+Foucault,Foucault VII-b,Moon,Ice,0.08,Deep Freeze,None
+Foucault,Foucault VII-c,Moon,Ice,0.15,Deep Freeze,None
+Foucault,Foucault VII-d,Moon,Rock,0.59,Deep Freeze,None
+Foucault,Foucault VII-e,Moon,Rock,0.42,Deep Freeze,Thin N2
+Foucault,Foucault VIII,Planet,Ice,0.05,Deep Freeze,None
+Foucault,Foucault VIII-a,Moon,Ice,0.05,Deep Freeze,None
+Kang,Kang I,Planet,Barren,0.62,Inferno,None
+Kang,Kang II,Planet,Barren,1.3,Inferno,High CO2
+Kang,Kang III,Planet,Rock,1.23,Temperate,High M
+Kang,Kang IV,Planet,Rock,0.73,Frozen,Std M
+Kang,Kang IV-a,Moon,Rock,0.39,Frozen,Thin CO2
+Kang,Kang IV-b,Moon,Barren,0.18,Frozen,None
+Kang,Kang IV-c,Moon,Barren,0.16,Frozen,None
+Kang,Kang V,Planet,Rock,0.83,Frozen,Std M
+Kang,Kang VI,Planet,Rock,0.97,Deep Freeze,Std N2
+Kang,Kang VI-a,Moon,Barren,0.07,Deep Freeze,None
+Kang,Kang VII,Planet,Gas Giant,2.01,Deep Freeze,H2
+Kang,Kang VII-a,Moon,Ice,0.18,Deep Freeze,None
+Kang,Kang VII-b,Moon,Rock,0.44,Deep Freeze,None
+Kang,Kang VII-c,Moon,Rock,0.5,Temperate,Thin M
+Kang,Kang VII-d,Moon,Ice,0.16,Deep Freeze,None
+Kang,Kang VIII,Planet,Ice Giant,1.64,Deep Freeze,H2
+Kang,Kang VIII-a,Moon,Barren,0.39,Deep Freeze,None
+Kang,Kang VIII-b,Moon,Ice,0.16,Deep Freeze,None
+Kang,Kang VIII-c,Moon,Rock,0.72,Deep Freeze,None
+Kang,Kang VIII-d,Moon,Ice,0.1,Deep Freeze,None
+Maal,Maal I,Planet,Barren,0.91,Inferno,None
+Maal,Maal I-a,Moon,Barren,0.16,Inferno,None
+Maal,Maal I-b,Moon,Barren,0.11,Inferno,None
+Maal,Maal II,Planet,Rock,0.77,Inferno,Thin CO2
+Maal,Maal II-a,Moon,Barren,0.06,Inferno,None
+Maal,Maal III,Planet,Rock,0.98,Scorched,Std O2
+Maal,Maal III-a,Moon,Asteroid,0.07,Scorched,None
+Maal,Maal IV,Planet,Rock,0.99,Temperate,Std O2
+Maal,Maal V,Planet,Rock,0.77,Temperate,Std O2
+Maal,Maal V-a,Moon,Barren,0.17,Temperate,None
+Maal,Maal VI,Planet,Gas Giant,4.89,Frozen,H2
+Maal,Maal VI-a,Moon,Rock,0.34,Frozen,Thin O2
+Maal,Maal VI-b,Moon,Ice,0.14,Frozen,None
+Maal,Maal VI-c,Moon,Ice,0.33,Frozen,None
+Maal,Maal VII,Planet,Rock,1.4,Frozen,High M
+Maal,Maal VIII,Planet,Rock,0.8,Frozen,High N2 (cor)
+Maal,Maal VIII-a,Moon,Ice,0.03,Frozen,None
+Maal,Maal IX,Planet,Gas Giant,6.19,Deep Freeze,H2
+Maal,Maal IX-a,Moon,Ice,0.04,Deep Freeze,None
+Maal,Maal IX-b,Moon,Rock,0.58,Frozen,Thin M (cor)
+Maal,Maal IX-c,Moon,Ice,0.1,Deep Freeze,None
+Maal,Maal IX-d,Moon,Ice,0.14,Deep Freeze,None
+Maal,Maal X,Planet,Ice,0.14,Deep Freeze,None
+Sparta,Sparta I,Planet,Rock,1.37,Scorched,Extr CO2
+Sparta,Sparta II,Planet,Rock,1.67,Inferno,Extr CO2
+Sparta,Sparta II-a,Moon,Barren,0.08,Hot,None
+Sparta,Sparta II-b,Moon,Asteroid,0.05,Temperate,None
+Sparta,Sparta III,Planet,Rock,0.62,Temperate,Thin O2
+Sparta,Sparta III-a,Moon,Barren,0.24,Temperate,None
+Sparta,Sparta IV,Planet,Rock,1.35,Temperate,High O2 (tox)
+Sparta,Sparta V,Planet,Rock,0.65,Frozen,Std CO2
+Sparta,Sparta V-a,Moon,Barren,0.22,Cold,None
+Sparta,Sparta VI,Planet,Gas Giant,1.66,Deep Freeze,H2
+Sparta,Sparta VI-a,Moon,Ice,0.13,Deep Freeze,None
+Sparta,Sparta VI-b,Moon,Rock,0.4,Deep Freeze,Thin CO2
+Sparta,Sparta VI-c,Moon,Ice,0.02,Deep Freeze,None
+Sparta,Sparta VII,Planet,Gas Giant,2.79,Deep Freeze,H2
+Sparta,Sparta VII-a,Moon,Rock,0.54,Temperate,Thin M
+Sparta,Sparta VII-b,Moon,Ice,0.26,Deep Freeze,None
+Sparta,Sparta VII-c,Moon,Ice,0.1,Deep Freeze,None
+Sparta,Sparta VIII,Planet,Gas Giant,1.64,Deep Freeze,H2
+Sparta,Sparta VIII-a,Moon,Ice,0.26,Deep Freeze,None
+Sparta,Sparta VIII-b,Moon,Rock,0.39,Deep Freeze,None
+Sparta,Sparta VIII-c,Moon,Ice,0.08,Deep Freeze,None
+Zelazny,Zelazny I,Planet,Rock,1.48,Inferno,High CO2
+Zelazny,Zelazny II,Planet,Rock,0.71,Temperate,Std O2
+Zelazny,Zelazny II-a,Moon,Barren,0.13,Temperate,None
+Zelazny,Zelazny III,Planet,Rock,0.63,Temperate,High M (cor)
+Zelazny,Zelazny IV,Planet,Rock,1,Cold,Std CO2
+Zelazny,Zelazny V,Planet,Rock,0.8,Frozen,Std M
+Zelazny,Zelazny VI,Planet,Rock,0.84,Frozen,High N2
+Zelazny,Zelazny VII,Moon,Gas Giant,2.25,Deep Freeze,H2
+Zelazny,Zelazny VII-a,Moon,Ice,0.16,Deep Freeze,None
+Zelazny,Zelazny VII-b,Moon,Rock,0.43,Deep Freeze,Thin N2
+Zelazny,Zelazny VII-c,Moon,Ice,0.08,Deep Freeze,None
+Zelazny,Zelazny VII-d,Moon,Rock,0.45,Cold,Thin M
+Zelazny,Zelazny VIII,Planet,Gas Giant,2.51,Deep Freeze,H2
+Zelazny,Zelazny VIII-a,Moon,Ice,0.3,Deep Freeze,None
+Zelazny,Zelazny VIII-b,Moon,Ice,0.29,Deep Freeze,None
+Zelazny,Zelazny VIII-c,Moon,Rock,0.7,Temperate,Std O2
+Zelazny,Zelazny VIII-d,Moon,Ice,0.23,Deep Freeze,None
+Zelazny,Zelazny VIII-e,Moon,Rock,0.7,Temperate,None
+Charybdis,Charybdis I,Planet,Rock,1.54,Scorched,High O2
+Charybdis,Charybdis II,Planet,Rock,1.15,Temperate,High O2
+Charybdis,Charybdis III,Planet,Rock,1.16,Temperate,Std O2
+Charybdis,Charybdis IV,Planet,Rock,0.83,Cold,High CO2
+Charybdis,Charybdis IV-a,Moon,Barren,0.15,Cold,None
+Charybdis,Charybdis V,Planet,Rock,0.47,Frozen,Std CO2
+Charybdis,Charybdis V-a,Moon,Asteroid,0.05,Frozen,None
+Charybdis,Charybdis VI,Planet,Rock,1.79,Frozen,Extr N2
+Charybdis,Charybdis VI-a,Moon,Barren,0.22,Frozen,None
+Charybdis,Charybdis VI-b,Moon,Rock,0.45,Temperate,Thin M
+Charybdis,Charybdis VII,Planet,Gas Giant,3.27,Deep Freeze,H2
+Charybdis,Charybdis VII-a,Moon,Ice,0.27,Deep Freeze,None
+Charybdis,Charybdis VII-b,Moon,Ice,0.12,Deep Freeze,None
+Charybdis,Charybdis VII-c,Moon,Ice,0.26,Deep Freeze,None
+Charybdis,Charybdis VII-d,Moon,Rock,0.49,Cold,Thin M
+Charybdis,Charybdis VIII,Planet,Gas Giant,4.04,Deep Freeze,H2
+Charybdis,Charybdis VIII-a,Moon,Ice,0.11,Deep Freeze,None
+Charybdis,Charybdis VIII-b,Moon,Ice,0.2,Deep Freeze,None
+Charybdis,Charybdis IX,Planet,Ice,0.18,Deep Freeze,None
+Enlil,Enlil I,Planet,Rock,1.63,Scorched,Extr CO2
+Enlil,Enlil I-a,Moon,Rock,0.64,Inferno,Std O2
+Enlil,Enlil II,Planet,Rock,0.69,Temperate,Std M
+Enlil,Enlil II-a,Moon,Asteroid,0.06,Temperate,None
+Enlil,Enlil III,Planet,Rock,0.53,Cold,Std CO2
+Enlil,Enlil IV,Planet,Rock,1.24,Frozen,Std M
+Enlil,Enlil IV-a,Moon,Barren,0.11,Frozen,None
+Enlil,Enlil V,Planet,Rock,0.65,Frozen,Std N2
+Enlil,Enlil VI,Planet,Gas Giant,2.46,Deep Freeze,H2
+Enlil,Enlil VI-a,Moon,Ice,0.3,Deep Freeze,None
+Enlil,Enlil VI-b,Moon,Rock,0.57,Temperate,Thin M
+Enlil,Enlil VI-c,Moon,Ice,0.08,Deep Freeze,None
+Enlil,Enlil VI-d,Moon,Ice,0.03,Deep Freeze,None
+Enlil,Enlil VII,Planet,Ice Giant,0.97,Deep Freeze,H2
+Enlil,Enlil VII-a,Moon,Barren,0.43,Deep Freeze,None
+Leonis,Leonis I,Planet,Rock,0.89,Inferno,Std CO2
+Leonis,Leonis I-a,Moon,Barren,0.08,Inferno,None
+Leonis,Leonis I-b,Moon,Rock,0.35,Inferno,Thin CO2
+Leonis,Leonis II,Planet,Rock,0.48,Inferno,Thin CO2
+Leonis,Leonis II-a,Moon,Barren,0.08,Inferno,None
+Leonis,Leonis III,Planet,Rock,0.8,Temperate,High O2
+Leonis,Leonis IV,Planet,Rock,0.52,Temperate,Thin O2
+Leonis,Leonis V,Planet,Rock,0.61,Temperate,Std M
+Leonis,Leonis V-a,Moon,Asteroid,0.04,Temperate,None
+Leonis,Leonis VI,Planet,Ice Giant,1.37,Frozen,H2
+Leonis,Leonis VI-a,Moon,Ice,0.16,Frozen,None
+Leonis,Leonis VII,Planet,Rock,0.82,Deep Freeze,Std N2
+Leonis,Leonis VIII,Planet,Ice Giant,1.71,Deep Freeze,H2
+Leonis,Leonis VIII-a,Moon,Rock,0.51,Frozen,Thin M
+Leonis,Leonis VIII-b,Moon,Ice,0.15,Deep Freeze,None
+Leonis,Leonis VIII-c,Moon,Rock,0.7,Cold,Std O2
+Leonis,Leonis IX,Planet,Ice,0.14,Deep Freeze,None
+Proxima Ternion,Proxima Ternion I,Planet,Hot Gas Giant,4.54,Inferno,H2
+Proxima Ternion,Proxima Ternion I-a,Moon,Barren,0.03,Inferno,None
+Proxima Ternion,Proxima Ternion I-b,Moon,Rock,0.41,Inferno,Thin CO2 (cor)
+Proxima Ternion,Proxima Ternion I-c,Moon,Barren,0.19,Inferno,None
+Proxima Ternion,Proxima Ternion II,Planet,Rock,0.82,Scorched,High CO2
+Proxima Ternion,Proxima Ternion III,Planet,Rock,1.51,Cold,High O2
+Proxima Ternion,Proxima Ternion IV,Planet,Rock,1.44,Frozen,High M
+Proxima Ternion,Proxima Ternion IV-a,Moon,Barren,0.21,Frozen,None
+Rana,Rana I,Planet,Rock,0.81,Inferno,Std CO2
+Rana,Rana I-a,Moon,Barren,0.2,Inferno,None
+Rana,Rana I-b,Moon,Barren,0.33,Inferno,None
+Rana,Rana I-c,Moon,Barren,0.17,Inferno,None
+Rana,Rana II,Planet,Rock,1.42,Inferno,Extr CO2
+Rana,Rana II-a,Moon,Barren,0.18,Temperate,None
+Rana,Rana III,Planet,Rock,1.65,Temperate,High O2
+Rana,Rana III-a,Moon,Barren,0.11,Temperate,None
+Rana,Rana IV,Planet,Rock,1.17,Cold,Std O2
+Rana,Rana V,Planet,Rock,1.15,Frozen,Std M
+Rana,Rana V-a,Moon,Barren,0.09,Frozen,None
+Rana,Rana VI,Planet,Gas Giant,5.86,Deep Freeze,H2
+Rana,Rana VI-a,Moon,Rock,0.48,Cold,Thin M (cor)
+Rana,Rana VI-b,Moon,Rock,0.42,Deep Freeze,Thin CO2
+Rana,Rana VI-c,Moon,Ice,0.05,Deep Freeze,None
+Rana,Rana VI-d,Moon,Rock,0.43,Deep Freeze,Std CO2
+Rana,Rana VI-e,Moon,Ice,0.07,Deep Freeze,None
+Rana,Rana VII,Planet,Gas Giant,1.87,Deep Freeze,H2
+Rana,Rana VII-a,Moon,Ice,0.15,Deep Freeze,None
+Rana,Rana VII-b,Moon,Ice,0.19,Deep Freeze,None
+Rana,Rana VIII,Planet,Ice,0.11,Deep Freeze,None
+Rana,Rana IX,Planet,Ice Giant,0.85,Deep Freeze,H2
+Rana,Rana IX-a,Moon,Ice,0.24,Deep Freeze,None
+Rana,Rana IX-b,Moon,Ice,0.07,Deep Freeze,None
+Schrodinger,Schrodinger I,Planet,Barren,1.25,Inferno,None
+Schrodinger,Schrodinger I-a,Moon,Barren,0.17,Inferno,None
+Schrodinger,Schrodinger II,Planet,Rock,1.19,Inferno,Std CO2
+Schrodinger,Schrodinger III,Planet,Rock,1.07,Temperate,Std O2
+Schrodinger,Schrodinger III-a,Moon,Barren,0.35,Temperate,None
+Schrodinger,Schrodinger IV,Planet,Rock,0.61,Temperate,Std O2 (tox)
+Schrodinger,Schrodinger V,Planet,Rock,1.18,Cold,Std M
+Schrodinger,Schrodinger V-a,Moon,Barren,0.13,Cold,None
+Schrodinger,Schrodinger VI,Planet,Gas Giant,4.18,Frozen,H2
+Schrodinger,Schrodinger VI-a,Moon,Ice,0.05,Frozen,None
+Schrodinger,Schrodinger VI-b,Moon,Ice,0.02,Frozen,None
+Schrodinger,Schrodinger VI-c,Moon,Rock,0.33,Frozen,Thin CO2
+Schrodinger,Schrodinger VII,Planet,Ice Giant,0.98,Deep Freeze,H2
+Schrodinger,Schrodinger VII-a,Moon,Barren,0.28,Deep Freeze,None
+Schrodinger,Schrodinger VII-b,Moon,Ice,0.26,Deep Freeze,None
+Schrodinger,Schrodinger VII-c,Moon,Ice,0.3,Deep Freeze,None
+Schrodinger,Schrodinger VIII,Planet,Gas Giant,2.01,Deep Freeze,H2
+Schrodinger,Schrodinger VIII-a,Moon,Rock,0.58,Temperate,Thin O2
+Schrodinger,Schrodinger VIII-b,Moon,Ice,0.26,Deep Freeze,None
+Schrodinger,Schrodinger VIII-c,Moon,Ice,0.23,Deep Freeze,None
+Schrodinger,Schrodinger VIII-d,Moon,Ice,0.17,Deep Freeze,None
+Schrodinger,Schrodinger VIII-e,Moon,Rock,0.41,Deep Freeze,Thin N2
+Algorab,Algorab I,Planet,Rock,0.79,Inferno,Std CO2
+Algorab,Algorab II,Planet,Rock,1.48,Temperate,High O2
+Algorab,Algorab III,Planet,Gas Giant,2.02,Frozen,H2
+Algorab,Algorab III-a,Moon,Rock,0.42,Frozen,Std CO2
+Algorab,Algorab III-b,Moon,Rock,0.51,Temperate,Thin CO2 (cor)
+Algorab,Algorab III-c,Moon,Ice,0.08,Frozen,None
+Algorab,Algorab III-d,Moon,Ice,0.01,Frozen,None
+Algorab,Algorab III-e,Moon,Ice,0.18,Frozen,None
+Bardeen,Bardeen I,Planet,Rock,0.91,Inferno,Extr CO2
+Bardeen,Bardeen I-a,Moon,Barren,0.18,Inferno,None
+Bardeen,Bardeen II,Planet,Rock,0.12,Temperate,None
+Bardeen,Bardeen III,Planet,Rock,0.95,Temperate,Std O2
+Bardeen,Bardeen III-a,Moon,Barren,0.15,Temperate,None
+Bardeen,Bardeen III-b,Moon,Barren,0.06,Temperate,None
+Bardeen,Bardeen IV,Planet,Ice Giant,0.85,Deep Freeze,H2
+Bardeen,Bardeen IV-a,Moon,Ice,0.26,Deep Freeze,None
+Bardeen,Bardeen V,Planet,Gas Giant,1.71,Deep Freeze,H2
+Bardeen,Bardeen V-a,Moon,Ice,0.05,Frozen,None
+Bardeen,Bardeen V-b,Moon,Rock,0.24,Frozen,Thin CO2
+Bardeen,Bardeen V-c,Moon,Rock,0.46,Cold,Std O2
+Bardeen,Bardeen V-d,Moon,Rock,0.61,Deep Freeze,Std O2 (cor)
+Bardeen,Bardeen V-e,Moon,Ice,0.05,Deep Freeze,None
+Bardeen,Bardeen V-f,Moon,Ice,0.19,Deep Freeze,None
+Bardeen,Bardeen VI,Planet,Ice,0.93,Deep Freeze,None
+Bardeen,Bardeen VI-a,Moon,Ice,0.27,Deep Freeze,None
+Bardeen,Bardeen VI-b,Moon,Ice,0.05,Deep Freeze,None
+Bardeen,Bardeen VII,Planet,Ice Giant,1.65,Deep Freeze,H2
+Bardeen,Bardeen VII-a,Moon,Ice,0.06,Deep Freeze,None
+Celebrai,Celebrai I,Planet,Rock,0.79,Inferno,Std CO2 (cor)
+Celebrai,Celebrai II,Planet,Rock,0.86,Temperate,Std O2
+Celebrai,Celebrai III,Planet,Gas Giant,3.35,Cold,H2
+Celebrai,Celebrai III-a,Moon,Ice,0.21,Cold,None
+Celebrai,Celebrai III-b,Moon,Ice,0.16,Cold,None
+Celebrai,Celebrai III-c,Moon,Ice,0.19,Cold,None
+Celebrai,Celebrai IV,Planet,Barren,0.42,Frozen,None
+Marduk,Marduk I,Planet,Rock,0.94,Inferno,High CO2
+Marduk,Marduk I-a,Moon,Barren,0.17,Inferno,None
+Marduk,Marduk II,Planet,Rock,1.11,Inferno,Extr CO2
+Marduk,Marduk III,Planet,Rock,1,Hot,Std CO2 (cor)
+Marduk,Marduk III-a,Moon,Barren,0.11,Temperate,None
+Marduk,Marduk IV,Planet,Rock,1.04,Cold,Std M
+Marduk,Marduk V,Planet,Rock,1.12,Cold,Std M
+Marduk,Marduk V-a,Moon,Barren,0.12,Cold,None
+Marduk,Marduk VI,Planet,Rock,0.61,Deep Freeze,Std N2
+Marduk,Marduk VII,Planet,Gas Giant,1.54,Deep Freeze,H2
+Marduk,Marduk VII-a,Moon,Ice,0.15,Deep Freeze,None
+Marduk,Marduk VII-b,Moon,Ice,0.17,Deep Freeze,None
+Marduk,Marduk VII-c,Moon,Ice,0.19,Deep Freeze,None
+Marduk,Marduk VII-d,Moon,Ice,0.05,Deep Freeze,None
+Marduk,Marduk VIII,Planet,Ice,0.07,Deep Freeze,None
+Marduk,Marduk IX,Planet,Ice,0.16,Deep Freeze,None
+Marduk,Marduk IX-a,Moon,Ice,0.07,Deep Freeze,None
+Marduk,Marduk IX-b,Moon,Ice,0.04,Deep Freeze,None
+Pyraas,Pyraas I,Planet,Barren,0.45,Inferno,None
+Pyraas,Pyraas II,Planet,Rock,1.13,Temperate,High M
+Pyraas,Pyraas II-a,Moon,Barren,0.11,Temperate,None
+Pyraas,Pyraas III,Planet,Rock,0.48,Frozen,Thin CO2
+Pyraas,Pyraas III-a,Moon,Barren,0.12,Frozen,None
+Pyraas,Pyraas III-b,Moon,Barren,0.11,Frozen,None
+Pyraas,Pyraas IV,Planet,Rock,1.4,Frozen,High N2
+Pyraas,Pyraas V,Planet,Rock,1.18,Frozen,Std N2
+Pyraas,Pyraas VI,Planet,Ice Giant,1.9,Deep Freeze,H2
+Pyraas,Pyraas VI-a,Moon,Rock,0.4,Deep Freeze,Thin CO2
+Pyraas,Pyraas VI-b,Moon,Ice,0.37,Deep Freeze,None
+Pyraas,Pyraas VI-c,Moon,Ice,0.12,Deep Freeze,None
+Pyraas,Pyraas VI-d,Moon,Ice,0.1,Deep Freeze,None
+Pyraas,Pyraas VII,Planet,Rock,1.2,Deep Freeze,None
+Pyraas,Pyraas VII-a,Moon,Ice,0.03,Deep Freeze,None
+Pyraas,Pyraas VII-b,Moon,Rock,0.45,Temperate,Std N2
+Pyraas,Pyraas VIII,Planet,Gas Giant,6.89,Deep Freeze,H2
+Pyraas,Pyraas VIII-a,Moon,Rock,0.51,Deep Freeze,Thin CO2
+Pyraas,Pyraas VIII-b,Moon,Barren,0.32,Deep Freeze,None
+Pyraas,Pyraas VIII-c,Moon,Ice,0.09,Deep Freeze,None
+Pyraas,Pyraas VIII-d,Moon,Ice,0.33,Deep Freeze,None
+Strix,Strix I,Planet,Rock,1.55,Temperate,High O2
+Strix,Strix I-a,Moon,Barren,0.07,Temperate,None
+Strix,Strix II,Planet,Rock,0.7,Cold,CO2
+Strix,Strix III,Planet,Gas Giant,2.16,Frozen,H2
+Strix,Strix III-a,Moon,Rock,0.41,Frozen,Thin CO2
+Strix,Strix III-b,Moon,Ice,0.2,Frozen,None
+Strix,Strix III-c,Moon,Rock,0.48,Temperate,Std M
+Strix,Strix III-d,Moon,Ice,0.28,Frozen,None
+Strix,Strix IV,Planet,Rock,1.39,Deep Freeze,High N2 (cor)
+Strix,Strix IV-a,Moon,Barren,0.18,Deep Freeze,None
+Strix,Strix V,Planet,Rock,1.28,Deep Freeze,None
+Strix,Strix VI,Planet,Gas Giant,5.58,Deep Freeze,H2
+Strix,Strix VI-a,Moon,Ice,0.04,Deep Freeze,None
+Strix,Strix VI-b,Moon,Ice,0.07,Deep Freeze,None
+Strix,Strix VI-c,Moon,Ice,0.21,Deep Freeze,None
+Verne,Verne I,Planet,Rock,1.25,Inferno,Extr CO2
+Verne,Verne I-a,Moon,Asteroid,0.06,Hot,None
+Verne,Verne II,Planet,Rock,0.77,Cold,Std O2
+Verne,Verne II-a,Moon,Barren,0.13,Cold,None
+Verne,Verne III,Planet,Rock,1.05,Cold,Std CO2
+Verne,Verne III-a,Moon,Barren,0.16,Cold,None
+Verne,Verne IV,Planet,Rock,1.21,Frozen,High M
+Verne,Verne V,Planet,Rock,0.61,Deep Freeze,Std N2
+Verne,Verne VI,Planet,Gas Giant,1.61,Deep Freeze,H2
+Verne,Verne VI-a,Moon,Rock,0.44,Deep Freeze,None
+Verne,Verne VI-b,Moon,Ice,0.31,Deep Freeze,None
+Verne,Verne VII,Planet,Gas Giant,4.97,Deep Freeze,H2
+Verne,Verne VII-a,Moon,Ice,0.04,Deep Freeze,None
+Verne,Verne VII-b,Moon,Ice,0.21,Deep Freeze,None
+Verne,Verne VII-c,Moon,Barren,0.42,Deep Freeze,None
+Verne,Verne VII-d,Moon,Rock,0.46,Cold,Thin M (cor)
+Verne,Verne VII-e,Moon,Ice,0.21,Deep Freeze,None
+Archimedes,Archimedes I,Planet,Rock,1.18,Inferno,Std CO2
+Archimedes,Archimedes I-a,Moon,Barren,0.14,Inferno,None
+Archimedes,Archimedes II,Planet,Rock,0.46,Temperate,Thin M
+Archimedes,Archimedes III,Planet,Rock,0.7,Temperate,Std O2
+Archimedes,Archimedes IV,Planet,Rock,1.04,Cold,Std M
+Archimedes,Archimedes IV-a,Moon,Barren,0.08,Cold,None
+Archimedes,Archimedes V,Planet,Ice Giant,1.19,Frozen,H2
+Archimedes,Archimedes V-a,Moon,Rock,0.67,Temperate,Std O2
+Archimedes,Archimedes V-b,Moon,Ice,0.31,Frozen,None
+Archimedes,Archimedes VI,Planet,Rock,0.83,Deep Freeze,Std N2
+Archimedes,Archimedes VI-a,Moon,Rock,0.43,Deep Freeze,Thin CO2
+Archimedes,Archimedes VI-b,Moon,Ice,0.1,Deep Freeze,None
+Bohr,Bohr I,Planet,Rock,0.49,Scorched,Thin CO2
+Bohr,Bohr I-a,Moon,Barren,0.09,Scorched,None
+Bohr,Bohr II,Planet,Rock,0.62,Temperate,Thin O2
+Bohr,Bohr III,Planet,Rock,1.49,Cold,High CO2
+Bohr,Bohr III-a,Moon,Barren,0.36,Cold,None
+Bohr,Bohr III-b,Moon,Barren,0.18,Cold,None
+Bohr,Bohr IV,Planet,Rock,0.52,Frozen,Std M
+Bohr,Bohr V,Planet,Rock,0.78,Frozen,Std M
+Bohr,Bohr VI,Planet,Gas Giant,2.05,Deep Freeze,H2
+Bohr,Bohr VI-a,Moon,Ice,0.1,Deep Freeze,None
+Bohr,Bohr VI-b,Moon,Ice,0.41,Deep Freeze,None
+Bohr,Bohr VI-c,Moon,Barren,0.37,Deep Freeze,None
+Bohr,Bohr VI-d,Moon,Ice,0.15,Deep Freeze,None
+Bohr,Bohr VII,Planet,Rock,0.7,Deep Freeze,Std N2
+Bohr,Bohr VIII,Planet,Ice,0.24,Deep Freeze,None
+Fermi,Fermi I,Planet,Rock,1.34,Inferno,High CO2
+Fermi,Fermi II,Planet,Rock,0.68,Inferno,Extr CO2
+Fermi,Fermi II-a,Moon,Barren,0.2,Temperate,None
+Fermi,Fermi III,Planet,Rock,0.66,Temperate,Std O2
+Fermi,Fermi III-a,Moon,Barren,0.17,Temperate,None
+Fermi,Fermi III-b,Moon,Barren,0.17,Temperate,None
+Fermi,Fermi IV,Planet,Rock,0.75,Cold,Std CO2
+Fermi,Fermi IV-a,Moon,Barren,0.07,Cold,None
+Fermi,Fermi IV-b,Moon,Barren,0.09,Cold,None
+Fermi,Fermi V,Planet,Rock,0.97,Cold,Std CO2
+Fermi,Fermi V-a,Moon,Barren,0.11,Cold,None
+Fermi,Fermi VI,Planet,Rock,0.57,Frozen,Thin M
+Fermi,Fermi VI-a,Moon,Barren,0.15,Frozen,None
+Fermi,Fermi VII,Planet,Gas Giant,1.93,Deep Freeze,H2
+Fermi,Fermi VII-a,Moon,Rock,0.47,Frozen,Std M
+Fermi,Fermi VII-b,Moon,Rock,0.42,Deep Freeze,Thin N2
+Fermi,Fermi VII-c,Moon,Rock,0.49,Temperate,Thin M
+Fermi,Fermi VIII,Planet,Gas Giant,1.42,Deep Freeze,H2
+Fermi,Fermi VIII-a,Moon,Ice,0.31,Deep Freeze,None
+Fermi,Fermi VIII-b,Moon,Rock,0.44,Deep Freeze,None
+Fermi,Fermi VIII-c,Moon,Ice,0.09,Deep Freeze,None
+Fermi,Fermi VIII-d,Moon,Ice,0.2,Deep Freeze,None
+Fermi,Fermi IX,Planet,Gas Giant,2.7,Deep Freeze,H2
+Fermi,Fermi IX-a,Moon,Ice,0.24,Deep Freeze,None
+Fermi,Fermi IX-b,Moon,Ice,0.18,Deep Freeze,None
+Fermi,Fermi IX-c,Moon,Ice,0.04,Deep Freeze,None
+Fermi,Fermi IX-d,Moon,Barren,0.27,Deep Freeze,Thin N2
+Fermi,Fermi IX-e,Moon,Ice,0.03,Deep Freeze,None
+Fermi,Fermi X,Planet,Barren,0.94,Deep Freeze,None
+Hawking,Hawking I,Planet,Rock,0.94,Temperate,High CO2 (cor)
+Hawking,Hawking I-a,Moon,Barren,0.29,Temperate,None
+Hawking,Hawking II,Planet,Rock,0.73,Frozen,Std CO2
+Hawking,Hawking III,Planet,Rock,1.03,Frozen,Std M
+Hawking,Hawking IV,Planet,Rock,0.48,Deep Freeze,Thin N2
+Hawking,Hawking IV-a,Moon,Barren,0.26,Deep Freeze,None
+Hawking,Hawking V,Planet,Ice Giant,0.96,Deep Freeze,H2
+Hawking,Hawking V-a,Moon,Ice,0.18,Deep Freeze,None
+Hawking,Hawking VI,Planet,Gas Giant,1.48,Deep Freeze,H2
+Hawking,Hawking VI-a,Moon,Ice,0.27,Deep Freeze,None
+Hawking,Hawking VI-b,Moon,Rock,0.55,Temperate,Thin M
+Huygens,Huygens I,Planet,Barren,0.59,Inferno,None
+Huygens,Huygens I-a,Moon,Barren,0.28,Inferno,None
+Huygens,Huygens I-b,Moon,Asteroid,0.06,Inferno,None
+Huygens,Huygens II,Planet,Rock,1.4,Inferno,High CO2
+Huygens,Huygens II-a,Moon,Barren,0.12,Inferno,None
+Huygens,Huygens II-b,Moon,Barren,0.13,Scorched,None
+Huygens,Huygens III,Planet,Rock,0.87,Temperate,High O2 (tox)
+Huygens,Huygens IV,Planet,Rock,0.43,Temperate,Thin O2
+Huygens,Huygens V,Planet,Gas Giant,4.97,Frozen,H2
+Huygens,Huygens V-a,Moon,Ice,0.25,Frozen,None
+Huygens,Huygens V-b,Moon,Ice,0.31,Frozen,None
+Huygens,Huygens VI,Planet,Rock,0.82,Frozen,Std M
+Huygens,Huygens VI-a,Moon,Rock,0.42,Frozen,Thin CO2
+Huygens,Huygens VII,Planet,Gas Giant,5.52,Deep Freeze,H2
+Huygens,Huygens VII-a,Moon,Rock,0.46,Frozen,Thin N2
+Huygens,Huygens VII-b,Moon,Rock,0.55,Temperate,Thin M
+Huygens,Huygens VII-c,Moon,Barren,0.36,Deep Freeze,None
+Huygens,Huygens VII-d,Moon,Ice,0.09,Deep Freeze,None
+Huygens,Huygens VII-e,Moon,Ice,0.15,Deep Freeze,None
+Huygens,Huygens VIII,Planet,Rock,0.5,Deep Freeze,Thin N2
+Katydid,Katydid I,Planet,Hot Gas Giant,1.89,Temperate,H2
+Katydid,Katydid I-a,Moon,Rock,0.48,Temperate,Thin M
+Katydid,Katydid I-b,Moon,Ice,0.02,Temperate,None
+Katydid,Katydid II,Planet,Rock,0.91,Frozen,Std M
+Katydid,Katydid III,Planet,Rock,1.14,Frozen,Std N2
+Masada,Masada I,Planet,Barren,0.72,Inferno,None
+Masada,Masada II,Planet,Rock,1.24,Inferno,High CO2
+Masada,Masada III,Planet,Rock,1.12,Cold,Std O2
+Masada,Masada IV,Planet,Rock,0.84,Frozen,Std M
+Masada,Masada IV-a,Moon,Asteroid,0.06,Frozen,None
+Masada,Masada V,Planet,Gas Giant,2.19,Deep Freeze,H2
+Masada,Masada V-a,Moon,Ice,0.32,Deep Freeze,None
+Masada,Masada V-b,Moon,Ice,0.04,Frozen,None
+Masada,Masada V-c,Moon,Rock,0.42,Frozen,Thin M
+Masada,Masada VI,Planet,Ice Giant,0.99,Deep Freeze,H2
+Masada,Masada VI-a,Moon,Ice,0.17,Deep Freeze,None
+Masada,Masada VII,Planet,Ice Giant,0.8,Deep Freeze,H2
+Masada,Masada VII-a,Moon,Ice,0.16,Deep Freeze,None
+Masada,Masada VII-b,Moon,Ice,0.33,Deep Freeze,None
+Masada,Masada VIII,Planet,Ice,0.26,Deep Freeze,None
+Masada,Masada VIII-a,Moon,Ice,0.06,Deep Freeze,None
+Masada,Masada IX,Planet,Ice Giant,1.06,Deep Freeze,H2
+Bannoc,Bannoc I,Planet,Rock,1.01,Inferno,Std CO2
+Bannoc,Bannoc II,Planet,Rock,0.91,Temperate,Std M
+Bannoc,Bannoc III,Planet,Rock,1.44,Frozen,Extr N2
+Bannoc,Bannoc III-a,Moon,Barren,0.11,Frozen,None
+Bannoc,Bannoc IV,Planet,Gas Giant,4.21,Deep Freeze,H2
+Bannoc,Bannoc IV-a,Moon,Ice,0.06,Deep Freeze,None
+Bannoc,Bannoc IV-b,Moon,Ice,0.36,Deep Freeze,Thin CO2
+Bannoc Secondus,Bannoc Secondus I,Planet,Barren,0.11,Frozen,None
+Heinlein,Heinlein I,Planet,Barren,0.57,Inferno,None
+Heinlein,Heinlein II,Planet,Rock,0.81,Inferno,Std CO2 (cor)
+Heinlein,Heinlein II-a,Moon,Barren,0.23,Inferno,None
+Heinlein,Heinlein II-b,Moon,Barren,0.12,Inferno,None
+Heinlein,Heinlein III,Planet,Rock,0.55,Frozen,Thin CO2
+Heinlein,Heinlein III-a,Moon,Barren,0.23,Cold,None
+Heinlein,Heinlein IV,Planet,Gas Giant,5.11,Frozen,H2
+Heinlein,Heinlein IV-a,Moon,Ice,0.13,Frozen,None
+Heinlein,Heinlein IV-b,Moon,Rock,0.65,Temperate,Std O2
+Heinlein,Heinlein IV-c,Moon,Rock,0.49,Temperate,Thin M
+Heinlein,Heinlein IV-d,Moon,Ice,0.01,Frozen,None
+Heinlein,Heinlein IV-e,Moon,Ice,0.02,Frozen,None
+Heinlein,Heinlein V,Planet,Rock,1.23,Deep Freeze,Extr N2
+Heinlein,Heinlein V-a,Moon,Ice,0.03,Deep Freeze,None
+Heinlein,Heinlein V-b,Moon,Barren,0.22,Deep Freeze,None
+Heinlein,Heinlein V-c,Moon,Barren,0.17,Deep Freeze,None
+Heinlein,Heinlein VI,Planet,Gas Giant,2.4,Deep Freeze,H2
+Heinlein,Heinlein VI-a,Moon,Rock,0.53,Temperate,Std M
+Heinlein,Heinlein VI-b,Moon,Ice,0.34,Deep Freeze,None
+Heinlein,Heinlein VI-c,Moon,Ice,0.34,Deep Freeze,None
+Heinlein,Heinlein VI-d,Moon,Ice,0.1,Deep Freeze,None
+Heinlein,Heinlein VI-e,Moon,Ice,0.25,Deep Freeze,None
+Heinlein,Heinlein VII,Planet,Ice,0.27,Deep Freeze,None
