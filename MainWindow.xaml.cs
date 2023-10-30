@@ -3,12 +3,15 @@ using Starfield_Interactive_Smart_Slate.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Navigation;
 
 namespace Starfield_Interactive_Smart_Slate
 {
@@ -36,6 +39,12 @@ namespace Starfield_Interactive_Smart_Slate
         public MainWindow()
         {
             InitializeComponent();
+
+            // show version number
+            Version version = Assembly.GetEntryAssembly().GetName().Version;
+            string versionNumber = $"Version {version.Major}.{version.Minor}.{version.Build}";
+            VersionNumberLabel.Content = versionNumber;
+
             var resources = dataRepository.GetResources();
 
             inorganicResourceListView.ItemsSource = resources.Where(r => r.GetType() == ResourceType.Inorganic);
@@ -616,5 +625,17 @@ namespace Starfield_Interactive_Smart_Slate
             };
         }
         #endregion
+
+        // -----------------------------------------------------------------------------------------------
+        // ABOUT PAGE
+        // -----------------------------------------------------------------------------------------------
+        private void NavigateToHyperlink(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.ToString())
+            {
+                UseShellExecute = true // need to set this to get web links to work here
+            });
+            e.Handled = true;
+        }
     }
 }
