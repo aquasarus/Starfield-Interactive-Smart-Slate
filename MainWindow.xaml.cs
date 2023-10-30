@@ -24,7 +24,7 @@ namespace Starfield_Interactive_Smart_Slate
         private DataRepository dataRepository = new DataRepository();
         private List<SolarSystem> allSolarSystems;
         private List<SolarSystem> discoveredSolarSystems;
-        private Dictionary<LifeformType, HashSet<string>> lifeformNames;
+        private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
         private List<Resource> allOrganicResources;
 
         private CelestialBody selectedCelestialBody;

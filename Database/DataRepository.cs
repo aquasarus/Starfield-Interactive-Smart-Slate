@@ -427,11 +427,13 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public Dictionary<LifeformType, HashSet<string>> GetLifeformNames()
+        // gets the full list of lifeform names, mapping a lowercase version to the capitalized version
+        // e.g. Dictionary { "pack octomaggot":  "Pack Octomaggot" }
+        public Dictionary<LifeformType, Dictionary<string, string>> GetLifeformNames()
         {
-            var lifeformNames = new Dictionary<LifeformType, HashSet<string>>();
-            lifeformNames.Add(LifeformType.Fauna, new HashSet<string>());
-            lifeformNames.Add(LifeformType.Flora, new HashSet<string>());
+            var lifeformNames = new Dictionary<LifeformType, Dictionary<string, string>>();
+            lifeformNames.Add(LifeformType.Fauna, new Dictionary<string, string>());
+            lifeformNames.Add(LifeformType.Flora, new Dictionary<string, string>());
 
             using (SQLiteConnection conn = CreateConnection())
             {
@@ -450,7 +452,7 @@ namespace Starfield_Interactive_Smart_Slate
                         {
                             string lifeformName = reader.GetString(0);
                             LifeformType lifeformType = (LifeformType)int.Parse(reader["LifeformType"].ToString());
-                            lifeformNames[lifeformType].Add(lifeformName);
+                            lifeformNames[lifeformType].Add(lifeformName.ToLower(), lifeformName);
                         }
 
                         return lifeformNames;

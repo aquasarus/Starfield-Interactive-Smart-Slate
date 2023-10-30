@@ -12,9 +12,9 @@ namespace Starfield_Interactive_Smart_Slate
 
         private int faunaID;
         private int floraID;
-        private HashSet<string> lifeformNames;
+        private Dictionary<string, string> lifeformNames;
 
-        public LifeformEditor(Fauna fauna, List<Resource> resources, HashSet<string> lifeformNames)
+        public LifeformEditor(Fauna fauna, List<Resource> resources, Dictionary<string, string> lifeformNames)
         {
             InitializeComponent();
 
@@ -50,7 +50,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public LifeformEditor(Flora flora, List<Resource> resources, HashSet<string> lifeformNames)
+        public LifeformEditor(Flora flora, List<Resource> resources, Dictionary<string, string> lifeformNames)
         {
             InitializeComponent();
 
@@ -140,9 +140,15 @@ namespace Starfield_Interactive_Smart_Slate
         private void UpdateMatchIndicatorVisibility()
         {
             if (matchIndicatorLabel == null) { return; }
-
-            if (lifeformNames.Contains(lifeformNameTextbox.Text))
+            if (lifeformNames.ContainsKey(lifeformNameTextbox.Text.ToLower()))
             {
+                // restore capitalized version if applicable
+                if (lifeformNames[lifeformNameTextbox.Text.ToLower()] != lifeformNameTextbox.Text)
+                {
+                    lifeformNameTextbox.Text = lifeformNames[lifeformNameTextbox.Text.ToLower()];
+                    lifeformNameTextbox.SelectionStart = lifeformNameTextbox.Text.Length;
+                }
+
                 matchIndicatorLabel.Visibility = Visibility.Visible;
             }
             else
