@@ -14,11 +14,11 @@
         <TabControl>
             <TabControl.ItemContainerStyle>
                 <Style TargetType="TabItem">
-                    <Setter Property="Height" Value="30" />
+                    <Setter Property="Height" Value="35" />
                 </Style>
             </TabControl.ItemContainerStyle>
 
-            <TabItem Header="Planetary Data">
+            <TabItem Width="175" Header="Planetary Data">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MaxWidth="400" />
@@ -439,7 +439,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Inorganic Resource Search">
+            <TabItem Width="200" Header="Inorganic Resource Search">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -452,8 +452,44 @@
                         Height="Auto"
                         Margin="10"
                         Padding="5"
-                        TextChanged="inorganicResourceFilterChanged" />
-                    <ListView Name="inorganicResourceListView" Grid.Row="1">
+                        FontSize="18"
+                        TabIndex="1"
+                        TextChanged="InorganicResourceFilterChanged">
+                        <TextBox.Style>
+                            <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="TextBox">
+                                <Style.Resources>
+                                    <VisualBrush
+                                        x:Key="CueBannerBrush"
+                                        AlignmentX="Left"
+                                        AlignmentY="Center"
+                                        Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <Label
+                                                Content="Search for a resource..."
+                                                FontFamily="/Fonts/#Sofia Sans"
+                                                FontSize="15"
+                                                Foreground="Gray" />
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <ListView
+                        Name="inorganicResourceListView"
+                        Grid.Row="1"
+                        TabIndex="0">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
@@ -474,13 +510,14 @@
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Height" Value="30" />
+                                <Setter Property="Foreground" Value="Black" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Organic Resource Search">
+            <TabItem Width="200" Header="Organic Resource Search">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -493,8 +530,44 @@
                         Height="Auto"
                         Margin="10"
                         Padding="5"
-                        TextChanged="organicResourceFilterChanged" />
-                    <ListView Name="organicResourceListView" Grid.Row="1">
+                        FontSize="18"
+                        TabIndex="1"
+                        TextChanged="OrganicResourceFilterChanged">
+                        <TextBox.Style>
+                            <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="TextBox">
+                                <Style.Resources>
+                                    <VisualBrush
+                                        x:Key="CueBannerBrush"
+                                        AlignmentX="Left"
+                                        AlignmentY="Center"
+                                        Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <Label
+                                                Content="Search for a resource..."
+                                                FontFamily="/Fonts/#Sofia Sans"
+                                                FontSize="15"
+                                                Foreground="Gray" />
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <ListView
+                        Name="organicResourceListView"
+                        Grid.Row="1"
+                        TabIndex="0">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
@@ -512,17 +585,17 @@
                                 </GridView.ColumnHeaderContainerStyle>
                             </GridView>
                         </ListView.View>
-
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
                                 <Setter Property="Height" Value="30" />
+                                <Setter Property="Foreground" Value="Black" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="About">
+            <TabItem Width="80" Header="About">
                 <Grid
                     Margin="0,0,0,200"
                     HorizontalAlignment="Center"

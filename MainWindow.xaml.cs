@@ -602,12 +602,12 @@ namespace Starfield_Interactive_Smart_Slate
         // RESOURCE SEARCH
         // -----------------------------------------------------------------------------------------------
         #region Organic/Inorganic Resource Stuff
-        private void inorganicResourceFilterChanged(object sender, TextChangedEventArgs e)
+        private void InorganicResourceFilterChanged(object sender, TextChangedEventArgs e)
         {
             FilterResources(inorganicResourceFilter.Text, inorganicResourceListView);
         }
 
-        private void organicResourceFilterChanged(object sender, TextChangedEventArgs e)
+        private void OrganicResourceFilterChanged(object sender, TextChangedEventArgs e)
         {
             FilterResources(organicResourceFilter.Text, organicResourceListView);
         }
