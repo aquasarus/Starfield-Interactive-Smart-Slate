@@ -1,45 +1,53 @@
-﻿<Window x:Class="Starfield_Interactive_Smart_Slate.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Style="{StaticResource SofiaSansStyle}"
-        Title="Starfield Interactive Smart Slate" Height="1000" Width="1400">
+﻿<Window
+    x:Class="Starfield_Interactive_Smart_Slate.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Starfield Interactive Smart Slate"
+    Width="1400"
+    Height="1000"
+    Style="{StaticResource SofiaSansStyle}"
+    mc:Ignorable="d">
 
     <Grid>
         <TabControl>
             <TabControl.ItemContainerStyle>
                 <Style TargetType="TabItem">
-                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Height" Value="30" />
                 </Style>
             </TabControl.ItemContainerStyle>
 
             <TabItem Header="Planetary Data">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" MaxWidth="400"/>
-                        <ColumnDefinition Width="*" MaxWidth="280"/>
-                        <ColumnDefinition Width="*" MaxWidth="280"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" MaxWidth="400" />
+                        <ColumnDefinition Width="*" MaxWidth="280" />
+                        <ColumnDefinition Width="*" MaxWidth="280" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
 
-                    <Grid Grid.Column="0" >
+                    <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Label
-                            Style="{StaticResource HeaderStyle}"
                             Grid.Row="0"
-                            Content="Celestial Body Overview"
                             Height="35"
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             BorderBrush="Gray"
-                            BorderThickness="1"/>
-                        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="0,1,0,0" Padding="15,5,15,0">
+                            BorderThickness="1"
+                            Content="Celestial Body Overview"
+                            Style="{StaticResource HeaderStyle}" />
+                        <Border
+                            Grid.Row="1"
+                            Margin="0,1,0,0"
+                            Padding="15,5,15,0"
+                            BorderBrush="Gray"
+                            BorderThickness="1">
                             <Grid Name="celestialBodyOverviewGrid" Visibility="Hidden">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -51,46 +59,42 @@
 
                                 <Grid Grid.Row="0" Height="55">
                                     <Label
-                                        Grid.Row="0"
-                                        Style="{StaticResource ContentTitleStyle}"
                                         Name="celestialBodyTitleLabel"
+                                        Grid.Row="0"
                                         VerticalContentAlignment="Top"
                                         Content="{Binding DisplayedCelestialBodyName}"
-                                        >
-                                    </Label>
+                                        Style="{StaticResource ContentTitleStyle}" />
                                     <Label
-                                        Grid.Row="1"
                                         Name="celestialBodyMiniTitleLabel"
+                                        Grid.Row="1"
                                         VerticalContentAlignment="Bottom"
                                         Content="{Binding DisplayedSolarSystemName}"
                                         ContentStringFormat="{}· {0} System"
-                                        FontSize="15"
-                                        >
-                                    </Label>
+                                        FontSize="15" />
                                 </Grid>
 
                                 <Label
                                     Grid.Row="1"
-                                    Style="{StaticResource ContentSubtitleStyle}"
                                     Content="Overview"
-                                    >
-                                </Label>
+                                    Style="{StaticResource ContentSubtitleStyle}" />
 
                                 <Label Grid.Row="2">
-                                    <TextBlock Name="celestialBodyOverview" FontSize="20" TextWrapping="Wrap">
-                                    </TextBlock>
+                                    <TextBlock
+                                        Name="celestialBodyOverview"
+                                        FontSize="20"
+                                        TextWrapping="Wrap" />
                                 </Label>
 
                                 <Label
                                     Grid.Row="3"
-                                    Style="{StaticResource ContentSubtitleStyle}"
                                     Content="Resources"
-                                    >
-                                </Label>
+                                    Style="{StaticResource ContentSubtitleStyle}" />
 
                                 <Label Grid.Row="4">
-                                    <TextBlock Name="celestialBodyResourcesLabel" FontSize="20" TextWrapping="Wrap">
-                                    </TextBlock>
+                                    <TextBlock
+                                        Name="celestialBodyResourcesLabel"
+                                        FontSize="20"
+                                        TextWrapping="Wrap" />
                                 </Label>
 
                             </Grid>
@@ -105,27 +109,31 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Button
-                            Style="{StaticResource ThinHeaderStyle}"
                             Grid.Row="0"
                             Height="35"
                             Margin="1,0,0,1"
+                            Click="DiscoverNewSystemClicked"
                             Content="Discover New System"
-                            Click="DiscoverNewSystemClicked"/>
+                            Style="{StaticResource ThinHeaderStyle}" />
                         <TextBox
-                            Grid.Row="1"
                             Name="SolarSystemFilterTextBox"
+                            Grid.Row="1"
                             Margin="5"
                             Padding="5"
                             TextChanged="SolarSystemFilterChanged">
                             <TextBox.Style>
-                                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="TextBox">
                                     <Style.Resources>
-                                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                        <VisualBrush
+                                            x:Key="CueBannerBrush"
+                                            AlignmentX="Left"
+                                            AlignmentY="Center"
+                                            Stretch="None">
                                             <VisualBrush.Visual>
                                                 <Label
-                                                    FontFamily="/Fonts/#Sofia Sans"
                                                     Content="Search for a solar system..."
-                                                    Foreground="Gray"/>
+                                                    FontFamily="/Fonts/#Sofia Sans"
+                                                    Foreground="Gray" />
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </Style.Resources>
@@ -145,11 +153,11 @@
                         </TextBox>
                         <ListView
                             Name="solarSystemsListView"
-                            BorderThickness="1"
                             Grid.Row="2"
                             Margin="1,0,0,0"
-                            BorderBrush="Gray"
                             HorizontalContentAlignment="Stretch"
+                            BorderBrush="Gray"
+                            BorderThickness="1"
                             ScrollViewer.CanContentScroll="False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -158,12 +166,15 @@
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" HorizontalAlignment="Center" Margin="0,3,0,0">
+                                        <Label
+                                            Grid.Row="0"
+                                            Margin="0,3,0,0"
+                                            HorizontalAlignment="Center">
                                             <TextBlock>
                                                 <TextBlock.Text>
                                                     <MultiBinding StringFormat="{}{0} (Level {1})">
-                                                        <Binding Path="SystemName"/>
-                                                        <Binding Path="SystemLevel"/>
+                                                        <Binding Path="SystemName" />
+                                                        <Binding Path="SystemLevel" />
                                                     </MultiBinding>
                                                 </TextBlock.Text>
 
@@ -193,10 +204,8 @@
                                             </ListView.ItemTemplate>
                                             <ListView.ItemContainerStyle>
                                                 <Style TargetType="ListViewItem">
-                                                    <EventSetter Event="MouseEnter" Handler="CelestialBodyListItem_MouseEnter"/>
-                                                    <EventSetter
-                                                        Event="PreviewMouseLeftButtonDown"
-                                                        Handler="CelestialBodyListView_Select"/>
+                                                    <EventSetter Event="MouseEnter" Handler="CelestialBodyListItem_MouseEnter" />
+                                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CelestialBodyListView_Select" />
                                                 </Style>
                                             </ListView.ItemContainerStyle>
                                         </ListView>
@@ -206,7 +215,7 @@
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Control.Template">
-                                        <!--this disables the hover effect on the Solar System parent list-->
+                                        <!--  this disables the hover effect on the Solar System parent list  -->
                                         <Setter.Value>
                                             <ControlTemplate TargetType="ListViewItem">
                                                 <ContentPresenter />
@@ -231,13 +240,11 @@
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label
-                                    Style="{StaticResource HeaderStyle}"
                                     Grid.Column="0"
-                                    Content="Faunas"
                                     Height="35"
                                     Margin="1,0,1,0"
                                     HorizontalAlignment="Stretch"
@@ -245,43 +252,40 @@
                                     VerticalContentAlignment="Center"
                                     BorderBrush="Gray"
                                     BorderThickness="1"
-                                    />
+                                    Content="Faunas"
+                                    Style="{StaticResource HeaderStyle}" />
                                 <Button
                                     Name="addFaunaButton"
-                                    Style="{StaticResource ThinHeaderStyle}"
                                     Grid.Column="1"
                                     Width="65"
-                                    Content="Add"
                                     Click="AddFaunaClicked"
+                                    Content="Add"
                                     IsEnabled="false"
-                                    ></Button>
+                                    Style="{StaticResource ThinHeaderStyle}" />
                             </Grid>
 
                             <ListView
-                                Grid.Row="1"
                                 Name="faunasListView"
+                                Grid.Row="1"
                                 Margin="1,1,0,0"
                                 Padding="5"
-                                SelectionMode="Single"
-                                >
+                                SelectionMode="Single">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                        <EventSetter Event="MouseEnter" Handler="FaunaListItem_MouseEnter"/>
-                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FaunaListView_Select"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <EventSetter Event="MouseEnter" Handler="FaunaListItem_MouseEnter" />
+                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FaunaListView_Select" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding FaunaName}">
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}">
-                                            </TextBlock>
+                                            <TextBlock Grid.Column="0" Text="{Binding FaunaName}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -294,13 +298,11 @@
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Margin="0,1,0,0">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label
-                                    Style="{StaticResource HeaderStyle}"
                                     Grid.Column="0"
-                                    Content="Floras"
                                     Height="35"
                                     Margin="1,0,1,0"
                                     HorizontalAlignment="Stretch"
@@ -308,42 +310,39 @@
                                     VerticalContentAlignment="Center"
                                     BorderBrush="Gray"
                                     BorderThickness="1"
-                                    />
+                                    Content="Floras"
+                                    Style="{StaticResource HeaderStyle}" />
                                 <Button
                                     Name="addFloraButton"
-                                    Style="{StaticResource ThinHeaderStyle}"
                                     Grid.Column="1"
                                     Width="65"
-                                    Content="Add"
                                     Click="AddFloraClicked"
+                                    Content="Add"
                                     IsEnabled="false"
-                                    ></Button>
+                                    Style="{StaticResource ThinHeaderStyle}" />
                             </Grid>
                             <ListView
-                                Grid.Row="1"
                                 Name="florasListView"
+                                Grid.Row="1"
                                 Margin="1,1,0,0"
                                 Padding="5"
-                                SelectionMode="Single"
-                                >
+                                SelectionMode="Single">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                        <EventSetter Event="MouseEnter" Handler="FloraListItem_MouseEnter"/>
-                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FloraListView_Select"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <EventSetter Event="MouseEnter" Handler="FloraListItem_MouseEnter" />
+                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FloraListView_Select" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding FloraName}">
-                                            </TextBlock>
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}">
-                                            </TextBlock>
+                                            <TextBlock Grid.Column="0" Text="{Binding FloraName}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -352,39 +351,42 @@
                     </Grid>
 
 
-                    <Grid Grid.Column="3" Margin="1,0,0,0" >
+                    <Grid Grid.Column="3" Margin="1,0,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label
                                 Grid.Column="0"
-                                Style="{StaticResource HeaderStyle}"
-                                Content="Lifeform Overview"
                                 Height="35"
                                 HorizontalAlignment="Stretch"
                                 HorizontalContentAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 BorderBrush="Gray"
                                 BorderThickness="1"
-                                />
+                                Content="Lifeform Overview"
+                                Style="{StaticResource HeaderStyle}" />
                             <Button
-                                Grid.Column="1"
                                 Name="editLifeformButton"
-                                Style="{StaticResource ThinHeaderStyle}"
+                                Grid.Column="1"
                                 Width="65"
                                 Margin="1,0,0,0"
-                                Content="Edit"
                                 Click="EditLifeformClicked"
+                                Content="Edit"
                                 IsEnabled="false"
-                                ></Button>
+                                Style="{StaticResource ThinHeaderStyle}" />
                         </Grid>
-                        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="0,1,0,0" Padding="15,5,15,0">
+                        <Border
+                            Grid.Row="1"
+                            Margin="0,1,0,0"
+                            Padding="15,5,15,0"
+                            BorderBrush="Gray"
+                            BorderThickness="1">
                             <Grid Name="lifeformOverviewGrid" Visibility="Hidden">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -397,52 +399,39 @@
 
                                 <Grid Grid.Row="0" Height="55">
                                     <Label
-                                        Grid.Row="0"
-                                        Style="{StaticResource ContentTitleStyle}"
                                         Name="lifeformTitleLabel"
+                                        Grid.Row="0"
                                         VerticalContentAlignment="Top"
                                         Content="Pack Octomaggot"
-                                        >
-                                    </Label>
+                                        Style="{StaticResource ContentTitleStyle}" />
                                     <Label
-                                        Grid.Row="1"
                                         Name="lifeformSubtitleLabel"
+                                        Grid.Row="1"
                                         VerticalContentAlignment="Bottom"
-                                        FontSize="15"
-                                        >
-                                    </Label>
+                                        FontSize="15" />
                                 </Grid>
 
                                 <Label
-                                    Grid.Row="1"
-                                    Style="{StaticResource ContentSubtitleStyle}"
                                     Name="lifeformResourceTitleLabel"
+                                    Grid.Row="1"
                                     Content="Resource"
-                                    >
-                                </Label>
+                                    Style="{StaticResource ContentSubtitleStyle}" />
                                 <Label
-                                    Grid.Row="2"
                                     Name="lifeformResourceLabel"
+                                    Grid.Row="2"
                                     Content="Amino Acids"
-                                    FontSize="20"
-                                    >
-                                </Label>
+                                    FontSize="20" />
                                 <Label
-                                    Grid.Row="3"
-                                    Style="{StaticResource ContentSubtitleStyle}"
                                     Name="lifeformNotesTitle"
+                                    Grid.Row="3"
                                     Content="Notes"
-                                    >
-                                </Label>
-                                <Label
-                                    Grid.Row="4"
-                                    >
+                                    Style="{StaticResource ContentSubtitleStyle}" />
+                                <Label Grid.Row="4">
                                     <TextBlock
                                         Name="lifeformNotesTextBlock"
                                         FontSize="17"
-                                        TextWrapping="Wrap"
-                                        Text="Placeholder sample text">
-                                    </TextBlock>
+                                        Text="Placeholder sample text"
+                                        TextWrapping="Wrap" />
                                 </Label>
                             </Grid>
                         </Border>
@@ -457,29 +446,34 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <TextBox
-                        Grid.Row="0"
                         Name="inorganicResourceFilter"
+                        Grid.Row="0"
+                        Width="Auto"
+                        Height="Auto"
                         Margin="10"
                         Padding="5"
-                        Height="Auto"
-                        Width="Auto"
-                        TextChanged="inorganicResourceFilterChanged">
-                    </TextBox>
+                        TextChanged="inorganicResourceFilterChanged" />
                     <ListView Name="inorganicResourceListView" Grid.Row="1">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Resource Name" DisplayMemberBinding="{Binding FullName}" Width="250"/>
-                                <GridViewColumn Header="Rarity" DisplayMemberBinding="{Binding RarityString}" Width="125"/>
+                                <GridViewColumn
+                                    Width="250"
+                                    DisplayMemberBinding="{Binding FullName}"
+                                    Header="Resource Name" />
+                                <GridViewColumn
+                                    Width="125"
+                                    DisplayMemberBinding="{Binding RarityString}"
+                                    Header="Rarity" />
                                 <GridView.ColumnHeaderContainerStyle>
                                     <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="Height" Value="30"/>
+                                        <Setter Property="Height" Value="30" />
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
                             </GridView>
                         </ListView.View>
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
-                                <Setter Property="Height" Value="30"/>
+                                <Setter Property="Height" Value="30" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -493,21 +487,27 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <TextBox
-                        Grid.Row="0"
                         Name="organicResourceFilter"
+                        Grid.Row="0"
+                        Width="Auto"
+                        Height="Auto"
                         Margin="10"
                         Padding="5"
-                        Height="Auto"
-                        Width="Auto"
-                        TextChanged="organicResourceFilterChanged"/>
+                        TextChanged="organicResourceFilterChanged" />
                     <ListView Name="organicResourceListView" Grid.Row="1">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Resource Name" DisplayMemberBinding="{Binding FullName}" Width="250"/>
-                                <GridViewColumn Header="Rarity" DisplayMemberBinding="{Binding RarityString}" Width="125"/>
+                                <GridViewColumn
+                                    Width="250"
+                                    DisplayMemberBinding="{Binding FullName}"
+                                    Header="Resource Name" />
+                                <GridViewColumn
+                                    Width="125"
+                                    DisplayMemberBinding="{Binding RarityString}"
+                                    Header="Rarity" />
                                 <GridView.ColumnHeaderContainerStyle>
                                     <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="Height" Value="30"/>
+                                        <Setter Property="Height" Value="30" />
                                     </Style>
                                 </GridView.ColumnHeaderContainerStyle>
                             </GridView>
@@ -515,7 +515,7 @@
 
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
-                                <Setter Property="Height" Value="30"/>
+                                <Setter Property="Height" Value="30" />
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
@@ -523,7 +523,10 @@
             </TabItem>
 
             <TabItem Header="About">
-                <Grid Margin="0,0,0,200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid
+                    Margin="0,0,0,200"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -533,24 +536,21 @@
                     </Grid.RowDefinitions>
                     <Label
                         Grid.Row="0"
-                        Style="{StaticResource ContentTitleStyle}"
                         HorizontalContentAlignment="Center"
-                        Content="Starfield ISS"></Label>
+                        Content="Starfield ISS"
+                        Style="{StaticResource ContentTitleStyle}" />
                     <Label
                         Grid.Row="1"
                         HorizontalContentAlignment="Center"
-                        Content="Starfield Interactive Smart Slate"></Label>
-                    <Label 
-                        Grid.Row="2" 
-                        Name="VersionNumberLabel"
-                        Style="{StaticResource ContentTitleStyle}"
-                        HorizontalContentAlignment="Center"
-                        FontSize="22"
-                        Content="Version 1.0.0">
-                    </Label>
+                        Content="Starfield Interactive Smart Slate" />
                     <Label
-                        Grid.Row="3"
-                        HorizontalContentAlignment="Center">
+                        Name="VersionNumberLabel"
+                        Grid.Row="2"
+                        HorizontalContentAlignment="Center"
+                        Content="Version 1.0.0"
+                        FontSize="22"
+                        Style="{StaticResource ContentTitleStyle}" />
+                    <Label Grid.Row="3" HorizontalContentAlignment="Center">
                         <Hyperlink
                             FontSize="16"
                             NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate"
@@ -558,9 +558,7 @@
                             View Project on GitHub
                         </Hyperlink>
                     </Label>
-                    <Label 
-                        Grid.Row="4"
-                        HorizontalContentAlignment="Center">
+                    <Label Grid.Row="4" HorizontalContentAlignment="Center">
                         <Hyperlink
                             FontSize="16"
                             NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues"

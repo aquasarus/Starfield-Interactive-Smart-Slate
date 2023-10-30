@@ -1,16 +1,18 @@
-﻿<Window x:Class="Starfield_Interactive_Smart_Slate.AddLifeformDialog"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Style="{StaticResource SofiaSansStyle}"
-        Height="185" Width="330">
+﻿<Window
+    x:Class="Starfield_Interactive_Smart_Slate.AddLifeformDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="330"
+    Height="185"
+    Style="{StaticResource SofiaSansStyle}">
     <Window.Title>
-        <Binding Path="LifeformTypeString" StringFormat="{}New {0}"/>
+        <Binding Path="LifeformTypeString" StringFormat="{}New {0}" />
     </Window.Title>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label
             Grid.Row="0"
@@ -18,49 +20,39 @@
             HorizontalContentAlignment="Center"
             Content="{Binding LifeformTypeString}"
             ContentStringFormat="{}🛈 Enter {0} name:"
-            ToolTipService.InitialShowDelay="200"
-            >
+            ToolTipService.InitialShowDelay="200">
             <Label.ToolTip>
-                <ToolTip
-                    Content="{Binding LifeformTypeString}"
-                    ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear.">
-                </ToolTip>
+                <ToolTip Content="{Binding LifeformTypeString}" ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear." />
             </Label.ToolTip>
         </Label>
         <Grid
             Grid.Row="1"
-            Margin="0,15,0,0"
-            Height="30"
             Width="270"
-            >
+            Height="30"
+            Margin="0,15,0,0">
             <TextBox
                 Name="lifeformNameInput"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
-                TextChanged="lifeformNameInputChanged"
                 PreviewKeyDown="lifeformNameInput_PreviewKeyDown"
-                >
-            </TextBox>
+                TextChanged="lifeformNameInputChanged" />
             <Label
                 Name="matchIndicatorLabel"
-                Content="🧬"
-                Visibility="Hidden"
+                HorizontalAlignment="Right"
                 VerticalContentAlignment="Center"
-                HorizontalAlignment="Right">
-            </Label>
+                Content="🧬"
+                Visibility="Hidden" />
         </Grid>
         <Button
-			Name="addLifeformButton"
-			Grid.Row="2"
-			Content="Add"
-			HorizontalAlignment="Center"
-			Margin="0,15,0,0"
-			Width="80"
-			Height="30"
-			Click="OnSelectButtonClick"
-            IsEnabled="False"
-			>
-        </Button>
+            Name="addLifeformButton"
+            Grid.Row="2"
+            Width="80"
+            Height="30"
+            Margin="0,15,0,0"
+            HorizontalAlignment="Center"
+            Click="OnSelectButtonClick"
+            Content="Add"
+            IsEnabled="False" />
     </Grid>
 </Window>

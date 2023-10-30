@@ -1,52 +1,52 @@
-﻿<Window x:Class="Starfield_Interactive_Smart_Slate.SolarSystemSelector"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Style="{StaticResource SofiaSansStyle}"
-        Title="New System" Height="185" Width="320">
-	<Grid>
-		<Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-		</Grid.RowDefinitions>
+﻿<Window
+    x:Class="Starfield_Interactive_Smart_Slate.SolarSystemSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="New System"
+    Width="320"
+    Height="185"
+    Style="{StaticResource SofiaSansStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Label
             Grid.Row="0"
-            Content="Expand (optional), then type to search."
             Margin="0,15,0,0"
             HorizontalContentAlignment="Center"
-            ></Label>
-		<ComboBox
-			Grid.Row="1"
-			Name="solarSystemComboBox"
-			Margin="0,15,0,0"
-			Height="25"
-			Width="200"
-			HorizontalAlignment="Center"
-			SelectionChanged="SolarSystemComboBox_SelectionChanged"
+            Content="Expand (optional), then type to search." />
+        <ComboBox
+            Name="solarSystemComboBox"
+            Grid.Row="1"
+            Width="200"
+            Height="25"
+            Margin="0,15,0,0"
+            HorizontalAlignment="Center"
             PreviewKeyDown="ComboBox_PreviewKeyDown"
-			/>
-		<Button
-			Name="discoverButton"
-			Grid.Row="2"
-			Content="Discover"
-			HorizontalAlignment="Center"
-			Margin="0,15,0,0"
-			Width="80"
-			Height="30"
-			Click="DiscoverButtonClick"
-			>
-			<Button.Style>
-				<Style TargetType="Button">
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding HasItemSelected}" Value="True">
-							<Setter Property="IsEnabled" Value="True"/>
-						</DataTrigger>
-						<DataTrigger Binding="{Binding HasItemSelected}" Value="False">
-							<Setter Property="IsEnabled" Value="False"/>
-						</DataTrigger>
-					</Style.Triggers>
-				</Style>
-			</Button.Style>
-		</Button>
-	</Grid>
+            SelectionChanged="SolarSystemComboBox_SelectionChanged" />
+        <Button
+            Name="discoverButton"
+            Grid.Row="2"
+            Width="80"
+            Height="30"
+            Margin="0,15,0,0"
+            HorizontalAlignment="Center"
+            Click="DiscoverButtonClick"
+            Content="Discover">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HasItemSelected}" Value="True">
+                            <Setter Property="IsEnabled" Value="True" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding HasItemSelected}" Value="False">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
 </Window>
