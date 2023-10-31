@@ -20,9 +20,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label
-            Name="lifeformNameTitle"
-            Grid.Row="0"
+        <Label Name="lifeformNameTitle" Grid.Row="0"
             Margin="0"
             Content="Lifeform Name"
             Style="{StaticResource ContentSubtitleStyle}"
@@ -32,16 +30,14 @@
             </Label.ToolTip>
         </Label>
         <Grid Grid.Row="1">
-            <TextBox
-                Name="lifeformNameTextbox"
+            <TextBox Name="lifeformNameTextbox"
                 Margin="5,10,5,0"
                 Padding="10"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
                 Style="{StaticResource ContentTitleStyle}"
                 TextChanged="lifeformNameTextboxChanged" />
-            <Label
-                Name="matchIndicatorLabel"
+            <Label Name="matchIndicatorLabel"
                 Margin="5,10,5,0"
                 Padding="10"
                 HorizontalAlignment="Right"
@@ -51,36 +47,27 @@
                 Visibility="Hidden" />
         </Grid>
 
-        <Label
-            Grid.Row="2"
+        <Label Grid.Row="2"
             Content="Resource"
             Style="{StaticResource ContentSubtitleStyle}" />
-        <ComboBox
-            Name="lifeformResourceComboBox"
-            Grid.Row="3"
+        <ComboBox Name="lifeformResourceComboBox" Grid.Row="3"
             Margin="5,10,5,0" />
-        <Label
-            Grid.Row="4"
+        <Label Grid.Row="4"
             Content="Notes"
             Style="{StaticResource ContentSubtitleStyle}" />
-        <TextBox
-            Name="lifeformNotesTextbox"
-            Grid.Row="5"
+        <TextBox Name="lifeformNotesTextbox" Grid.Row="5"
             Margin="5,10,5,0"
             Padding="7"
             AcceptsReturn="True"
             FontSize="17" />
-        <Button
-            Name="SaveButton"
-            Grid.Row="6"
+        <Button Name="SaveButton" Grid.Row="6"
             Width="70"
             Height="30"
             Margin="0,10,75,0"
             HorizontalAlignment="Right"
             Click="SaveClicked"
             Content="Save" />
-        <Button
-            Grid.Row="6"
+        <Button Grid.Row="6"
             Width="70"
             Height="30"
             Margin="0,10,0,0"

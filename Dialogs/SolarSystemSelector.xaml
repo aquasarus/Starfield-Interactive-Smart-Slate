@@ -12,23 +12,18 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label
-            Grid.Row="0"
+        <Label Grid.Row="0"
             Margin="0,15,0,0"
             HorizontalContentAlignment="Center"
             Content="Expand (optional), then type to search." />
-        <ComboBox
-            Name="solarSystemComboBox"
-            Grid.Row="1"
+        <ComboBox Name="solarSystemComboBox" Grid.Row="1"
             Width="200"
             Height="25"
             Margin="0,15,0,0"
             HorizontalAlignment="Center"
             PreviewKeyDown="ComboBox_PreviewKeyDown"
             SelectionChanged="SolarSystemComboBox_SelectionChanged" />
-        <Button
-            Name="discoverButton"
-            Grid.Row="2"
+        <Button Name="discoverButton" Grid.Row="2"
             Width="80"
             Height="30"
             Margin="0,15,0,0"

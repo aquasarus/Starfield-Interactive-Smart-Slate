@@ -14,8 +14,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label
-            Grid.Row="0"
+        <Label Grid.Row="0"
             Margin="0,15,0,0"
             HorizontalContentAlignment="Center"
             Content="{Binding LifeformTypeString}"
@@ -25,28 +24,23 @@
                 <ToolTip Content="{Binding LifeformTypeString}" ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear." />
             </Label.ToolTip>
         </Label>
-        <Grid
-            Grid.Row="1"
+        <Grid Grid.Row="1"
             Width="270"
             Height="30"
             Margin="0,15,0,0">
-            <TextBox
-                Name="lifeformNameInput"
+            <TextBox Name="lifeformNameInput"
                 HorizontalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 PreviewKeyDown="lifeformNameInput_PreviewKeyDown"
                 TextChanged="lifeformNameInputChanged" />
-            <Label
-                Name="matchIndicatorLabel"
+            <Label Name="matchIndicatorLabel"
                 HorizontalAlignment="Right"
                 VerticalContentAlignment="Center"
                 Content="🧬"
                 Visibility="Hidden" />
         </Grid>
-        <Button
-            Name="addLifeformButton"
-            Grid.Row="2"
+        <Button Name="addLifeformButton" Grid.Row="2"
             Width="80"
             Height="30"
             Margin="0,15,0,0"
