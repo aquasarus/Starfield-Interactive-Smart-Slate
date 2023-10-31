@@ -36,6 +36,9 @@ namespace Starfield_Interactive_Smart_Slate
         private Flora selectedFlora;
         private Flora displayedFlora;
 
+        private CelestialBody selectedOrganicResultCelestialBody;
+        private CelestialBody displayedOrganicResultCelestialBody;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -199,7 +202,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             e.Handled = true;
             MouseWheelEventArgs mouseArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
-            mouseArgs.RoutedEvent = UIElement.MouseWheelEvent;
+            mouseArgs.RoutedEvent = MouseWheelEvent;
             mouseArgs.Source = sender;
             var parent = VisualTreeHelper.GetParent(sender as UIElement) as UIElement;
             parent.RaiseEvent(mouseArgs);
@@ -219,7 +222,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        private void CelestialBodyListView_Select(object sender, MouseEventArgs e)
+        private void CelestialBodyListItem_Select(object sender, MouseEventArgs e)
         {
             ListViewItem clickedItem = sender as ListViewItem;
             CelestialBody celestialBody = clickedItem.DataContext as CelestialBody;
@@ -607,9 +610,162 @@ namespace Starfield_Interactive_Smart_Slate
             FilterResources(inorganicResourceFilter.Text, inorganicResourceListView);
         }
 
+        private void InorganicResourceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedResource = (Resource)inorganicResourceListView.SelectedItem;
+            inorganicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesForResource(selectedResource);
+        }
+
         private void OrganicResourceFilterChanged(object sender, TextChangedEventArgs e)
         {
             FilterResources(organicResourceFilter.Text, organicResourceListView);
+        }
+        private void OrganicResourceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            faunaResultsListView.ItemsSource = null;
+            floraResultsListView.ItemsSource = null;
+            selectedOrganicResultCelestialBody = null;
+            displayedOrganicResultCelestialBody = null;
+
+            var selectedResource = (Resource)organicResourceListView.SelectedItem;
+            organicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesAndLifeformsForResource(selectedResource);
+        }
+
+        private IEnumerable<SolarSystem> SearchCelestialBodiesForResource(Resource resource)
+        {
+            return discoveredSolarSystems.Select(
+                solarSystem =>
+                {
+                    var solarSystemCopy = new SolarSystem
+                    {
+                        SystemID = solarSystem.SystemID,
+                        SystemName = solarSystem.SystemName,
+                        SystemLevel = solarSystem.SystemLevel,
+                        Discovered = solarSystem.Discovered,
+                        // if celestial body (or any of its moons) contains the resource, include it in the list
+                        CelestialBodies = solarSystem.CelestialBodies.Select(
+                            celestialBody =>
+                            {
+                                var surfaceHasResource = celestialBody.SurfaceContainsResource(resource);
+                                var moonsHaveResource = celestialBody.Moons?.Any(moon => moon.SurfaceContainsResource(resource)) ?? false;
+
+                                if (surfaceHasResource || moonsHaveResource)
+                                {
+                                    if (!surfaceHasResource)
+                                    {
+                                        // gray out the parent planet if its surface doesn't actually contain the resource
+                                        celestialBody.GrayOut = true;
+                                    }
+
+                                    celestialBody.Show = true;
+                                }
+                                else
+                                {
+                                    celestialBody.Show = false;
+                                }
+
+                                return celestialBody;
+                            }
+                        )
+                        .Where(celestialBody => celestialBody.Show)
+                        .ToList()
+                    };
+                    return solarSystemCopy;
+                }
+            ).Where(solarSystem => solarSystem.CelestialBodies.Any());
+        }
+
+        private IEnumerable<SolarSystem> SearchCelestialBodiesAndLifeformsForResource(Resource resource)
+        {
+            return discoveredSolarSystems.Select(
+                solarSystem =>
+                {
+                    var solarSystemCopy = solarSystem.DeepCopy();
+
+                    // chaining .Select here ended up with new instances of moons for some reason
+                    // so I have to loop it manually
+                    foreach (var celestialBody in solarSystemCopy.CelestialBodies)
+                    {
+                        var lifeformResult = celestialBody.GetLifeformsWithResource(resource);
+                        var found = lifeformResult.Item1;
+                        var faunaList = lifeformResult.Item2;
+                        var floraList = lifeformResult.Item3;
+
+                        if (found)
+                        {
+                            celestialBody.Faunas = faunaList;
+                            celestialBody.Floras = floraList;
+                            celestialBody.Show = true;
+                        }
+                        else
+                        {
+                            celestialBody.Show = false;
+                        }
+                    }
+
+                    foreach (var celestialBody in solarSystemCopy.CelestialBodies)
+                    {
+                        if (!celestialBody.Show)
+                        {
+                            if (celestialBody.Moons?.Any(moon => moon.Show) ?? false)
+                            {
+                                // gray out the parent planet if its surface doesn't actually contain the resource
+                                celestialBody.Show = true;
+                                celestialBody.GrayOut = true;
+                            }
+                        }
+                    }
+
+                    solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Where(
+                        celestialBody => celestialBody.Show
+                    ).ToList();
+
+                    return solarSystemCopy;
+                }
+            ).Where(solarSystem => solarSystem.CelestialBodies.Any());
+        }
+
+        private void OrganicResultsListItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is ListViewItem listViewItem && listViewItem.DataContext is CelestialBody)
+            {
+                var celestialBody = listViewItem.DataContext as CelestialBody;
+                if (selectedOrganicResultCelestialBody == null && displayedOrganicResultCelestialBody != celestialBody)
+                {
+                    DisplayOrganicResultCelestialBody(celestialBody);
+                }
+            }
+        }
+
+        private void DisplayOrganicResultCelestialBody(CelestialBody celestialBody)
+        {
+            faunaResultsListView.ItemsSource = celestialBody.Faunas;
+            floraResultsListView.ItemsSource = celestialBody.Floras;
+        }
+
+        private void OrganicResultsListItem_Select(object sender, MouseEventArgs e)
+        {
+            ListViewItem clickedItem = sender as ListViewItem;
+            CelestialBody celestialBody = clickedItem.DataContext as CelestialBody;
+            ListView parent = FindParentListView(clickedItem);
+
+            if (celestialBody.Equals(selectedOrganicResultCelestialBody))
+            {
+                selectedOrganicResultCelestialBody = null;
+                parent.UnselectAll();
+                clickedItem.IsSelected = false;
+            }
+            else
+            {
+                selectedOrganicResultCelestialBody = celestialBody;
+                parent.SelectedItem = celestialBody;
+                clickedItem.IsSelected = true;
+                clickedItem.Focus();
+                ClearInnerListViews(organicSolarSystemResultsListView, parent);
+                DisplayOrganicResultCelestialBody(celestialBody);
+            }
+
+            e.Handled = true;
         }
 
         private void FilterResources(string filterText, ListView listView)

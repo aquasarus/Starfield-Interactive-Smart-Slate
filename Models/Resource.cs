@@ -23,6 +23,11 @@
             this.resourceRarity = resourceRarity;
         }
 
+        public Resource DeepCopy()
+        {
+            return new Resource(resourceID, resourceType, resourceName, resourceShortName, resourceRarity);
+        }
+
         public ResourceType GetType()
         {
             return resourceType;

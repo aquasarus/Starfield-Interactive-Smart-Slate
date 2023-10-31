@@ -8,7 +8,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public string FloraName { get; set; }
         public string FloraNotes { get; set; }
         public List<Resource> PrimaryDrops { get; set; }
-        public List<Resource> SecondaryDrop { get; set; }
+        public List<Resource> SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
         public bool IsSurveyed
         {
             get
@@ -51,6 +51,19 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 }
             }
         }
+
+        public Flora DeepCopy()
+        {
+            return new Flora
+            {
+                FloraID = FloraID,
+                FloraName = FloraName,
+                FloraNotes = FloraNotes,
+                PrimaryDrops = PrimaryDrops?.ConvertAll(drop => drop.DeepCopy()),
+                SecondaryDrops = SecondaryDrops?.ConvertAll(drop => drop.DeepCopy())
+            };
+        }
+
         public void AddPrimaryDrop(Resource primaryDrop)
         {
             if (PrimaryDrops == null)
@@ -62,11 +75,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public void AddSecondaryDrop(Resource secondaryDrop)
         {
-            if (SecondaryDrop == null)
+            if (SecondaryDrops == null)
             {
-                SecondaryDrop = new List<Resource>();
+                SecondaryDrops = new List<Resource>();
             }
-            SecondaryDrop.Add(secondaryDrop);
+            SecondaryDrops.Add(secondaryDrop);
         }
     }
 }

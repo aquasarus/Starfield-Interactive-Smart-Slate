@@ -22,6 +22,12 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public List<Resource>? Resources { get; set; }
         public ObservableCollection<Fauna>? Faunas { get; set; }
         public ObservableCollection<Flora>? Floras { get; set; }
+
+        // helper attributes to display resource search
+        public List<CelestialBody>? Moons;
+        public bool Show {  get; set; }
+        public bool GrayOut { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string FormattedBodyName
@@ -69,8 +75,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 $"Temperature: {Temperature}\n" +
                 $"Atmosphere: {Atmosphere}\n" +
                 $"Magnetosphere: {Magnetosphere}\n" +
-                $"Fauna: {getFaunaCountString()}\n" +
-                $"Flora: {getFloraCountString()}\n" +
+                $"Fauna: {GetFaunaCountString()}\n" +
+                $"Flora: {GetFloraCountString()}\n" +
                 $"Water: {Water}";
 
             return overviewString;
@@ -86,6 +92,48 @@ namespace Starfield_Interactive_Smart_Slate.Models
             {
                 return false;
             }
+        }
+
+        public CelestialBody DeepCopy()
+        {
+            ObservableCollection<Fauna> faunaCollection = null;
+            if (Faunas != null)
+            {
+                faunaCollection = new ObservableCollection<Fauna>(
+                    Faunas.Select(fauna => fauna.DeepCopy())
+                );
+            }
+
+            ObservableCollection<Flora> floraCollection = null;
+            if (Floras != null)
+            {
+                floraCollection = new ObservableCollection<Flora>(
+                    Floras.Select(flora => flora.DeepCopy())
+                );
+            }
+
+            return new CelestialBody
+            {
+                BodyID = BodyID,
+                BodyName = BodyName,
+                SystemName = SystemName,
+                IsMoon = IsMoon,
+                BodyType = BodyType,
+                Gravity = Gravity,
+                Temperature = Temperature,
+                Atmosphere = Atmosphere,
+                Magnetosphere = Magnetosphere,
+                Water = Water,
+                TotalFauna = TotalFauna,
+                TotalFlora = TotalFlora,
+                Resources = Resources?.ConvertAll(resource => resource.DeepCopy()),
+                Faunas = faunaCollection,
+                Floras = floraCollection,
+                // Moons will be handled by the SolarSystem for now
+                //Moons = Moons?.ConvertAll(moon => moon.DeepCopy()),
+                Show = Show,
+                GrayOut = GrayOut
+            };
         }
 
         public void AddFauna(Fauna fauna)
@@ -110,7 +158,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public void EditFauna(Fauna editedFauna)
         {
-            foreach(var fauna in Faunas)
+            foreach (var fauna in Faunas)
             {
                 if (fauna.FaunaID == editedFauna.FaunaID)
                 {
@@ -134,7 +182,76 @@ namespace Starfield_Interactive_Smart_Slate.Models
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 
-        private string getFaunaCountString()
+        public void AddMoon(CelestialBody celestialBody)
+        {
+            if (Moons == null)
+            {
+                Moons = new List<CelestialBody>();
+            }
+
+            Moons.Add(celestialBody);
+        }
+
+        public bool SurfaceContainsResource(Resource resource)
+        {
+            return Resources?.Contains(resource) ?? false;
+        }
+
+        public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) GetLifeformsWithResource(Resource resource)
+        {
+            if (TotalFauna == 0 && TotalFlora == 0)
+            {
+                return (false, null, null); // short circuit for celestial bodies with no life
+            }
+
+            var found = false;
+
+            var faunaList = Faunas?.Where(
+                fauna =>
+                {
+                    if (fauna.PrimaryDrops?.Any(drop => drop.Equals(resource)) ?? false)
+                    {
+                        found = true;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            ).ToList();
+
+            ObservableCollection<Fauna> faunaCollection = null;
+            if (faunaList != null)
+            {
+                faunaCollection = new ObservableCollection<Fauna>(faunaList);
+            }
+
+            var floraList = Floras?.Where(
+                flora =>
+                {
+                    if (flora.PrimaryDrops?.Any(drop => drop.Equals(resource)) ?? false)
+                    {
+                        found = true;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            ).ToList();
+
+            ObservableCollection<Flora> floraCollection = null;
+            if (floraList != null)
+            {
+                floraCollection = new ObservableCollection<Flora>(floraList);
+            }
+
+            return (found, faunaCollection, floraCollection);
+        }
+
+        private string GetFaunaCountString()
         {
             if ((Faunas?.Count ?? 0 + TotalFauna) == 0)
             {
@@ -145,7 +262,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 return $"{Faunas?.Count ?? 0}/{TotalFauna}";
             }
         }
-        private string getFloraCountString()
+
+        private string GetFloraCountString()
         {
             if ((Floras?.Count ?? 0 + TotalFlora) == 0)
             {

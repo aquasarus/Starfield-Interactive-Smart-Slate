@@ -7,8 +7,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public int FaunaID { get; set; }
         public string FaunaName { get; set; }
         public string FaunaNotes { get; set; }
-        public List<Resource> PrimaryDrops { get; set; }
-        public List<Resource> SecondaryDrop { get; set; }
+        public List<Resource>? PrimaryDrops { get; set; }
+        public List<Resource>? SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
         public bool IsSurveyed
         {
             get
@@ -52,6 +52,18 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
+        public Fauna DeepCopy()
+        {
+            return new Fauna
+            {
+                FaunaID = FaunaID,
+                FaunaName = FaunaName,
+                FaunaNotes = FaunaNotes,
+                PrimaryDrops = PrimaryDrops?.ConvertAll(drop => drop.DeepCopy()),
+                SecondaryDrops = SecondaryDrops?.ConvertAll(drop => drop.DeepCopy())
+            };
+        }
+
         public void AddPrimaryDrop(Resource primaryDrop)
         {
             if (PrimaryDrops == null)
@@ -63,11 +75,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public void AddSecondaryDrop(Resource secondaryDrop)
         {
-            if (SecondaryDrop == null)
+            if (SecondaryDrops == null)
             {
-                SecondaryDrop = new List<Resource>();
+                SecondaryDrops = new List<Resource>();
             }
-            SecondaryDrop.Add(secondaryDrop);
+            SecondaryDrops.Add(secondaryDrop);
         }
     }
 }

@@ -17,5 +17,31 @@ namespace Starfield_Interactive_Smart_Slate.Models
         {
             CelestialBodies = CelestialBodiesBuilder.Values.OfType<CelestialBody>().ToList();
         }
+
+        public SolarSystem DeepCopy()
+        {
+            var solarSystemCopy = new SolarSystem
+            {
+                SystemID = SystemID,
+                SystemName = SystemName,
+                SystemLevel = SystemLevel,
+                Discovered = Discovered,
+                CelestialBodies = CelestialBodies.ConvertAll(celestialBody => celestialBody.DeepCopy())
+            };
+
+            CelestialBody parentPlanet = null;
+            foreach (var celestialBody in solarSystemCopy.CelestialBodies)
+            {
+                if (!celestialBody.IsMoon)
+                {
+                    parentPlanet = celestialBody;
+                } else
+                {
+                    parentPlanet.AddMoon(celestialBody);
+                }
+            }
+
+            return solarSystemCopy;
+        }
     }
 }

@@ -333,6 +333,7 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
+                        CelestialBody currentPlanet = null;
                         while (reader.Read())
                         {
                             int systemID = reader.GetInt32(0);
@@ -393,6 +394,14 @@ namespace Starfield_Interactive_Smart_Slate
                                 Faunas = faunas,
                                 Floras = floras
                             };
+
+                            if (!celestialBody.IsMoon)
+                            {
+                                currentPlanet = celestialBody;
+                            } else
+                            {
+                                currentPlanet.AddMoon(celestialBody);
+                            }
 
                             system.CelestialBodiesBuilder.Add(bodyID, celestialBody);
                         }
