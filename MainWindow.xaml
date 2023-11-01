@@ -8,6 +8,7 @@
     Width="1400"
     Height="1000"
     Style="{StaticResource SofiaSansStyle}"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
     <Grid>
