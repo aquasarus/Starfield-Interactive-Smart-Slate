@@ -35,7 +35,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        private void DiscoverButtonClick(object sender, RoutedEventArgs e)
+        private void DiscoverButtonClicked(object sender, RoutedEventArgs e)
         {
             // Set the selected SolarSystem and close the dialog
             this.DialogResult = true;

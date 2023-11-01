@@ -28,7 +28,7 @@
             Height="30"
             Margin="0,15,0,0"
             HorizontalAlignment="Center"
-            Click="DiscoverButtonClick"
+            Click="DiscoverButtonClicked"
             Content="Discover">
             <Button.Style>
                 <Style TargetType="Button">

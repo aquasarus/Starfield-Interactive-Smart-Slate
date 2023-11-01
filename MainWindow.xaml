@@ -850,6 +850,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0"
                         HorizontalContentAlignment="Center"
@@ -877,6 +878,11 @@
                             NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues"
                             RequestNavigate="NavigateToHyperlink">
                             Submit Bug Reports and Suggestions
+                        </Hyperlink>
+                    </Label>
+                    <Label Grid.Row="5" HorizontalContentAlignment="Center">
+                        <Hyperlink Click="DataFolderLinkClick" FontSize="16">
+                            Your Data Is Saved Here (DataSlate.db)
                         </Hyperlink>
                     </Label>
                 </Grid>

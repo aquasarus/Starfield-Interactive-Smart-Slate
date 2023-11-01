@@ -22,7 +22,7 @@ namespace Starfield_Interactive_Smart_Slate
             DataContext = this;
         }
 
-        private void OnSelectButtonClick(object sender, RoutedEventArgs e)
+        private void AddButtonClicked(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
             Close();

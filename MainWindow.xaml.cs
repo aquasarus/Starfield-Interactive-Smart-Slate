@@ -793,5 +793,9 @@ namespace Starfield_Interactive_Smart_Slate
             });
             e.Handled = true;
         }
+        private void DataFolderLinkClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", DatabaseInitializer.UserDatabaseFolder());
+        }
     }
 }

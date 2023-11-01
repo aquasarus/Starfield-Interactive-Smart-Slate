@@ -45,7 +45,7 @@
             Height="30"
             Margin="0,15,0,0"
             HorizontalAlignment="Center"
-            Click="OnSelectButtonClick"
+            Click="AddButtonClicked"
             Content="Add"
             IsEnabled="False" />
     </Grid>
