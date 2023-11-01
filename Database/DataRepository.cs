@@ -566,6 +566,19 @@ namespace Starfield_Interactive_Smart_Slate
 
                         cmd.ExecuteNonQuery();
                     }
+                } else
+                {
+                    if (originalFauna.IsSurveyed)
+                    {
+                        using (SQLiteCommand cmd = new SQLiteCommand(@"
+                            DELETE FROM
+                                FaunaResources
+                            WHERE FaunaID = @FaunaID", conn))
+                        {
+                            cmd.Parameters.AddWithValue("@FaunaID", newFauna.FaunaID);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
         }
@@ -613,6 +626,20 @@ namespace Starfield_Interactive_Smart_Slate
                         cmd.Parameters.AddWithValue("@ResourceID", newFlora.PrimaryDrops[0].ResourceID);
 
                         cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    if (originalFlora.IsSurveyed)
+                    {
+                        using (SQLiteCommand cmd = new SQLiteCommand(@"
+                            DELETE FROM
+                                FloraResources
+                            WHERE FloraID = @FloraID", conn))
+                        {
+                            cmd.Parameters.AddWithValue("@FloraID", newFlora.FloraID);
+                            cmd.ExecuteNonQuery();
+                        }
                     }
                 }
             }
