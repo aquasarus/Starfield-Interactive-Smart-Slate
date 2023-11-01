@@ -7,22 +7,26 @@ namespace Starfield_Interactive_Smart_Slate
     /// </summary>
     public partial class App : Application
     {
-        private static int TargetDatabaseVersion = 2;
-
         protected override void OnStartup(StartupEventArgs e)
         {
             DatabaseInitializer.InitializeDatabaseFile();
             var currentDatabaseVersion = DatabaseInitializer.CheckVersion();
-            while (currentDatabaseVersion < TargetDatabaseVersion)
+            while (currentDatabaseVersion < DatabaseInitializer.TargetDatabaseVersion)
             {
                 if (currentDatabaseVersion == 1)
                 {
                     DatabaseInitializer.MigrateV1ToV2();
                     currentDatabaseVersion++;
                 }
+
+                if (currentDatabaseVersion == 2)
+                {
+                    DatabaseInitializer.MigrateV2ToV3();
+                    currentDatabaseVersion++;
+                }
             }
 
-            DatabaseInitializer.SetVersion(TargetDatabaseVersion);
+            DatabaseInitializer.SetVersionToLatest();
 
             base.OnStartup(e);
         }

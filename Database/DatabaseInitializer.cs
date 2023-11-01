@@ -8,6 +8,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
+        public static int TargetDatabaseVersion = 3;
 
         public static string UserDatabaseFolder()
         {
@@ -51,7 +52,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public static void SetVersion(int versionNumber)
+        public static void SetVersionToLatest()
         {
             using (SQLiteConnection conn = DataRepository.CreateConnection())
             {
@@ -62,7 +63,7 @@ namespace Starfield_Interactive_Smart_Slate
                     SET
                         VersionNumber = @VersionNumber", conn))
                 {
-                    cmd.Parameters.AddWithValue("@VersionNumber", versionNumber);
+                    cmd.Parameters.AddWithValue("@VersionNumber", TargetDatabaseVersion);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -99,6 +100,21 @@ namespace Starfield_Interactive_Smart_Slate
                         TotalFauna = 3,
                         TotalFlora = 3
                     WHERE BodyName = 'Newton III'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void MigrateV2ToV3()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Crimson Gibbet'
+                    WHERE LifeformName = 'Chrimson Gibbet'
                 ", conn))
                 {
                     cmd.ExecuteNonQuery();
