@@ -696,6 +696,7 @@ namespace Starfield_Interactive_Smart_Slate
                             celestialBody.Faunas = faunaList;
                             celestialBody.Floras = floraList;
                             celestialBody.Show = true;
+                            celestialBody.GrayOut = false;
                         }
                         else
                         {
