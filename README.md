@@ -1,11 +1,12 @@
 # Welcome to Starfield ISS (Interactive Smart Slate)
+*A vastly higher tech Data Slate than Starfield's in-game version.*
 
 ## Overview
 Starfield has such great potential for exploration content, but Survey Data in its current state serves as little more than a paper punch card. This app will help you gather your very own survey data in a viewable and searchable manner. The primary directive of this app (and all subsequent updates) is to help make exploration in Starfield more fun and rewarding.
 
 ### Limitations
 - *Read no further if the following limitations are a dealbreaker for you.*
-- **This is not a mod.** This standalone app is not connected to your Starfield game instance in any way. All data entry must be made manually, though efforts will be made to make it as easy as possible. 
+- **This is not a mod.** This standalone app is not connected to your Starfield game instance in any way. All data entry must be done manually, though efforts will be made to make it as easy as possible. 
 - **Windows only.** This is my first time building a Windows app and I wanted to minimize overhead of learning too many things at once. So a cross-platform mobile app is off the table for now.
 
 ### Features
