@@ -441,6 +441,8 @@ namespace Starfield_Interactive_Smart_Slate
                 DisplayCelestialBodyDetails(displayedCelestialBody);
                 DisplayFaunaDetails(insertedFauna);
                 SetSelectedFaunaWithUI(insertedFauna);
+
+                editLifeformButton.Focus();
             }
         }
 
@@ -545,6 +547,8 @@ namespace Starfield_Interactive_Smart_Slate
                 DisplayCelestialBodyDetails(displayedCelestialBody);
                 DisplayFloraDetails(insertedFlora);
                 SetSelectedFloraWithUI(insertedFlora);
+
+                editLifeformButton.Focus();
             }
         }
 
