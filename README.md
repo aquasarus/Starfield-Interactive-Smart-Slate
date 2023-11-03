@@ -15,7 +15,7 @@ Starfield has such great potential for exploration content, but Survey Data in i
 
 #### Discover solar systems
 - See surface overview of planets and moons, just like in-game.
-- Track planetary lifeform survey progress based on the fauna and flora you've catalogged.  
+- Track planetary lifeform survey progress based on the fauna and flora you've cataloged.  
 
 ![Gif demo-ing discovering solar systems](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/discover-system.gif)
 
