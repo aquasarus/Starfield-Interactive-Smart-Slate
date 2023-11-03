@@ -35,8 +35,29 @@
                 Padding="10"
                 HorizontalAlignment="Stretch"
                 VerticalContentAlignment="Center"
+                PreviewKeyDown="lifeformNameTextbox_PreviewKeyDown"
                 Style="{StaticResource ContentTitleStyle}"
-                TextChanged="lifeformNameTextboxChanged" />
+                TextChanged="lifeformNameTextboxChanged">
+                <TextBox.Background>
+                    <VisualBrush
+                        AlignmentX="Left"
+                        AlignmentY="Center"
+                        Stretch="None">
+                        <VisualBrush.Visual>
+                            <Label Name="lifeformNameHint"
+                                Padding="12,0,0,0"
+                                HorizontalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Content="Hint"
+                                FontFamily="/Fonts/#Sofia Sans"
+                                FontSize="25"
+                                FontWeight="Black"
+                                Foreground="Gray"
+                                Visibility="Hidden" />
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Background>
+            </TextBox>
             <Label Name="matchIndicatorLabel"
                 Margin="5,10,5,0"
                 Padding="10"

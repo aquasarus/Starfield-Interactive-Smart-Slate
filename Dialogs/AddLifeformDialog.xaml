@@ -21,7 +21,7 @@
             ContentStringFormat="{}🛈 Enter {0} name:"
             ToolTipService.InitialShowDelay="200">
             <Label.ToolTip>
-                <ToolTip Content="{Binding LifeformTypeString}" ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear." />
+                <ToolTip Content="{Binding LifeformTypeString}" ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear. Press tab to auto-complete." />
             </Label.ToolTip>
         </Label>
         <Grid Grid.Row="1"
@@ -29,11 +29,30 @@
             Height="30"
             Margin="0,15,0,0">
             <TextBox Name="lifeformNameInput"
+                Padding="3.7,0,0,0"
                 HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Center"
+                HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center"
                 PreviewKeyDown="lifeformNameInput_PreviewKeyDown"
-                TextChanged="lifeformNameInputChanged" />
+                TextChanged="lifeformNameInputChanged">
+                <TextBox.Background>
+                    <VisualBrush
+                        AlignmentX="Left"
+                        AlignmentY="Center"
+                        Stretch="None">
+                        <VisualBrush.Visual>
+                            <Label Name="lifeformNameInputHint"
+                                HorizontalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Content="Hint"
+                                FontFamily="/Fonts/#Sofia Sans"
+                                FontSize="15"
+                                Foreground="Gray"
+                                Visibility="Hidden" />
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Background>
+            </TextBox>
             <Label Name="matchIndicatorLabel"
                 HorizontalAlignment="Right"
                 VerticalContentAlignment="Center"

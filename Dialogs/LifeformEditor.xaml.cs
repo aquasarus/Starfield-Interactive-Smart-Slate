@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Starfield_Interactive_Smart_Slate
 {
@@ -13,6 +14,7 @@ namespace Starfield_Interactive_Smart_Slate
         private int faunaID;
         private int floraID;
         private Dictionary<string, string> lifeformNames;
+        private string? matchedNameString;
 
         public LifeformEditor(Fauna fauna, List<Resource> resources, Dictionary<string, string> lifeformNames)
         {
@@ -139,21 +141,45 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void UpdateMatchIndicatorVisibility()
         {
-            if (matchIndicatorLabel == null) { return; }
-            if (lifeformNames.ContainsKey(lifeformNameTextbox.Text.ToLower()))
+            if (matchIndicatorLabel == null) { return; } // wait for UI to load
+
+            var matchedNames = lifeformNames.Where(pair => pair.Key.StartsWith(lifeformNameTextbox.Text.ToLower()));
+
+            // present suggestion if exactly 1 lifeform name is matched
+            if (matchedNames.Count() == 1)
             {
-                // restore capitalized version if applicable
-                if (lifeformNames[lifeformNameTextbox.Text.ToLower()] != lifeformNameTextbox.Text)
+                var matchedName = matchedNames.First();
+                matchedNameString = matchedName.Value;
+
+                // restore capitalized version
+                if (!matchedName.Value.StartsWith(lifeformNameTextbox.Text))
                 {
-                    lifeformNameTextbox.Text = lifeformNames[lifeformNameTextbox.Text.ToLower()];
+                    lifeformNameTextbox.Text = matchedName.Value.Substring(0, lifeformNameTextbox.Text.Length);
                     lifeformNameTextbox.SelectionStart = lifeformNameTextbox.Text.Length;
                 }
 
                 matchIndicatorLabel.Visibility = Visibility.Visible;
+                lifeformNameHint.Content = matchedName.Value;
+                lifeformNameHint.Visibility = Visibility.Visible;
             }
             else
             {
                 matchIndicatorLabel.Visibility = Visibility.Hidden;
+                lifeformNameHint.Visibility = Visibility.Hidden;
+                matchedNameString = null;
+            }
+        }
+
+        private void lifeformNameTextbox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            {
+                if (matchedNameString != null && matchedNameString != lifeformNameTextbox.Text)
+                {
+                    lifeformNameTextbox.Text = matchedNameString;
+                    lifeformNameTextbox.SelectionStart = lifeformNameTextbox.Text.Length;
+                    e.Handled = true;
+                }
             }
         }
     }
