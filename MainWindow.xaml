@@ -862,7 +862,7 @@
                         Content="Starfield Interactive Smart Slate" />
                     <Label Name="VersionNumberLabel" Grid.Row="2"
                         HorizontalContentAlignment="Center"
-                        Content="Version 1.0.0"
+                        Content="Version x.x.x"
                         FontSize="22"
                         Style="{StaticResource ContentTitleStyle}" />
                     <Label Grid.Row="3" HorizontalContentAlignment="Center">
