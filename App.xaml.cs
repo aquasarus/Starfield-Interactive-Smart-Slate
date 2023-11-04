@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 
 namespace Starfield_Interactive_Smart_Slate
@@ -51,8 +52,11 @@ namespace Starfield_Interactive_Smart_Slate
                 Directory.CreateDirectory(logFileDirectory);
             }
 
+            Version version = Assembly.GetEntryAssembly().GetName().Version;
+            string appVersionString = $"v{version.Major}.{version.Minor}.{version.Build}";
+
             string logFilePath = Path.Combine(logFileDirectory, $"error_{DateTime.Now:yyyy_MM_dd_HHmmss}.log");
-            string errorMessage = $"[{DateTime.Now}] Exception: {ex.Message}\nStack Trace: {ex.StackTrace}\n\n";
+            string errorMessage = $"[{DateTime.Now}] [{appVersionString}] Exception: {ex.Message}\nStack Trace: {ex.StackTrace}\n\n";
             File.AppendAllText(logFilePath, errorMessage);
 
             MessageBox.Show($"An unexpected error occured!\n\n" +
