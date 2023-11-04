@@ -30,6 +30,12 @@ namespace Starfield_Interactive_Smart_Slate
                     DatabaseInitializer.MigrateV2ToV3();
                     currentDatabaseVersion++;
                 }
+
+                if (currentDatabaseVersion == 3)
+                {
+                    DatabaseInitializer.MigrateV3ToV4();
+                    currentDatabaseVersion++;
+                }
             }
 
             DatabaseInitializer.SetVersionToLatest();
