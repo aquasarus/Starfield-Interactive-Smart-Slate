@@ -43,6 +43,11 @@ Starfield has such great potential for exploration content, but Survey Data in i
     - Some prefilled default data will inevitably contain errors. They will be fixed via backwards-compatible app updates.
     - You may, of course, edit the DB file directly. I only recommend this if you know how SQLite works and how it can affect app compatibility. You could permanently break your app state by doing this.
 
+## Regarding App Updates
+- Updates are manual at the moment. The app will not connect to the internet to check or install anything.
+- To install an update, simply download the latest version.
+- Since your survey data is stored in a user-specific folder (see above), the new version will not wipe your data.
+
 ## Upcoming Features
 - **Storing screenshots/photos for your fauna/flora.**
 - **Cataloging planet/moon traits.** I need to work on obtaining a comprehensive list of traits first.
