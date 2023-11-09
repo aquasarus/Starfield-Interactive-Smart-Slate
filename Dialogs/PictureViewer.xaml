@@ -1,0 +1,19 @@
+﻿<Window Name="pictureViewerDialog"
+    x:Class="Starfield_Interactive_Smart_Slate.Dialogs.PictureViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Picture"
+    Width="1387"
+    Height="950"
+    Background="Black"
+    Closing="Window_Closing"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Image
+        Margin="10,10,10,10"
+        PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"
+        Source="{Binding Path=PictureBitmap}"
+        Stretch="Uniform" />
+</Window>

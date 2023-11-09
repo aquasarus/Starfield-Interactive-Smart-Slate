@@ -1,4 +1,5 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -190,18 +191,25 @@ namespace Starfield_Interactive_Smart_Slate
 
                 query = @"
                     SELECT
-                        FaunaID,
-                        FaunaName,
-                        ParentBodyID,
-                        FaunaNotes
+                        f.FaunaID,
+                        f.FaunaName,
+                        f.ParentBodyID,
+                        f.FaunaNotes,
+                        fp.FaunaPicturePath,
+                        fp.FaunaPictureID
                     FROM
-                        Faunas
+                        Faunas f
+                    LEFT JOIN
+                        FaunaPictures fp ON fp.FaunaID = f.FaunaID
+                    ORDER BY
+                        f.FaunaID, fp.FaunaPictureID
                 ";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
+                        Fauna currentFauna = null;
                         while (reader.Read())
                         {
                             int faunaID = reader.GetInt32(0);
@@ -209,35 +217,47 @@ namespace Starfield_Interactive_Smart_Slate
                             int parentBodyID = reader.GetInt32(2);
                             string faunaNotes = reader.IsDBNull(3) ? null : reader.GetString(3);
 
+                            string faunaPicturePath = reader.IsDBNull(4) ? null : reader.GetString(4);
+                            int faunaPictureID = reader.IsDBNull(5) ? -1 : reader.GetInt32(5);
+
                             if (!celestialBodyFaunasMap.ContainsKey(parentBodyID))
                             {
                                 celestialBodyFaunasMap[parentBodyID] = new ObservableCollection<Fauna>();
                             }
 
-                            var fauna = new Fauna
+                            if (currentFauna == null || currentFauna.FaunaID != faunaID)
                             {
-                                FaunaID = faunaID,
-                                FaunaName = faunaName,
-                                FaunaNotes = faunaNotes
-                            };
-
-                            if (faunaResourcesMap.ContainsKey(faunaID))
-                            {
-                                var faunaResources = faunaResourcesMap[faunaID];
-                                foreach (var faunaResource in faunaResources)
+                                var fauna = new Fauna
                                 {
-                                    if (faunaResource.DropRate == DropRate.Primary)
+                                    FaunaID = faunaID,
+                                    FaunaName = faunaName,
+                                    FaunaNotes = faunaNotes
+                                };
+
+                                if (faunaResourcesMap.ContainsKey(faunaID))
+                                {
+                                    var faunaResources = faunaResourcesMap[faunaID];
+                                    foreach (var faunaResource in faunaResources)
                                     {
-                                        fauna.AddPrimaryDrop(faunaResource.Drop);
-                                    }
-                                    else
-                                    {
-                                        fauna.AddSecondaryDrop(faunaResource.Drop);
+                                        if (faunaResource.DropRate == DropRate.Primary)
+                                        {
+                                            fauna.AddPrimaryDrop(faunaResource.Drop);
+                                        }
+                                        else
+                                        {
+                                            fauna.AddSecondaryDrop(faunaResource.Drop);
+                                        }
                                     }
                                 }
+
+                                celestialBodyFaunasMap[parentBodyID].Add(fauna);
+                                currentFauna = fauna;
                             }
 
-                            celestialBodyFaunasMap[parentBodyID].Add(fauna);
+                            if (faunaPicturePath != null)
+                            {
+                                currentFauna.AddPicture(new Picture(faunaPictureID, new Uri(faunaPicturePath)));
+                            }
                         }
                     }
                 }
@@ -247,54 +267,72 @@ namespace Starfield_Interactive_Smart_Slate
 
                 query = @"
                     SELECT
-                        FloraID,
-                        FloraName,
-                        ParentBodyID,
-                        FloraNotes
+                        f.FloraID,
+                        f.FloraName,
+                        f.ParentBodyID,
+                        f.FloraNotes,
+                        fp.FloraPicturePath,
+                        fp.FloraPictureID
                     FROM
-                        Floras
+                        Floras f
+                    LEFT JOIN
+                        FloraPictures fp ON fp.FloraID = f.FloraID
+                    ORDER BY
+                        f.FloraID, fp.FloraPictureID
                 ";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
+                        Flora currentFlora = null;
                         while (reader.Read())
                         {
                             int floraID = reader.GetInt32(0);
                             string floraName = reader.GetString(1);
                             int parentBodyID = reader.GetInt32(2);
                             string floraNotes = reader.IsDBNull(3) ? null : reader.GetString(3);
+                            string floraPicturePath = reader.IsDBNull(4) ? null : reader.GetString(4);
+                            int floraPictureID = reader.IsDBNull(5) ? -1 : reader.GetInt32(5);
 
                             if (!celestialBodyFlorasMap.ContainsKey(parentBodyID))
                             {
                                 celestialBodyFlorasMap[parentBodyID] = new ObservableCollection<Flora>();
                             }
 
-                            var flora = new Flora
+                            if (currentFlora == null || currentFlora.FloraID != floraID)
                             {
-                                FloraID = floraID,
-                                FloraName = floraName,
-                                FloraNotes = floraNotes
-                            };
-
-                            if (floraResourcesMap.ContainsKey(floraID))
-                            {
-                                var floraResources = floraResourcesMap[floraID];
-                                foreach (var floraResource in floraResources)
+                                var flora = new Flora
                                 {
-                                    if (floraResource.DropRate == DropRate.Primary)
+                                    FloraID = floraID,
+                                    FloraName = floraName,
+                                    FloraNotes = floraNotes
+                                };
+
+                                if (floraResourcesMap.ContainsKey(floraID))
+                                {
+                                    var floraResources = floraResourcesMap[floraID];
+                                    foreach (var floraResource in floraResources)
                                     {
-                                        flora.AddPrimaryDrop(floraResource.Drop);
-                                    }
-                                    else
-                                    {
-                                        flora.AddSecondaryDrop(floraResource.Drop);
+                                        if (floraResource.DropRate == DropRate.Primary)
+                                        {
+                                            flora.AddPrimaryDrop(floraResource.Drop);
+                                        }
+                                        else
+                                        {
+                                            flora.AddSecondaryDrop(floraResource.Drop);
+                                        }
                                     }
                                 }
+
+                                celestialBodyFlorasMap[parentBodyID].Add(flora);
+                                currentFlora = flora;
                             }
 
-                            celestialBodyFlorasMap[parentBodyID].Add(flora);
+                            if (floraPicturePath != null)
+                            {
+                                currentFlora.AddPicture(new Picture(floraPictureID, new Uri(floraPicturePath)));
+                            }
                         }
                     }
                 }
@@ -398,7 +436,8 @@ namespace Starfield_Interactive_Smart_Slate
                             if (!celestialBody.IsMoon)
                             {
                                 currentPlanet = celestialBody;
-                            } else
+                            }
+                            else
                             {
                                 currentPlanet.AddMoon(celestialBody);
                             }
@@ -566,7 +605,8 @@ namespace Starfield_Interactive_Smart_Slate
 
                         cmd.ExecuteNonQuery();
                     }
-                } else
+                }
+                else
                 {
                     if (originalFauna.IsSurveyed)
                     {
@@ -641,6 +681,82 @@ namespace Starfield_Interactive_Smart_Slate
                             cmd.ExecuteNonQuery();
                         }
                     }
+                }
+            }
+        }
+
+        public int AddFaunaPicture(Fauna fauna, string pictureUri)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO
+                        FaunaPictures
+                        (FaunaID, FaunaPicturePath)
+                    VALUES
+                        (@FaunaID, @FaunaPicturePath)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@FaunaID", fauna.FaunaID);
+                    cmd.Parameters.AddWithValue("@FaunaPicturePath", pictureUri);
+
+                    cmd.ExecuteNonQuery();
+                    return (int)conn.LastInsertRowId;
+                }
+            }
+        }
+
+        public int AddFloraPicture(Flora flora, string pictureUri)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO
+                        FloraPictures
+                        (FloraID, FloraPicturePath)
+                    VALUES
+                        (@FloraID, @FloraPicturePath)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@FloraID", flora.FloraID);
+                    cmd.Parameters.AddWithValue("@FloraPicturePath", pictureUri);
+
+                    cmd.ExecuteNonQuery();
+                    return (int)conn.LastInsertRowId;
+                }
+            }
+        }
+
+        public void DeleteFaunaPicture(Picture picture)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    DELETE FROM
+                        FaunaPictures
+                    WHERE
+                        FaunaPictureID = @FaunaPictureID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@FaunaPictureID", picture.PictureID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteFloraPicture(Picture picture)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    DELETE FROM
+                        FloraPictures
+                    WHERE
+                        FloraPictureID = @FloraPictureID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@FloraPictureID", picture.PictureID);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

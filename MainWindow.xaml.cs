@@ -1,9 +1,12 @@
-﻿using Starfield_Interactive_Smart_Slate.Models;
+﻿using Microsoft.Win32;
+using Starfield_Interactive_Smart_Slate.Dialogs;
+using Starfield_Interactive_Smart_Slate.Models;
 using Starfield_Interactive_Smart_Slate.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -421,6 +424,9 @@ namespace Starfield_Interactive_Smart_Slate
 
             lifeformOverviewGrid.Visibility = Visibility.Visible;
             editLifeformButton.IsEnabled = true;
+
+            pictureGrid.ItemsSource = fauna.Pictures;
+            lifeformOverviewScrollViewer.ScrollToTop();
         }
 
         private void AddFaunaClicked(object sender, RoutedEventArgs e)
@@ -527,6 +533,9 @@ namespace Starfield_Interactive_Smart_Slate
 
             lifeformOverviewGrid.Visibility = Visibility.Visible;
             editLifeformButton.IsEnabled = true;
+
+            pictureGrid.ItemsSource = flora.Pictures;
+            lifeformOverviewScrollViewer.ScrollToTop();
         }
 
         private void AddFloraClicked(object sender, RoutedEventArgs e)
@@ -602,6 +611,150 @@ namespace Starfield_Interactive_Smart_Slate
                     }
                 }
             }
+        }
+
+        private void PictureClicked(object sender, RoutedEventArgs e)
+        {
+            var picture = ((Border)sender).DataContext as Picture;
+            if (picture.IsPlaceholder)
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Images | *.jpg; *.png; *.jpeg; *.bmp; *.tiff; *.tif";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    var newPictureUri = new Uri(openFileDialog.FileName);
+                    var importedPictureUri = Picture.ImportPicture(newPictureUri, displayedCelestialBody, displayedFauna, displayedFlora);
+
+                    if (displayedFauna != null)
+                    {
+                        var pictureID = dataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
+                        displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
+                    }
+                    else if (displayedFlora != null)
+                    {
+                        var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
+                        displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
+                    }
+                }
+            }
+            else if (!picture.Corrupted)
+            {
+                var viewer = new PictureViewer(picture);
+                viewer.Owner = this;
+
+                // account for height of title bar
+                double heightBuffer = SystemParameters.WindowCaptionHeight + 20;
+                double widthBuffer = 20;
+
+                double screenWidth = SystemParameters.PrimaryScreenWidth;
+                double screenHeight = SystemParameters.PrimaryScreenHeight;
+
+                // picture width/height should not take up more than 80% of screen
+                double maxRatio = 0.8;
+                double maxWidth = screenWidth * maxRatio;
+                double maxHeight = screenHeight * maxRatio;
+
+                double imageWidth = picture.PictureBitmap.Width;
+                double imageHeight = picture.PictureBitmap.Height;
+
+                double imageWidthToScreenRatio = imageWidth / screenWidth;
+                double imageHeightToScreenRatio = imageHeight / screenHeight;
+
+                if (imageWidthToScreenRatio <= maxRatio && imageHeightToScreenRatio <= maxRatio)
+                {
+                    viewer.Width = picture.PictureBitmap.Width + widthBuffer;
+                    viewer.Height = picture.PictureBitmap.Height + heightBuffer;
+                }
+                else if (imageWidthToScreenRatio > imageHeightToScreenRatio)
+                {
+                    viewer.Width = maxWidth + widthBuffer;
+                    double scaleRatio = maxWidth / imageWidth;
+                    viewer.Height = (imageHeight * scaleRatio) + heightBuffer + 10;
+                }
+                else
+                {
+                    viewer.Height = maxHeight + heightBuffer - 10;
+                    double scaleRatio = maxHeight / imageHeight;
+                    viewer.Width = imageWidth * scaleRatio + widthBuffer;
+                }
+
+                viewer.ShowDialog();
+            }
+        }
+
+        private void PictureDeleteClicked(object sender, RoutedEventArgs e)
+        {
+            var picture = ((MenuItem)sender).DataContext as Picture;
+            if (displayedFauna != null)
+            {
+                dataRepository.DeleteFaunaPicture(picture);
+                displayedFauna.Pictures.Remove(picture);
+            }
+            else
+            {
+                dataRepository.DeleteFloraPicture(picture);
+                displayedFlora.Pictures.Remove(picture);
+            }
+            picture.MoveToDeletedFolder();
+        }
+
+        private void PictureOpenFolderClicked(object sender, RoutedEventArgs e)
+        {
+            var picture = ((MenuItem)sender).DataContext as Picture;
+            var folder = Path.GetDirectoryName(picture.PictureUri.LocalPath);
+            if (Directory.Exists(folder))
+            {
+                Process.Start("explorer.exe", folder);
+            }
+        }
+
+        private void AddPictureDragEnter(object sender, DragEventArgs e)
+        {
+            lifeformOverviewGrid.Opacity = 0.2;
+            dragDropOverlay.Visibility = Visibility.Visible;
+        }
+
+        private void AddPictureDragLeave(object sender, DragEventArgs e)
+        {
+            lifeformOverviewGrid.Opacity = 1;
+            dragDropOverlay.Visibility = Visibility.Hidden;
+        }
+
+        private void AddPictureOnDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                List<string> allowedExtensions = new List<string> { ".jpg", ".png", ".jpeg", ".bmp", ".tiff", ".tif" };
+
+                foreach (string file in files)
+                {
+                    string fileExtension = Path.GetExtension(file).ToLower();
+
+                    if (allowedExtensions.Contains(fileExtension))
+                    {
+                        var importedPictureUri = Picture.ImportPicture(new Uri(file), displayedCelestialBody, displayedFauna, displayedFlora);
+
+                        if (displayedFauna != null)
+                        {
+                            var pictureID = dataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
+                            displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
+                        }
+                        else if (displayedFlora != null)
+                        {
+                            var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
+                            displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"File '{file}' has an unsupported extension!");
+                    }
+                }
+            }
+
+            lifeformOverviewGrid.Opacity = 1;
+            dragDropOverlay.Visibility = Visibility.Hidden;
         }
         #endregion
 

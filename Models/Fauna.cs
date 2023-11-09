@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {
@@ -9,6 +11,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public string FaunaNotes { get; set; }
         public List<Resource>? PrimaryDrops { get; set; }
         public List<Resource>? SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
+        public ObservableCollection<Picture>? Pictures { get; set; }
         public bool IsSurveyed
         {
             get
@@ -52,15 +55,29 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
+        public Fauna()
+        {
+            Pictures = new ObservableCollection<Picture> { new Picture() };
+        }
+
         public Fauna DeepCopy()
         {
+            ObservableCollection<Picture> pictureCollection = null;
+            if (Pictures != null)
+            {
+                pictureCollection = new ObservableCollection<Picture>(
+                    Pictures.Select(picture => picture.DeepCopy())
+                );
+            }
+
             return new Fauna
             {
                 FaunaID = FaunaID,
                 FaunaName = FaunaName,
                 FaunaNotes = FaunaNotes,
                 PrimaryDrops = PrimaryDrops?.ConvertAll(drop => drop.DeepCopy()),
-                SecondaryDrops = SecondaryDrops?.ConvertAll(drop => drop.DeepCopy())
+                SecondaryDrops = SecondaryDrops?.ConvertAll(drop => drop.DeepCopy()),
+                Pictures = pictureCollection
             };
         }
 
@@ -80,6 +97,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 SecondaryDrops = new List<Resource>();
             }
             SecondaryDrops.Add(secondaryDrop);
+        }
+
+        public void AddPicture(Picture picture)
+        {
+            Pictures.Insert(Pictures.Count - 1, picture);
         }
     }
 }

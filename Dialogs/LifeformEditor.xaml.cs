@@ -11,8 +11,8 @@ namespace Starfield_Interactive_Smart_Slate
     {
         public string LifeformTypeString { get; set; }
 
-        private int faunaID;
-        private int floraID;
+        private Fauna originalFauna;
+        private Flora originalFlora;
         private Dictionary<string, string> lifeformNames;
         private string? matchedNameString;
 
@@ -20,7 +20,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             InitializeComponent();
 
-            faunaID = fauna.FaunaID;
+            originalFauna = fauna;
             this.lifeformNames = lifeformNames;
 
             this.Title = "Edit Fauna";
@@ -56,7 +56,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             InitializeComponent();
 
-            floraID = flora.FloraID;
+            originalFlora = flora;
             this.lifeformNames = lifeformNames;
 
             this.Title = "Edit Flora";
@@ -101,16 +101,17 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Fauna GetResultingFauna()
         {
-            var resultingFauna = new Fauna
-            {
-                FaunaID = faunaID,
-                FaunaName = lifeformNameTextbox.Text,
-                FaunaNotes = lifeformNotesTextbox.Text
-            };
+            var resultingFauna = originalFauna.DeepCopy();
+            resultingFauna.FaunaName = lifeformNameTextbox.Text;
+            resultingFauna.FaunaNotes = lifeformNotesTextbox.Text;
 
             if (lifeformResourceComboBox.SelectedIndex != 0)
             {
-                resultingFauna.AddPrimaryDrop(lifeformResourceComboBox.SelectedItem as Resource);
+                resultingFauna.PrimaryDrops = new List<Resource> { lifeformResourceComboBox.SelectedItem as Resource };
+            }
+            else
+            {
+                resultingFauna.PrimaryDrops = null;
             }
 
             return resultingFauna;
@@ -118,16 +119,17 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Flora GetResultingFlora()
         {
-            var resultingFlora = new Flora
-            {
-                FloraID = floraID,
-                FloraName = lifeformNameTextbox.Text,
-                FloraNotes = lifeformNotesTextbox.Text
-            };
+            var resultingFlora = originalFlora.DeepCopy();
+            resultingFlora.FloraName = lifeformNameTextbox.Text;
+            resultingFlora.FloraNotes = lifeformNotesTextbox.Text;
 
             if (lifeformResourceComboBox.SelectedIndex != 0)
             {
-                resultingFlora.AddPrimaryDrop(lifeformResourceComboBox.SelectedItem as Resource);
+                resultingFlora.PrimaryDrops = new List<Resource> { lifeformResourceComboBox.SelectedItem as Resource };
+            }
+            else
+            {
+                resultingFlora.PrimaryDrops = null;
             }
 
             return resultingFlora;
