@@ -42,7 +42,7 @@ namespace Starfield_Interactive_Smart_Slate
         private CelestialBody selectedOrganicResultCelestialBody;
         private CelestialBody displayedOrganicResultCelestialBody;
 
-        private MediaPlayer mediaPlayer = new MediaPlayer();
+        private Window? activePictureViewer = null;
 
         public MainWindow()
         {
@@ -724,7 +724,19 @@ namespace Starfield_Interactive_Smart_Slate
                     viewer.Width = imageWidth * scaleRatio + widthBuffer;
                 }
 
-                viewer.ShowDialog();
+                viewer.Show();
+                activePictureViewer = viewer;
+                activePictureViewer.Closed += (s, args) => { activePictureViewer = null; };
+            }
+        }
+
+        private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (activePictureViewer != null)
+            {
+                activePictureViewer.Close();
+                activePictureViewer = null;
+                e.Handled = true;
             }
         }
 

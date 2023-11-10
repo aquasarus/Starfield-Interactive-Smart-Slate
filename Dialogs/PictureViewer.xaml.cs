@@ -1,5 +1,4 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
-using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -18,15 +17,6 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
         private void Image_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Close();
-        }
-
-        protected override void OnDeactivated(EventArgs e)
-        {
-            if (!IsClosing)
-            {
-                Close();
-            }
-            base.OnDeactivated(e);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
