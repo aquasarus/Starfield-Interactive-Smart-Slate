@@ -26,7 +26,7 @@ namespace Starfield_Interactive_Smart_Slate
         }
 
 
-        private void SolarSystemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void solarSystemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Handle the selection changed event here
             if (solarSystemComboBox.SelectedItem != null)
@@ -52,6 +52,28 @@ namespace Starfield_Interactive_Smart_Slate
                 Close();
                 e.Handled = true;
             }
+            else if (e.Key == Key.Escape)
+            {
+                Close();
+                e.Handled = true;
+            }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (this.DialogResult == true)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
+        }
+
+        private void solarSystemComboBox_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            ((App)Application.Current).PlayClickSound();
         }
     }
 }

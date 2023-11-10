@@ -19,7 +19,10 @@
                 </Style>
             </TabControl.ItemContainerStyle>
 
-            <TabItem Width="175" Header="Planetary Data">
+            <TabItem
+                Width="175"
+                Header="Planetary Data"
+                PreviewMouseLeftButtonDown="TabClicked">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MaxWidth="400" />
@@ -505,7 +508,10 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Width="200" Header="Inorganic Resource Search">
+            <TabItem
+                Width="200"
+                Header="Inorganic Resource Search"
+                PreviewMouseLeftButtonDown="TabClicked">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition MaxWidth="450" />
@@ -636,6 +642,7 @@
                                         </Label>
                                         <ListView Grid.Row="1"
                                             Padding="5"
+                                            IsHitTestVisible="False"
                                             ItemsSource="{Binding CelestialBodies}"
                                             PreviewMouseWheel="CelestialBodyListView_PreviewMouseWheel"
                                             SelectionMode="Single">
@@ -677,10 +684,12 @@
                         </ListView>
                     </Grid>
                 </Grid>
-
             </TabItem>
 
-            <TabItem Width="200" Header="Organic Resource Search">
+            <TabItem
+                Width="200"
+                Header="Organic Resource Search"
+                PreviewMouseLeftButtonDown="TabClicked">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition MaxWidth="450" />
@@ -881,12 +890,11 @@
                             <ListView Name="faunaResultsListView" Grid.Row="1"
                                 Margin="1,1,0,0"
                                 Padding="5"
+                                IsHitTestVisible="False"
                                 SelectionMode="Single">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                        <EventSetter Event="MouseEnter" Handler="FaunaListItem_MouseEnter" />
-                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FaunaListView_Select" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
@@ -921,12 +929,11 @@
                             <ListView Name="floraResultsListView" Grid.Row="1"
                                 Margin="1,1,0,0"
                                 Padding="5"
+                                IsHitTestVisible="False"
                                 SelectionMode="Single">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                        <EventSetter Event="MouseEnter" Handler="FloraListItem_MouseEnter" />
-                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FloraListView_Select" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
@@ -947,7 +954,10 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Width="80" Header="About">
+            <TabItem
+                Width="80"
+                Header="About"
+                PreviewMouseLeftButtonDown="TabClicked">
                 <Grid
                     Margin="0,0,0,200"
                     HorizontalAlignment="Center"

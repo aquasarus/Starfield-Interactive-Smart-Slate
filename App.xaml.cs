@@ -2,11 +2,47 @@
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Starfield_Interactive_Smart_Slate
 {
     public partial class App : Application
     {
+        private MediaPlayer scrollSoundPlayer = new MediaPlayer();
+        private MediaPlayer clickSoundPlayer = new MediaPlayer();
+        private MediaPlayer cancelSoundPlayer = new MediaPlayer();
+        private static double SoundVolume = 0.8;
+
+        public void PlayScrollSound()
+        {
+            if (scrollSoundPlayer.Volume == 0)
+            {
+                scrollSoundPlayer.Volume = SoundVolume;
+            }
+            scrollSoundPlayer.Stop();
+            scrollSoundPlayer.Play();
+        }
+
+        public void PlayClickSound()
+        {
+            if (clickSoundPlayer.Volume == 0)
+            {
+                clickSoundPlayer.Volume = SoundVolume;
+            }
+            clickSoundPlayer.Stop();
+            clickSoundPlayer.Play();
+        }
+
+        public void PlayCancelSound()
+        {
+            if (cancelSoundPlayer.Volume == 0)
+            {
+                cancelSoundPlayer.Volume = SoundVolume;
+            }
+            cancelSoundPlayer.Stop();
+            cancelSoundPlayer.Play();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             // add crash logging
@@ -41,8 +77,18 @@ namespace Starfield_Interactive_Smart_Slate
 
             DatabaseInitializer.SetVersionToLatest();
 
+            // preload sound files
+            // set volume to 0 because for some reason it auto-plays the sound for just a little bit
+            scrollSoundPlayer.Open(new Uri("Sounds/Scroll_Sound.mp3", UriKind.Relative));
+            scrollSoundPlayer.Volume = 0;
+            clickSoundPlayer.Open(new Uri("Sounds/Click_Sound.mp3", UriKind.Relative));
+            clickSoundPlayer.Volume = 0;
+            cancelSoundPlayer.Open(new Uri("Sounds/Cancel_Sound.mp3", UriKind.Relative));
+            cancelSoundPlayer.Volume = 0;
+
             base.OnStartup(e);
         }
+
         private static void HandleException(Exception ex)
         {
             string logFileDirectory = DatabaseInitializer.UserDatabaseFolder();

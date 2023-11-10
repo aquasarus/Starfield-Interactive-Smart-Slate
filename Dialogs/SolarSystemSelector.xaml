@@ -5,6 +5,7 @@
     Title="New System"
     Width="320"
     Height="185"
+    Closing="Window_Closing"
     Style="{StaticResource SofiaSansStyle}">
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +23,8 @@
             Margin="0,15,0,0"
             HorizontalAlignment="Center"
             PreviewKeyDown="ComboBox_PreviewKeyDown"
-            SelectionChanged="SolarSystemComboBox_SelectionChanged" />
+            PreviewMouseLeftButtonDown="solarSystemComboBox_Clicked"
+            SelectionChanged="solarSystemComboBox_SelectionChanged" />
         <Button Name="discoverButton" Grid.Row="2"
             Width="80"
             Height="30"

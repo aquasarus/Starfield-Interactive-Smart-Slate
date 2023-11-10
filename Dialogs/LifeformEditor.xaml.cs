@@ -1,5 +1,6 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -183,6 +184,23 @@ namespace Starfield_Interactive_Smart_Slate
                     e.Handled = true;
                 }
             }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (this.DialogResult == true)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
+        }
+
+        private void lifeformResourceComboBoxClicked(object sender, MouseButtonEventArgs e)
+        {
+            ((App)Application.Current).PlayClickSound();
         }
     }
 }

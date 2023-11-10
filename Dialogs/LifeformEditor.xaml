@@ -8,6 +8,7 @@
     Title="Edit Lifeform"
     Width="500"
     Height="600"
+    Closing="Window_Closing"
     Style="{StaticResource SofiaSansStyle}"
     mc:Ignorable="d">
     <Grid Margin="10">
@@ -72,7 +73,8 @@
             Content="Resource"
             Style="{StaticResource ContentSubtitleStyle}" />
         <ComboBox Name="lifeformResourceComboBox" Grid.Row="3"
-            Margin="5,10,5,0" />
+            Margin="5,10,5,0"
+            PreviewMouseLeftButtonDown="lifeformResourceComboBoxClicked" />
         <Label Grid.Row="4"
             Content="Notes"
             Style="{StaticResource ContentSubtitleStyle}" />

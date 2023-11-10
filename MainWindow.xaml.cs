@@ -42,6 +42,8 @@ namespace Starfield_Interactive_Smart_Slate
         private CelestialBody selectedOrganicResultCelestialBody;
         private CelestialBody displayedOrganicResultCelestialBody;
 
+        private MediaPlayer mediaPlayer = new MediaPlayer();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -77,6 +79,14 @@ namespace Starfield_Interactive_Smart_Slate
                 .ToList();
 
             solarSystemsListView.ItemsSource = discoveredSolarSystems;
+        }
+
+        private void TabClicked(object sender, MouseButtonEventArgs e)
+        {
+            if (!((TabItem)sender).IsSelected)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
         }
 
         // -----------------------------------------------------------------------------------------------
@@ -222,6 +232,8 @@ namespace Starfield_Interactive_Smart_Slate
                     ClearFaunaSelection();
                     ClearFloraSelection();
                 }
+
+                ((App)Application.Current).PlayScrollSound();
             }
         }
 
@@ -270,12 +282,16 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (celestialBody.Equals(selectedCelestialBody))
             {
+                ((App)Application.Current).PlayCancelSound();
+
                 SetSelectedCelestialBody(null);
                 parent.UnselectAll();
                 clickedItem.IsSelected = false;
             }
             else
             {
+                ((App)Application.Current).PlayClickSound();
+
                 SetSelectedCelestialBody(celestialBody);
                 parent.SelectedItem = celestialBody;
                 clickedItem.IsSelected = true;
@@ -310,6 +326,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void DiscoverNewSystemClicked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
+
             List<SolarSystem> alphabeticalSystems = allSolarSystems
                 .Where(solarSystem => !solarSystem.Discovered)
                 .OrderBy(solarSystem => solarSystem.SystemName).ToList();
@@ -352,6 +370,8 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     DisplayFaunaDetails(fauna);
                 }
+
+                ((App)Application.Current).PlayScrollSound();
             }
         }
 
@@ -367,6 +387,8 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (selectedFauna == fauna)
             {
+                ((App)Application.Current).PlayCancelSound();
+
                 // like ClearFaunaSelection but keep displayedFauna
                 selectedFauna = null;
                 faunasListView.UnselectAll();
@@ -376,6 +398,8 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
+                ((App)Application.Current).PlayClickSound();
+
                 clickedItem.IsSelected = true;
                 clickedItem.Focus();
                 SetSelectedFaunaWithUI(fauna);
@@ -431,6 +455,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void AddFaunaClicked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
+
             AddLifeformDialog dialog = new AddLifeformDialog(lifeformNames[LifeformType.Fauna], LifeformType.Fauna);
 
             dialog.Owner = this;
@@ -461,6 +487,8 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     DisplayFloraDetails(flora);
                 }
+
+                ((App)Application.Current).PlayScrollSound();
             }
         }
 
@@ -476,6 +504,8 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (selectedFlora == flora)
             {
+                ((App)Application.Current).PlayCancelSound();
+
                 // like ClearFloraSelection but keep displayedFlora
                 selectedFlora = null;
                 florasListView.UnselectAll();
@@ -485,6 +515,8 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
+                ((App)Application.Current).PlayClickSound();
+
                 clickedItem.IsSelected = true;
                 clickedItem.Focus();
                 SetSelectedFloraWithUI(flora);
@@ -540,6 +572,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void AddFloraClicked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
+
             AddLifeformDialog dialog = new AddLifeformDialog(lifeformNames[LifeformType.Flora], LifeformType.Flora);
 
             dialog.Owner = this;
@@ -563,6 +597,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void EditLifeformClicked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
+
             if (displayedFauna != null)
             {
                 LifeformEditor dialog = new LifeformEditor(
@@ -618,6 +654,8 @@ namespace Starfield_Interactive_Smart_Slate
             var picture = ((Border)sender).DataContext as Picture;
             if (picture.IsPlaceholder)
             {
+                ((App)Application.Current).PlayClickSound();
+
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "Images | *.jpg; *.png; *.jpeg; *.bmp; *.tiff; *.tif";
                 if (openFileDialog.ShowDialog() == true)
@@ -635,10 +673,18 @@ namespace Starfield_Interactive_Smart_Slate
                         var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
                         displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
+
+                    ((App)Application.Current).PlayClickSound();
+                }
+                else
+                {
+                    ((App)Application.Current).PlayCancelSound();
                 }
             }
             else if (!picture.Corrupted)
             {
+                ((App)Application.Current).PlayClickSound();
+
                 var viewer = new PictureViewer(picture);
                 viewer.Owner = this;
 
@@ -684,6 +730,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void PictureDeleteClicked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
+
             var picture = ((MenuItem)sender).DataContext as Picture;
             if (displayedFauna != null)
             {
@@ -700,6 +748,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void PictureOpenFolderClicked(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
+
             var picture = ((MenuItem)sender).DataContext as Picture;
             var folder = Path.GetDirectoryName(picture.PictureUri.LocalPath);
             if (Directory.Exists(folder))
@@ -726,6 +776,7 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 List<string> allowedExtensions = new List<string> { ".jpg", ".png", ".jpeg", ".bmp", ".tiff", ".tif" };
+                var importSuccess = false;
 
                 foreach (string file in files)
                 {
@@ -745,11 +796,18 @@ namespace Starfield_Interactive_Smart_Slate
                             var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
                             displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                         }
+
+                        importSuccess = true;
                     }
                     else
                     {
                         MessageBox.Show($"File '{file}' has an unsupported extension!");
                     }
+                }
+
+                if (importSuccess)
+                {
+                    ((App)Application.Current).PlayClickSound();
                 }
             }
 
@@ -770,6 +828,16 @@ namespace Starfield_Interactive_Smart_Slate
         private void InorganicResourceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedResource = (Resource)inorganicResourceListView.SelectedItem;
+
+            if (selectedResource == null)
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+
             inorganicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesForResource(selectedResource);
         }
 
@@ -785,6 +853,16 @@ namespace Starfield_Interactive_Smart_Slate
             displayedOrganicResultCelestialBody = null;
 
             var selectedResource = (Resource)organicResourceListView.SelectedItem;
+
+            if (selectedResource == null)
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+
             organicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesAndLifeformsForResource(selectedResource);
         }
 
@@ -892,6 +970,7 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     DisplayOrganicResultCelestialBody(celestialBody);
                 }
+                ((App)Application.Current).PlayScrollSound();
             }
         }
 
@@ -909,12 +988,16 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (celestialBody.Equals(selectedOrganicResultCelestialBody))
             {
+                ((App)Application.Current).PlayCancelSound();
+
                 selectedOrganicResultCelestialBody = null;
                 parent.UnselectAll();
                 clickedItem.IsSelected = false;
             }
             else
             {
+                ((App)Application.Current).PlayClickSound();
+
                 selectedOrganicResultCelestialBody = celestialBody;
                 parent.SelectedItem = celestialBody;
                 clickedItem.IsSelected = true;
@@ -945,6 +1028,7 @@ namespace Starfield_Interactive_Smart_Slate
         // -----------------------------------------------------------------------------------------------
         private void NavigateToHyperlink(object sender, RequestNavigateEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
             Process.Start(new ProcessStartInfo(e.Uri.ToString())
             {
                 UseShellExecute = true // need to set this to get web links to work here
@@ -953,6 +1037,7 @@ namespace Starfield_Interactive_Smart_Slate
         }
         private void DataFolderLinkClick(object sender, RoutedEventArgs e)
         {
+            ((App)Application.Current).PlayClickSound();
             Process.Start("explorer.exe", DatabaseInitializer.UserDatabaseFolder());
         }
     }

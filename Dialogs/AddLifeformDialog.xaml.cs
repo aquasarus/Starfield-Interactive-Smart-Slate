@@ -1,5 +1,6 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -83,6 +84,23 @@ namespace Starfield_Interactive_Smart_Slate
                     lifeformNameInput.SelectionStart = lifeformNameInput.Text.Length;
                     e.Handled = true;
                 }
+            }
+            else if (e.Key == Key.Escape)
+            {
+                Close();
+                e.Handled = true;
+            }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (this.DialogResult == true)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayCancelSound();
             }
         }
     }
