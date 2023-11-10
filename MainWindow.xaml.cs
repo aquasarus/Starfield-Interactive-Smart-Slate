@@ -96,36 +96,46 @@ namespace Starfield_Interactive_Smart_Slate
         private void InitializeSolarSystemsListView(object sender, RoutedEventArgs e)
         {
             // restore last session's celestial body selection
-            var selectedCelestialBodyID = Settings.Default.SelectedCelestialBodyID;
-            if (selectedCelestialBodyID != -1)
+            try
             {
-                foreach (var solarSystem in discoveredSolarSystems)
+                var selectedCelestialBodyID = Settings.Default.SelectedCelestialBodyID;
+                if (selectedCelestialBodyID != -1)
                 {
-                    foreach (var celestialBody in solarSystem.CelestialBodies)
+                    foreach (var solarSystem in discoveredSolarSystems)
                     {
-                        if (celestialBody.BodyID == selectedCelestialBodyID)
+                        foreach (var celestialBody in solarSystem.CelestialBodies)
                         {
-                            SetSelectedCelestialBodyWithUI(celestialBody, solarSystem);
-                            DisplayCelestialBodyDetails(celestialBody);
-
-                            // restore last session's fauna/flora selection
-                            var selectedFaunaID = Settings.Default.SelectedFaunaID;
-                            var selectedFloraID = Settings.Default.SelectedFloraID;
-                            if (selectedFaunaID != -1)
+                            if (celestialBody.BodyID == selectedCelestialBodyID)
                             {
-                                var fauna = celestialBody.Faunas.First(f => f.FaunaID == selectedFaunaID);
-                                SetSelectedFaunaWithUI(fauna);
-                            }
-                            else if (selectedFloraID != -1)
-                            {
-                                var flora = celestialBody.Floras.First(f => f.FloraID == selectedFloraID);
-                                SetSelectedFloraWithUI(flora);
-                            }
+                                SetSelectedCelestialBodyWithUI(celestialBody, solarSystem);
+                                DisplayCelestialBodyDetails(celestialBody);
 
-                            break;
+                                // restore last session's fauna/flora selection
+                                var selectedFaunaID = Settings.Default.SelectedFaunaID;
+                                var selectedFloraID = Settings.Default.SelectedFloraID;
+                                if (selectedFaunaID != -1)
+                                {
+                                    var fauna = celestialBody.Faunas.First(f => f.FaunaID == selectedFaunaID);
+                                    SetSelectedFaunaWithUI(fauna);
+                                }
+                                else if (selectedFloraID != -1)
+                                {
+                                    var flora = celestialBody.Floras.First(f => f.FloraID == selectedFloraID);
+                                    SetSelectedFloraWithUI(flora);
+                                }
+
+                                break;
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception exception)
+            {
+                // fail silently if initial UI cached state fails to load
+                Settings.Default.Reset();
+
+                // TODO: log exception in analytics?
             }
 
             // only need to run once
