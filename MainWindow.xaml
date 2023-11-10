@@ -848,6 +848,11 @@
                                                 <Style TargetType="ListViewItem">
                                                     <EventSetter Event="MouseEnter" Handler="OrganicResultsListItem_MouseEnter" />
                                                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="OrganicResultsListItem_Select" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding GrayOut}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="False" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
                                                 </Style>
                                             </ListView.ItemContainerStyle>
                                         </ListView>
