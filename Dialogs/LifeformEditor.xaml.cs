@@ -202,5 +202,15 @@ namespace Starfield_Interactive_Smart_Slate
         {
             ((App)Application.Current).PlayClickSound();
         }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                this.DialogResult = true;
+                Close();
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@
     Width="500"
     Height="600"
     Closing="Window_Closing"
+    PreviewKeyDown="Window_PreviewKeyDown"
     Style="{StaticResource SofiaSansStyle}"
     mc:Ignorable="d">
     <Grid Margin="10">
@@ -89,7 +90,12 @@
             Margin="0,10,75,0"
             HorizontalAlignment="Right"
             Click="SaveClicked"
-            Content="Save" />
+            Content="Save 🛈"
+            ToolTipService.InitialShowDelay="200">
+            <Button.ToolTip>
+                <ToolTip Content="Ctrl + Enter to Save." />
+            </Button.ToolTip>
+        </Button>
         <Button Grid.Row="6"
             Width="70"
             Height="30"
