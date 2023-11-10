@@ -509,6 +509,7 @@
                 </Grid>
             </TabItem>
 
+            <!--  INORGANIC SEARCH  -->
             <TabItem
                 Width="200"
                 Header="Inorganic Resource Search"
@@ -687,6 +688,7 @@
                 </Grid>
             </TabItem>
 
+            <!--  ORGANIC SEARCH  -->
             <TabItem
                 Width="200"
                 Header="Organic Resource Search"
@@ -960,6 +962,7 @@
                 </Grid>
             </TabItem>
 
+            <!--  ABOUT PAGE  -->
             <TabItem
                 Width="80"
                 Header="About"
