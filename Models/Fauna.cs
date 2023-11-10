@@ -60,14 +60,17 @@ namespace Starfield_Interactive_Smart_Slate.Models
             Pictures = new ObservableCollection<Picture> { new Picture() };
         }
 
-        public Fauna DeepCopy()
+        public Fauna DeepCopy(bool fast = false)
         {
             ObservableCollection<Picture> pictureCollection = null;
-            if (Pictures != null)
+            if (!fast)
             {
-                pictureCollection = new ObservableCollection<Picture>(
-                    Pictures.Select(picture => picture.DeepCopy())
-                );
+                if (Pictures != null)
+                {
+                    pictureCollection = new ObservableCollection<Picture>(
+                        Pictures.Select(picture => picture.DeepCopy())
+                    );
+                }
             }
 
             return new Fauna

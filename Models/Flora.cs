@@ -61,14 +61,18 @@ namespace Starfield_Interactive_Smart_Slate.Models
             Pictures = new ObservableCollection<Picture> { new Picture() };
         }
 
-        public Flora DeepCopy()
+        public Flora DeepCopy(bool fast = false)
         {
             ObservableCollection<Picture> pictureCollection = null;
-            if (Pictures != null)
+            // skip picture copying in fast mode
+            if (!fast)
             {
-                pictureCollection = new ObservableCollection<Picture>(
-                    Pictures.Select(picture => picture.DeepCopy())
-                );
+                if (Pictures != null)
+                {
+                    pictureCollection = new ObservableCollection<Picture>(
+                        Pictures.Select(picture => picture.DeepCopy())
+                    );
+                }
             }
 
             return new Flora

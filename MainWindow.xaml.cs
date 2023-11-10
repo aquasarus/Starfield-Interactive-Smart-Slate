@@ -927,7 +927,7 @@ namespace Starfield_Interactive_Smart_Slate
             return discoveredSolarSystems.Select(
                 solarSystem =>
                 {
-                    var solarSystemCopy = solarSystem.DeepCopy();
+                    var solarSystemCopy = solarSystem.DeepCopy(true);
 
                     // chaining .Select here ended up with new instances of moons for some reason
                     // so I have to loop it manually

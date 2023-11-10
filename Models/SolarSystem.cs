@@ -18,7 +18,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             CelestialBodies = CelestialBodiesBuilder.Values.OfType<CelestialBody>().ToList();
         }
 
-        public SolarSystem DeepCopy()
+        public SolarSystem DeepCopy(bool fast = false)
         {
             var solarSystemCopy = new SolarSystem
             {
@@ -26,7 +26,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 SystemName = SystemName,
                 SystemLevel = SystemLevel,
                 Discovered = Discovered,
-                CelestialBodies = CelestialBodies.ConvertAll(celestialBody => celestialBody.DeepCopy())
+                CelestialBodies = CelestialBodies.ConvertAll(celestialBody => celestialBody.DeepCopy(fast))
             };
 
             CelestialBody parentPlanet = null;
@@ -35,7 +35,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 if (!celestialBody.IsMoon)
                 {
                     parentPlanet = celestialBody;
-                } else
+                }
+                else
                 {
                     parentPlanet.AddMoon(celestialBody);
                 }

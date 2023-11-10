@@ -25,7 +25,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         // helper attributes to display resource search
         public List<CelestialBody>? Moons;
-        public bool Show {  get; set; }
+        public bool Show { get; set; }
         public bool GrayOut { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -94,13 +94,13 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
-        public CelestialBody DeepCopy()
+        public CelestialBody DeepCopy(bool fast = false)
         {
             ObservableCollection<Fauna> faunaCollection = null;
             if (Faunas != null)
             {
                 faunaCollection = new ObservableCollection<Fauna>(
-                    Faunas.Select(fauna => fauna.DeepCopy())
+                    Faunas.Select(fauna => fauna.DeepCopy(fast))
                 );
             }
 
@@ -108,7 +108,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             if (Floras != null)
             {
                 floraCollection = new ObservableCollection<Flora>(
-                    Floras.Select(flora => flora.DeepCopy())
+                    Floras.Select(flora => flora.DeepCopy(fast))
                 );
             }
 
