@@ -8,6 +8,7 @@
     Width="1480"
     Height="1000"
     PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown"
+    SizeChanged="Window_SizeChanged"
     Style="{StaticResource SofiaSansStyle}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -406,10 +407,11 @@
                                         </Label>
                                         <ItemsControl Name="pictureGrid" Grid.Row="4"
                                             Margin="0,5,0,0"
-                                            HorizontalAlignment="Left">
+                                            HorizontalAlignment="Left"
+                                            Loaded="PictureGridLoaded">
                                             <ItemsControl.ItemsPanel>
                                                 <ItemsPanelTemplate>
-                                                    <UniformGrid Columns="4" />
+                                                    <UniformGrid Columns="{Binding PictureGridColumns}" />
                                                 </ItemsPanelTemplate>
                                             </ItemsControl.ItemsPanel>
                                             <ItemsControl.ItemTemplate>

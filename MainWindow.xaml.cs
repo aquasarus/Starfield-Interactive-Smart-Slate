@@ -22,6 +22,7 @@ namespace Starfield_Interactive_Smart_Slate
     {
         public string DisplayedCelestialBodyName { get { return displayedCelestialBody?.BodyName; } }
         public string DisplayedSolarSystemName { get { return displayedCelestialBody?.SystemName; } }
+        public int PictureGridColumns { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         private DataRepository dataRepository = new DataRepository();
@@ -66,6 +67,13 @@ namespace Starfield_Interactive_Smart_Slate
             RefreshData();
 
             solarSystemsListView.Loaded += InitializeSolarSystemsListView;
+
+            pictureGrid.DataContext = this;
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ResizePictureGridColumns();
         }
 
         private void RefreshData()
@@ -657,6 +665,24 @@ namespace Starfield_Interactive_Smart_Slate
                     }
                 }
             }
+        }
+
+        private void PictureGridLoaded(object sender, RoutedEventArgs e)
+        {
+            ResizePictureGridColumns();
+        }
+
+        private void ResizePictureGridColumns()
+        {
+            // calculate the number of columns to use
+            double availableWidth = (double)lifeformOverviewGrid.ActualWidth;
+            double itemWidth = 110; // fixed width + margin of each thumbnail
+            double columns = availableWidth / itemWidth;
+            int columnsInt = (int)Math.Floor(columns);
+            columnsInt = Math.Max(columnsInt, 1);
+
+            PictureGridColumns = columnsInt;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PictureGridColumns)));
         }
 
         private void PictureClicked(object sender, RoutedEventArgs e)
