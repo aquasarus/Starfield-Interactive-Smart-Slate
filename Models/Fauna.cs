@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {
-    public class Fauna
+    public class Fauna : INotifyPropertyChanged
     {
         public int FaunaID { get; set; }
         public string FaunaName { get; set; }
@@ -23,7 +24,22 @@ namespace Starfield_Interactive_Smart_Slate.Models
         {
             get
             {
-                return IsSurveyed ? "✓" : null;
+                if (IsSurveyed && Pictures.Count > 1)
+                {
+                    return "📷 ✓";
+                }
+                else if (IsSurveyed)
+                {
+                    return "✓";
+                }
+                else if (Pictures.Count > 1)
+                {
+                    return "📷";
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
         public string ResourceString
@@ -54,6 +70,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 }
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Fauna()
         {
@@ -105,6 +122,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public void AddPicture(Picture picture)
         {
             Pictures.Insert(Pictures.Count - 1, picture);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SurveyedString)));
         }
     }
 }
