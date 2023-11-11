@@ -14,6 +14,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 namespace Starfield_Interactive_Smart_Slate
@@ -94,6 +95,31 @@ namespace Starfield_Interactive_Smart_Slate
             if (!((TabItem)sender).IsSelected)
             {
                 ((App)Application.Current).PlayClickSound();
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                if (Clipboard.ContainsImage())
+                {
+                    BitmapSource clipboardImage = Clipboard.GetImage();
+                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedFauna, displayedFlora, directSource: clipboardImage);
+
+                    if (displayedFauna != null)
+                    {
+                        var pictureID = dataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
+                        displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
+                    }
+                    else if (displayedFlora != null)
+                    {
+                        var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
+                        displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
+                    }
+
+                    ((App)Application.Current).PlayClickSound();
+                }
             }
         }
 
@@ -697,7 +723,7 @@ namespace Starfield_Interactive_Smart_Slate
                 if (openFileDialog.ShowDialog() == true)
                 {
                     var newPictureUri = new Uri(openFileDialog.FileName);
-                    var importedPictureUri = Picture.ImportPicture(newPictureUri, displayedCelestialBody, displayedFauna, displayedFlora);
+                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedFauna, displayedFlora, picture: newPictureUri);
 
                     if (displayedFauna != null)
                     {
@@ -832,7 +858,7 @@ namespace Starfield_Interactive_Smart_Slate
 
                     if (allowedExtensions.Contains(fileExtension))
                     {
-                        var importedPictureUri = Picture.ImportPicture(new Uri(file), displayedCelestialBody, displayedFauna, displayedFlora);
+                        var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedFauna, displayedFlora, picture: new Uri(file));
 
                         if (displayedFauna != null)
                         {

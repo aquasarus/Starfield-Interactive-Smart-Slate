@@ -7,6 +7,7 @@
     Title="Starfield Interactive Smart Slate"
     Width="1480"
     Height="1000"
+    KeyDown="Window_KeyDown"
     PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown"
     SizeChanged="Window_SizeChanged"
     Style="{StaticResource SofiaSansStyle}"
@@ -402,7 +403,7 @@
                                             Style="{StaticResource ContentSubtitleStyle}"
                                             ToolTipService.InitialShowDelay="300">
                                             <Label.ToolTip>
-                                                <ToolTip Content="To add new picture:&#x0a;    - Click + button, or&#x0a;    - Drag file(s) into Lifeform Overview.&#x0a;    - Files will be copied into your app data folder.&#x0a;&#x0a;Left-click picture to view.&#x0a;&#x0a;Right-click picture to delete.&#x0a;    - Actual file in operating system will be preserved." />
+                                                <ToolTip Content="To add new picture:&#x0a;    - Click + button, or&#x0a;    - Drag file(s) into Lifeform Overview.&#x0a;    - Ctrl + V to paste from clipboard.&#x0a;    - Files will be copied into your app data folder.&#x0a;&#x0a;Left-click picture to view.&#x0a;&#x0a;Right-click picture to delete.&#x0a;    - Actual file in operating system will be preserved." />
                                             </Label.ToolTip>
                                         </Label>
                                         <ItemsControl Name="pictureGrid" Grid.Row="4"

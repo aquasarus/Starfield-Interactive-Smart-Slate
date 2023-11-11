@@ -28,7 +28,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             if (File.Exists(pictureUri.LocalPath))
             {
                 BitmapImage pictureBitmap;
-                using (FileStream stream = new FileStream(pictureUri.LocalPath, FileMode.Open))
+                using (FileStream stream = File.OpenRead(pictureUri.LocalPath))
                 {
                     pictureBitmap = new BitmapImage();
                     pictureBitmap.BeginInit();
@@ -100,7 +100,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
-        public static Uri ImportPicture(Uri picture, CelestialBody celestialBody, Fauna fauna, Flora flora)
+        // import either a picture Uri or direct BitmapSource
+        public static Uri ImportPicture(CelestialBody celestialBody, Fauna fauna, Flora flora, Uri? picture = null, BitmapSource? directSource = null)
         {
             // create folders if needed
             var baseFolder = DatabaseInitializer.UserDatabaseFolder();
@@ -133,21 +134,43 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 fileName = flora.FloraName;
             }
             fileName += $"_{DateTime.Now:yyyy_MM_dd_HHmmss}";
+            fileName = RemoveDisallowedCharacters(fileName);
 
             // add unique modifier if same-name file exists
             var destinationFileName = Path.Combine(celestialBodyFolder, fileName);
-            var destinationFilePath = Path.ChangeExtension(destinationFileName, Path.GetExtension(picture.LocalPath));
+            var destinationExtension = picture != null ? Path.GetExtension(picture.LocalPath) : ".png";
+            var destinationFilePath = Path.ChangeExtension(destinationFileName, destinationExtension);
             var attempt = 0;
             while (Path.Exists(destinationFilePath))
             {
                 attempt++;
                 destinationFileName = Path.Combine(celestialBodyFolder, fileName + $"({attempt})");
-                destinationFilePath = Path.ChangeExtension(destinationFileName, Path.GetExtension(picture.LocalPath));
+                destinationFilePath = Path.ChangeExtension(destinationFileName, destinationExtension);
             }
 
-            fileName = RemoveDisallowedCharacters(fileName);
-            File.Copy(picture.LocalPath, destinationFilePath);
+            var destinationUri = new Uri(destinationFilePath);
 
+            if (picture != null)
+            {
+                File.Copy(picture.LocalPath, destinationFilePath);
+                CreateThumbnail(picture, destinationFileName);
+            }
+            else
+            {
+                using (FileStream stream = new FileStream(destinationFilePath, FileMode.Create))
+                {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(directSource));
+                    encoder.Save(stream);
+                }
+                CreateThumbnail(destinationUri, destinationFileName);
+            }
+
+            return destinationUri;
+        }
+
+        private static void CreateThumbnail(Uri picture, string destinationFileName)
+        {
             // create thumbnail sized version for grid display
             double maxDimension = 200;
             var originalImage = new BitmapImage(picture);
@@ -179,8 +202,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     encoder.Save(stream);
                 }
             }
-
-            return new Uri(destinationFilePath);
         }
 
         public void MoveToDeletedFolder()
