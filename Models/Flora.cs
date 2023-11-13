@@ -25,7 +25,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         {
             get
             {
-                if (IsSurveyed && Pictures.Count > 1)
+                if (IsSurveyed && (Pictures?.Count ?? 0) > 1)
                 {
                     return "📷 ✓";
                 }
@@ -33,7 +33,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 {
                     return "✓";
                 }
-                else if (Pictures.Count > 1)
+                else if ((Pictures?.Count ?? 0) > 1)
                 {
                     return "📷";
                 }
