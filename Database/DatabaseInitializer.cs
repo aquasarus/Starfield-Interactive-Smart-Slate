@@ -8,7 +8,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
-        public static int TargetDatabaseVersion = 4;
+        public static int TargetDatabaseVersion = 5;
 
         public static string UserDatabaseFolder()
         {
@@ -131,6 +131,23 @@ namespace Starfield_Interactive_Smart_Slate
                     UPDATE CelestialBodies
                     SET Atmosphere = 'High CO2'
                     WHERE BodyName = 'Al-Battani I'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void MigrateV4ToV5()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO
+                        Resources
+                        (ResourceName, ResourceType, ResourceRarity)
+                    VALUES
+                        ('None', 2, 0)
                 ", conn))
                 {
                     cmd.ExecuteNonQuery();

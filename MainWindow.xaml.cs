@@ -30,7 +30,7 @@ namespace Starfield_Interactive_Smart_Slate
         private List<SolarSystem> allSolarSystems;
         private List<SolarSystem> discoveredSolarSystems;
         private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
-        private List<Resource> allOrganicResources;
+        private List<Resource> selectableOrganicResources;
 
         private CelestialBody selectedCelestialBody;
         private CelestialBody displayedCelestialBody;
@@ -58,8 +58,11 @@ namespace Starfield_Interactive_Smart_Slate
             var resources = dataRepository.GetResources();
 
             inorganicResourceListView.ItemsSource = resources.Where(r => r.GetType() == ResourceType.Inorganic);
-            allOrganicResources = resources.Where(r => r.GetType() == ResourceType.Organic).ToList();
-            organicResourceListView.ItemsSource = allOrganicResources;
+            selectableOrganicResources = resources.Where(r =>
+            {
+                return r.GetType() == ResourceType.Organic || r.GetType() == ResourceType.Placeholders;
+            }).ToList();
+            organicResourceListView.ItemsSource = resources.Where(r => r.GetType() == ResourceType.Organic);
 
             lifeformNames = dataRepository.GetLifeformNames();
             celestialBodyTitleLabel.DataContext = this;
@@ -647,7 +650,7 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 LifeformEditor dialog = new LifeformEditor(
                     displayedFauna,
-                    allOrganicResources,
+                    selectableOrganicResources,
                     lifeformNames[LifeformType.Fauna]
                 );
 
@@ -671,7 +674,7 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 LifeformEditor dialog = new LifeformEditor(
                     displayedFlora,
-                    allOrganicResources,
+                    selectableOrganicResources,
                     lifeformNames[LifeformType.Flora]
                 );
 
