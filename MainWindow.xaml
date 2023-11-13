@@ -910,14 +910,7 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding FaunaName}" />
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
-                                        </Grid>
+                                        <TextBlock Text="{Binding FaunaName}" />
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
@@ -949,14 +942,8 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding FloraName}" />
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
-                                        </Grid>
+                                        <TextBlock Text="{Binding FloraName}" />
+
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
