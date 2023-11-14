@@ -8,7 +8,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
-        public static int TargetDatabaseVersion = 5;
+        public static int TargetDatabaseVersion = 6;
 
         public static string UserDatabaseFolder()
         {
@@ -150,6 +150,33 @@ namespace Starfield_Interactive_Smart_Slate
                         ('None', 2, 0)
                 ", conn))
                 {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void MigrateV5ToV6()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    CREATE TABLE UserInfo (
+                        InfoKey TEXT PRIMARY KEY NOT NULL,
+                        InfoValue TEXT NOT NULL
+                    )", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO UserInfo
+                        (InfoKey, InfoValue)
+                    VALUES
+                        (@InfoKey, @InfoValue)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@InfoKey", DataRepository.UserIDKey);
+                    cmd.Parameters.AddWithValue("@InfoValue", Guid.NewGuid().ToString());
                     cmd.ExecuteNonQuery();
                 }
             }

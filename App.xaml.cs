@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -45,7 +48,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            // add crash logging
+            // add local crash logging
             DispatcherUnhandledException += (sender, e) =>
             {
                 HandleException(e.Exception);
@@ -79,6 +82,12 @@ namespace Starfield_Interactive_Smart_Slate
                     DatabaseInitializer.MigrateV4ToV5();
                     currentDatabaseVersion++;
                 }
+
+                if (currentDatabaseVersion == 5)
+                {
+                    DatabaseInitializer.MigrateV5ToV6();
+                    currentDatabaseVersion++;
+                }
             }
 
             DatabaseInitializer.SetVersionToLatest();
@@ -91,6 +100,15 @@ namespace Starfield_Interactive_Smart_Slate
             clickSoundPlayer.Volume = 0;
             cancelSoundPlayer.Open(new Uri("Sounds/Cancel_Sound.mp3", UriKind.Relative));
             cancelSoundPlayer.Volume = 0;
+
+            // preload User ID
+            DataRepository.InitializeUserID();
+
+            // initialize analytics
+            AppCenter.SetUserId(DataRepository.UserID);
+            AppCenter.LogLevel = LogLevel.Verbose;
+            AppCenter.Start("", typeof(Analytics), typeof(Crashes));
+            var appCenterConfigured = AppCenter.Configured; // TODO: add popup if this isn't configured
 
             base.OnStartup(e);
         }

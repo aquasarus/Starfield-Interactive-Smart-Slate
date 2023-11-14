@@ -291,6 +291,7 @@ namespace Starfield_Interactive_Smart_Slate
             ListView parent = FindParentListView(clickedItem);
             ToggleSelectCelestialBody(celestialBody, parent, clickedItem);
             e.Handled = true;
+            AnalyticsUtil.TrackEvent("Select celestial body");
         }
 
         private ListView FindParentListView(ListViewItem item)
@@ -428,6 +429,7 @@ namespace Starfield_Interactive_Smart_Slate
             Fauna fauna = clickedItem.DataContext as Fauna;
             ToggleSelectFauna(fauna, clickedItem);
             e.Handled = true;
+            AnalyticsUtil.TrackEvent("Select fauna");
         }
 
         private void ToggleSelectFauna(Fauna fauna, ListViewItem clickedItem)
@@ -545,6 +547,7 @@ namespace Starfield_Interactive_Smart_Slate
             Flora flora = clickedItem.DataContext as Flora;
             ToggleSelectFlora(flora, clickedItem);
             e.Handled = true;
+            AnalyticsUtil.TrackEvent("Select flora");
         }
 
         private void ToggleSelectFlora(Flora flora, ListViewItem clickedItem)
@@ -748,6 +751,8 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else if (!picture.Corrupted)
             {
+                AnalyticsUtil.TrackEvent("View picture");
+
                 ((App)Application.Current).PlayClickSound();
 
                 var viewer = new PictureViewer(picture);
@@ -912,6 +917,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
+                AnalyticsUtil.TrackEvent("Search inorganic resource");
                 ((App)Application.Current).PlayClickSound();
             }
 
@@ -937,6 +943,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
+                AnalyticsUtil.TrackEvent("Search organic resource");
                 ((App)Application.Current).PlayClickSound();
             }
 

@@ -10,11 +10,37 @@ namespace Starfield_Interactive_Smart_Slate
 {
     public class DataRepository
     {
-        public static readonly string connectionString = $"Data Source={DatabaseInitializer.UserDatabasePath()};Version=3;";
+        public static readonly string CnnectionString = $"Data Source={DatabaseInitializer.UserDatabasePath()};Version=3;";
+        public static readonly string UserIDKey = "UserID";
+
+        public static string UserID { get; set; }
 
         public static SQLiteConnection CreateConnection()
         {
-            return new SQLiteConnection(connectionString);
+            return new SQLiteConnection(CnnectionString);
+        }
+
+        public static void InitializeUserID()
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    SELECT
+                        InfoValue
+                    FROM
+                        UserInfo
+                    WHERE
+                        InfoKey = @InfoKey
+                ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@InfoKey", UserIDKey);
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    UserID = reader.GetString(0);
+                }
+            }
         }
 
         // Fetch data from SQLite database and convert ResourceRarity to text using the enum
@@ -458,6 +484,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void DiscoverSolarSystem(SolarSystem solarSystem)
         {
+            AnalyticsUtil.TrackEvent("Discover solar system");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -511,6 +538,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Fauna AddFauna(string faunaName, int parentBodyID)
         {
+            AnalyticsUtil.TrackEvent("Add fauna");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -537,6 +565,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Flora AddFlora(string floraName, int parentBodyID)
         {
+            AnalyticsUtil.TrackEvent("Add flora");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -563,6 +592,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void EditFauna(Fauna originalFauna, Fauna newFauna)
         {
+            AnalyticsUtil.TrackEvent("Edit fauna");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -625,6 +655,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void EditFlora(Flora originalFlora, Flora newFlora)
         {
+            AnalyticsUtil.TrackEvent("Edit flora");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -687,6 +718,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public int AddFaunaPicture(Fauna fauna, string pictureUri)
         {
+            AnalyticsUtil.TrackEvent("Add fauna picture");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -708,6 +740,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public int AddFloraPicture(Flora flora, string pictureUri)
         {
+            AnalyticsUtil.TrackEvent("Add flora picture");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -729,6 +762,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void DeleteFaunaPicture(Picture picture)
         {
+            AnalyticsUtil.TrackEvent("Delete fauna picture");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
@@ -746,6 +780,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void DeleteFloraPicture(Picture picture)
         {
+            AnalyticsUtil.TrackEvent("Delete flora picture");
             using (SQLiteConnection conn = CreateConnection())
             {
                 conn.Open();
