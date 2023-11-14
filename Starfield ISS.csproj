@@ -129,4 +129,9 @@
 		</None>
 	</ItemGroup>
 
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'" >
+    <Message Importance="high" Text="Compressing to zip file for export..." />
+	  <Exec Command="powershell Compress-Archive -Force -Path $(OutDir)\* -DestinationPath $(OutDir)\Starfield_ISS.zip" />
+	</Target>
+
 </Project>
