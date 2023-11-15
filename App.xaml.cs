@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Starfield_Interactive_Smart_Slate.Database;
 using System;
 using System.IO;
 using System.Reflection;
@@ -11,6 +12,8 @@ namespace Starfield_Interactive_Smart_Slate
 {
     public partial class App : Application
     {
+        public UserSettings UserSettings;
+
         private MediaPlayer scrollSoundPlayer = new MediaPlayer();
         private MediaPlayer clickSoundPlayer = new MediaPlayer();
         private MediaPlayer cancelSoundPlayer = new MediaPlayer();
@@ -18,6 +21,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void PlayScrollSound()
         {
+            if (!UserSettings.EnableSounds) { return; }
+
             if (scrollSoundPlayer.Volume == 0)
             {
                 scrollSoundPlayer.Volume = SoundVolume;
@@ -28,6 +33,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void PlayClickSound()
         {
+            if (!UserSettings.EnableSounds) { return; }
+
             if (clickSoundPlayer.Volume == 0)
             {
                 clickSoundPlayer.Volume = SoundVolume;
@@ -38,6 +45,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         public void PlayCancelSound()
         {
+            if (!UserSettings.EnableSounds) { return; }
+
             if (cancelSoundPlayer.Volume == 0)
             {
                 cancelSoundPlayer.Volume = SoundVolume;
@@ -88,9 +97,19 @@ namespace Starfield_Interactive_Smart_Slate
                     DatabaseInitializer.MigrateV5ToV6();
                     currentDatabaseVersion++;
                 }
+
+                if (currentDatabaseVersion == 6)
+                {
+                    DatabaseInitializer.MigrateV6ToV7();
+                    currentDatabaseVersion++;
+                }
             }
 
             DatabaseInitializer.SetVersionToLatest();
+
+            // load in user settings from DB
+            UserSettings = new UserSettings();
+            UserSettings.LoadSettings();
 
             // preload sound files
             // set volume to 0 because for some reason it auto-plays the sound for just a little bit

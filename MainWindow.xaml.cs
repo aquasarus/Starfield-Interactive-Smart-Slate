@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Starfield_Interactive_Smart_Slate.Database;
 using Starfield_Interactive_Smart_Slate.Dialogs;
 using Starfield_Interactive_Smart_Slate.Models;
 using Starfield_Interactive_Smart_Slate.Properties;
@@ -46,9 +47,15 @@ namespace Starfield_Interactive_Smart_Slate
 
         private Window? activePictureViewer = null;
 
+        private UserSettings userSettings;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            EnableSoundsCheckBox.DataContext = ((App)Application.Current).UserSettings;
+            EnableAnalyticsCheckBox.DataContext = ((App)Application.Current).UserSettings;
+            EnableUpdateNotificationCheckBox.DataContext = ((App)Application.Current).UserSettings;
 
             // show version number
             Version version = Assembly.GetEntryAssembly().GetName().Version;
@@ -1106,6 +1113,39 @@ namespace Starfield_Interactive_Smart_Slate
             };
         }
         #endregion
+
+        // -----------------------------------------------------------------------------------------------
+        // SETTINGS PAGE
+        // -----------------------------------------------------------------------------------------------
+        private void EnableSoundsCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).PlayClickSound();
+        }
+
+        private void EnableSoundsCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).PlayCancelSound();
+        }
+
+        private void EnableAnalyticsCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).PlayClickSound();
+        }
+
+        private void EnableAnalyticsCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).PlayCancelSound();
+        }
+
+        private void EnableUpdateNotificationCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).PlayClickSound();
+        }
+
+        private void EnableUpdateNotificationCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).PlayCancelSound();
+        }
 
         // -----------------------------------------------------------------------------------------------
         // ABOUT PAGE

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Starfield_Interactive_Smart_Slate.Database;
+using System;
 using System.Data.SQLite;
 using System.IO;
 using System.Reflection;
@@ -8,7 +9,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
-        public static int TargetDatabaseVersion = 6;
+        public static int TargetDatabaseVersion = 7;
 
         public static string UserDatabaseFolder()
         {
@@ -177,6 +178,27 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     cmd.Parameters.AddWithValue("@InfoKey", DataRepository.UserIDKey);
                     cmd.Parameters.AddWithValue("@InfoValue", Guid.NewGuid().ToString());
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void MigrateV6ToV7()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO UserInfo
+                        (InfoKey, InfoValue)
+                    VALUES
+                        (@EnableSoundsKey, 1),
+                        (@EnableAnalyticsKey, 1),
+                        (@EnableUpdateNotificationKey, 1)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@EnableSoundsKey", UserSettings.EnableSoundsKey);
+                    cmd.Parameters.AddWithValue("@EnableAnalyticsKey", UserSettings.EnableAnalyticsKey);
+                    cmd.Parameters.AddWithValue("@EnableUpdateNotificationKey", UserSettings.EnableUpdateNotificationKey);
                     cmd.ExecuteNonQuery();
                 }
             }

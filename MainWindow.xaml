@@ -952,6 +952,58 @@
                 </Grid>
             </TabItem>
 
+            <!--  SETTINGS PAGE  -->
+            <TabItem
+                Width="100"
+                Header="Settings"
+                PreviewMouseLeftButtonDown="TabClicked">
+                <Border
+                    MaxWidth="500"
+                    Margin="10,50,10,50"
+                    BorderBrush="DarkGray"
+                    BorderThickness="1">
+                    <Grid Margin="25">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"
+                            HorizontalContentAlignment="Center"
+                            Content="Settings"
+                            Style="{StaticResource ContentTitleStyle}" />
+                        <CheckBox Name="EnableSoundsCheckBox" Grid.Row="1"
+                            Height="30"
+                            Margin="0,10,0,0"
+                            VerticalContentAlignment="Center"
+                            Checked="EnableSoundsCheckBox_Checked"
+                            Content="Enable sounds"
+                            FontSize="18"
+                            IsChecked="{Binding EnableSounds}"
+                            Unchecked="EnableSoundsCheckBox_Unchecked" />
+                        <CheckBox Name="EnableAnalyticsCheckBox" Grid.Row="2"
+                            Height="30"
+                            Margin="0,10,0,0"
+                            VerticalContentAlignment="Center"
+                            Checked="EnableAnalyticsCheckBox_Checked"
+                            Content="Allow anonymous analytics data collection"
+                            FontSize="18"
+                            IsChecked="{Binding EnableAnalytics}"
+                            Unchecked="EnableAnalyticsCheckBox_Unchecked" />
+                        <CheckBox Name="EnableUpdateNotificationCheckBox" Grid.Row="3"
+                            Height="30"
+                            Margin="0,10,0,0"
+                            VerticalContentAlignment="Center"
+                            Checked="EnableUpdateNotificationCheckBox_Checked"
+                            Content="Notify of new version at launch"
+                            FontSize="18"
+                            IsChecked="{Binding EnableUpdateNotification}"
+                            Unchecked="EnableUpdateNotificationCheckBox_Unchecked" />
+                    </Grid>
+                </Border>
+            </TabItem>
+
             <!--  ABOUT PAGE  -->
             <TabItem
                 Width="80"

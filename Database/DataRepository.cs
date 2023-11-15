@@ -43,6 +43,49 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        public static bool GetUserSettingBool(string infoKey)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    SELECT
+                        InfoValue
+                    FROM
+                        UserInfo
+                    WHERE
+                        InfoKey = @InfoKey
+                ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@InfoKey", infoKey);
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    return reader.GetString(0) == "1";
+                }
+            }
+        }
+
+        public static void SetUserSettingBool(string infoKey, bool infoValue)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE
+                        UserInfo
+                    SET
+                        InfoValue = @InfoValue
+                    WHERE
+                        InfoKey = @InfoKey", conn))
+                {
+                    cmd.Parameters.AddWithValue("@InfoKey", infoKey);
+                    cmd.Parameters.AddWithValue("@InfoValue", infoValue);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         // Fetch data from SQLite database and convert ResourceRarity to text using the enum
         public List<Resource> GetResources()
         {
