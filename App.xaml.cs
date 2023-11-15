@@ -107,10 +107,6 @@ namespace Starfield_Interactive_Smart_Slate
 
             DatabaseInitializer.SetVersionToLatest();
 
-            // load in user settings from DB
-            UserSettings = new UserSettings();
-            UserSettings.LoadSettings();
-
             // preload sound files
             // set volume to 0 because for some reason it auto-plays the sound for just a little bit
             scrollSoundPlayer.Open(new Uri("Sounds/Scroll_Sound.mp3", UriKind.Relative));
@@ -127,7 +123,14 @@ namespace Starfield_Interactive_Smart_Slate
             AppCenter.SetUserId(DataRepository.UserID);
             AppCenter.LogLevel = LogLevel.Verbose;
             AppCenter.Start("", typeof(Analytics), typeof(Crashes));
-            var appCenterConfigured = AppCenter.Configured; // TODO: add popup if this isn't configured
+            if (!AppCenter.Configured)
+            {
+                MessageBox.Show("Analytics not configured!", "Warning");
+            }
+
+            // load in user settings from DB
+            UserSettings = new UserSettings();
+            UserSettings.LoadSettings();
 
             base.OnStartup(e);
         }

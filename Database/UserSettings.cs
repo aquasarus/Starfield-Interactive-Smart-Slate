@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AppCenter.Analytics;
+using System.ComponentModel;
 
 namespace Starfield_Interactive_Smart_Slate.Database
 {
@@ -23,6 +24,7 @@ namespace Starfield_Interactive_Smart_Slate.Database
             set
             {
                 DataRepository.SetUserSettingBool(EnableAnalyticsKey, value);
+                Analytics.SetEnabledAsync(value);
                 enableAnalytics = value;
             }
         }
@@ -49,6 +51,7 @@ namespace Starfield_Interactive_Smart_Slate.Database
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableSounds)));
 
             enableAnalytics = DataRepository.GetUserSettingBool(EnableAnalyticsKey);
+            Analytics.SetEnabledAsync(enableAnalytics);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableAnalytics)));
 
             enableUpdateNotification = DataRepository.GetUserSettingBool(EnableUpdateNotificationKey);
