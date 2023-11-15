@@ -968,6 +968,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0"
                             HorizontalContentAlignment="Center"
@@ -1000,6 +1001,18 @@
                             FontSize="18"
                             IsChecked="{Binding EnableUpdateNotification}"
                             Unchecked="EnableUpdateNotificationCheckBox_Unchecked" />
+                        <Label Name="NewVersionAvailableSettingsLabel" Grid.Row="4"
+                            Margin="30,0,0,0"
+                            HorizontalContentAlignment="Left"
+                            Visibility="Collapsed">
+                            <Hyperlink Name="NewVersionAvailableSettingsHyperlink"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/releases"
+                                RequestNavigate="NavigateToHyperlink">
+                                > New Version vx.x.x Available
+                            </Hyperlink>
+                        </Label>
                     </Grid>
                 </Border>
             </TabItem>
@@ -1028,11 +1041,28 @@
                     <Label Grid.Row="1"
                         HorizontalContentAlignment="Center"
                         Content="Starfield Interactive Smart Slate" />
-                    <Label Name="VersionNumberLabel" Grid.Row="2"
-                        HorizontalContentAlignment="Center"
-                        Content="Version x.x.x"
-                        FontSize="22"
-                        Style="{StaticResource ContentTitleStyle}" />
+                    <Grid Grid.Row="2" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Name="VersionNumberLabel" Grid.Column="0"
+                            HorizontalContentAlignment="Center"
+                            Content="Version x.x.x"
+                            FontSize="22"
+                            Style="{StaticResource ContentTitleStyle}" />
+                        <Label Name="NewVersionAvailableLabel" Grid.Column="1"
+                            HorizontalContentAlignment="Center"
+                            Style="{StaticResource ContentTitleStyle}"
+                            Visibility="Collapsed">
+                            <Hyperlink Name="NewVersionAvailableHyperlink"
+                                FontSize="22"
+                                NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/releases"
+                                RequestNavigate="NavigateToHyperlink">
+                                (New Version vx.x.x Available)
+                            </Hyperlink>
+                        </Label>
+                    </Grid>
                     <Label Grid.Row="3" HorizontalContentAlignment="Center">
                         <Hyperlink
                             FontSize="16"

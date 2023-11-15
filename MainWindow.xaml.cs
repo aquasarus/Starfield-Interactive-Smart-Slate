@@ -9,7 +9,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -80,6 +82,8 @@ namespace Starfield_Interactive_Smart_Slate
             solarSystemsListView.Loaded += InitializeSolarSystemsListView;
 
             pictureGrid.DataContext = this;
+
+            CheckForUpdate();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -1114,6 +1118,7 @@ namespace Starfield_Interactive_Smart_Slate
         }
         #endregion
 
+        #region
         // -----------------------------------------------------------------------------------------------
         // SETTINGS PAGE
         // -----------------------------------------------------------------------------------------------
@@ -1146,6 +1151,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             ((App)Application.Current).PlayCancelSound();
         }
+        #endregion
 
         // -----------------------------------------------------------------------------------------------
         // ABOUT PAGE
@@ -1159,10 +1165,54 @@ namespace Starfield_Interactive_Smart_Slate
             });
             e.Handled = true;
         }
+
         private void DataFolderLinkClick(object sender, RoutedEventArgs e)
         {
             ((App)Application.Current).PlayClickSound();
             Process.Start("explorer.exe", DatabaseInitializer.UserDatabaseFolder());
+        }
+
+        private async void CheckForUpdate()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response =
+                    await client.GetAsync("https://github.com/aquasarus/Starfield-Interactive-Smart-Slate");
+                response.EnsureSuccessStatusCode();
+                string htmlContent = await response.Content.ReadAsStringAsync();
+
+                var pattern = "(Releases).*?tag\\/v(\\d+\\.\\d+\\.\\d+).*?(Label: Latest)";
+                Match match = Regex.Match(htmlContent, pattern, RegexOptions.Singleline);
+                if (match.Success)
+                {
+                    Version latestVersion = Version.Parse(match.Groups[2].Value);
+                    Version currentVersion = Assembly.GetEntryAssembly().GetName().Version;
+
+                    if (latestVersion.CompareTo(currentVersion) > 0)
+                    {
+                        AnalyticsUtil.TrackEvent("Found app update");
+                        NewVersionAvailableHyperlink.Inlines.Clear();
+                        NewVersionAvailableHyperlink.Inlines.Add($"(New Version v{latestVersion} Available)");
+                        NewVersionAvailableLabel.Visibility = Visibility.Visible;
+
+                        NewVersionAvailableSettingsHyperlink.Inlines.Clear();
+                        NewVersionAvailableSettingsHyperlink.Inlines.Add($"> New Version v{latestVersion} Available");
+                        NewVersionAvailableSettingsLabel.Visibility = Visibility.Visible;
+
+                        // TODO: popup if setting is true
+                    }
+                }
+                else
+                {
+                    AnalyticsUtil.TrackEvent("Did not find latest release on GitHub");
+                }
+            }
+            catch (Exception e)
+            {
+                AnalyticsUtil.TrackError(e);
+                if (Debugger.IsAttached) { throw; }
+            }
         }
     }
 }

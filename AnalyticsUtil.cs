@@ -1,4 +1,6 @@
 ﻿using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.Generic;
 
 namespace Starfield_Interactive_Smart_Slate
@@ -11,6 +13,11 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 { "UserID", DataRepository.UserID }
             });
+        }
+
+        public static void TrackError(Exception e)
+        {
+            Crashes.TrackError(e);
         }
     }
 }
