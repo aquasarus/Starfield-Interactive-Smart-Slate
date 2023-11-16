@@ -4,6 +4,8 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
 {
     public partial class BasicYesNoDialog : Window
     {
+        public bool ExplicitNo = false;
+
         public BasicYesNoDialog(string title, string body, string yesText, string noText)
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             ((App)Application.Current).PlayCancelSound();
+            ExplicitNo = true;
             Close();
         }
     }

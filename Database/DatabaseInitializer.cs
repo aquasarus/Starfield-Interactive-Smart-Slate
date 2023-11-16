@@ -194,11 +194,13 @@ namespace Starfield_Interactive_Smart_Slate
                     VALUES
                         (@EnableSoundsKey, 1),
                         (@EnableAnalyticsKey, 1),
-                        (@EnableUpdateNotificationKey, 1)", conn))
+                        (@EnableUpdateNotificationKey, 1),
+                        (@HasShownAnalyticsPopupKey, 0)", conn))
                 {
                     cmd.Parameters.AddWithValue("@EnableSoundsKey", UserSettings.EnableSoundsKey);
                     cmd.Parameters.AddWithValue("@EnableAnalyticsKey", UserSettings.EnableAnalyticsKey);
                     cmd.Parameters.AddWithValue("@EnableUpdateNotificationKey", UserSettings.EnableUpdateNotificationKey);
+                    cmd.Parameters.AddWithValue("@HasShownAnalyticsPopupKey", UserSettings.HasShownAnalyticsPopupKey);
                     cmd.ExecuteNonQuery();
                 }
             }

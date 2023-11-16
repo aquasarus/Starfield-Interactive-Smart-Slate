@@ -137,6 +137,26 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!((App)Application.Current).UserSettings.HasShownAnalyticsPopup)
+            {
+                var analyticsPermissionPopup = new BasicYesNoDialog("Analytics",
+                    "To continue improving this app, I'd love to know how many people are actually using it. " +
+                        "Will you allow me to collect some anonymous analytics data from this app?\n\n" +
+                        $"You will be identified as:\n{DataRepository.UserID}",
+                    "Okay",
+                    "Opt Out");
+                analyticsPermissionPopup.Owner = this;
+                analyticsPermissionPopup.ShowDialog();
+                if (analyticsPermissionPopup.ExplicitNo)
+                {
+                    ((App)Application.Current).UserSettings.EnableAnalytics = false;
+                }
+                ((App)Application.Current).UserSettings.HasShownAnalyticsPopup = true;
+            }
+        }
+
         // -----------------------------------------------------------------------------------------------
         // CELESTIAL BODIES
         // -----------------------------------------------------------------------------------------------
@@ -1211,7 +1231,9 @@ namespace Starfield_Interactive_Smart_Slate
                         NewVersionAvailableSettingsHyperlink.Inlines.Add($"> New Version v{latestVersion} Available");
                         NewVersionAvailableSettingsLabel.Visibility = Visibility.Visible;
 
-                        if (((App)Application.Current).UserSettings.EnableUpdateNotification)
+                        // don't clash with the analytics popup
+                        if (((App)Application.Current).UserSettings.EnableUpdateNotification
+                            && ((App)Application.Current).UserSettings.HasShownAnalyticsPopup)
                         {
                             var versionString = $"v{latestVersion.Major}.{latestVersion.Minor}.{latestVersion.Build}";
                             var newVersionNotification = new BasicYesNoDialog("New Version Available",

@@ -8,6 +8,7 @@ namespace Starfield_Interactive_Smart_Slate.Database
         public static readonly string EnableSoundsKey = "EnableSounds";
         public static readonly string EnableAnalyticsKey = "EnableAnalytics";
         public static readonly string EnableUpdateNotificationKey = "EnableUpdateNotification";
+        public static readonly string HasShownAnalyticsPopupKey = "HasShownAnalyticsPopup";
 
         public bool EnableSounds
         {
@@ -16,8 +17,10 @@ namespace Starfield_Interactive_Smart_Slate.Database
             {
                 DataRepository.SetUserSettingBool(EnableSoundsKey, value);
                 enableSounds = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableSounds)));
             }
         }
+
         public bool EnableAnalytics
         {
             get { return enableAnalytics; }
@@ -26,8 +29,10 @@ namespace Starfield_Interactive_Smart_Slate.Database
                 DataRepository.SetUserSettingBool(EnableAnalyticsKey, value);
                 Analytics.SetEnabledAsync(value);
                 enableAnalytics = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableAnalytics)));
             }
         }
+
         public bool EnableUpdateNotification
         {
             get { return enableUpdateNotification; }
@@ -35,6 +40,20 @@ namespace Starfield_Interactive_Smart_Slate.Database
             {
                 DataRepository.SetUserSettingBool(EnableUpdateNotificationKey, value);
                 enableUpdateNotification = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableUpdateNotification)));
+            }
+        }
+
+        public bool HasShownAnalyticsPopup
+        {
+            get
+            {
+                return hasShownAnalyticsPopup;
+            }
+            set
+            {
+                DataRepository.SetUserSettingBool(HasShownAnalyticsPopupKey, value);
+                hasShownAnalyticsPopup = value;
             }
         }
 
@@ -43,7 +62,7 @@ namespace Starfield_Interactive_Smart_Slate.Database
         private bool enableSounds;
         private bool enableAnalytics;
         private bool enableUpdateNotification;
-
+        private bool hasShownAnalyticsPopup;
 
         public void LoadSettings()
         {
@@ -56,6 +75,8 @@ namespace Starfield_Interactive_Smart_Slate.Database
 
             enableUpdateNotification = DataRepository.GetUserSettingBool(EnableUpdateNotificationKey);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnableUpdateNotification)));
+
+            hasShownAnalyticsPopup = DataRepository.GetUserSettingBool(HasShownAnalyticsPopupKey);
         }
     }
 }
