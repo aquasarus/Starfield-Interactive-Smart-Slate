@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Starfield Interactive Smart Slate"
-    Width="1480"
-    Loaded="Window_Loaded"
+    Width="1500"
     Height="1000"
     KeyDown="Window_KeyDown"
+    Loaded="Window_Loaded"
     PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown"
     SizeChanged="Window_SizeChanged"
     Style="{StaticResource SofiaSansStyle}"
@@ -31,7 +31,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MaxWidth="400" />
                         <ColumnDefinition Width="*" MaxWidth="280" />
-                        <ColumnDefinition Width="*" MaxWidth="280" />
+                        <ColumnDefinition Width="*" MaxWidth="320" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 

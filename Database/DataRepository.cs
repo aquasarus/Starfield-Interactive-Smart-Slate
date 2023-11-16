@@ -549,9 +549,11 @@ namespace Starfield_Interactive_Smart_Slate
         // e.g. Dictionary { "pack octomaggot":  "Pack Octomaggot" }
         public Dictionary<LifeformType, Dictionary<string, string>> GetLifeformNames()
         {
-            var lifeformNames = new Dictionary<LifeformType, Dictionary<string, string>>();
-            lifeformNames.Add(LifeformType.Fauna, new Dictionary<string, string>());
-            lifeformNames.Add(LifeformType.Flora, new Dictionary<string, string>());
+            var lifeformNames = new Dictionary<LifeformType, Dictionary<string, string>>
+            {
+                { LifeformType.Fauna, new Dictionary<string, string>() },
+                { LifeformType.Flora, new Dictionary<string, string>() }
+            };
 
             using (SQLiteConnection conn = CreateConnection())
             {

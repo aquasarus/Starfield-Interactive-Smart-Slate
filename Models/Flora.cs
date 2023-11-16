@@ -21,26 +21,30 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 return (PrimaryDrops?.Count ?? 0) > 0 ? true : false;
             }
         }
-        public string SurveyedString
+        public string? SurveyedString
         {
             get
             {
-                if (IsSurveyed && (Pictures?.Count ?? 0) > 1)
+                var icons = "";
+
+                if (!string.IsNullOrWhiteSpace(FloraNotes))
                 {
-                    return "📷 ✓";
+                    icons += "📝";
                 }
-                else if (IsSurveyed)
+
+                if ((Pictures?.Count ?? 0) > 1)
                 {
-                    return "✓";
+                    if (icons != "") { icons += " "; }
+                    icons += "📷";
                 }
-                else if ((Pictures?.Count ?? 0) > 1)
+
+                if (IsSurveyed)
                 {
-                    return "📷";
+                    if (icons != "") { icons += " "; }
+                    icons += "✓";
                 }
-                else
-                {
-                    return null;
-                }
+
+                return icons == "" ? null : icons;
             }
         }
         public string ResourceString
