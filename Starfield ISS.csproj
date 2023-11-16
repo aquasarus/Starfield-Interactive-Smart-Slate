@@ -8,7 +8,7 @@
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>slate_icon.ico</ApplicationIcon>
 		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-		<Version>1.0.3</Version>
+		<Version>1.1.0</Version>
 		<Platforms>AnyCPU;x64</Platforms></PropertyGroup>
 
 	<ItemGroup>
