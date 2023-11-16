@@ -1122,34 +1122,40 @@ namespace Starfield_Interactive_Smart_Slate
         // SETTINGS PAGE
         // -----------------------------------------------------------------------------------------------
         #region
-        private void EnableSoundsCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void EnableSoundsCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            if (((App)Application.Current).UserSettings.EnableSounds)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
         }
 
-        private void EnableSoundsCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        private void EnableAnalyticsCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayCancelSound();
+            if (((App)Application.Current).UserSettings.EnableAnalytics)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
         }
 
-        private void EnableAnalyticsCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void EnableUpdateNotificationCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
-        }
-
-        private void EnableAnalyticsCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ((App)Application.Current).PlayCancelSound();
-        }
-
-        private void EnableUpdateNotificationCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            ((App)Application.Current).PlayClickSound();
-        }
-
-        private void EnableUpdateNotificationCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ((App)Application.Current).PlayCancelSound();
+            if (((App)Application.Current).UserSettings.EnableUpdateNotification)
+            {
+                ((App)Application.Current).PlayClickSound();
+            }
+            else
+            {
+                ((App)Application.Current).PlayCancelSound();
+            }
         }
         #endregion
 

@@ -978,29 +978,26 @@
                             Height="30"
                             Margin="0,10,0,0"
                             VerticalContentAlignment="Center"
-                            Checked="EnableSoundsCheckBox_Checked"
+                            Click="EnableSoundsCheckBox_Click"
                             Content="Enable sounds"
                             FontSize="18"
-                            IsChecked="{Binding EnableSounds}"
-                            Unchecked="EnableSoundsCheckBox_Unchecked" />
+                            IsChecked="{Binding EnableSounds}" />
                         <CheckBox Name="EnableAnalyticsCheckBox" Grid.Row="2"
                             Height="30"
                             Margin="0,10,0,0"
                             VerticalContentAlignment="Center"
-                            Checked="EnableAnalyticsCheckBox_Checked"
+                            Click="EnableAnalyticsCheckBox_Click"
                             Content="Allow anonymous analytics data collection"
                             FontSize="18"
-                            IsChecked="{Binding EnableAnalytics}"
-                            Unchecked="EnableAnalyticsCheckBox_Unchecked" />
+                            IsChecked="{Binding EnableAnalytics}" />
                         <CheckBox Name="EnableUpdateNotificationCheckBox" Grid.Row="3"
                             Height="30"
                             Margin="0,10,0,0"
                             VerticalContentAlignment="Center"
-                            Checked="EnableUpdateNotificationCheckBox_Checked"
+                            Click="EnableUpdateNotificationCheckBox_Click"
                             Content="Notify of new version at launch"
                             FontSize="18"
-                            IsChecked="{Binding EnableUpdateNotification}"
-                            Unchecked="EnableUpdateNotificationCheckBox_Unchecked" />
+                            IsChecked="{Binding EnableUpdateNotification}" />
                         <Label Name="NewVersionAvailableSettingsLabel" Grid.Row="4"
                             Margin="30,0,0,0"
                             HorizontalContentAlignment="Left"
