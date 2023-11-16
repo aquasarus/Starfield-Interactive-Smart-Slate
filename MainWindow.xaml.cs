@@ -1118,10 +1118,10 @@ namespace Starfield_Interactive_Smart_Slate
         }
         #endregion
 
-        #region
         // -----------------------------------------------------------------------------------------------
         // SETTINGS PAGE
         // -----------------------------------------------------------------------------------------------
+        #region
         private void EnableSoundsCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             ((App)Application.Current).PlayClickSound();
@@ -1159,10 +1159,7 @@ namespace Starfield_Interactive_Smart_Slate
         private void NavigateToHyperlink(object sender, RequestNavigateEventArgs e)
         {
             ((App)Application.Current).PlayClickSound();
-            Process.Start(new ProcessStartInfo(e.Uri.ToString())
-            {
-                UseShellExecute = true // need to set this to get web links to work here
-            });
+            LaunchHyperlink(e.Uri.ToString());
             e.Handled = true;
         }
 
@@ -1170,6 +1167,14 @@ namespace Starfield_Interactive_Smart_Slate
         {
             ((App)Application.Current).PlayClickSound();
             Process.Start("explorer.exe", DatabaseInitializer.UserDatabaseFolder());
+        }
+
+        private void LaunchHyperlink(string hyperlink)
+        {
+            Process.Start(new ProcessStartInfo(hyperlink)
+            {
+                UseShellExecute = true // need to set this to get web links to work here
+            });
         }
 
         private async void CheckForUpdate()
@@ -1200,7 +1205,19 @@ namespace Starfield_Interactive_Smart_Slate
                         NewVersionAvailableSettingsHyperlink.Inlines.Add($"> New Version v{latestVersion} Available");
                         NewVersionAvailableSettingsLabel.Visibility = Visibility.Visible;
 
-                        // TODO: popup if setting is true
+                        if (((App)Application.Current).UserSettings.EnableUpdateNotification)
+                        {
+                            var versionString = $"v{latestVersion.Major}.{latestVersion.Minor}.{latestVersion.Build}";
+                            var newVersionNotification = new BasicYesNoDialog("New Version Available",
+                                $"There is a new version ({versionString}) available on GitHub! Wanna check it out?",
+                                "Yes",
+                                "No");
+                            newVersionNotification.Owner = this;
+                            if (newVersionNotification.ShowDialog() == true)
+                            {
+                                LaunchHyperlink("https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/releases");
+                            }
+                        }
                     }
                 }
                 else
