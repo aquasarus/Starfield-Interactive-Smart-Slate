@@ -135,7 +135,9 @@ namespace Starfield_Interactive_Smart_Slate
             // initialize analytics
             AppCenter.SetUserId(DataRepository.UserID);
             AppCenter.LogLevel = LogLevel.Verbose;
+            Analytics.EnableManualSessionTracker();
             AppCenter.Start("", typeof(Analytics), typeof(Crashes));
+            Analytics.StartSession();
             if (!AppCenter.Configured)
             {
                 MessageBox.Show("Analytics not configured!", "Warning");
