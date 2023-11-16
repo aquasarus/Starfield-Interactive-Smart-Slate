@@ -55,9 +55,9 @@ namespace Starfield_Interactive_Smart_Slate
         {
             InitializeComponent();
 
-            EnableSoundsCheckBox.DataContext = ((App)Application.Current).UserSettings;
-            EnableAnalyticsCheckBox.DataContext = ((App)Application.Current).UserSettings;
-            EnableUpdateNotificationCheckBox.DataContext = ((App)Application.Current).UserSettings;
+            EnableSoundsCheckBox.DataContext = App.Current.UserSettings;
+            EnableAnalyticsCheckBox.DataContext = App.Current.UserSettings;
+            EnableUpdateNotificationCheckBox.DataContext = App.Current.UserSettings;
 
             // show version number
             Version version = Assembly.GetEntryAssembly().GetName().Version;
@@ -108,7 +108,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (!((TabItem)sender).IsSelected)
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
         }
 
@@ -132,14 +132,14 @@ namespace Starfield_Interactive_Smart_Slate
                         displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
 
-                    ((App)Application.Current).PlayClickSound();
+                    App.Current.PlayClickSound();
                 }
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!((App)Application.Current).UserSettings.HasShownAnalyticsPopup)
+            if (!App.Current.UserSettings.HasShownAnalyticsPopup)
             {
                 var analyticsPermissionPopup = new BasicYesNoDialog("Analytics",
                     "To continue improving this app, I'd love to know how many people are actually using it. " +
@@ -151,9 +151,9 @@ namespace Starfield_Interactive_Smart_Slate
                 analyticsPermissionPopup.ShowDialog();
                 if (analyticsPermissionPopup.ExplicitNo)
                 {
-                    ((App)Application.Current).UserSettings.EnableAnalytics = false;
+                    App.Current.UserSettings.EnableAnalytics = false;
                 }
-                ((App)Application.Current).UserSettings.HasShownAnalyticsPopup = true;
+                App.Current.UserSettings.HasShownAnalyticsPopup = true;
             }
         }
 
@@ -311,7 +311,7 @@ namespace Starfield_Interactive_Smart_Slate
                     ClearFloraSelection();
                 }
 
-                ((App)Application.Current).PlayScrollSound();
+                App.Current.PlayScrollSound();
             }
         }
 
@@ -361,7 +361,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (celestialBody.Equals(selectedCelestialBody))
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
 
                 SetSelectedCelestialBody(null);
                 parent.UnselectAll();
@@ -369,7 +369,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
 
                 SetSelectedCelestialBody(celestialBody);
                 parent.SelectedItem = celestialBody;
@@ -405,7 +405,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void DiscoverNewSystemClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
 
             List<SolarSystem> alphabeticalSystems = allSolarSystems
                 .Where(solarSystem => !solarSystem.Discovered)
@@ -450,7 +450,7 @@ namespace Starfield_Interactive_Smart_Slate
                     DisplayFaunaDetails(fauna);
                 }
 
-                ((App)Application.Current).PlayScrollSound();
+                App.Current.PlayScrollSound();
             }
         }
 
@@ -467,7 +467,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (selectedFauna == fauna)
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
 
                 // like ClearFaunaSelection but keep displayedFauna
                 selectedFauna = null;
@@ -478,7 +478,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
 
                 clickedItem.IsSelected = true;
                 clickedItem.Focus();
@@ -535,7 +535,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void AddFaunaClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
 
             AddLifeformDialog dialog = new AddLifeformDialog(lifeformNames[LifeformType.Fauna], LifeformType.Fauna);
 
@@ -568,7 +568,7 @@ namespace Starfield_Interactive_Smart_Slate
                     DisplayFloraDetails(flora);
                 }
 
-                ((App)Application.Current).PlayScrollSound();
+                App.Current.PlayScrollSound();
             }
         }
 
@@ -585,7 +585,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (selectedFlora == flora)
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
 
                 // like ClearFloraSelection but keep displayedFlora
                 selectedFlora = null;
@@ -596,7 +596,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
 
                 clickedItem.IsSelected = true;
                 clickedItem.Focus();
@@ -653,7 +653,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void AddFloraClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
 
             AddLifeformDialog dialog = new AddLifeformDialog(lifeformNames[LifeformType.Flora], LifeformType.Flora);
 
@@ -678,7 +678,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void EditLifeformClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
 
             if (displayedFauna != null)
             {
@@ -753,7 +753,7 @@ namespace Starfield_Interactive_Smart_Slate
             var picture = ((Border)sender).DataContext as Picture;
             if (picture.IsPlaceholder)
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
 
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "Images | *.jpg; *.png; *.jpeg; *.bmp; *.tiff; *.tif";
@@ -773,18 +773,18 @@ namespace Starfield_Interactive_Smart_Slate
                         displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
 
-                    ((App)Application.Current).PlayClickSound();
+                    App.Current.PlayClickSound();
                 }
                 else
                 {
-                    ((App)Application.Current).PlayCancelSound();
+                    App.Current.PlayCancelSound();
                 }
             }
             else if (!picture.Corrupted)
             {
                 AnalyticsUtil.TrackEvent("View picture");
 
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
 
                 var viewer = new PictureViewer(picture);
                 viewer.Owner = this;
@@ -843,7 +843,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void PictureDeleteClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
 
             var picture = ((MenuItem)sender).DataContext as Picture;
             if (displayedFauna != null)
@@ -861,7 +861,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void PictureOpenFolderClicked(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
 
             var picture = ((MenuItem)sender).DataContext as Picture;
             var folder = Path.GetDirectoryName(picture.PictureUri.LocalPath);
@@ -920,7 +920,7 @@ namespace Starfield_Interactive_Smart_Slate
 
                 if (importSuccess)
                 {
-                    ((App)Application.Current).PlayClickSound();
+                    App.Current.PlayClickSound();
                 }
             }
 
@@ -944,12 +944,12 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (selectedResource == null)
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
             }
             else
             {
                 AnalyticsUtil.TrackEvent("Search inorganic resource");
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
 
             inorganicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesForResource(selectedResource);
@@ -970,12 +970,12 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (selectedResource == null)
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
             }
             else
             {
                 AnalyticsUtil.TrackEvent("Search organic resource");
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
 
             organicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesAndLifeformsForResource(selectedResource);
@@ -1085,7 +1085,7 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     DisplayOrganicResultCelestialBody(celestialBody);
                 }
-                ((App)Application.Current).PlayScrollSound();
+                App.Current.PlayScrollSound();
             }
         }
 
@@ -1103,7 +1103,7 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (celestialBody.Equals(selectedOrganicResultCelestialBody))
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
 
                 selectedOrganicResultCelestialBody = null;
                 parent.UnselectAll();
@@ -1111,7 +1111,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
 
                 selectedOrganicResultCelestialBody = celestialBody;
                 parent.SelectedItem = celestialBody;
@@ -1144,37 +1144,37 @@ namespace Starfield_Interactive_Smart_Slate
         #region
         private void EnableSoundsCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            if (((App)Application.Current).UserSettings.EnableSounds)
+            if (App.Current.UserSettings.EnableSounds)
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
             else
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
             }
         }
 
         private void EnableAnalyticsCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            if (((App)Application.Current).UserSettings.EnableAnalytics)
+            if (App.Current.UserSettings.EnableAnalytics)
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
             else
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
             }
         }
 
         private void EnableUpdateNotificationCheckBox_Click(object sender, RoutedEventArgs e)
         {
-            if (((App)Application.Current).UserSettings.EnableUpdateNotification)
+            if (App.Current.UserSettings.EnableUpdateNotification)
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
             else
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
             }
         }
         #endregion
@@ -1184,14 +1184,14 @@ namespace Starfield_Interactive_Smart_Slate
         // -----------------------------------------------------------------------------------------------
         private void NavigateToHyperlink(object sender, RequestNavigateEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
             LaunchHyperlink(e.Uri.ToString());
             e.Handled = true;
         }
 
         private void DataFolderLinkClick(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
             Process.Start("explorer.exe", DatabaseInitializer.UserDatabaseFolder());
         }
 
@@ -1232,8 +1232,8 @@ namespace Starfield_Interactive_Smart_Slate
                         NewVersionAvailableSettingsLabel.Visibility = Visibility.Visible;
 
                         // don't clash with the analytics popup
-                        if (((App)Application.Current).UserSettings.EnableUpdateNotification
-                            && ((App)Application.Current).UserSettings.HasShownAnalyticsPopup)
+                        if (App.Current.UserSettings.EnableUpdateNotification
+                            && App.Current.UserSettings.HasShownAnalyticsPopup)
                         {
                             var versionString = $"v{latestVersion.Major}.{latestVersion.Minor}.{latestVersion.Build}";
                             var newVersionNotification = new BasicYesNoDialog("New Version Available",

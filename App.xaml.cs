@@ -14,10 +14,23 @@ namespace Starfield_Interactive_Smart_Slate
     {
         public UserSettings UserSettings;
 
+        public new static App Current
+        {
+            get { return current; }
+        }
+
+        private static double SoundVolume = 0.8;
+        private static App current;
+
         private MediaPlayer scrollSoundPlayer = new MediaPlayer();
         private MediaPlayer clickSoundPlayer = new MediaPlayer();
         private MediaPlayer cancelSoundPlayer = new MediaPlayer();
-        private static double SoundVolume = 0.8;
+
+        public App()
+        {
+            current = this;
+            UserSettings = new UserSettings();
+        }
 
         public void PlayScrollSound()
         {
@@ -129,7 +142,6 @@ namespace Starfield_Interactive_Smart_Slate
             }
 
             // load in user settings from DB
-            UserSettings = new UserSettings();
             UserSettings.LoadSettings();
 
             base.OnStartup(e);

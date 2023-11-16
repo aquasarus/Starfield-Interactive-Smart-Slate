@@ -22,7 +22,7 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             IsClosing = true;
-            ((App)Application.Current).PlayCancelSound();
+            App.Current.PlayCancelSound();
         }
     }
 }

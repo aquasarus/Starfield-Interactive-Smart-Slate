@@ -18,14 +18,14 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
             DialogResult = true;
             Close();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).PlayCancelSound();
+            App.Current.PlayCancelSound();
             ExplicitNo = true;
             Close();
         }

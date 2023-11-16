@@ -63,17 +63,17 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (this.DialogResult == true)
             {
-                ((App)Application.Current).PlayClickSound();
+                App.Current.PlayClickSound();
             }
             else
             {
-                ((App)Application.Current).PlayCancelSound();
+                App.Current.PlayCancelSound();
             }
         }
 
         private void solarSystemComboBox_Clicked(object sender, MouseButtonEventArgs e)
         {
-            ((App)Application.Current).PlayClickSound();
+            App.Current.PlayClickSound();
         }
     }
 }
