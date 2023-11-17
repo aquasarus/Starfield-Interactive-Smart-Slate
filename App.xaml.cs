@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.Win32;
 using Starfield_Interactive_Smart_Slate.Database;
 using System;
 using System.IO;
@@ -22,9 +23,9 @@ namespace Starfield_Interactive_Smart_Slate
         private static double SoundVolume = 0.8;
         private static App current;
 
-        private MediaPlayer scrollSoundPlayer = new MediaPlayer();
-        private MediaPlayer clickSoundPlayer = new MediaPlayer();
-        private MediaPlayer cancelSoundPlayer = new MediaPlayer();
+        private MediaPlayer scrollSoundPlayer;
+        private MediaPlayer clickSoundPlayer;
+        private MediaPlayer cancelSoundPlayer;
 
         public App()
         {
@@ -120,14 +121,8 @@ namespace Starfield_Interactive_Smart_Slate
 
             DatabaseInitializer.SetVersionToLatest();
 
-            // preload sound files
-            // set volume to 0 because for some reason it auto-plays the sound for just a little bit
-            scrollSoundPlayer.Open(new Uri("Sounds/Scroll_Sound.mp3", UriKind.Relative));
-            scrollSoundPlayer.Volume = 0;
-            clickSoundPlayer.Open(new Uri("Sounds/Click_Sound.mp3", UriKind.Relative));
-            clickSoundPlayer.Volume = 0;
-            cancelSoundPlayer.Open(new Uri("Sounds/Cancel_Sound.mp3", UriKind.Relative));
-            cancelSoundPlayer.Volume = 0;
+            InitializeMediaPlayers();
+            SystemEvents.PowerModeChanged += OnPowerModeChanged;
 
             // preload User ID
             DataRepository.InitializeUserID();
@@ -147,6 +142,31 @@ namespace Starfield_Interactive_Smart_Slate
             UserSettings.LoadSettings();
 
             base.OnStartup(e);
+        }
+
+        private void InitializeMediaPlayers()
+        {
+            scrollSoundPlayer = new MediaPlayer();
+            clickSoundPlayer = new MediaPlayer();
+            cancelSoundPlayer = new MediaPlayer();
+
+            // preload sound files
+            // set volume to 0 because for some reason it auto-plays the sound for just a little bit
+            scrollSoundPlayer.Open(new Uri("Sounds/Scroll_Sound.mp3", UriKind.Relative));
+            scrollSoundPlayer.Volume = 0;
+            clickSoundPlayer.Open(new Uri("Sounds/Click_Sound.mp3", UriKind.Relative));
+            clickSoundPlayer.Volume = 0;
+            cancelSoundPlayer.Open(new Uri("Sounds/Cancel_Sound.mp3", UriKind.Relative));
+            cancelSoundPlayer.Volume = 0;
+        }
+
+        private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
+        {
+            // for some reason, an existing MediaPlayer stops working once the PC goes to sleep
+            if (e.Mode == PowerModes.Resume)
+            {
+                InitializeMediaPlayers();
+            }
         }
 
         private static void HandleException(Exception ex)
