@@ -151,25 +151,34 @@ namespace Starfield_Interactive_Smart_Slate
             // present suggestion if exactly 1 lifeform name is matched
             if (matchedNames.Count() == 1)
             {
-                var matchedName = matchedNames.First();
-                matchedNameString = matchedName.Value;
+                matchedNameString = matchedNames.First().Value;
+            }
+            else if (matchedNames.Any(name => name.Key == lifeformNameTextbox.Text.ToLower()))
+            {
+                matchedNameString = matchedNames.First(name => name.Key == lifeformNameTextbox.Text.ToLower()).Value;
+            }
+            else
+            {
+                matchedNameString = null;
+            }
 
+            if (matchedNameString != null)
+            {
                 // restore capitalized version
-                if (!matchedName.Value.StartsWith(lifeformNameTextbox.Text))
+                if (!matchedNameString.StartsWith(lifeformNameTextbox.Text))
                 {
-                    lifeformNameTextbox.Text = matchedName.Value.Substring(0, lifeformNameTextbox.Text.Length);
+                    lifeformNameTextbox.Text = matchedNameString.Substring(0, lifeformNameTextbox.Text.Length);
                     lifeformNameTextbox.SelectionStart = lifeformNameTextbox.Text.Length;
                 }
 
                 matchIndicatorLabel.Visibility = Visibility.Visible;
-                lifeformNameHint.Content = matchedName.Value;
+                lifeformNameHint.Content = matchedNameString;
                 lifeformNameHint.Visibility = Visibility.Visible;
             }
             else
             {
                 matchIndicatorLabel.Visibility = Visibility.Hidden;
                 lifeformNameHint.Visibility = Visibility.Hidden;
-                matchedNameString = null;
             }
         }
 
