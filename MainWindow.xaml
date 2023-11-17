@@ -154,7 +154,7 @@
                             ScrollViewer.CanContentScroll="False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid Margin="0,0,1,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
@@ -628,7 +628,7 @@
                             ScrollViewer.CanContentScroll="False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid Margin="0,0,1,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
@@ -808,7 +808,7 @@
                             ScrollViewer.CanContentScroll="False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid Margin="0,0,1,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
