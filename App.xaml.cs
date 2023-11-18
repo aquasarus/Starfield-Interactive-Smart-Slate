@@ -4,6 +4,7 @@ using Microsoft.AppCenter.Crashes;
 using Microsoft.Win32;
 using Starfield_Interactive_Smart_Slate.Database;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -130,6 +131,7 @@ namespace Starfield_Interactive_Smart_Slate
             // initialize analytics
             AppCenter.SetUserId(DataRepository.UserID);
             AppCenter.LogLevel = LogLevel.Verbose;
+            AppCenter.SetCountryCode(RegionInfo.CurrentRegion.TwoLetterISORegionName);
             Analytics.EnableManualSessionTracker();
             AppCenter.Start("", typeof(Analytics), typeof(Crashes));
             Analytics.StartSession();
