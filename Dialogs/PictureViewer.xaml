@@ -9,11 +9,11 @@
     Height="950"
     Background="Black"
     Closing="Window_Closing"
+    PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <Image
         Margin="10,10,10,10"
-        PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown"
         Source="{Binding Path=PictureBitmap}"
         Stretch="Uniform" />
 </Window>
