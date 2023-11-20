@@ -1,4 +1,4 @@
-# Welcome to Starfield ISS (Interactive Smart Slate)
+﻿# Welcome to Starfield ISS (Interactive Smart Slate)
 *An Explorer's Survey Compendium, featuring a vastly higher tech Data Slate than Starfield's in-game version.*
 
 ## Overview
@@ -7,11 +7,18 @@ Starfield has such great potential for exploration content, but Survey Data in i
 ### Limitations
 - *Read no further if the following limitations are a dealbreaker for you.*
 - **This is not a mod.** This standalone app is not connected to your Starfield game instance in any way. All data entry must be done manually, though efforts will be made to make it as easy as possible. 
+    - As of now, I have not found a way to connect the app to the game. The in-game console also does not appear to expose commands related to survey data. Once Creation Kit is released, I will investigate again and hopefully find a way to finally auto-sync survey data with actual game state.
 - **Windows only.** This is my first time building a Windows app and I wanted to minimize overhead of learning too many things at once. So a cross-platform mobile app is off the table for now.
 
 ### Features
 - **100% free. No ads. No monetization.** Won't ever be, though I suppose I won't turn down a thank-you gift.
-- **Open source. Fully offline.** All your data is yours to manipulate with, if you so choose (see [instructions](#installation--instructions) below for where your data is).
+- **Open source. Fully offline functionality.**
+    - All your data is yours to manipulate with, if you so choose (see [instructions](#installation--instructions) below for where your data is).
+    - The app only uses the internet to check GitHub for updates and (optionally) log analytics data.
+- <details>
+    <summary>(Spoiler)</summary>
+    Preserve your survey data through any number of New Game+ runs!
+</details>
 
 #### Discover solar systems
 - See surface overview of planets and moons, just like in-game.
@@ -32,6 +39,13 @@ Starfield has such great potential for exploration content, but Survey Data in i
 
 ![Gif demo-ing searching for organic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/organic-resource-search-2.gif)
 
+#### Conveniently save and view pictures for your fauna/flora
+- Use UI + button to import a picture, or
+- Drag pictures into Lifeform Overview, or
+- Ctrl + V to paste from clipboard (best when combined with Windows screen cap tool `WinKey + Shift + S`).
+
+![Gif demo-ing searching for organic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/browse-pictures.gif)
+
 ## Installation / Instructions
 - Find the [latest release](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/releases) and choose one of the following options:
     - Option 1: Download `Starfield_ISS.zip`, extract all to a folder, then run `Starfield ISS.exe`.
@@ -39,17 +53,17 @@ Starfield has such great potential for exploration content, but Survey Data in i
 		- This app is built on Windows Presentation Foundation and uses `.NET 7.0` as a dependency. When you run the app for the first time, Windows may direct you to install it automatically.
     - Option 2: Download and review the source code. Compile with Visual Studio and run the application.
 - Everything should be pretty self-explanatory. If something is unclear or broken, [open an issue](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues) to let me know!
+    - Hover over 🛈 icons in the app for additional instructions.
 - All your survey data will be stored in `/<username>/AppData/local/Starfield_ISS/DataSlate.db` (SQLite)
     - Some prefilled default data will inevitably contain errors. They will be fixed via backwards-compatible app updates.
     - You may, of course, edit the DB file directly. I only recommend this if you know how SQLite works and how it can affect app compatibility. You could permanently break your app state by doing this.
 
 ## Regarding App Updates
-- Updates are manual at the moment. The app will not connect to the internet to check or install anything.
-- To install an update, simply download the latest version.
+- Updates are manual at the moment, though the app will check GitHub to compare your version with the latest release.
+- To install an update, simply download and run the latest version.
 - Since your survey data is stored in a user-specific folder (see above), the new version will not wipe your data.
 
 ## Upcoming Features
-- **Storing screenshots/photos for your fauna/flora.**
 - **Cataloging planet/moon traits.** I need to work on obtaining a comprehensive list of traits first.
 - **Cataloging secondary (chance-based) resource drops for fauna.**
 - **Prefilled 100% mode** for users who prefer to use this app as a wiki. I will add this when I am more confident with the accuracy of my default database.
