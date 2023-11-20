@@ -211,10 +211,17 @@ namespace Starfield_Interactive_Smart_Slate
             }
             catch (Exception exception)
             {
-                // fail silently if initial UI cached state fails to load
-                Settings.Default.Reset();
+                AnalyticsUtil.TrackError(exception);
 
-                // TODO: log exception in analytics?
+                // fail silently if initial UI cached state fails to load
+                if (Debugger.IsAttached)
+                {
+                    throw;
+                }
+                else
+                {
+                    Settings.Default.Reset();
+                }
             }
 
             // only need to run once
