@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using Starfield_Interactive_Smart_Slate.Database;
 using Starfield_Interactive_Smart_Slate.Dialogs;
 using Starfield_Interactive_Smart_Slate.Models;
 using Starfield_Interactive_Smart_Slate.Properties;
@@ -19,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 
 namespace Starfield_Interactive_Smart_Slate
 {
@@ -49,7 +49,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private Window? activePictureViewer = null;
 
-        private UserSettings userSettings;
+        private DispatcherTimer updateTimer;
 
         public MainWindow()
         {
@@ -83,6 +83,17 @@ namespace Starfield_Interactive_Smart_Slate
 
             pictureGrid.DataContext = this;
 
+            CheckForUpdate();
+
+            // check for updates once a day in case the user never closes the app
+            updateTimer = new DispatcherTimer();
+            updateTimer.Interval = TimeSpan.FromDays(1);
+            updateTimer.Tick += Timer_Tick;
+            updateTimer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
             CheckForUpdate();
         }
 
@@ -214,6 +225,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             FilterSolarSystems(SolarSystemFilterTextBox.Text);
         }
+
         private void FilterSolarSystems(string filterText)
         {
             ICollectionView view = CollectionViewSource.GetDefaultView(solarSystemsListView.ItemsSource);
