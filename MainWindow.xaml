@@ -596,6 +596,7 @@
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="Height" Value="30" />
                                         <Setter Property="Foreground" Value="Black" />
+                                        <EventSetter Event="MouseEnter" Handler="ResourceSearchListViewItem_MouseEnter" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                             </ListView>
@@ -776,6 +777,7 @@
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="Height" Value="30" />
                                         <Setter Property="Foreground" Value="Black" />
+                                        <EventSetter Event="MouseEnter" Handler="ResourceSearchListViewItem_MouseEnter" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                             </ListView>

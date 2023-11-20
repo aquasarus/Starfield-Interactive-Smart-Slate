@@ -952,6 +952,11 @@ namespace Starfield_Interactive_Smart_Slate
         // RESOURCE SEARCH
         // -----------------------------------------------------------------------------------------------
         #region Organic/Inorganic Resource Stuff
+        private void ResourceSearchListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            App.Current.PlayScrollSound();
+        }
+
         private void InorganicResourceFilterChanged(object sender, TextChangedEventArgs e)
         {
             FilterResources(inorganicResourceFilter.Text, inorganicResourceListView);
