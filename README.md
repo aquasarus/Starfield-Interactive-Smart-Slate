@@ -12,7 +12,7 @@ Starfield has such great potential for exploration content, but Survey Data in i
 
 ### Features
 - **100% free. No ads. No monetization.** Won't ever be, though I suppose I won't turn down a thank-you gift.
-- **Open source. Fully offline functionality.**
+- **Open-source. Fully offline functionality.**
     - All your data is yours to manipulate with, if you so choose (see [instructions](#installation--instructions) below for where your data is).
     - The app only uses the internet to check GitHub for updates and (optionally) log analytics data.
 - <details>
