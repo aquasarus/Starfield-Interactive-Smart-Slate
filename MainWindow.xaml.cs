@@ -89,6 +89,9 @@ namespace Starfield_Interactive_Smart_Slate
             updateTimer.Interval = TimeSpan.FromDays(1);
             updateTimer.Tick += Timer_Tick;
             updateTimer.Start();
+
+            // initialize user ID label
+            UserIDLabel.Content = $"User ID: {DataRepository.UserID}";
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -1223,6 +1226,13 @@ namespace Starfield_Interactive_Smart_Slate
         {
             App.Current.PlayClickSound();
             Process.Start("explorer.exe", DatabaseInitializer.UserDatabaseFolder());
+        }
+
+        private void CopyUserID(object sender, RoutedEventArgs e)
+        {
+            App.Current.PlayClickSound();
+            Clipboard.SetText(DataRepository.UserID);
+            MessageBox.Show($"User ID {DataRepository.UserID} has been copied to clipboard!", "Copied");
         }
 
         private void LaunchHyperlink(string hyperlink)

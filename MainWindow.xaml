@@ -1034,6 +1034,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0"
                         HorizontalContentAlignment="Center"
@@ -1042,7 +1043,16 @@
                     <Label Grid.Row="1"
                         HorizontalContentAlignment="Center"
                         Content="Starfield Interactive Smart Slate" />
-                    <Grid Grid.Row="2" HorizontalAlignment="Center">
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Label Name="UserIDLabel" Content="User ID: ---" />
+                        <Label>
+                            <Hyperlink Click="CopyUserID">
+                                [Copy to Clipboard]
+                            </Hyperlink>
+                        </Label>
+                    </StackPanel>
+
+                    <Grid Grid.Row="3" HorizontalAlignment="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -1064,7 +1074,7 @@
                             </Hyperlink>
                         </Label>
                     </Grid>
-                    <Label Grid.Row="3" HorizontalContentAlignment="Center">
+                    <Label Grid.Row="4" HorizontalContentAlignment="Center">
                         <Hyperlink
                             FontSize="16"
                             NavigateUri="https://www.nexusmods.com/starfield/mods/7074?tab=description"
@@ -1072,7 +1082,7 @@
                             View Project on Nexus Mods
                         </Hyperlink>
                     </Label>
-                    <Label Grid.Row="4" HorizontalContentAlignment="Center">
+                    <Label Grid.Row="5" HorizontalContentAlignment="Center">
                         <Hyperlink
                             FontSize="16"
                             NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate"
@@ -1080,7 +1090,7 @@
                             View Project on GitHub
                         </Hyperlink>
                     </Label>
-                    <Label Grid.Row="5" HorizontalContentAlignment="Center">
+                    <Label Grid.Row="6" HorizontalContentAlignment="Center">
                         <Hyperlink
                             FontSize="16"
                             NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues"
@@ -1088,7 +1098,7 @@
                             Submit Bug Reports and Suggestions
                         </Hyperlink>
                     </Label>
-                    <Label Grid.Row="6" HorizontalContentAlignment="Center">
+                    <Label Grid.Row="7" HorizontalContentAlignment="Center">
                         <Hyperlink Click="DataFolderLinkClick" FontSize="16">
                             Your Data Is Saved Here (DataSlate.db)
                         </Hyperlink>
