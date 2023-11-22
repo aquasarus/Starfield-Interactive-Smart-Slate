@@ -143,7 +143,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Faunas = new ObservableCollection<Fauna>();
             }
             Faunas.Add(fauna);
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 
         public void AddFlora(Flora flora)
@@ -153,7 +153,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Floras = new ObservableCollection<Flora>();
             }
             Floras.Add(flora);
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 
         public void EditFauna(Fauna editedFauna)
@@ -166,7 +166,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 
         public void EditFlora(Flora editedFlora)
@@ -179,7 +179,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 
         public void AddMoon(CelestialBody celestialBody)

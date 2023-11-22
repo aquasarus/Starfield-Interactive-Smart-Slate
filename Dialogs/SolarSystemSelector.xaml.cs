@@ -31,7 +31,7 @@ namespace Starfield_Interactive_Smart_Slate
             // Handle the selection changed event here
             if (solarSystemComboBox.SelectedItem != null)
             {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(HasItemSelected)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasItemSelected)));
             }
         }
 
