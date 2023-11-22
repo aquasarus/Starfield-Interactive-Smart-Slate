@@ -1259,9 +1259,14 @@ namespace Starfield_Interactive_Smart_Slate
                         if (App.Current.UserSettings.EnableUpdateNotification
                             && App.Current.UserSettings.HasShownAnalyticsPopup)
                         {
-                            var versionString = $"v{latestVersion.Major}.{latestVersion.Minor}.{latestVersion.Build}";
+                            var latestVersionString = $"v{latestVersion.Major}.{latestVersion.Minor}.{latestVersion.Build}";
+                            var currentVersionString = $"v{currentVersion.Major}.{currentVersion.Minor}.{currentVersion.Build}";
                             var newVersionNotification = new BasicYesNoDialog("New Version Available",
-                                $"There is a new version ({versionString}) available on GitHub! Wanna check it out?",
+                                $"There is a new version available on GitHub!\n" +
+                                $"Wanna check it out?\n\n" +
+                                $"Your current version is: {currentVersionString}\n" +
+                                $"The latest version is: {latestVersionString}\n\n" +
+                                $"This dialog can be disabled in the Settings tab.",
                                 "Yes",
                                 "No");
                             newVersionNotification.Owner = this;
