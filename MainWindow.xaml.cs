@@ -29,7 +29,6 @@ namespace Starfield_Interactive_Smart_Slate
         public int PictureGridColumns { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private DataRepository dataRepository = new DataRepository();
         private List<SolarSystem> allSolarSystems;
         private List<SolarSystem> discoveredSolarSystems;
         private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
@@ -64,7 +63,7 @@ namespace Starfield_Interactive_Smart_Slate
             string versionNumber = $"Version {version.Major}.{version.Minor}.{version.Build}";
             VersionNumberLabel.Content = versionNumber;
 
-            var resources = dataRepository.GetResources();
+            var resources = DataRepository.GetResources();
 
             inorganicResourceListView.ItemsSource = resources.Where(r => r.GetType() == ResourceType.Inorganic);
             selectableOrganicResources = resources.Where(r =>
@@ -73,7 +72,7 @@ namespace Starfield_Interactive_Smart_Slate
             }).ToList();
             organicResourceListView.ItemsSource = resources.Where(r => r.GetType() == ResourceType.Organic);
 
-            lifeformNames = dataRepository.GetLifeformNames();
+            lifeformNames = DataRepository.GetLifeformNames();
             celestialBodyTitleLabel.DataContext = this;
             celestialBodyMiniTitleLabel.DataContext = this;
 
@@ -106,7 +105,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             selectedFauna = null;
             selectedFlora = null;
-            var solarSystems = dataRepository.GetSolarSystems();
+            var solarSystems = DataRepository.GetSolarSystems();
             allSolarSystems = solarSystems;
             discoveredSolarSystems = solarSystems
                 .Where(solarSystem => solarSystem.Discovered)
@@ -134,12 +133,12 @@ namespace Starfield_Interactive_Smart_Slate
 
                     if (displayedFauna != null)
                     {
-                        var pictureID = dataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
+                        var pictureID = DataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
                         displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
                     else if (displayedFlora != null)
                     {
-                        var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
+                        var pictureID = DataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
                         displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
 
@@ -445,7 +444,7 @@ namespace Starfield_Interactive_Smart_Slate
             if (dialog.ShowDialog() == true)
             {
                 SolarSystem selectedSolarSystem = dialog.SelectedSolarSystem;
-                dataRepository.DiscoverSolarSystem(selectedSolarSystem);
+                DataRepository.DiscoverSolarSystem(selectedSolarSystem);
                 RefreshData();
 
                 var firstCelestialBodyOfSystem = selectedSolarSystem.CelestialBodies[0];
@@ -570,7 +569,7 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (dialog.ShowDialog() == true)
             {
-                var insertedFauna = dataRepository.AddFauna(dialog.lifeformNameInput.Text, displayedCelestialBody.BodyID);
+                var insertedFauna = DataRepository.AddFauna(dialog.lifeformNameInput.Text, displayedCelestialBody.BodyID);
 
                 // update local data state
                 displayedCelestialBody.AddFauna(insertedFauna);
@@ -688,7 +687,7 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (dialog.ShowDialog() == true)
             {
-                var insertedFlora = dataRepository.AddFlora(dialog.lifeformNameInput.Text, displayedCelestialBody.BodyID);
+                var insertedFlora = DataRepository.AddFlora(dialog.lifeformNameInput.Text, displayedCelestialBody.BodyID);
 
                 // update local data state
                 displayedCelestialBody.AddFlora(insertedFlora);
@@ -720,7 +719,7 @@ namespace Starfield_Interactive_Smart_Slate
                 if (dialog.ShowDialog() == true)
                 {
                     var resultingFauna = dialog.GetResultingFauna();
-                    dataRepository.EditFauna(displayedFauna, resultingFauna);
+                    DataRepository.EditFauna(displayedFauna, resultingFauna);
                     displayedCelestialBody.EditFauna(resultingFauna);
                     DisplayFaunaDetails(resultingFauna);
                     if (selectedFauna != null)
@@ -744,7 +743,7 @@ namespace Starfield_Interactive_Smart_Slate
                 if (dialog.ShowDialog() == true)
                 {
                     var resultingFlora = dialog.GetResultingFlora();
-                    dataRepository.EditFlora(displayedFlora, resultingFlora);
+                    DataRepository.EditFlora(displayedFlora, resultingFlora);
                     displayedCelestialBody.EditFlora(resultingFlora);
                     DisplayFloraDetails(resultingFlora);
                     if (selectedFlora != null)
@@ -790,12 +789,12 @@ namespace Starfield_Interactive_Smart_Slate
 
                     if (displayedFauna != null)
                     {
-                        var pictureID = dataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
+                        var pictureID = DataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
                         displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
                     else if (displayedFlora != null)
                     {
-                        var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
+                        var pictureID = DataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
                         displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
 
@@ -874,12 +873,12 @@ namespace Starfield_Interactive_Smart_Slate
             var picture = ((MenuItem)sender).DataContext as Picture;
             if (displayedFauna != null)
             {
-                dataRepository.DeleteFaunaPicture(picture);
+                DataRepository.DeleteFaunaPicture(picture);
                 displayedFauna.Pictures.Remove(picture);
             }
             else
             {
-                dataRepository.DeleteFloraPicture(picture);
+                DataRepository.DeleteFloraPicture(picture);
                 displayedFlora.Pictures.Remove(picture);
             }
             picture.MoveToDeletedFolder();
@@ -927,12 +926,12 @@ namespace Starfield_Interactive_Smart_Slate
 
                         if (displayedFauna != null)
                         {
-                            var pictureID = dataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
+                            var pictureID = DataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
                             displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
                         }
                         else if (displayedFlora != null)
                         {
-                            var pictureID = dataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
+                            var pictureID = DataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
                             displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
                         }
 

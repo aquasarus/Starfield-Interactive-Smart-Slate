@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate
 {
-    public class DataRepository
+    public static class DataRepository
     {
         public static readonly string CnnectionString = $"Data Source={DatabaseInitializer.UserDatabasePath()};Version=3;";
         public static readonly string UserIDKey = "UserID";
@@ -87,7 +87,7 @@ namespace Starfield_Interactive_Smart_Slate
         }
 
         // Fetch data from SQLite database and convert ResourceRarity to text using the enum
-        public List<Resource> GetResources()
+        public static List<Resource> GetResources()
         {
             List<Resource> resources = new List<Resource>();
 
@@ -125,7 +125,7 @@ namespace Starfield_Interactive_Smart_Slate
             return resources;
         }
 
-        public List<SolarSystem> GetSolarSystems()
+        public static List<SolarSystem> GetSolarSystems()
         {
             using (SQLiteConnection conn = CreateConnection())
             {
@@ -525,7 +525,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public void DiscoverSolarSystem(SolarSystem solarSystem)
+        public static void DiscoverSolarSystem(SolarSystem solarSystem)
         {
             AnalyticsUtil.TrackEvent("Discover solar system");
             using (SQLiteConnection conn = CreateConnection())
@@ -547,7 +547,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         // gets the full list of lifeform names, mapping a lowercase version to the capitalized version
         // e.g. Dictionary { "pack octomaggot":  "Pack Octomaggot" }
-        public Dictionary<LifeformType, Dictionary<string, string>> GetLifeformNames()
+        public static Dictionary<LifeformType, Dictionary<string, string>> GetLifeformNames()
         {
             var lifeformNames = new Dictionary<LifeformType, Dictionary<string, string>>
             {
@@ -581,7 +581,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public Fauna AddFauna(string faunaName, int parentBodyID)
+        public static Fauna AddFauna(string faunaName, int parentBodyID)
         {
             AnalyticsUtil.TrackEvent("Add fauna");
             using (SQLiteConnection conn = CreateConnection())
@@ -608,7 +608,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public Flora AddFlora(string floraName, int parentBodyID)
+        public static Flora AddFlora(string floraName, int parentBodyID)
         {
             AnalyticsUtil.TrackEvent("Add flora");
             using (SQLiteConnection conn = CreateConnection())
@@ -635,7 +635,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public void EditFauna(Fauna originalFauna, Fauna newFauna)
+        public static void EditFauna(Fauna originalFauna, Fauna newFauna)
         {
             AnalyticsUtil.TrackEvent("Edit fauna");
             using (SQLiteConnection conn = CreateConnection())
@@ -698,7 +698,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public void EditFlora(Flora originalFlora, Flora newFlora)
+        public static void EditFlora(Flora originalFlora, Flora newFlora)
         {
             AnalyticsUtil.TrackEvent("Edit flora");
             using (SQLiteConnection conn = CreateConnection())
@@ -761,7 +761,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public int AddFaunaPicture(Fauna fauna, string pictureUri)
+        public static int AddFaunaPicture(Fauna fauna, string pictureUri)
         {
             AnalyticsUtil.TrackEvent("Add fauna picture");
             using (SQLiteConnection conn = CreateConnection())
@@ -783,7 +783,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public int AddFloraPicture(Flora flora, string pictureUri)
+        public static int AddFloraPicture(Flora flora, string pictureUri)
         {
             AnalyticsUtil.TrackEvent("Add flora picture");
             using (SQLiteConnection conn = CreateConnection())
@@ -805,7 +805,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public void DeleteFaunaPicture(Picture picture)
+        public static void DeleteFaunaPicture(Picture picture)
         {
             AnalyticsUtil.TrackEvent("Delete fauna picture");
             using (SQLiteConnection conn = CreateConnection())
@@ -823,7 +823,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
-        public void DeleteFloraPicture(Picture picture)
+        public static void DeleteFloraPicture(Picture picture)
         {
             AnalyticsUtil.TrackEvent("Delete flora picture");
             using (SQLiteConnection conn = CreateConnection())
