@@ -166,6 +166,13 @@ namespace Starfield_Interactive_Smart_Slate
                 }
                 App.Current.UserSettings.HasShownAnalyticsPopup = true;
             }
+
+
+            if (ActualHeight >= SystemParameters.PrimaryScreenHeight ||
+                ActualWidth >= SystemParameters.PrimaryScreenWidth)
+            {
+                WindowState = WindowState.Maximized;
+            }
         }
 
         // -----------------------------------------------------------------------------------------------
