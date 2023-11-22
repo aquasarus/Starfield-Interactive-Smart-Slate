@@ -120,7 +120,11 @@ namespace Starfield_Interactive_Smart_Slate
                 }
             }
 
-            DatabaseInitializer.SetVersionToLatest();
+            // if the current version is unexpectedly higher (e.g. user downgraded a build), don't overwrite version number
+            if (currentDatabaseVersion == DatabaseInitializer.TargetDatabaseVersion)
+            {
+                DatabaseInitializer.SetVersionToLatest();
+            }
 
             InitializeMediaPlayers();
             SystemEvents.PowerModeChanged += OnPowerModeChanged;
