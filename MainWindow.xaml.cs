@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Starfield_Interactive_Smart_Slate.Dialogs;
 using Starfield_Interactive_Smart_Slate.Models;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 using Starfield_Interactive_Smart_Slate.Properties;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,5 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

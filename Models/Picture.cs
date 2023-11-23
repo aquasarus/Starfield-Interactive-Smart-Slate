@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {

@@ -3,16 +3,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Starfield_Interactive_Smart_Slate.Models
+namespace Starfield_Interactive_Smart_Slate.Models.Entities
 {
-    public class Fauna : INotifyPropertyChanged
+    public class Flora : INotifyPropertyChanged
     {
-        public int FaunaID { get; set; }
-        public string FaunaName { get; set; }
-        public string FaunaNotes { get; set; }
-        public List<Resource>? PrimaryDrops { get; set; }
-        public List<Resource>? SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
+        public int FloraID { get; set; }
+        public string FloraName { get; set; }
+        public string FloraNotes { get; set; }
+        public List<Resource> PrimaryDrops { get; set; }
+        public List<Resource> SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
         public ObservableCollection<Picture>? Pictures { get; set; }
+
         public bool IsSurveyed
         {
             get
@@ -26,7 +27,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             {
                 var icons = "";
 
-                if (!string.IsNullOrWhiteSpace(FaunaNotes))
+                if (!string.IsNullOrWhiteSpace(FloraNotes))
                 {
                     icons += "📝";
                 }
@@ -64,26 +65,27 @@ namespace Starfield_Interactive_Smart_Slate.Models
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(FaunaNotes))
+                if (string.IsNullOrWhiteSpace(FloraNotes))
                 {
                     return "None";
                 }
                 else
                 {
-                    return FaunaNotes;
+                    return FloraNotes;
                 }
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Fauna()
+        public Flora()
         {
             Pictures = new ObservableCollection<Picture> { new Picture() };
         }
 
-        public Fauna DeepCopy(bool fast = false)
+        public Flora DeepCopy(bool fast = false)
         {
             ObservableCollection<Picture> pictureCollection = null;
+            // skip picture copying in fast mode
             if (!fast)
             {
                 if (Pictures != null)
@@ -94,11 +96,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 }
             }
 
-            return new Fauna
+            return new Flora
             {
-                FaunaID = FaunaID,
-                FaunaName = FaunaName,
-                FaunaNotes = FaunaNotes,
+                FloraID = FloraID,
+                FloraName = FloraName,
+                FloraNotes = FloraNotes,
                 PrimaryDrops = PrimaryDrops?.ConvertAll(drop => drop.DeepCopy()),
                 SecondaryDrops = SecondaryDrops?.ConvertAll(drop => drop.DeepCopy()),
                 Pictures = pictureCollection
