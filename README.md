@@ -1,6 +1,8 @@
 ﻿# Welcome to Starfield ISS (Interactive Smart Slate)
 *An Explorer's Survey Compendium, featuring a vastly higher tech Data Slate than Starfield's in-game version.*
 
+[This project also lives on Nexus Mods.](https://www.nexusmods.com/starfield/mods/7074)
+
 ## Overview
 Starfield has such great potential for exploration content, but Survey Data in its current state serves as little more than a paper punch card. This app will help you gather your very own survey data in a viewable and searchable manner. The primary directive of this app (and all subsequent updates) is to help make exploration in Starfield more fun and rewarding.
 
