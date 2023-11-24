@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Starfield_Interactive_Smart_Slate.Models.Entities;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using Starfield_Interactive_Smart_Slate.Models.Entities;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {
@@ -161,7 +161,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         {
             foreach (var fauna in Faunas)
             {
-                if (fauna.FaunaID == editedFauna.FaunaID)
+                if (fauna.ID == editedFauna.ID)
                 {
                     Faunas[Faunas.IndexOf(fauna)] = editedFauna;
                     break;
@@ -174,7 +174,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         {
             foreach (var flora in Floras)
             {
-                if (flora.FloraID == editedFlora.FloraID)
+                if (flora.ID == editedFlora.ID)
                 {
                     Floras[Floras.IndexOf(flora)] = editedFlora;
                     break;

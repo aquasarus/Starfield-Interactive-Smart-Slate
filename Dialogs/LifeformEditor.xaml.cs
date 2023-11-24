@@ -31,7 +31,7 @@ namespace Starfield_Interactive_Smart_Slate
             LifeformTypeString = "Fauna";
             DataContext = this;
 
-            lifeformNameTextbox.Text = fauna.FaunaName;
+            lifeformNameTextbox.Text = fauna.Name;
 
             var resourcesToDisplay = resources.OrderBy(r => r.FullName).ToList();
             resourcesToDisplay.Insert(0, new Resource(-1, ResourceType.Organic, "Unknown", null, Rarity.Common));
@@ -48,9 +48,9 @@ namespace Starfield_Interactive_Smart_Slate
                 lifeformResourceComboBox.SelectedIndex = 0;
             }
 
-            if (fauna.FaunaNotes != null)
+            if (fauna.Notes != null)
             {
-                lifeformNotesTextbox.Text = fauna.FaunaNotes;
+                lifeformNotesTextbox.Text = fauna.Notes;
             }
         }
 
@@ -67,7 +67,7 @@ namespace Starfield_Interactive_Smart_Slate
             LifeformTypeString = "Flora";
             DataContext = this;
 
-            lifeformNameTextbox.Text = flora.FloraName;
+            lifeformNameTextbox.Text = flora.Name;
 
             var resourcesToDisplay = resources.OrderBy(r => r.FullName).ToList();
             resourcesToDisplay.Insert(0, new Resource(-1, ResourceType.Organic, "Unknown", null, Rarity.Common));
@@ -84,9 +84,9 @@ namespace Starfield_Interactive_Smart_Slate
                 lifeformResourceComboBox.SelectedIndex = 0;
             }
 
-            if (flora.FloraNotes != null)
+            if (flora.Notes != null)
             {
-                lifeformNotesTextbox.Text = flora.FloraNotes;
+                lifeformNotesTextbox.Text = flora.Notes;
             }
         }
 
@@ -104,8 +104,8 @@ namespace Starfield_Interactive_Smart_Slate
         public Fauna GetResultingFauna()
         {
             var resultingFauna = originalFauna.DeepCopy();
-            resultingFauna.FaunaName = lifeformNameTextbox.Text;
-            resultingFauna.FaunaNotes = lifeformNotesTextbox.Text;
+            resultingFauna.Name = lifeformNameTextbox.Text;
+            resultingFauna.Notes = lifeformNotesTextbox.Text;
 
             if (lifeformResourceComboBox.SelectedIndex != 0)
             {
@@ -122,8 +122,8 @@ namespace Starfield_Interactive_Smart_Slate
         public Flora GetResultingFlora()
         {
             var resultingFlora = originalFlora.DeepCopy();
-            resultingFlora.FloraName = lifeformNameTextbox.Text;
-            resultingFlora.FloraNotes = lifeformNotesTextbox.Text;
+            resultingFlora.Name = lifeformNameTextbox.Text;
+            resultingFlora.Notes = lifeformNotesTextbox.Text;
 
             if (lifeformResourceComboBox.SelectedIndex != 0)
             {

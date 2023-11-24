@@ -270,7 +270,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding FaunaName}" />
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                             <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
                                         </Grid>
                                     </DataTemplate>
@@ -322,7 +322,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding FloraName}" />
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                             <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
                                         </Grid>
                                     </DataTemplate>
@@ -913,7 +913,7 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding FaunaName}" />
+                                        <TextBlock Text="{Binding Name}" />
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
@@ -945,7 +945,7 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding FloraName}" />
+                                        <TextBlock Text="{Binding Name}" />
 
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

@@ -295,13 +295,13 @@ namespace Starfield_Interactive_Smart_Slate
                                 celestialBodyFaunasMap[parentBodyID] = new ObservableCollection<Fauna>();
                             }
 
-                            if (currentFauna == null || currentFauna.FaunaID != faunaID)
+                            if (currentFauna == null || currentFauna.ID != faunaID)
                             {
                                 var fauna = new Fauna
                                 {
-                                    FaunaID = faunaID,
-                                    FaunaName = faunaName,
-                                    FaunaNotes = faunaNotes
+                                    ID = faunaID,
+                                    Name = faunaName,
+                                    Notes = faunaNotes
                                 };
 
                                 if (faunaResourcesMap.ContainsKey(faunaID))
@@ -370,13 +370,13 @@ namespace Starfield_Interactive_Smart_Slate
                                 celestialBodyFlorasMap[parentBodyID] = new ObservableCollection<Flora>();
                             }
 
-                            if (currentFlora == null || currentFlora.FloraID != floraID)
+                            if (currentFlora == null || currentFlora.ID != floraID)
                             {
                                 var flora = new Flora
                                 {
-                                    FloraID = floraID,
-                                    FloraName = floraName,
-                                    FloraNotes = floraNotes
+                                    ID = floraID,
+                                    Name = floraName,
+                                    Notes = floraNotes
                                 };
 
                                 if (floraResourcesMap.ContainsKey(floraID))
@@ -602,8 +602,8 @@ namespace Starfield_Interactive_Smart_Slate
                     var insertedID = (int)conn.LastInsertRowId;
                     return new Fauna
                     {
-                        FaunaID = insertedID,
-                        FaunaName = faunaName
+                        ID = insertedID,
+                        Name = faunaName
                     };
                 }
             }
@@ -629,8 +629,8 @@ namespace Starfield_Interactive_Smart_Slate
                     var insertedID = (int)conn.LastInsertRowId;
                     return new Flora
                     {
-                        FloraID = insertedID,
-                        FloraName = floraName
+                        ID = insertedID,
+                        Name = floraName
                     };
                 }
             }
@@ -651,9 +651,9 @@ namespace Starfield_Interactive_Smart_Slate
                     WHERE
                         FaunaID = @FaunaID", conn))
                 {
-                    cmd.Parameters.AddWithValue("@FaunaID", newFauna.FaunaID);
-                    cmd.Parameters.AddWithValue("@FaunaName", newFauna.FaunaName);
-                    cmd.Parameters.AddWithValue("@FaunaNotes", newFauna.FaunaNotes);
+                    cmd.Parameters.AddWithValue("@FaunaID", newFauna.ID);
+                    cmd.Parameters.AddWithValue("@FaunaName", newFauna.Name);
+                    cmd.Parameters.AddWithValue("@FaunaNotes", newFauna.Notes);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -676,7 +676,7 @@ namespace Starfield_Interactive_Smart_Slate
 
                     using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@FaunaID", newFauna.FaunaID);
+                        cmd.Parameters.AddWithValue("@FaunaID", newFauna.ID);
                         cmd.Parameters.AddWithValue("@ResourceID", newFauna.PrimaryDrops[0].ResourceID);
 
                         cmd.ExecuteNonQuery();
@@ -691,7 +691,7 @@ namespace Starfield_Interactive_Smart_Slate
                                 FaunaResources
                             WHERE FaunaID = @FaunaID", conn))
                         {
-                            cmd.Parameters.AddWithValue("@FaunaID", newFauna.FaunaID);
+                            cmd.Parameters.AddWithValue("@FaunaID", newFauna.ID);
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -714,9 +714,9 @@ namespace Starfield_Interactive_Smart_Slate
                     WHERE
                         FloraID = @FloraID", conn))
                 {
-                    cmd.Parameters.AddWithValue("@FloraID", newFlora.FloraID);
-                    cmd.Parameters.AddWithValue("@FloraName", newFlora.FloraName);
-                    cmd.Parameters.AddWithValue("@FloraNotes", newFlora.FloraNotes);
+                    cmd.Parameters.AddWithValue("@FloraID", newFlora.ID);
+                    cmd.Parameters.AddWithValue("@FloraName", newFlora.Name);
+                    cmd.Parameters.AddWithValue("@FloraNotes", newFlora.Notes);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -739,7 +739,7 @@ namespace Starfield_Interactive_Smart_Slate
 
                     using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@FloraID", newFlora.FloraID);
+                        cmd.Parameters.AddWithValue("@FloraID", newFlora.ID);
                         cmd.Parameters.AddWithValue("@ResourceID", newFlora.PrimaryDrops[0].ResourceID);
 
                         cmd.ExecuteNonQuery();
@@ -754,7 +754,7 @@ namespace Starfield_Interactive_Smart_Slate
                                 FloraResources
                             WHERE FloraID = @FloraID", conn))
                         {
-                            cmd.Parameters.AddWithValue("@FloraID", newFlora.FloraID);
+                            cmd.Parameters.AddWithValue("@FloraID", newFlora.ID);
                             cmd.ExecuteNonQuery();
                         }
                     }
@@ -775,7 +775,7 @@ namespace Starfield_Interactive_Smart_Slate
                     VALUES
                         (@FaunaID, @FaunaPicturePath)", conn))
                 {
-                    cmd.Parameters.AddWithValue("@FaunaID", fauna.FaunaID);
+                    cmd.Parameters.AddWithValue("@FaunaID", fauna.ID);
                     cmd.Parameters.AddWithValue("@FaunaPicturePath", pictureUri);
 
                     cmd.ExecuteNonQuery();
@@ -797,7 +797,7 @@ namespace Starfield_Interactive_Smart_Slate
                     VALUES
                         (@FloraID, @FloraPicturePath)", conn))
                 {
-                    cmd.Parameters.AddWithValue("@FloraID", flora.FloraID);
+                    cmd.Parameters.AddWithValue("@FloraID", flora.ID);
                     cmd.Parameters.AddWithValue("@FloraPicturePath", pictureUri);
 
                     cmd.ExecuteNonQuery();

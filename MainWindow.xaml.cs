@@ -204,12 +204,12 @@ namespace Starfield_Interactive_Smart_Slate
                                 var selectedFloraID = Settings.Default.SelectedFloraID;
                                 if (selectedFaunaID != -1)
                                 {
-                                    var fauna = celestialBody.Faunas.First(f => f.FaunaID == selectedFaunaID);
+                                    var fauna = celestialBody.Faunas.First(f => f.ID == selectedFaunaID);
                                     SetSelectedFaunaWithUI(fauna);
                                 }
                                 else if (selectedFloraID != -1)
                                 {
-                                    var flora = celestialBody.Floras.First(f => f.FloraID == selectedFloraID);
+                                    var flora = celestialBody.Floras.First(f => f.ID == selectedFloraID);
                                     SetSelectedFloraWithUI(flora);
                                 }
 
@@ -466,7 +466,7 @@ namespace Starfield_Interactive_Smart_Slate
         #endregion
 
         // -----------------------------------------------------------------------------------------------
-        // FLORA / FAUNA
+        // FLORA / FAUNA / OUTPOSTS
         // -----------------------------------------------------------------------------------------------
         #region Fauna/Flora Lifeform stuff
         private void FaunaListItem_MouseEnter(object sender, MouseEventArgs e)
@@ -536,7 +536,7 @@ namespace Starfield_Interactive_Smart_Slate
             faunasListView.SelectedItem = fauna;
             DisplayFaunaDetails(fauna);
 
-            Settings.Default.SelectedFaunaID = fauna.FaunaID;
+            Settings.Default.SelectedFaunaID = fauna.ID;
             Settings.Default.Save();
 
             // persist celestial body selection if not already persisted
@@ -550,7 +550,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             displayedFauna = fauna;
 
-            lifeformTitleLabel.Content = fauna.FaunaName;
+            lifeformTitleLabel.Content = fauna.Name;
             lifeformSubtitleLabel.Content = "· Fauna";
             lifeformResourceLabel.Content = fauna.ResourceString;
             lifeformNotesTextBlock.Text = fauna.NotesString;
@@ -654,7 +654,7 @@ namespace Starfield_Interactive_Smart_Slate
             florasListView.SelectedItem = flora;
             DisplayFloraDetails(flora);
 
-            Settings.Default.SelectedFloraID = flora.FloraID;
+            Settings.Default.SelectedFloraID = flora.ID;
             Settings.Default.Save();
 
             // persist celestial body selection if not already persisted
@@ -668,10 +668,10 @@ namespace Starfield_Interactive_Smart_Slate
         {
             displayedFlora = flora;
 
-            lifeformTitleLabel.Content = flora.FloraName;
+            lifeformTitleLabel.Content = flora.Name;
             lifeformSubtitleLabel.Content = "· Flora";
             lifeformResourceLabel.Content = flora.ResourceString;
-            lifeformNotesTextBlock.Text = flora.NotesString;
+            lifeformNotesTextBlock.Text = flora.Notes;
 
             lifeformOverviewGrid.Visibility = Visibility.Visible;
             editLifeformButton.IsEnabled = true;

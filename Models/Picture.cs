@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Starfield_Interactive_Smart_Slate.Models.Entities;
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Starfield_Interactive_Smart_Slate.Models.Entities;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {
@@ -128,11 +128,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
             string fileName;
             if (fauna != null)
             {
-                fileName = fauna.FaunaName;
+                fileName = fauna.Name;
             }
             else
             {
-                fileName = flora.FloraName;
+                fileName = flora.Name;
             }
             fileName += $"_{DateTime.Now:yyyy_MM_dd_HHmmss}";
             fileName = RemoveDisallowedCharacters(fileName);
