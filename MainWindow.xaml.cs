@@ -758,7 +758,12 @@ namespace Starfield_Interactive_Smart_Slate
                 }
             }
         }
+        #endregion
 
+        // -----------------------------------------------------------------------------------------------
+        // PICTURES
+        // -----------------------------------------------------------------------------------------------
+        #region
         private void PictureGridLoaded(object sender, RoutedEventArgs e)
         {
             ResizePictureGridColumns();
@@ -1216,6 +1221,7 @@ namespace Starfield_Interactive_Smart_Slate
         // -----------------------------------------------------------------------------------------------
         // ABOUT PAGE
         // -----------------------------------------------------------------------------------------------
+        #region
         private void NavigateToHyperlink(object sender, RequestNavigateEventArgs e)
         {
             App.Current.PlayClickSound();
@@ -1305,5 +1311,6 @@ namespace Starfield_Interactive_Smart_Slate
                 if (Debugger.IsAttached) { throw; }
             }
         }
+        #endregion
     }
 }

@@ -224,6 +224,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
+
                         <Grid Grid.Row="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -277,6 +278,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Grid>
+
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -329,6 +331,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Grid>
+
                     </Grid>
 
                     <!--  LIFEFORM OVERVIEW  -->
