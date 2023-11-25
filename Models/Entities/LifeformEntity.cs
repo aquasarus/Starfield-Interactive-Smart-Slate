@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Starfield_Interactive_Smart_Slate.Models.Entities
 {
-    public class LifeformEntity : Entity, INotifyPropertyChanged
+    public abstract class LifeformEntity : Entity, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

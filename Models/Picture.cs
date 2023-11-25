@@ -102,7 +102,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         }
 
         // import either a picture Uri or direct BitmapSource
-        public static Uri ImportPicture(CelestialBody celestialBody, Fauna fauna, Flora flora, Uri? picture = null, BitmapSource? directSource = null)
+        public static Uri ImportPicture(CelestialBody celestialBody, Entity entity, Uri? picture = null, BitmapSource? directSource = null)
         {
             // create folders if needed
             var baseFolder = DatabaseInitializer.UserDatabaseFolder();
@@ -125,15 +125,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
 
             // build internal file name
-            string fileName;
-            if (fauna != null)
-            {
-                fileName = fauna.Name;
-            }
-            else
-            {
-                fileName = flora.Name;
-            }
+            string fileName = entity.Name;
             fileName += $"_{DateTime.Now:yyyy_MM_dd_HHmmss}";
             fileName = RemoveDisallowedCharacters(fileName);
 

@@ -13,33 +13,41 @@ namespace Starfield_Interactive_Smart_Slate
     {
         public string LifeformTypeString { get; set; }
 
-        private Fauna originalFauna;
-        private Flora originalFlora;
+        private Entity originalEntity;
         private Dictionary<string, string> lifeformNames;
         private string? matchedNameString;
 
-        public LifeformEditor(Fauna fauna, List<Resource> resources, Dictionary<string, string> lifeformNames)
+        public LifeformEditor(LifeformEntity entity, List<Resource> resources, Dictionary<string, string> lifeformNames)
         {
             InitializeComponent();
 
-            originalFauna = fauna;
+            originalEntity = entity;
             this.lifeformNames = lifeformNames;
 
-            this.Title = "Edit Fauna";
-            lifeformNameTitle.Content = "Fauna Name 🛈";
+            if (entity is Fauna)
+            {
+                Title = "Edit Fauna";
+                lifeformNameTitle.Content = "Fauna Name 🛈";
+                LifeformTypeString = "Fauna";
+            }
+            else
+            {
+                Title = "Edit Flora";
+                lifeformNameTitle.Content = "Flora Name 🛈";
+                LifeformTypeString = "Flora";
+            }
 
-            LifeformTypeString = "Fauna";
             DataContext = this;
 
-            lifeformNameTextbox.Text = fauna.Name;
+            lifeformNameTextbox.Text = entity.Name;
 
             var resourcesToDisplay = resources.OrderBy(r => r.FullName).ToList();
             resourcesToDisplay.Insert(0, new Resource(-1, ResourceType.Organic, "Unknown", null, Rarity.Common));
             lifeformResourceComboBox.ItemsSource = resourcesToDisplay;
 
-            if (fauna.IsSurveyed)
+            if (entity.IsSurveyed)
             {
-                var resourceDrop = fauna.PrimaryDrops[0];
+                var resourceDrop = entity.PrimaryDrops[0];
                 var index = resourcesToDisplay.IndexOf(resourceDrop);
                 lifeformResourceComboBox.SelectedIndex = index;
             }
@@ -48,45 +56,9 @@ namespace Starfield_Interactive_Smart_Slate
                 lifeformResourceComboBox.SelectedIndex = 0;
             }
 
-            if (fauna.Notes != null)
+            if (entity.Notes != null)
             {
-                lifeformNotesTextbox.Text = fauna.Notes;
-            }
-        }
-
-        public LifeformEditor(Flora flora, List<Resource> resources, Dictionary<string, string> lifeformNames)
-        {
-            InitializeComponent();
-
-            originalFlora = flora;
-            this.lifeformNames = lifeformNames;
-
-            this.Title = "Edit Flora";
-            lifeformNameTitle.Content = "Flora Name 🛈";
-
-            LifeformTypeString = "Flora";
-            DataContext = this;
-
-            lifeformNameTextbox.Text = flora.Name;
-
-            var resourcesToDisplay = resources.OrderBy(r => r.FullName).ToList();
-            resourcesToDisplay.Insert(0, new Resource(-1, ResourceType.Organic, "Unknown", null, Rarity.Common));
-            lifeformResourceComboBox.ItemsSource = resourcesToDisplay;
-
-            if (flora.IsSurveyed)
-            {
-                var resourceDrop = flora.PrimaryDrops[0];
-                var index = resourcesToDisplay.IndexOf(resourceDrop);
-                lifeformResourceComboBox.SelectedIndex = index;
-            }
-            else
-            {
-                lifeformResourceComboBox.SelectedIndex = 0;
-            }
-
-            if (flora.Notes != null)
-            {
-                lifeformNotesTextbox.Text = flora.Notes;
+                lifeformNotesTextbox.Text = entity.Notes;
             }
         }
 
@@ -103,7 +75,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Fauna GetResultingFauna()
         {
-            var resultingFauna = originalFauna.DeepCopy();
+            // TODO: combine these two methods?
+            var resultingFauna = (originalEntity as Fauna).DeepCopy();
             resultingFauna.Name = lifeformNameTextbox.Text;
             resultingFauna.Notes = lifeformNotesTextbox.Text;
 
@@ -121,7 +94,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Flora GetResultingFlora()
         {
-            var resultingFlora = originalFlora.DeepCopy();
+            var resultingFlora = (originalEntity as Flora).DeepCopy();
             resultingFlora.Name = lifeformNameTextbox.Text;
             resultingFlora.Notes = lifeformNotesTextbox.Text;
 

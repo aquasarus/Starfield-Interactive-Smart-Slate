@@ -38,11 +38,8 @@ namespace Starfield_Interactive_Smart_Slate
         private CelestialBody selectedCelestialBody;
         private CelestialBody displayedCelestialBody;
 
-        private Fauna selectedFauna;
-        private Fauna displayedFauna;
-
-        private Flora selectedFlora;
-        private Flora displayedFlora;
+        private Entity? selectedEntity;
+        private Entity? displayedEntity;
 
         private CelestialBody selectedOrganicResultCelestialBody;
         private CelestialBody displayedOrganicResultCelestialBody;
@@ -107,8 +104,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void RefreshData()
         {
-            selectedFauna = null;
-            selectedFlora = null;
+            selectedEntity = null;
             var solarSystems = DataRepository.GetSolarSystems();
             allSolarSystems = solarSystems;
             discoveredSolarSystems = solarSystems
@@ -128,22 +124,22 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control)
+            if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control && displayedEntity != null)
             {
                 if (Clipboard.ContainsImage())
                 {
                     BitmapSource clipboardImage = Clipboard.GetImage();
-                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedFauna, displayedFlora, directSource: clipboardImage);
+                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, directSource: clipboardImage);
 
-                    if (displayedFauna != null)
+                    if (displayedEntity is Fauna)
                     {
-                        var pictureID = DataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
-                        displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
+                        var pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
+                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
-                    else if (displayedFlora != null)
+                    else if (displayedEntity is Flora)
                     {
-                        var pictureID = DataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
-                        displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
+                        var pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
+                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
 
                     App.Current.PlayClickSound();
@@ -181,7 +177,7 @@ namespace Starfield_Interactive_Smart_Slate
         // -----------------------------------------------------------------------------------------------
         // CELESTIAL BODIES
         // -----------------------------------------------------------------------------------------------
-        #region Celestial Body Stuff
+        #region
         private void InitializeSolarSystemsListView(object sender, RoutedEventArgs e)
         {
             // restore last session's celestial body selection
@@ -466,15 +462,15 @@ namespace Starfield_Interactive_Smart_Slate
         #endregion
 
         // -----------------------------------------------------------------------------------------------
-        // FLORA / FAUNA / OUTPOSTS
+        // FLORA / FAUNA
         // -----------------------------------------------------------------------------------------------
-        #region Fauna/Flora Lifeform stuff
+        #region
         private void FaunaListItem_MouseEnter(object sender, MouseEventArgs e)
         {
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Fauna)
             {
                 var fauna = listViewItem.DataContext as Fauna;
-                if (selectedFauna == null && selectedFlora == null)
+                if (selectedEntity == null)
                 {
                     DisplayFaunaDetails(fauna);
                 }
@@ -494,12 +490,12 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ToggleSelectFauna(Fauna fauna, ListViewItem clickedItem)
         {
-            if (selectedFauna == fauna)
+            if (selectedEntity == fauna)
             {
                 App.Current.PlayCancelSound();
 
                 // like ClearFaunaSelection but keep displayedFauna
-                selectedFauna = null;
+                selectedEntity = null;
                 faunasListView.UnselectAll();
                 Settings.Default.SelectedFaunaID = -1;
                 Settings.Default.Save();
@@ -517,8 +513,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ClearFaunaSelection()
         {
-            selectedFauna = null;
-            displayedFauna = null;
+            selectedEntity = null;
+            displayedEntity = null;
             faunasListView.UnselectAll();
             Settings.Default.SelectedFaunaID = -1;
             Settings.Default.Save();
@@ -532,7 +528,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
 
             ClearFloraSelection();
-            selectedFauna = fauna;
+            selectedEntity = fauna;
             faunasListView.SelectedItem = fauna;
             DisplayFaunaDetails(fauna);
 
@@ -548,7 +544,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void DisplayFaunaDetails(Fauna fauna)
         {
-            displayedFauna = fauna;
+            displayedEntity = fauna;
 
             lifeformTitleLabel.Content = fauna.Name;
             lifeformSubtitleLabel.Content = "· Fauna";
@@ -592,7 +588,7 @@ namespace Starfield_Interactive_Smart_Slate
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Flora)
             {
                 var flora = listViewItem.DataContext as Flora;
-                if (selectedFauna == null && selectedFlora == null)
+                if (selectedEntity == null)
                 {
                     DisplayFloraDetails(flora);
                 }
@@ -612,12 +608,12 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ToggleSelectFlora(Flora flora, ListViewItem clickedItem)
         {
-            if (selectedFlora == flora)
+            if (selectedEntity == flora)
             {
                 App.Current.PlayCancelSound();
 
                 // like ClearFloraSelection but keep displayedFlora
-                selectedFlora = null;
+                selectedEntity = null;
                 florasListView.UnselectAll();
                 Settings.Default.SelectedFloraID = -1;
                 Settings.Default.Save();
@@ -635,8 +631,8 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ClearFloraSelection()
         {
-            selectedFlora = null;
-            displayedFlora = null;
+            selectedEntity = null;
+            displayedEntity = null;
             florasListView.UnselectAll();
             Settings.Default.SelectedFloraID = -1;
             Settings.Default.Save();
@@ -650,7 +646,7 @@ namespace Starfield_Interactive_Smart_Slate
             }
 
             ClearFaunaSelection();
-            selectedFlora = flora;
+            selectedEntity = flora;
             florasListView.SelectedItem = flora;
             DisplayFloraDetails(flora);
 
@@ -666,7 +662,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void DisplayFloraDetails(Flora flora)
         {
-            displayedFlora = flora;
+            displayedEntity = flora;
 
             lifeformTitleLabel.Content = flora.Name;
             lifeformSubtitleLabel.Content = "· Flora";
@@ -709,51 +705,51 @@ namespace Starfield_Interactive_Smart_Slate
         {
             App.Current.PlayClickSound();
 
-            if (displayedFauna != null)
+            LifeformEditor dialog;
+            if (displayedEntity is Fauna)
             {
-                LifeformEditor dialog = new LifeformEditor(
-                    displayedFauna,
+                dialog = new LifeformEditor(
+                    displayedEntity as Fauna,
                     selectableOrganicResources,
                     lifeformNames[LifeformType.Fauna]
                 );
-
-                dialog.Owner = this;
-                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-                if (dialog.ShowDialog() == true)
-                {
-                    var resultingFauna = dialog.GetResultingFauna();
-                    DataRepository.EditFauna(displayedFauna, resultingFauna);
-                    displayedCelestialBody.EditFauna(resultingFauna);
-                    DisplayFaunaDetails(resultingFauna);
-                    if (selectedFauna != null)
-                    {
-                        selectedFauna = resultingFauna;
-                        faunasListView.SelectedItem = selectedFauna;
-                    }
-                }
             }
-            else if (displayedFlora != null)
+            else
             {
-                LifeformEditor dialog = new LifeformEditor(
-                    displayedFlora,
+                dialog = new LifeformEditor(
+                    displayedEntity as Flora,
                     selectableOrganicResources,
                     lifeformNames[LifeformType.Flora]
                 );
+            }
 
-                dialog.Owner = this;
-                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            dialog.Owner = this;
+            dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-                if (dialog.ShowDialog() == true)
+            if (dialog.ShowDialog() == true)
+            {
+                if (displayedEntity is Fauna)
+                {
+                    var resultingFauna = dialog.GetResultingFauna();
+                    DataRepository.EditFauna(displayedEntity as Fauna, resultingFauna);
+                    displayedCelestialBody.EditFauna(resultingFauna);
+                    DisplayFaunaDetails(resultingFauna);
+                    if (selectedEntity != null)
+                    {
+                        selectedEntity = resultingFauna;
+                        faunasListView.SelectedItem = selectedEntity;
+                    }
+                }
+                else
                 {
                     var resultingFlora = dialog.GetResultingFlora();
-                    DataRepository.EditFlora(displayedFlora, resultingFlora);
+                    DataRepository.EditFlora(displayedEntity as Flora, resultingFlora);
                     displayedCelestialBody.EditFlora(resultingFlora);
                     DisplayFloraDetails(resultingFlora);
-                    if (selectedFlora != null)
+                    if (selectedEntity != null)
                     {
-                        selectedFlora = resultingFlora;
-                        florasListView.SelectedItem = selectedFlora;
+                        selectedEntity = resultingFlora;
+                        florasListView.SelectedItem = selectedEntity;
                     }
                 }
             }
@@ -794,17 +790,17 @@ namespace Starfield_Interactive_Smart_Slate
                 if (openFileDialog.ShowDialog() == true)
                 {
                     var newPictureUri = new Uri(openFileDialog.FileName);
-                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedFauna, displayedFlora, picture: newPictureUri);
+                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, picture: newPictureUri);
 
-                    if (displayedFauna != null)
+                    if (displayedEntity is Fauna)
                     {
-                        var pictureID = DataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
-                        displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
+                        var pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
+                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
-                    else if (displayedFlora != null)
+                    else if (displayedEntity != null)
                     {
-                        var pictureID = DataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
-                        displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
+                        var pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
+                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
                     }
 
                     App.Current.PlayClickSound();
@@ -880,16 +876,15 @@ namespace Starfield_Interactive_Smart_Slate
             App.Current.PlayClickSound();
 
             var picture = ((MenuItem)sender).DataContext as Picture;
-            if (displayedFauna != null)
+            if (displayedEntity is Fauna)
             {
                 DataRepository.DeleteFaunaPicture(picture);
-                displayedFauna.Pictures.Remove(picture);
             }
             else
             {
                 DataRepository.DeleteFloraPicture(picture);
-                displayedFlora.Pictures.Remove(picture);
             }
+            displayedEntity.Pictures.Remove(picture);
             picture.MoveToDeletedFolder();
         }
 
@@ -931,17 +926,17 @@ namespace Starfield_Interactive_Smart_Slate
 
                     if (allowedExtensions.Contains(fileExtension))
                     {
-                        var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedFauna, displayedFlora, picture: new Uri(file));
+                        var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, picture: new Uri(file));
 
-                        if (displayedFauna != null)
+                        if (displayedEntity is Fauna)
                         {
-                            var pictureID = DataRepository.AddFaunaPicture(displayedFauna, importedPictureUri.LocalPath);
-                            displayedFauna.AddPicture(new Picture(pictureID, importedPictureUri));
+                            var pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
+                            displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
                         }
-                        else if (displayedFlora != null)
+                        else if (displayedEntity is Flora)
                         {
-                            var pictureID = DataRepository.AddFloraPicture(displayedFlora, importedPictureUri.LocalPath);
-                            displayedFlora.AddPicture(new Picture(pictureID, importedPictureUri));
+                            var pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
+                            displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
                         }
 
                         importSuccess = true;
@@ -966,7 +961,7 @@ namespace Starfield_Interactive_Smart_Slate
         // -----------------------------------------------------------------------------------------------
         // RESOURCE SEARCH
         // -----------------------------------------------------------------------------------------------
-        #region Organic/Inorganic Resource Stuff
+        #region
         private void ResourceSearchListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             App.Current.PlayScrollSound();
