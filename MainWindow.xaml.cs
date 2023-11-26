@@ -163,6 +163,14 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        private void TabItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!((TabItem)sender).IsSelected)
+            {
+                App.Current.PlayScrollSound();
+            }
+        }
+
         // -----------------------------------------------------------------------------------------------
         // CELESTIAL BODIES
         // -----------------------------------------------------------------------------------------------
@@ -1476,10 +1484,5 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
         #endregion
-
-        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
-        {
-
-        }
     }
 }

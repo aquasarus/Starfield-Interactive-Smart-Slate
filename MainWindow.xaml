@@ -26,6 +26,7 @@
             <TabItem
                 Width="175"
                 Header="Planetary Data"
+                MouseEnter="TabItem_MouseEnter"
                 PreviewMouseLeftButtonDown="TabClicked">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -572,6 +573,7 @@
             <TabItem
                 Width="200"
                 Header="Inorganic Resource Search"
+                MouseEnter="TabItem_MouseEnter"
                 PreviewMouseLeftButtonDown="TabClicked">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -752,6 +754,7 @@
             <TabItem
                 Width="200"
                 Header="Organic Resource Search"
+                MouseEnter="TabItem_MouseEnter"
                 PreviewMouseLeftButtonDown="TabClicked">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -1014,6 +1017,7 @@
             <TabItem
                 Width="100"
                 Header="Settings"
+                MouseEnter="TabItem_MouseEnter"
                 PreviewMouseLeftButtonDown="TabClicked">
                 <Border
                     MaxWidth="500"
@@ -1076,6 +1080,7 @@
             <TabItem
                 Width="80"
                 Header="About"
+                MouseEnter="TabItem_MouseEnter"
                 PreviewMouseLeftButtonDown="TabClicked">
                 <Grid
                     Margin="0,0,0,200"
