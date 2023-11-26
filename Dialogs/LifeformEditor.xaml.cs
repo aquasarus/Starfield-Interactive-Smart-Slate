@@ -75,39 +75,31 @@ namespace Starfield_Interactive_Smart_Slate
 
         public Fauna GetResultingFauna()
         {
-            // TODO: combine these two methods?
             var resultingFauna = (originalEntity as Fauna).DeepCopy();
-            resultingFauna.Name = lifeformNameTextbox.Text;
-            resultingFauna.Notes = lifeformNotesTextbox.Text;
-
-            if (lifeformResourceComboBox.SelectedIndex != 0)
-            {
-                resultingFauna.PrimaryDrops = new List<Resource> { lifeformResourceComboBox.SelectedItem as Resource };
-            }
-            else
-            {
-                resultingFauna.PrimaryDrops = null;
-            }
-
+            UpdateLifeformAttributes(resultingFauna);
             return resultingFauna;
         }
 
         public Flora GetResultingFlora()
         {
             var resultingFlora = (originalEntity as Flora).DeepCopy();
-            resultingFlora.Name = lifeformNameTextbox.Text;
-            resultingFlora.Notes = lifeformNotesTextbox.Text;
+            UpdateLifeformAttributes(resultingFlora);
+            return resultingFlora;
+        }
+
+        private void UpdateLifeformAttributes(LifeformEntity lifeform)
+        {
+            lifeform.Name = lifeformNameTextbox.Text;
+            lifeform.Notes = lifeformNotesTextbox.Text;
 
             if (lifeformResourceComboBox.SelectedIndex != 0)
             {
-                resultingFlora.PrimaryDrops = new List<Resource> { lifeformResourceComboBox.SelectedItem as Resource };
+                lifeform.PrimaryDrops = new List<Resource> { lifeformResourceComboBox.SelectedItem as Resource };
             }
             else
             {
-                resultingFlora.PrimaryDrops = null;
+                lifeform.PrimaryDrops = null;
             }
-
-            return resultingFlora;
         }
 
         private void lifeformNameTextboxChanged(object sender, TextChangedEventArgs e)
