@@ -6,14 +6,19 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
     {
         public bool ExplicitNo = false;
 
-        public BasicYesNoDialog(string title, string body, string yesText, string noText)
+        public BasicYesNoDialog(string title, string body, string yesText, string? noText = null)
         {
             InitializeComponent();
 
             Title = title;
             MessageText.Text = body;
             YesButton.Content = yesText;
-            NoButton.Content = noText;
+
+            if (noText != null)
+            {
+                NoButton.Content = noText;
+                NoButton.Visibility = Visibility.Visible;
+            }
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)

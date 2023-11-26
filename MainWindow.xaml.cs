@@ -152,6 +152,16 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     App.Current.UserSettings.EnableAnalytics = false;
                 }
+
+                // also show first launch tutorial
+                var welcomeDialog = new BasicYesNoDialog("Quick Start",
+                    "Welcome to Starfield ISS!\n\n" +
+                    "This is an exploration compendium for you to catalog your own survey data. " +
+                    "To get started, click Discover New System to reveal your first solar system.",
+                    "Got it");
+                welcomeDialog.Owner = this;
+                welcomeDialog.ShowDialog();
+
                 App.Current.UserSettings.HasShownAnalyticsPopup = true;
             }
 

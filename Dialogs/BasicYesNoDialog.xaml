@@ -39,7 +39,8 @@
                 Width="100"
                 Margin="5,0,0,0"
                 Click="NoButton_Click"
-                Content="No" />
+                Content="No"
+                Visibility="Collapsed" />
         </Grid>
     </Grid>
 </Window>
