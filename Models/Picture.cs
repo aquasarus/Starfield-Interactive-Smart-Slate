@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -199,36 +200,44 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public void MoveToDeletedFolder()
         {
-            var picturePath = PictureUri?.LocalPath;
-            if (File.Exists(picturePath))
+            try
             {
-                var pictureFolder = Path.GetDirectoryName(picturePath);
-                var deletedFolder = Path.Combine(pictureFolder, DeletedFolder);
-
-                if (!Directory.Exists(deletedFolder))
+                var picturePath = PictureUri?.LocalPath;
+                if (File.Exists(picturePath))
                 {
-                    Directory.CreateDirectory(deletedFolder);
+                    var pictureFolder = Path.GetDirectoryName(picturePath);
+                    var deletedFolder = Path.Combine(pictureFolder, DeletedFolder);
+
+                    if (!Directory.Exists(deletedFolder))
+                    {
+                        Directory.CreateDirectory(deletedFolder);
+                    }
+
+                    var deletedPath = Path.Combine(deletedFolder, Path.GetFileName(picturePath));
+
+                    File.Move(picturePath, deletedPath);
                 }
 
-                var deletedPath = Path.Combine(deletedFolder, Path.GetFileName(picturePath));
+                var thumbnailPath = ThumbnailUri?.LocalPath;
+                if (File.Exists(thumbnailPath))
+                {
+                    var thumbnailFolder = Path.GetDirectoryName(thumbnailPath);
+                    var deletedFolder = Path.Combine(thumbnailFolder, DeletedFolder);
 
-                File.Move(picturePath, deletedPath);
+                    if (!Directory.Exists(deletedFolder))
+                    {
+                        Directory.CreateDirectory(deletedFolder);
+                    }
+
+                    var deletedPath = Path.Combine(deletedFolder, Path.GetFileName(thumbnailPath));
+
+                    File.Move(thumbnailPath, deletedPath);
+                }
             }
-
-            var thumbnailPath = ThumbnailUri?.LocalPath;
-            if (File.Exists(thumbnailPath))
+            catch (Exception ex)
             {
-                var thumbnailFolder = Path.GetDirectoryName(thumbnailPath);
-                var deletedFolder = Path.Combine(thumbnailFolder, DeletedFolder);
-
-                if (!Directory.Exists(deletedFolder))
-                {
-                    Directory.CreateDirectory(deletedFolder);
-                }
-
-                var deletedPath = Path.Combine(deletedFolder, Path.GetFileName(thumbnailPath));
-
-                File.Move(thumbnailPath, deletedPath);
+                AnalyticsUtil.TrackError(ex);
+                MessageBox.Show("Failed to move picture to a Deleted folder. It may be in-use by another app?", "Error");
             }
         }
 

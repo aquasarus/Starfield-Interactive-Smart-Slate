@@ -210,9 +210,9 @@ namespace Starfield_Interactive_Smart_Slate
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                AnalyticsUtil.TrackError(exception);
+                AnalyticsUtil.TrackError(ex);
 
                 // fail silently if initial UI cached state fails to load
                 if (Debugger.IsAttached)
@@ -1469,9 +1469,9 @@ namespace Starfield_Interactive_Smart_Slate
                     AnalyticsUtil.TrackEvent("Did not find latest release on GitHub");
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                AnalyticsUtil.TrackError(e);
+                AnalyticsUtil.TrackError(ex);
                 if (Debugger.IsAttached) { throw; }
             }
         }
