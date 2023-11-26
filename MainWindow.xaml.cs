@@ -1467,7 +1467,7 @@ namespace Starfield_Interactive_Smart_Slate
                             var latestVersionString = $"v{latestVersion.Major}.{latestVersion.Minor}.{latestVersion.Build}";
                             var currentVersionString = $"v{currentVersion.Major}.{currentVersion.Minor}.{currentVersion.Build}";
                             var newVersionNotification = new BasicYesNoDialog("New Version Available",
-                                $"There is a new version available on GitHub!\n" +
+                                $"There is a newer version available on GitHub!\n" +
                                 $"Wanna check it out?\n\n" +
                                 $"Your current version is: {currentVersionString}\n" +
                                 $"The latest version is: {latestVersionString}\n\n" +
