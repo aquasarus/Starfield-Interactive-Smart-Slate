@@ -228,6 +228,15 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     cmd.ExecuteNonQuery();
                 }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE CelestialBodies
+                    SET TotalFlora = 8
+                    WHERE BodyName = 'Guniibuu II'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
