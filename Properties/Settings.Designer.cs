@@ -58,5 +58,17 @@ namespace Starfield_Interactive_Smart_Slate.Properties {
                 this["SelectedFloraID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int SelectedOutpostID {
+            get {
+                return ((int)(this["SelectedOutpostID"]));
+            }
+            set {
+                this["SelectedOutpostID"] = value;
+            }
+        }
     }
 }

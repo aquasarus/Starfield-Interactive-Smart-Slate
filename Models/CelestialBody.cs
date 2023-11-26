@@ -23,6 +23,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public List<Resource>? Resources { get; set; }
         public ObservableCollection<Fauna>? Faunas { get; set; }
         public ObservableCollection<Flora>? Floras { get; set; }
+        public ObservableCollection<Outpost>? Outposts { get; set; }
 
         // helper attributes to display resource search
         public List<CelestialBody>? Moons;
@@ -156,6 +157,15 @@ namespace Starfield_Interactive_Smart_Slate.Models
             Floras.Add(flora);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
+        public void AddOutpost(Outpost outpost)
+        {
+            if (Outposts == null)
+            {
+                Outposts = new ObservableCollection<Outpost>();
+            }
+            Outposts.Add(outpost);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+        }
 
         public void EditFauna(Fauna editedFauna)
         {
@@ -180,6 +190,21 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+        }
+
+        public void EditOutpost(Outpost editedOutpost)
+        {
+            foreach (var outpost in Outposts)
+            {
+                if (outpost.ID == editedOutpost.ID)
+                {
+                    Outposts[Outposts.IndexOf(outpost)] = editedOutpost;
+                    break;
+                }
+            }
+
+            // TODO: this probably needs to become an icon indicator binding
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 

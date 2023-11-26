@@ -9,7 +9,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
-        public static int TargetDatabaseVersion = 7;
+        public static int TargetDatabaseVersion = 8;
 
         public static string UserDatabaseFolder()
         {
@@ -201,6 +201,31 @@ namespace Starfield_Interactive_Smart_Slate
                     cmd.Parameters.AddWithValue("@EnableAnalyticsKey", UserSettings.EnableAnalyticsKey);
                     cmd.Parameters.AddWithValue("@EnableUpdateNotificationKey", UserSettings.EnableUpdateNotificationKey);
                     cmd.Parameters.AddWithValue("@HasShownAnalyticsPopupKey", UserSettings.HasShownAnalyticsPopupKey);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void MigrateV7ToV8()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    CREATE TABLE Outposts (
+                        OutpostID INTEGER PRIMARY KEY,
+                        OutpostName TEXT NOT NULL,
+                        ParentBodyID INTEGER NOT NULL,
+                        OutpostNotes TEXT,
+                        OutpostDeleted INTEGER NOT NULL DEFAULT 0,
+                        FOREIGN KEY (ParentBodyID) REFERENCES CelestialBodies(BodyID));
+
+                    CREATE TABLE OutpostPictures (
+                        OutpostPictureID INTEGER PRIMARY KEY,
+                        OutpostID INTEGER NOT NULL,
+                        OutpostPicturePath TEXT NOT NULL,
+                        FOREIGN KEY (OutpostID) REFERENCES Outposts(OutpostID))", conn))
+                {
                     cmd.ExecuteNonQuery();
                 }
             }

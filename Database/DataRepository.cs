@@ -407,6 +407,65 @@ namespace Starfield_Interactive_Smart_Slate
                     }
                 }
 
+                // get all outpost data and attach them to celestial bodies
+                var celestialBodyOutpostsMap = new Dictionary<int, ObservableCollection<Outpost>>();
+
+                query = @"
+                    SELECT
+                        f.OutpostID,
+                        f.OutpostName,
+                        f.ParentBodyID,
+                        f.OutpostNotes,
+                        fp.OutpostPicturePath,
+                        fp.OutpostPictureID
+                    FROM
+                        Outposts f
+                    LEFT JOIN
+                        OutpostPictures fp ON fp.OutpostID = f.OutpostID
+                    ORDER BY
+                        f.OutpostID, fp.OutpostPictureID
+                ";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        Outpost currentOutpost = null;
+                        while (reader.Read())
+                        {
+                            int outpostID = reader.GetInt32(0);
+                            string outpostName = reader.GetString(1);
+                            int parentBodyID = reader.GetInt32(2);
+                            string outpostNotes = reader.IsDBNull(3) ? null : reader.GetString(3);
+                            string outpostPicturePath = reader.IsDBNull(4) ? null : reader.GetString(4);
+                            int outpostPictureID = reader.IsDBNull(5) ? -1 : reader.GetInt32(5);
+
+                            if (!celestialBodyOutpostsMap.ContainsKey(parentBodyID))
+                            {
+                                celestialBodyOutpostsMap[parentBodyID] = new ObservableCollection<Outpost>();
+                            }
+
+                            if (currentOutpost == null || currentOutpost.ID != outpostID)
+                            {
+                                var outpost = new Outpost
+                                {
+                                    ID = outpostID,
+                                    Name = outpostName,
+                                    Notes = outpostNotes
+                                };
+
+                                celestialBodyOutpostsMap[parentBodyID].Add(outpost);
+                                currentOutpost = outpost;
+                            }
+
+                            if (outpostPicturePath != null)
+                            {
+                                currentOutpost.AddPicture(new Picture(outpostPictureID, new Uri(outpostPicturePath)));
+                            }
+                        }
+                    }
+                }
+
                 // query to get systems and their celestial bodies
                 query = @"
                     SELECT
@@ -482,6 +541,7 @@ namespace Starfield_Interactive_Smart_Slate
                             int totalFlora = reader.GetInt32(13);
                             var faunas = celestialBodyFaunasMap.ContainsKey(bodyID) ? celestialBodyFaunasMap[bodyID] : null;
                             var floras = celestialBodyFlorasMap.ContainsKey(bodyID) ? celestialBodyFlorasMap[bodyID] : null;
+                            var outposts = celestialBodyOutpostsMap.ContainsKey(bodyID) ? celestialBodyOutpostsMap[bodyID] : null;
 
                             // Create and add CelestialBody object
                             CelestialBody celestialBody = new CelestialBody
@@ -500,7 +560,8 @@ namespace Starfield_Interactive_Smart_Slate
                                 TotalFlora = totalFlora,
                                 Resources = celestialBodyResourcesMap[bodyID],
                                 Faunas = faunas,
-                                Floras = floras
+                                Floras = floras,
+                                Outposts = outposts
                             };
 
                             if (!celestialBody.IsMoon)
@@ -636,6 +697,33 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        public static Outpost AddOutpost(string outpostName, int parentBodyID)
+        {
+            AnalyticsUtil.TrackEvent("Add outpost");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO
+                        Outposts
+                        (OutpostName, ParentBodyID)
+                    VALUES
+                        (@OutpostName, @ParentBodyID)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@OutpostName", outpostName);
+                    cmd.Parameters.AddWithValue("@ParentBodyID", parentBodyID);
+                    var result = cmd.ExecuteScalar();
+
+                    var insertedID = (int)conn.LastInsertRowId;
+                    return new Outpost
+                    {
+                        ID = insertedID,
+                        Name = outpostName
+                    };
+                }
+            }
+        }
+
         public static void EditFauna(Fauna originalFauna, Fauna newFauna)
         {
             AnalyticsUtil.TrackEvent("Edit fauna");
@@ -762,6 +850,30 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        public static void EditOutpost(Outpost newOutpost)
+        {
+            AnalyticsUtil.TrackEvent("Edit outpost");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE
+                        Outposts
+                    SET
+                        OutpostName = @OutpostName,
+                        OutpostNotes = @OutpostNotes
+                    WHERE
+                        OutpostID = @OutpostID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@OutpostID", newOutpost.ID);
+                    cmd.Parameters.AddWithValue("@OutpostName", newOutpost.Name);
+                    cmd.Parameters.AddWithValue("@OutpostNotes", newOutpost.Notes);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static int AddFaunaPicture(Fauna fauna, string pictureUri)
         {
             AnalyticsUtil.TrackEvent("Add fauna picture");
@@ -806,6 +918,28 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        public static int AddOutpostPicture(Outpost outpost, string pictureUri)
+        {
+            AnalyticsUtil.TrackEvent("Add outpost picture");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO
+                        OutpostPictures
+                        (OutpostID, OutpostPicturePath)
+                    VALUES
+                        (@OutpostID, @OutpostPicturePath)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@OutpostID", outpost.ID);
+                    cmd.Parameters.AddWithValue("@OutpostPicturePath", pictureUri);
+
+                    cmd.ExecuteNonQuery();
+                    return (int)conn.LastInsertRowId;
+                }
+            }
+        }
+
         public static void DeleteFaunaPicture(Picture picture)
         {
             AnalyticsUtil.TrackEvent("Delete fauna picture");
@@ -837,6 +971,24 @@ namespace Starfield_Interactive_Smart_Slate
                         FloraPictureID = @FloraPictureID", conn))
                 {
                     cmd.Parameters.AddWithValue("@FloraPictureID", picture.PictureID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void DeleteOutpostPicture(Picture picture)
+        {
+            AnalyticsUtil.TrackEvent("Delete outpost picture");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    DELETE FROM
+                        OutpostPictures
+                    WHERE
+                        OutpostPictureID = @OutpostPictureID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@OutpostPictureID", picture.PictureID);
                     cmd.ExecuteNonQuery();
                 }
             }

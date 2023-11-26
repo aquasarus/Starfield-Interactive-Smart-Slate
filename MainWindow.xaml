@@ -218,11 +218,12 @@
                         </ListView>
                     </Grid>
 
-                    <!--  FLORAS / FAUNAS LISTS  -->
+                    <!--  FLORAS / FAUNAS / OUTPOSTS LISTS  -->
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="3.5*" />
+                            <RowDefinition Height="3.5*" />
+                            <RowDefinition Height="3*" />
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -332,9 +333,60 @@
                             </ListView>
                         </Grid>
 
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,1,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0"
+                                    Height="35"
+                                    Margin="1,0,1,0"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1"
+                                    Content="Outposts"
+                                    Style="{StaticResource HeaderStyle}" />
+                                <Button Name="addOutpostButton" Grid.Column="1"
+                                    Width="65"
+                                    Click="AddOutpostClicked"
+                                    Content="Add"
+                                    Style="{StaticResource ThinHeaderStyle}" />
+                            </Grid>
+                            <ListView Name="outpostsListView" Grid.Row="1"
+                                Margin="1,1,0,0"
+                                Padding="5"
+                                SelectionMode="Single">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <EventSetter Event="MouseEnter" Handler="OutpostListItem_MouseEnter" />
+                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="OutpostListView_Select" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
                     </Grid>
 
-                    <!--  LIFEFORM OVERVIEW  -->
+                    <!--  ENTITY OVERVIEW  -->
                     <Grid Grid.Column="3" Margin="1,0,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -352,12 +404,12 @@
                                 VerticalContentAlignment="Center"
                                 BorderBrush="Gray"
                                 BorderThickness="1"
-                                Content="Lifeform Overview"
+                                Content="Entity Overview"
                                 Style="{StaticResource HeaderStyle}" />
-                            <Button Name="editLifeformButton" Grid.Column="1"
+                            <Button Name="editEntityButton" Grid.Column="1"
                                 Width="65"
                                 Margin="1,0,0,0"
-                                Click="EditLifeformClicked"
+                                Click="EditEntityClicked"
                                 Content="Edit"
                                 IsEnabled="false"
                                 Style="{StaticResource ThinHeaderStyle}" />
@@ -371,9 +423,9 @@
                             DragEnter="AddPictureDragEnter"
                             DragLeave="AddPictureDragLeave"
                             Drop="AddPictureOnDrop">
-                            <ScrollViewer Name="lifeformOverviewScrollViewer" VerticalScrollBarVisibility="Auto">
+                            <ScrollViewer Name="entityOverviewScrollViewer" VerticalScrollBarVisibility="Auto">
                                 <Grid Margin="15,5,15,0">
-                                    <Grid Name="lifeformOverviewGrid" Visibility="Hidden">
+                                    <Grid Name="entityOverviewGrid" Visibility="Hidden">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="Auto" />
@@ -386,11 +438,11 @@
                                         </Grid.RowDefinitions>
 
                                         <Grid Grid.Row="0" Height="55">
-                                            <Label Name="lifeformTitleLabel" Grid.Row="0"
+                                            <Label Name="entityTitleLabel" Grid.Row="0"
                                                 VerticalContentAlignment="Top"
                                                 Content="Pack Octomaggot"
                                                 Style="{StaticResource ContentTitleStyle}" />
-                                            <Label Name="lifeformSubtitleLabel" Grid.Row="1"
+                                            <Label Name="entitySubtitleLabel" Grid.Row="1"
                                                 VerticalContentAlignment="Bottom"
                                                 FontSize="15" />
                                         </Grid>
@@ -407,7 +459,7 @@
                                             Style="{StaticResource ContentSubtitleStyle}"
                                             ToolTipService.InitialShowDelay="300">
                                             <Label.ToolTip>
-                                                <ToolTip Content="To add new picture:&#x0a;    - Click + button, or&#x0a;    - Drag file(s) into Lifeform Overview, or&#x0a;    - Ctrl + V to paste from clipboard.&#x0a;        - Best when combined with Windows screen cap tool: WinKey + Shift + S.&#x0a;    - Files will be copied into your app data folder.&#x0a;&#x0a;Left-click picture to view.&#x0a;&#x0a;Right-click picture to delete.&#x0a;    - Actual file in operating system will be preserved." />
+                                                <ToolTip Content="To add new picture:&#x0a;    - Click + button, or&#x0a;    - Drag file(s) into Entity Overview, or&#x0a;    - Ctrl + V to paste from clipboard.&#x0a;        - Best when combined with Windows screen cap tool: WinKey + Shift + S.&#x0a;    - Files will be copied into your app data folder.&#x0a;&#x0a;Left-click picture to view.&#x0a;&#x0a;Right-click picture to delete.&#x0a;    - Actual file in operating system will be preserved." />
                                             </Label.ToolTip>
                                         </Label>
                                         <ItemsControl Name="pictureGrid" Grid.Row="4"
@@ -483,11 +535,11 @@
                                                 </DataTemplate>
                                             </ItemsControl.ItemTemplate>
                                         </ItemsControl>
-                                        <Label Name="lifeformNotesTitle" Grid.Row="5"
+                                        <Label Grid.Row="5"
                                             Content="Notes"
                                             Style="{StaticResource ContentSubtitleStyle}" />
                                         <Label Grid.Row="6">
-                                            <TextBlock Name="lifeformNotesTextBlock"
+                                            <TextBlock Name="entityNotesTextBlock"
                                                 FontSize="17"
                                                 Text="Placeholder sample text"
                                                 TextWrapping="Wrap" />

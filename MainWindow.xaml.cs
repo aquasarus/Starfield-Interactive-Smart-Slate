@@ -130,18 +130,7 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     BitmapSource clipboardImage = Clipboard.GetImage();
                     var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, directSource: clipboardImage);
-
-                    if (displayedEntity is Fauna)
-                    {
-                        var pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
-                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
-                    }
-                    else if (displayedEntity is Flora)
-                    {
-                        var pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
-                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
-                    }
-
+                    AddPicture(importedPictureUri);
                     App.Current.PlayClickSound();
                 }
             }
@@ -198,6 +187,7 @@ namespace Starfield_Interactive_Smart_Slate
                                 // restore last session's fauna/flora selection
                                 var selectedFaunaID = Settings.Default.SelectedFaunaID;
                                 var selectedFloraID = Settings.Default.SelectedFloraID;
+                                var selectedOutpostID = Settings.Default.SelectedOutpostID;
                                 if (selectedFaunaID != -1)
                                 {
                                     var fauna = celestialBody.Faunas.First(f => f.ID == selectedFaunaID);
@@ -207,6 +197,11 @@ namespace Starfield_Interactive_Smart_Slate
                                 {
                                     var flora = celestialBody.Floras.First(f => f.ID == selectedFloraID);
                                     SetSelectedFloraWithUI(flora);
+                                }
+                                else if (selectedOutpostID != -1)
+                                {
+                                    var outpost = celestialBody.Outposts.First(f => f.ID == selectedOutpostID);
+                                    SetSelectedOutpostWithUI(outpost);
                                 }
 
                                 break;
@@ -332,8 +327,7 @@ namespace Starfield_Interactive_Smart_Slate
                 if (selectedCelestialBody == null && displayedCelestialBody != celestialBody)
                 {
                     DisplayCelestialBodyDetails(celestialBody);
-                    ClearFaunaSelection();
-                    ClearFloraSelection();
+                    ClearAllSelectionsExcept();
                 }
 
                 App.Current.PlayScrollSound();
@@ -402,15 +396,14 @@ namespace Starfield_Interactive_Smart_Slate
                 clickedItem.Focus();
                 ClearInnerListViews(solarSystemsListView, parent);
                 DisplayCelestialBodyDetails(celestialBody);
-                ClearFaunaSelection();
-                ClearFloraSelection();
+                ClearAllSelectionsExcept();
             }
         }
 
         private void DisplayCelestialBodyDetails(CelestialBody celestialBody)
         {
-            lifeformOverviewGrid.Visibility = Visibility.Hidden;
-            editLifeformButton.IsEnabled = false;
+            entityOverviewGrid.Visibility = Visibility.Hidden;
+            editEntityButton.IsEnabled = false;
 
             displayedCelestialBody = celestialBody;
 
@@ -418,9 +411,12 @@ namespace Starfield_Interactive_Smart_Slate
             celestialBodyResourcesLabel.Text = celestialBody.ResourcesString;
 
             faunasListView.ItemsSource = celestialBody.Faunas;
-            florasListView.ItemsSource = celestialBody.Floras;
             addFaunaButton.IsEnabled = ((celestialBody.Faunas?.Count ?? 0) == celestialBody.TotalFauna) ? false : true;
+
+            florasListView.ItemsSource = celestialBody.Floras;
             addFloraButton.IsEnabled = ((celestialBody.Floras?.Count ?? 0) == celestialBody.TotalFlora) ? false : true;
+
+            outpostsListView.ItemsSource = celestialBody.Outposts;
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedCelestialBodyName)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedSolarSystemName)));
@@ -527,7 +523,7 @@ namespace Starfield_Interactive_Smart_Slate
                 throw new Exception("SetSelectedFauna() is only for non-null values. Use ClearFaunaSelection() otherwise.");
             }
 
-            ClearFloraSelection();
+            ClearAllSelectionsExcept(fauna);
             selectedEntity = fauna;
             faunasListView.SelectedItem = fauna;
             DisplayFaunaDetails(fauna);
@@ -544,18 +540,13 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void DisplayFaunaDetails(Fauna fauna)
         {
-            displayedEntity = fauna;
+            entitySubtitleLabel.Content = "· Fauna";
 
-            lifeformTitleLabel.Content = fauna.Name;
-            lifeformSubtitleLabel.Content = "· Fauna";
+            lifeformResourceTitleLabel.Visibility = Visibility.Visible;
+            lifeformResourceLabel.Visibility = Visibility.Visible;
             lifeformResourceLabel.Content = fauna.ResourceString;
-            lifeformNotesTextBlock.Text = fauna.NotesString;
 
-            lifeformOverviewGrid.Visibility = Visibility.Visible;
-            editLifeformButton.IsEnabled = true;
-
-            pictureGrid.ItemsSource = fauna.Pictures;
-            lifeformOverviewScrollViewer.ScrollToTop();
+            DisplayEntityDetails(fauna);
         }
 
         private void AddFaunaClicked(object sender, RoutedEventArgs e)
@@ -579,7 +570,7 @@ namespace Starfield_Interactive_Smart_Slate
                 DisplayFaunaDetails(insertedFauna);
                 SetSelectedFaunaWithUI(insertedFauna);
 
-                editLifeformButton.Focus();
+                editEntityButton.Focus();
             }
         }
 
@@ -645,7 +636,7 @@ namespace Starfield_Interactive_Smart_Slate
                 throw new Exception("SetSelectedFlora() is only for non-null values. Use ClearFloraSelection() otherwise.");
             }
 
-            ClearFaunaSelection();
+            ClearAllSelectionsExcept(flora);
             selectedEntity = flora;
             florasListView.SelectedItem = flora;
             DisplayFloraDetails(flora);
@@ -662,18 +653,13 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void DisplayFloraDetails(Flora flora)
         {
-            displayedEntity = flora;
+            entitySubtitleLabel.Content = "· Flora";
 
-            lifeformTitleLabel.Content = flora.Name;
-            lifeformSubtitleLabel.Content = "· Flora";
+            lifeformResourceTitleLabel.Visibility = Visibility.Visible;
+            lifeformResourceLabel.Visibility = Visibility.Visible;
             lifeformResourceLabel.Content = flora.ResourceString;
-            lifeformNotesTextBlock.Text = flora.Notes;
 
-            lifeformOverviewGrid.Visibility = Visibility.Visible;
-            editLifeformButton.IsEnabled = true;
-
-            pictureGrid.ItemsSource = flora.Pictures;
-            lifeformOverviewScrollViewer.ScrollToTop();
+            DisplayEntityDetails(flora);
         }
 
         private void AddFloraClicked(object sender, RoutedEventArgs e)
@@ -697,38 +683,26 @@ namespace Starfield_Interactive_Smart_Slate
                 DisplayFloraDetails(insertedFlora);
                 SetSelectedFloraWithUI(insertedFlora);
 
-                editLifeformButton.Focus();
+                editEntityButton.Focus();
             }
         }
 
-        private void EditLifeformClicked(object sender, RoutedEventArgs e)
+        private void EditEntityClicked(object sender, RoutedEventArgs e)
         {
             App.Current.PlayClickSound();
 
-            LifeformEditor dialog;
+
             if (displayedEntity is Fauna)
             {
-                dialog = new LifeformEditor(
+                LifeformEditor dialog = new LifeformEditor(
                     displayedEntity as Fauna,
                     selectableOrganicResources,
                     lifeformNames[LifeformType.Fauna]
                 );
-            }
-            else
-            {
-                dialog = new LifeformEditor(
-                    displayedEntity as Flora,
-                    selectableOrganicResources,
-                    lifeformNames[LifeformType.Flora]
-                );
-            }
+                dialog.Owner = this;
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-            dialog.Owner = this;
-            dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-            if (dialog.ShowDialog() == true)
-            {
-                if (displayedEntity is Fauna)
+                if (dialog.ShowDialog() == true)
                 {
                     var resultingFauna = dialog.GetResultingFauna();
                     DataRepository.EditFauna(displayedEntity as Fauna, resultingFauna);
@@ -740,7 +714,18 @@ namespace Starfield_Interactive_Smart_Slate
                         faunasListView.SelectedItem = selectedEntity;
                     }
                 }
-                else
+            }
+            else if (displayedEntity is Flora)
+            {
+                LifeformEditor dialog = new LifeformEditor(
+                    displayedEntity as Flora,
+                    selectableOrganicResources,
+                    lifeformNames[LifeformType.Flora]
+                );
+                dialog.Owner = this;
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+                if (dialog.ShowDialog() == true)
                 {
                     var resultingFlora = dialog.GetResultingFlora();
                     DataRepository.EditFlora(displayedEntity as Flora, resultingFlora);
@@ -752,6 +737,181 @@ namespace Starfield_Interactive_Smart_Slate
                         florasListView.SelectedItem = selectedEntity;
                     }
                 }
+            }
+            else // assume outpost
+            {
+                OutpostEditor dialog = new OutpostEditor(displayedEntity as Outpost);
+                dialog.Owner = this;
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+                if (dialog.ShowDialog() == true)
+                {
+                    var resultingOutpost = dialog.GetResultingOutpost();
+                    DataRepository.EditOutpost(resultingOutpost);
+                    displayedCelestialBody.EditOutpost(resultingOutpost);
+                    DisplayOutpostDetails(resultingOutpost);
+                    if (selectedEntity != null)
+                    {
+                        selectedEntity = resultingOutpost;
+                        outpostsListView.SelectedItem = selectedEntity;
+                    }
+                }
+            }
+        }
+        #endregion
+
+        // -----------------------------------------------------------------------------------------------
+        // OUTPOSTS
+        // -----------------------------------------------------------------------------------------------
+        #region
+        private void OutpostListItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is ListViewItem listViewItem && listViewItem.DataContext is Outpost)
+            {
+                var outpost = listViewItem.DataContext as Outpost;
+                if (selectedEntity == null)
+                {
+                    DisplayOutpostDetails(outpost);
+                }
+
+                App.Current.PlayScrollSound();
+            }
+        }
+
+        private void OutpostListView_Select(object sender, MouseEventArgs e)
+        {
+            ListViewItem clickedItem = sender as ListViewItem;
+            Outpost outpost = clickedItem.DataContext as Outpost;
+            ToggleSelectOutpost(outpost, clickedItem);
+            e.Handled = true;
+            AnalyticsUtil.TrackEvent("Select outpost");
+        }
+        private void AddOutpostClicked(object sender, RoutedEventArgs e)
+        {
+            App.Current.PlayClickSound();
+
+            AddOutpostDialog dialog = new AddOutpostDialog();
+
+            dialog.Owner = this;
+            dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            if (dialog.ShowDialog() == true)
+            {
+                var insertedOutpost = DataRepository.AddOutpost(dialog.outpostNameInput.Text, displayedCelestialBody.BodyID);
+
+                // update local data state
+                displayedCelestialBody.AddOutpost(insertedOutpost);
+
+                // update UI state
+                DisplayCelestialBodyDetails(displayedCelestialBody);
+                DisplayOutpostDetails(insertedOutpost);
+                SetSelectedOutpostWithUI(insertedOutpost);
+
+                editEntityButton.Focus();
+            }
+        }
+
+        private void DisplayOutpostDetails(Outpost outpost)
+        {
+            entitySubtitleLabel.Content = "· Outpost";
+
+            // outposts have no resource drops
+            lifeformResourceTitleLabel.Visibility = Visibility.Collapsed;
+            lifeformResourceLabel.Visibility = Visibility.Collapsed;
+
+            DisplayEntityDetails(outpost);
+        }
+
+        private void DisplayEntityDetails(Entity entity)
+        {
+            displayedEntity = entity;
+
+            entityTitleLabel.Content = entity.Name;
+            entityNotesTextBlock.Text = entity.Notes;
+            entityOverviewGrid.Visibility = Visibility.Visible;
+            editEntityButton.IsEnabled = true;
+            pictureGrid.ItemsSource = entity.Pictures;
+
+            entityOverviewScrollViewer.ScrollToTop();
+        }
+
+        private void ToggleSelectOutpost(Outpost outpost, ListViewItem clickedItem)
+        {
+            if (selectedEntity == outpost)
+            {
+                App.Current.PlayCancelSound();
+
+                // like ClearOutpostSelection but keep displayedOutpost
+                selectedEntity = null;
+                outpostsListView.UnselectAll();
+                Settings.Default.SelectedOutpostID = -1;
+                Settings.Default.Save();
+                clickedItem.IsSelected = false;
+            }
+            else
+            {
+                App.Current.PlayClickSound();
+
+                clickedItem.IsSelected = true;
+                clickedItem.Focus();
+                SetSelectedOutpostWithUI(outpost);
+            }
+        }
+
+        private void ClearOutpostSelection()
+        {
+            selectedEntity = null;
+            displayedEntity = null;
+            outpostsListView.UnselectAll();
+            Settings.Default.SelectedOutpostID = -1;
+            Settings.Default.Save();
+        }
+
+        private void SetSelectedOutpostWithUI(Outpost outpost)
+        {
+            if (outpost == null)
+            {
+                throw new Exception("SetSelectedOutpost() is only for non-null values. Use ClearOutpostSelection() otherwise.");
+            }
+
+            ClearAllSelectionsExcept(outpost);
+            selectedEntity = outpost;
+            outpostsListView.SelectedItem = outpost;
+            DisplayOutpostDetails(outpost);
+
+            Settings.Default.SelectedOutpostID = outpost.ID;
+            Settings.Default.Save();
+
+            // persist celestial body selection if not already persisted
+            if (selectedCelestialBody == null)
+            {
+                SetSelectedCelestialBodyWithUI(displayedCelestialBody);
+            }
+        }
+
+        // clears all list selections except specified type
+        private void ClearAllSelectionsExcept(Entity? exception = null)
+        {
+            if (exception is Fauna)
+            {
+                ClearFloraSelection();
+                ClearOutpostSelection();
+            }
+            else if (exception is Flora)
+            {
+                ClearFaunaSelection();
+                ClearOutpostSelection();
+            }
+            else if (exception is Outpost)
+            {
+                ClearFaunaSelection();
+                ClearFloraSelection();
+            }
+            else if (exception == null)
+            {
+                ClearFaunaSelection();
+                ClearFloraSelection();
+                ClearOutpostSelection();
             }
         }
         #endregion
@@ -768,7 +928,7 @@ namespace Starfield_Interactive_Smart_Slate
         private void ResizePictureGridColumns()
         {
             // calculate the number of columns to use
-            double availableWidth = (double)lifeformOverviewGrid.ActualWidth;
+            double availableWidth = (double)entityOverviewGrid.ActualWidth;
             double itemWidth = 110; // fixed width + margin of each thumbnail
             double columns = availableWidth / itemWidth;
             int columnsInt = (int)Math.Floor(columns);
@@ -791,17 +951,7 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     var newPictureUri = new Uri(openFileDialog.FileName);
                     var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, picture: newPictureUri);
-
-                    if (displayedEntity is Fauna)
-                    {
-                        var pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
-                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
-                    }
-                    else if (displayedEntity != null)
-                    {
-                        var pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
-                        displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
-                    }
+                    AddPicture(importedPictureUri);
 
                     App.Current.PlayClickSound();
                 }
@@ -902,18 +1052,24 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void AddPictureDragEnter(object sender, DragEventArgs e)
         {
-            lifeformOverviewGrid.Opacity = 0.2;
-            dragDropOverlay.Visibility = Visibility.Visible;
+            if (displayedEntity != null)
+            {
+                entityOverviewGrid.Opacity = 0.2;
+                dragDropOverlay.Visibility = Visibility.Visible;
+            }
         }
 
         private void AddPictureDragLeave(object sender, DragEventArgs e)
         {
-            lifeformOverviewGrid.Opacity = 1;
+            entityOverviewGrid.Opacity = 1;
             dragDropOverlay.Visibility = Visibility.Hidden;
         }
 
         private void AddPictureOnDrop(object sender, DragEventArgs e)
         {
+            if (displayedEntity == null)
+                return;
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -927,18 +1083,7 @@ namespace Starfield_Interactive_Smart_Slate
                     if (allowedExtensions.Contains(fileExtension))
                     {
                         var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, picture: new Uri(file));
-
-                        if (displayedEntity is Fauna)
-                        {
-                            var pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
-                            displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
-                        }
-                        else if (displayedEntity is Flora)
-                        {
-                            var pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
-                            displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
-                        }
-
+                        AddPicture(importedPictureUri);
                         importSuccess = true;
                     }
                     else
@@ -953,8 +1098,32 @@ namespace Starfield_Interactive_Smart_Slate
                 }
             }
 
-            lifeformOverviewGrid.Opacity = 1;
+            entityOverviewGrid.Opacity = 1;
             dragDropOverlay.Visibility = Visibility.Hidden;
+        }
+
+        private void AddPicture(Uri importedPictureUri)
+        {
+            int pictureID;
+
+            if (displayedEntity is Fauna)
+            {
+                pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
+            }
+            else if (displayedEntity is Flora)
+            {
+                pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
+            }
+            else if (displayedEntity is Outpost)
+            {
+                pictureID = DataRepository.AddOutpostPicture(displayedEntity as Outpost, importedPictureUri.LocalPath);
+            }
+            else
+            {
+                return;
+            }
+
+            displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
         }
         #endregion
 
@@ -1307,5 +1476,10 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
         #endregion
+
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
