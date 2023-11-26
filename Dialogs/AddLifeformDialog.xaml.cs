@@ -103,7 +103,7 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (this.DialogResult == true)
+            if (DialogResult == true)
             {
                 App.Current.PlayClickSound();
             }

@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="BasicYesNoDialog"
     Width="430"
+    Closing="Window_Closing"
     SizeToContent="Height"
     Style="{StaticResource SofiaSansStyle}"
     WindowStartupLocation="CenterOwner"

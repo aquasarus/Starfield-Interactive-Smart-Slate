@@ -157,6 +157,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             Floras.Add(flora);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
+
         public void AddOutpost(Outpost outpost)
         {
             if (Outposts == null)
@@ -164,6 +165,21 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Outposts = new ObservableCollection<Outpost>();
             }
             Outposts.Add(outpost);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+        }
+
+        public void DeleteOutpost(Outpost deletedOutpost)
+        {
+            foreach (var outpost in Outposts)
+            {
+                if (outpost.ID == deletedOutpost.ID)
+                {
+                    Outposts.Remove(outpost);
+                    break;
+                }
+            }
+
+            // TODO: this probably needs to become an icon indicator binding
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 

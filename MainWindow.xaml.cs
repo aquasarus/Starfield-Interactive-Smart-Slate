@@ -527,8 +527,6 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ClearFaunaSelection()
         {
-            selectedEntity = null;
-            displayedEntity = null;
             faunasListView.UnselectAll();
             Settings.Default.SelectedFaunaID = -1;
             Settings.Default.Save();
@@ -640,8 +638,6 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ClearFloraSelection()
         {
-            selectedEntity = null;
-            displayedEntity = null;
             florasListView.UnselectAll();
             Settings.Default.SelectedFloraID = -1;
             Settings.Default.Save();
@@ -804,6 +800,7 @@ namespace Starfield_Interactive_Smart_Slate
             e.Handled = true;
             AnalyticsUtil.TrackEvent("Select outpost");
         }
+
         private void AddOutpostClicked(object sender, RoutedEventArgs e)
         {
             App.Current.PlayClickSound();
@@ -853,6 +850,13 @@ namespace Starfield_Interactive_Smart_Slate
             entityOverviewScrollViewer.ScrollToTop();
         }
 
+        private void ResetEntityOverview()
+        {
+            displayedEntity = null;
+            entityOverviewGrid.Visibility = Visibility.Hidden;
+            editEntityButton.IsEnabled = false;
+        }
+
         private void ToggleSelectOutpost(Outpost outpost, ListViewItem clickedItem)
         {
             if (selectedEntity == outpost)
@@ -878,8 +882,6 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void ClearOutpostSelection()
         {
-            selectedEntity = null;
-            displayedEntity = null;
             outpostsListView.UnselectAll();
             Settings.Default.SelectedOutpostID = -1;
             Settings.Default.Save();
@@ -910,6 +912,9 @@ namespace Starfield_Interactive_Smart_Slate
         // clears all list selections except specified type
         private void ClearAllSelectionsExcept(Entity? exception = null)
         {
+            selectedEntity = null;
+            displayedEntity = null;
+
             if (exception is Fauna)
             {
                 ClearFloraSelection();
@@ -930,6 +935,31 @@ namespace Starfield_Interactive_Smart_Slate
                 ClearFaunaSelection();
                 ClearFloraSelection();
                 ClearOutpostSelection();
+            }
+        }
+
+        private void OutpostDeleteClicked(object sender, RoutedEventArgs e)
+        {
+            App.Current.PlayClickSound();
+
+            var outpost = ((MenuItem)sender).DataContext as Outpost;
+
+            var confirmDialog = new BasicYesNoDialog(
+                "Delete Outpost",
+                "You are about to delete this outpost:\n\n" +
+                $"{outpost.Name}\n\n" +
+                "Are you sure? (This is reversible. Check the GitHub Wiki for instructions.)",
+                "Delete",
+                "Cancel"
+            );
+            confirmDialog.Owner = this;
+
+            if (confirmDialog.ShowDialog() == true)
+            {
+                DataRepository.DeleteOutpost(outpost.ID);
+                displayedCelestialBody.DeleteOutpost(outpost);
+                ClearAllSelectionsExcept();
+                ResetEntityOverview();
             }
         }
         #endregion

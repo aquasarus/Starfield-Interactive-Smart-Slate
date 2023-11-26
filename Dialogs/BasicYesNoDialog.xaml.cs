@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace Starfield_Interactive_Smart_Slate.Dialogs
 {
@@ -23,16 +24,26 @@ namespace Starfield_Interactive_Smart_Slate.Dialogs
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.PlayClickSound();
             DialogResult = true;
             Close();
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.PlayCancelSound();
             ExplicitNo = true;
             Close();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (DialogResult == true)
+            {
+                App.Current.PlayClickSound();
+            }
+            else
+            {
+                App.Current.PlayCancelSound();
+            }
         }
     }
 }

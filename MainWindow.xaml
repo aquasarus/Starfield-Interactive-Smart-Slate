@@ -380,6 +380,11 @@
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                             <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
+                                            <Grid.ContextMenu>
+                                                <ContextMenu>
+                                                    <MenuItem Click="OutpostDeleteClicked" Header="Delete" />
+                                                </ContextMenu>
+                                            </Grid.ContextMenu>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

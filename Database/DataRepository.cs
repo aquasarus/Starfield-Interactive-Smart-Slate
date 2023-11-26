@@ -422,6 +422,8 @@ namespace Starfield_Interactive_Smart_Slate
                         Outposts f
                     LEFT JOIN
                         OutpostPictures fp ON fp.OutpostID = f.OutpostID
+                    WHERE
+                        f.OutpostDeleted = 0
                     ORDER BY
                         f.OutpostID, fp.OutpostPictureID
                 ";
@@ -720,6 +722,26 @@ namespace Starfield_Interactive_Smart_Slate
                         ID = insertedID,
                         Name = outpostName
                     };
+                }
+            }
+        }
+
+        public static void DeleteOutpost(int outpostID)
+        {
+            AnalyticsUtil.TrackEvent("Delete outpost");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE
+                        Outposts
+                    SET
+                        OutpostDeleted = 1
+                    WHERE
+                        OutpostID = @OutpostID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@OutpostID", outpostID);
+                    var result = cmd.ExecuteNonQuery();
                 }
             }
         }
