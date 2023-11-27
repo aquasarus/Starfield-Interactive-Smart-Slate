@@ -16,7 +16,12 @@
         <Label Grid.Row="0"
             Margin="0,15,0,0"
             HorizontalContentAlignment="Center"
-            Content="Expand (optional), then type to search." />
+            Content="🛈 Expand (optional), then type to search."
+            ToolTipService.InitialShowDelay="200">
+            <Label.ToolTip>
+                <ToolTip Content="Only undiscovered solar systems are available to choose from." />
+            </Label.ToolTip>
+        </Label>
         <ComboBox Name="solarSystemComboBox" Grid.Row="1"
             Width="200"
             Height="25"
