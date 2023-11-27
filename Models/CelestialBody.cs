@@ -8,6 +8,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
 {
     public class CelestialBody : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public int BodyID { get; set; }
         public string BodyName { get; set; }
         public string SystemName { get; set; }
@@ -29,8 +31,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public List<CelestialBody>? Moons;
         public bool Show { get; set; }
         public bool GrayOut { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string FormattedBodyName
         {
@@ -67,6 +67,14 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 {
                     return "None";
                 }
+            }
+        }
+
+        public bool HasOutpost
+        {
+            get
+            {
+                return Outposts != null && Outposts.Count > 0;
             }
         }
 
@@ -165,7 +173,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Outposts = new ObservableCollection<Outpost>();
             }
             Outposts.Add(outpost);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasOutpost)));
         }
 
         public void DeleteOutpost(Outpost deletedOutpost)
@@ -179,8 +187,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 }
             }
 
-            // TODO: this probably needs to become an icon indicator binding
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasOutpost)));
         }
 
         public void EditFauna(Fauna editedFauna)
@@ -219,9 +226,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-
-            // TODO: this probably needs to become an icon indicator binding
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
         }
 
         public void AddMoon(CelestialBody celestialBody)

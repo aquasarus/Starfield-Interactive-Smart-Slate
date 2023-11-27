@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Starfield Interactive Smart Slate"
-    Width="1535"
+    Width="1525"
     Height="1000"
     KeyDown="Window_KeyDown"
     Loaded="Window_Loaded"
@@ -31,7 +31,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MaxWidth="400" />
-                        <ColumnDefinition Width="*" MaxWidth="320" />
+                        <ColumnDefinition Width="*" MaxWidth="310" />
                         <ColumnDefinition Width="*" MaxWidth="320" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -180,22 +180,39 @@
                                             SelectionMode="Single">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock>
-                                                        <TextBlock.Style>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Text" Value="{Binding FormattedBodyName}" />
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding IsMoon}" Value="True">
-                                                                        <Setter Property="Margin" Value="20,0,0,0" />
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </TextBlock.Style>
-                                                    </TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0">
+                                                            <TextBlock.Style>
+                                                                <Style TargetType="TextBlock">
+                                                                    <Setter Property="Text" Value="{Binding FormattedBodyName}" />
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding IsMoon}" Value="True">
+                                                                            <Setter Property="Margin" Value="20,0,0,0" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </TextBlock.Style>
+                                                        </TextBlock>
+                                                        <Image Name="CelestialBodyOutpostIcon" Grid.Column="1"
+                                                            Height="11"
+                                                            HorizontalAlignment="Right"
+                                                            Source="Images/starfield_outpost_icon.png"
+                                                            Visibility="Collapsed" />
+                                                    </Grid>
+                                                    <DataTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding HasOutpost}" Value="true">
+                                                            <Setter TargetName="CelestialBodyOutpostIcon" Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </DataTemplate.Triggers>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                             <ListView.ItemContainerStyle>
                                                 <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                                     <EventSetter Event="MouseEnter" Handler="CelestialBodyListItem_MouseEnter" />
                                                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CelestialBodyListItem_Select" />
                                                 </Style>
@@ -379,7 +396,10 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
+                                            <Image Grid.Column="1"
+                                                Height="11"
+                                                HorizontalAlignment="Right"
+                                                Source="Images/starfield_outpost_icon.png" />
                                             <Grid.ContextMenu>
                                                 <ContextMenu>
                                                     <MenuItem Click="OutpostDeleteClicked" Header="Delete" />

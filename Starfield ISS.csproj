@@ -6,7 +6,7 @@
 		<RootNamespace>Starfield_Interactive_Smart_Slate</RootNamespace>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
-		<ApplicationIcon>slate_icon.ico</ApplicationIcon>
+		<ApplicationIcon>Images/slate_icon.ico</ApplicationIcon>
 		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
 		<Version>1.1.0</Version>
 		<Platforms>AnyCPU;x64</Platforms></PropertyGroup>
@@ -37,6 +37,7 @@
 		<None Remove="Fonts\SofiaSans-SemiBoldItalic.ttf" />
 		<None Remove="Fonts\SofiaSans-Thin.ttf" />
 		<None Remove="Fonts\SofiaSans-ThinItalic.ttf" />
+		<None Remove="Images\starfield_outpost_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -94,7 +95,7 @@
 		<Content Include="Fonts\SofiaSans-ThinItalic.ttf">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="slate_icon.ico" />
+		<Content Include="Images\slate_icon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -102,6 +103,12 @@
 		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.3" />
 		<PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
 		<PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Images\starfield_outpost_icon.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
 	</ItemGroup>
 
 	<ItemGroup>
