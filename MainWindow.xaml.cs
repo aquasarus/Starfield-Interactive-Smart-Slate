@@ -249,7 +249,10 @@ namespace Starfield_Interactive_Smart_Slate
 
         private void SolarSystemFilterChanged(object sender, TextChangedEventArgs e)
         {
-            FilterSolarSystems(SolarSystemFilterTextBox.Text);
+            if (!outpostFilter_MenuItem.IsChecked)
+            {
+                FilterSolarSystems(solarSystemFilterTextBox.Text);
+            }
         }
 
         private void FilterSolarSystems(string filterText)
@@ -264,6 +267,8 @@ namespace Starfield_Interactive_Smart_Slate
                 }
                 return false;
             };
+
+            recoverCelestialBodySelection();
         }
 
         private void SetSelectedCelestialBody(CelestialBody celestialBody)
@@ -442,6 +447,28 @@ namespace Starfield_Interactive_Smart_Slate
             celestialBodyOverviewGrid.Visibility = Visibility.Visible;
         }
 
+        // TODO: delete later if unused
+        private void ClearCelestialBodyDetails()
+        {
+            displayedCelestialBody = null;
+            selectedCelestialBody = null;
+
+            celestialBodyOverview.Text = null;
+            celestialBodyResourcesLabel.Text = null;
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedCelestialBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedSolarSystemName)));
+
+            celestialBodyOverviewGrid.Visibility = Visibility.Hidden;
+
+            ResetEntityOverview();
+            ClearAllSelectionsExcept();
+
+            faunasListView.ItemsSource = null;
+            florasListView.ItemsSource = null;
+            outpostsListView.ItemsSource = null;
+        }
+
         private void DiscoverNewSystemClicked(object sender, RoutedEventArgs e)
         {
             App.Current.PlayClickSound();
@@ -472,6 +499,99 @@ namespace Starfield_Interactive_Smart_Slate
         {
             SetSelectedCelestialBodyWithUI(displayedCelestialBody);
             solarSystemsListView.LayoutUpdated -= SetCelestialBodyOnLayoutUpdate;
+        }
+
+        private void celestialBodiesFilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void celestialBodiesFilterButton_ContextMenu_Opened(object sender, RoutedEventArgs e)
+        {
+            App.Current.PlayClickSound();
+        }
+
+        private void outpostFilter_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem clickedMenuItem = sender as MenuItem;
+
+            // toggle
+            clickedMenuItem.IsChecked = !clickedMenuItem.IsChecked;
+
+            if (clickedMenuItem.IsChecked)
+            {
+                // disable search box
+                solarSystemFilterTextBox.Text = "(Filter for Outposts)";
+                solarSystemFilterTextBox.IsEnabled = false;
+
+                var outpostSolarSystems = discoveredSolarSystems.Select(
+                    solarSystem =>
+                    {
+                        var solarSystemCopy = new SolarSystem
+                        {
+                            SystemID = solarSystem.SystemID,
+                            SystemName = solarSystem.SystemName,
+                            SystemLevel = solarSystem.SystemLevel,
+                            Discovered = solarSystem.Discovered,
+                            // if celestial body (or any of its moons) has an outpost, include it in the list
+                            CelestialBodies = solarSystem.CelestialBodies.Select(
+                                celestialBody =>
+                                {
+                                    var surfaceHasOutpost = celestialBody.HasOutpost;
+                                    var moonsHaveOutposts = celestialBody.Moons?.Any(moon => moon.HasOutpost) ?? false;
+
+                                    if (surfaceHasOutpost || moonsHaveOutposts)
+                                    {
+                                        if (!surfaceHasOutpost)
+                                        {
+                                            celestialBody.GrayOut = true;
+                                        }
+
+                                        celestialBody.Show = true;
+                                    }
+                                    else
+                                    {
+                                        celestialBody.Show = false;
+                                    }
+
+                                    return celestialBody;
+                                }
+                            ).Where(celestialBody => celestialBody.Show)
+                            .ToList()
+                        };
+
+                        return solarSystemCopy;
+                    }
+                ).Where(solarSystem => solarSystem.CelestialBodies.Any());
+                solarSystemsListView.ItemsSource = outpostSolarSystems;
+
+                recoverCelestialBodySelection();
+            }
+            else
+            {
+                solarSystemsListView.ItemsSource = discoveredSolarSystems;
+                solarSystemFilterTextBox.Text = "";
+                solarSystemFilterTextBox.IsEnabled = true;
+            }
+        }
+
+        private void recoverCelestialBodySelection()
+        {
+            // wait for UI to load, then attempt to recover selected item
+            solarSystemsListView.UpdateLayout();
+
+            // find the solar system based on selectedCelestialBody
+            var containerGenerator = solarSystemsListView.ItemContainerGenerator;
+            var selectedSolarSystem = containerGenerator.Items.FirstOrDefault(
+                solarSystem => ((SolarSystem)solarSystem).CelestialBodies.Contains(selectedCelestialBody)
+            );
+
+            if (selectedSolarSystem != null)
+            {
+                var solarSystemListViewItem = containerGenerator.ContainerFromItem(selectedSolarSystem);
+                ListView celestialBodyListView = FindNestedListView(solarSystemListViewItem);
+                celestialBodyListView.SelectedItem = selectedCelestialBody;
+            }
         }
         #endregion
 
