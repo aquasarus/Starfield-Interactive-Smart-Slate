@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Starfield Interactive Smart Slate"
-    Width="1500"
+    Width="1535"
     Height="1000"
     KeyDown="Window_KeyDown"
     Loaded="Window_Loaded"
@@ -31,7 +31,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MaxWidth="400" />
-                        <ColumnDefinition Width="*" MaxWidth="280" />
+                        <ColumnDefinition Width="*" MaxWidth="320" />
                         <ColumnDefinition Width="*" MaxWidth="320" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -186,7 +186,7 @@
                                                                 <Setter Property="Text" Value="{Binding FormattedBodyName}" />
                                                                 <Style.Triggers>
                                                                     <DataTrigger Binding="{Binding IsMoon}" Value="True">
-                                                                        <Setter Property="Margin" Value="25,0,0,0" />
+                                                                        <Setter Property="Margin" Value="20,0,0,0" />
                                                                     </DataTrigger>
                                                                 </Style.Triggers>
                                                             </Style>
