@@ -78,6 +78,14 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
+        public bool HasLifeform
+        {
+            get
+            {
+                return TotalFauna > 0 || TotalFlora > 0;
+            }
+        }
+
         public override string ToString()
         {
             string overviewString = $"Type: {BodyType}\n" +

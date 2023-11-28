@@ -163,9 +163,13 @@
                                 <Image Source="Images/filter_icon.png" />
                                 <Button.ContextMenu>
                                     <ContextMenu Opened="celestialBodiesFilterButton_ContextMenu_Opened">
+                                        <MenuItem Name="lifeformFilter_MenuItem"
+                                            Click="lifeformFilter_MenuItem_Click"
+                                            Header="Filter for Lifeforms" />
                                         <MenuItem Name="outpostFilter_MenuItem"
                                             Click="outpostFilter_MenuItem_Click"
                                             Header="Filter for Outposts" />
+                                        <MenuItem Click="resetFilter_MenuItem_Click" Header="Reset" />
                                     </ContextMenu>
                                 </Button.ContextMenu>
                             </Button>

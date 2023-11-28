@@ -520,6 +520,11 @@ namespace Starfield_Interactive_Smart_Slate
 
             if (clickedMenuItem.IsChecked)
             {
+                App.Current.PlayClickSound();
+
+                // remove other filters
+                lifeformFilter_MenuItem.IsChecked = false;
+
                 // disable search box
                 solarSystemFilterTextBox.Text = "(Filter for Outposts)";
                 solarSystemFilterTextBox.IsEnabled = false;
@@ -569,10 +574,92 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
+                App.Current.PlayCancelSound();
                 solarSystemsListView.ItemsSource = discoveredSolarSystems;
                 solarSystemFilterTextBox.Text = "";
                 solarSystemFilterTextBox.IsEnabled = true;
             }
+        }
+
+        private void lifeformFilter_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem clickedMenuItem = sender as MenuItem;
+
+            // toggle
+            clickedMenuItem.IsChecked = !clickedMenuItem.IsChecked;
+
+            if (clickedMenuItem.IsChecked)
+            {
+                App.Current.PlayClickSound();
+
+                // remove other filters
+                outpostFilter_MenuItem.IsChecked = false;
+
+                // disable search box
+                solarSystemFilterTextBox.Text = "(Filter for Lifeforms)";
+                solarSystemFilterTextBox.IsEnabled = false;
+
+                var outpostSolarSystems = discoveredSolarSystems.Select(
+                    solarSystem =>
+                    {
+                        var solarSystemCopy = new SolarSystem
+                        {
+                            SystemID = solarSystem.SystemID,
+                            SystemName = solarSystem.SystemName,
+                            SystemLevel = solarSystem.SystemLevel,
+                            Discovered = solarSystem.Discovered,
+                            // if celestial body (or any of its moons) has an outpost, include it in the list
+                            CelestialBodies = solarSystem.CelestialBodies.Select(
+                                celestialBody =>
+                                {
+                                    var surfaceHasLifeform = celestialBody.HasLifeform;
+                                    var moonsHaveOutposts = celestialBody.Moons?.Any(moon => moon.HasLifeform) ?? false;
+
+                                    if (surfaceHasLifeform || moonsHaveOutposts)
+                                    {
+                                        if (!surfaceHasLifeform)
+                                        {
+                                            celestialBody.GrayOut = true;
+                                        }
+
+                                        celestialBody.Show = true;
+                                    }
+                                    else
+                                    {
+                                        celestialBody.Show = false;
+                                    }
+
+                                    return celestialBody;
+                                }
+                            ).Where(celestialBody => celestialBody.Show)
+                            .ToList()
+                        };
+
+                        return solarSystemCopy;
+                    }
+                ).Where(solarSystem => solarSystem.CelestialBodies.Any());
+                solarSystemsListView.ItemsSource = outpostSolarSystems;
+
+                recoverCelestialBodySelection();
+            }
+            else
+            {
+                App.Current.PlayCancelSound();
+                solarSystemsListView.ItemsSource = discoveredSolarSystems;
+                solarSystemFilterTextBox.Text = "";
+                solarSystemFilterTextBox.IsEnabled = true;
+            }
+        }
+
+        private void resetFilter_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            lifeformFilter_MenuItem.IsChecked = false;
+            outpostFilter_MenuItem.IsChecked = false;
+
+            App.Current.PlayCancelSound();
+            solarSystemsListView.ItemsSource = discoveredSolarSystems;
+            solarSystemFilterTextBox.Text = "";
+            solarSystemFilterTextBox.IsEnabled = true;
         }
 
         private void recoverCelestialBodySelection()
