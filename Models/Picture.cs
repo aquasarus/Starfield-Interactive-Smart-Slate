@@ -125,20 +125,34 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Directory.CreateDirectory(celestialBodyFolder);
             }
 
+            string finalFolder;
+            if (entity is Outpost)
+            {
+                finalFolder = Path.Combine(celestialBodyFolder, "Outposts");
+                if (!Directory.Exists(finalFolder))
+                {
+                    Directory.CreateDirectory(finalFolder);
+                }
+            }
+            else
+            {
+                finalFolder = celestialBodyFolder;
+            }
+
             // build internal file name
             string fileName = entity.Name;
             fileName += $"_{DateTime.Now:yyyy_MM_dd_HHmmss}";
             fileName = RemoveDisallowedCharacters(fileName);
 
             // add unique modifier if same-name file exists
-            var destinationFileName = Path.Combine(celestialBodyFolder, fileName);
+            var destinationFileName = Path.Combine(finalFolder, fileName);
             var destinationExtension = picture != null ? Path.GetExtension(picture.LocalPath) : ".png";
             var destinationFilePath = Path.ChangeExtension(destinationFileName, destinationExtension);
             var attempt = 0;
             while (Path.Exists(destinationFilePath))
             {
                 attempt++;
-                destinationFileName = Path.Combine(celestialBodyFolder, fileName + $"({attempt})");
+                destinationFileName = Path.Combine(finalFolder, fileName + $"({attempt})");
                 destinationFilePath = Path.ChangeExtension(destinationFileName, destinationExtension);
             }
 
