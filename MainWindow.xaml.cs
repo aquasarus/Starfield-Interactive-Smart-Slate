@@ -1350,7 +1350,7 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 DataRepository.DeleteOutpostPicture(picture);
             }
-            displayedEntity.Pictures.Remove(picture);
+            displayedEntity.RemovePicture(picture);
             picture.MoveToDeletedFolder();
         }
 

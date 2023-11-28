@@ -339,7 +339,7 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding IconsString}" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -392,7 +392,7 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Grid.Column="0" Text="{Binding Name}" />
-                                            <TextBlock Grid.Column="1" Text="{Binding SurveyedString}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding IconsString}" />
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

@@ -28,5 +28,10 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
         {
             Pictures.Insert(Pictures.Count - 1, picture);
         }
+
+        public virtual void RemovePicture(Picture picture)
+        {
+            Pictures.Remove(picture);
+        }
     }
 }

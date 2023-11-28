@@ -19,7 +19,7 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
             }
         }
 
-        public string? SurveyedString
+        public string? IconsString
         {
             get
             {
@@ -87,7 +87,13 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
         public override void AddPicture(Picture picture)
         {
             base.AddPicture(picture);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SurveyedString)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IconsString)));
+        }
+
+        public override void RemovePicture(Picture picture)
+        {
+            base.RemovePicture(picture);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IconsString)));
         }
     }
 }
