@@ -551,7 +551,7 @@ namespace Starfield_Interactive_Smart_Slate
             var outpostSolarSystems = discoveredSolarSystems.Select(
                     solarSystem =>
                     {
-                        var solarSystemCopy = solarSystem.DeepCopy(true);
+                        var solarSystemCopy = solarSystem.DeepCopy();
                         solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
                             celestialBody =>
                             {
@@ -620,7 +620,7 @@ namespace Starfield_Interactive_Smart_Slate
             var outpostSolarSystems = discoveredSolarSystems.Select(
                     solarSystem =>
                     {
-                        var solarSystemCopy = solarSystem.DeepCopy(true);
+                        var solarSystemCopy = solarSystem.DeepCopy();
                         solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
                             celestialBody =>
                             {
@@ -802,6 +802,9 @@ namespace Starfield_Interactive_Smart_Slate
                 SetSelectedFaunaWithUI(insertedFauna);
 
                 editEntityButton.Focus();
+
+                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
+                ReapplyFilters();
             }
         }
 
@@ -913,6 +916,9 @@ namespace Starfield_Interactive_Smart_Slate
                 SetSelectedFloraWithUI(insertedFlora);
 
                 editEntityButton.Focus();
+
+                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
+                ReapplyFilters();
             }
         }
 
@@ -942,6 +948,9 @@ namespace Starfield_Interactive_Smart_Slate
                         selectedEntity = resultingFauna;
                         faunasListView.SelectedItem = selectedEntity;
                     }
+
+                    FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
+                    ReapplyFilters();
                 }
             }
             else if (displayedEntity is Flora)
@@ -965,6 +974,9 @@ namespace Starfield_Interactive_Smart_Slate
                         selectedEntity = resultingFlora;
                         florasListView.SelectedItem = selectedEntity;
                     }
+
+                    FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
+                    ReapplyFilters();
                 }
             }
             else // assume outpost
@@ -1038,6 +1050,9 @@ namespace Starfield_Interactive_Smart_Slate
                 SetSelectedOutpostWithUI(insertedOutpost);
 
                 editEntityButton.Focus();
+
+                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
+                ReapplyFilters();
             }
         }
 
@@ -1176,28 +1191,39 @@ namespace Starfield_Interactive_Smart_Slate
                 ClearAllSelectionsExcept();
                 ResetEntityOverview();
 
-                // TODO: this is a hack. need to find a better way to manage current view models
-                // find and update original celestial body inside discoveredSolarSystems,
-                // because displayedCelestialBody may be a copy from an applied filter
-                foreach (var solarSystem in discoveredSolarSystems)
+                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
+                ReapplyFilters();
+            }
+        }
+
+        private CelestialBody? FindOriginalDisplayedCelestialBody()
+        {
+            // TODO: this is a hack. need to find a better way to manage current view models
+            // find and update original celestial body inside discoveredSolarSystems,
+            // because displayedCelestialBody may be a copy from an applied filter
+            foreach (var solarSystem in discoveredSolarSystems)
+            {
+                foreach (var celestialBody in solarSystem.CelestialBodies)
                 {
-                    foreach (var celestialBody in solarSystem.CelestialBodies)
+                    if (celestialBody != displayedCelestialBody && celestialBody.Equals(displayedCelestialBody))
                     {
-                        if (celestialBody != displayedCelestialBody && celestialBody.Equals(displayedCelestialBody))
-                        {
-                            celestialBody.DeleteOutpost(outpost);
-                        }
+                        return celestialBody;
                     }
                 }
+            }
 
-                if (outpostFilter_MenuItem.IsChecked)
-                {
-                    ApplyOutpostsFilter();
-                }
-                else if (lifeformFilter_MenuItem.IsChecked)
-                {
-                    ApplyLifeformFilter();
-                }
+            return null;
+        }
+
+        private void ReapplyFilters()
+        {
+            if (outpostFilter_MenuItem.IsChecked)
+            {
+                ApplyOutpostsFilter();
+            }
+            else if (lifeformFilter_MenuItem.IsChecked)
+            {
+                ApplyLifeformFilter();
             }
         }
         #endregion
@@ -1316,9 +1342,13 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 DataRepository.DeleteFaunaPicture(picture);
             }
-            else
+            else if (displayedEntity is Flora)
             {
                 DataRepository.DeleteFloraPicture(picture);
+            }
+            else // assume outpost
+            {
+                DataRepository.DeleteOutpostPicture(picture);
             }
             displayedEntity.Pictures.Remove(picture);
             picture.MoveToDeletedFolder();
@@ -1519,7 +1549,7 @@ namespace Starfield_Interactive_Smart_Slate
             return discoveredSolarSystems.Select(
                 solarSystem =>
                 {
-                    var solarSystemCopy = solarSystem.DeepCopy(true);
+                    var solarSystemCopy = solarSystem.DeepCopy();
 
                     // chaining .Select here ended up with new instances of moons for some reason
                     // so I have to loop it manually

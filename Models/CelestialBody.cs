@@ -112,31 +112,32 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
-        public CelestialBody DeepCopy(bool fast = false)
+        public CelestialBody DeepCopy()
         {
-            ObservableCollection<Fauna> faunaCollection = null;
-            if (Faunas != null)
-            {
-                faunaCollection = new ObservableCollection<Fauna>(
-                    Faunas.Select(fauna => fauna.DeepCopy(fast))
-                );
-            }
+            // TODO: rework view model management
+            //ObservableCollection<Fauna> faunaCollection = null;
+            //if (Faunas != null)
+            //{
+            //    faunaCollection = new ObservableCollection<Fauna>(
+            //        Faunas.Select(fauna => fauna.DeepCopy(fast))
+            //    );
+            //}
 
-            ObservableCollection<Flora> floraCollection = null;
-            if (Floras != null)
-            {
-                floraCollection = new ObservableCollection<Flora>(
-                    Floras.Select(flora => flora.DeepCopy(fast))
-                );
-            }
+            //ObservableCollection<Flora> floraCollection = null;
+            //if (Floras != null)
+            //{
+            //    floraCollection = new ObservableCollection<Flora>(
+            //        Floras.Select(flora => flora.DeepCopy(fast))
+            //    );
+            //}
 
-            ObservableCollection<Outpost> outpostCollection = null;
-            if (Outposts != null)
-            {
-                outpostCollection = new ObservableCollection<Outpost>(
-                    Outposts.Select(outpost => outpost.DeepCopy(fast))
-                );
-            }
+            //ObservableCollection<Outpost> outpostCollection = null;
+            //if (Outposts != null)
+            //{
+            //    outpostCollection = new ObservableCollection<Outpost>(
+            //        Outposts.Select(outpost => outpost.DeepCopy(fast))
+            //    );
+            //}
 
             return new CelestialBody
             {
@@ -152,15 +153,22 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Water = Water,
                 TotalFauna = TotalFauna,
                 TotalFlora = TotalFlora,
-                Resources = Resources?.ConvertAll(resource => resource.DeepCopy()),
-                Faunas = faunaCollection,
-                Floras = floraCollection,
-                Outposts = outpostCollection,
+                Resources = Resources,
+                //Resources = Resources?.ConvertAll(resource => resource.DeepCopy()),
+                Faunas = Faunas,
+                Floras = Floras,
+                Outposts = Outposts,
                 // Moons will be handled by the SolarSystem for now
                 //Moons = Moons?.ConvertAll(moon => moon.DeepCopy()),
                 Show = Show,
                 GrayOut = GrayOut
             };
+        }
+
+        public void NotifyLayoutUpdate()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasOutpost)));
         }
 
         public void AddFauna(Fauna fauna)
