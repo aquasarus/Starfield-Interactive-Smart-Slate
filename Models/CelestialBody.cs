@@ -32,7 +32,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public bool Show { get; set; }
         public bool GrayOut { get; set; }
 
-        public string FormattedBodyName
+        public string? LifeformProgress
         {
             get
             {
@@ -43,11 +43,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     int surveyedFloras = Floras?.Where(flora => flora.IsSurveyed).Count() ?? 0;
                     int florasPoints = surveyedFloras + (Floras?.Count ?? 0);
                     double surveyPercent = 100.0 * (faunasPoints + florasPoints) / ((TotalFauna + TotalFlora) * 2);
-                    return $"{BodyName} \U0001f9ec ({surveyPercent:F0}%)";
+                    return $"🧬 ({surveyPercent:F0}%)";
                 }
                 else
                 {
-                    return BodyName;
+                    return null;
                 }
             }
         }
@@ -130,6 +130,14 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 );
             }
 
+            ObservableCollection<Outpost> outpostCollection = null;
+            if (Outposts != null)
+            {
+                outpostCollection = new ObservableCollection<Outpost>(
+                    Outposts.Select(outpost => outpost.DeepCopy(fast))
+                );
+            }
+
             return new CelestialBody
             {
                 BodyID = BodyID,
@@ -147,6 +155,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Resources = Resources?.ConvertAll(resource => resource.DeepCopy()),
                 Faunas = faunaCollection,
                 Floras = floraCollection,
+                Outposts = outpostCollection,
                 // Moons will be handled by the SolarSystem for now
                 //Moons = Moons?.ConvertAll(moon => moon.DeepCopy()),
                 Show = Show,
@@ -161,7 +170,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Faunas = new ObservableCollection<Fauna>();
             }
             Faunas.Add(fauna);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
         }
 
         public void AddFlora(Flora flora)
@@ -171,7 +180,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Floras = new ObservableCollection<Flora>();
             }
             Floras.Add(flora);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
         }
 
         public void AddOutpost(Outpost outpost)
@@ -208,7 +217,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
         }
 
         public void EditFlora(Flora editedFlora)
@@ -221,7 +230,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FormattedBodyName)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
         }
 
         public void EditOutpost(Outpost editedOutpost)
