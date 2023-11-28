@@ -255,15 +255,19 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        // find solar systems where solar system name or a child celestial body name matches filterText
+        // ignores case, whitespace, symbols
         private void FilterSolarSystems(string filterText)
         {
+            filterText = new string(filterText.Where(char.IsLetter).ToArray()).ToLower();
             ICollectionView view = CollectionViewSource.GetDefaultView(solarSystemsListView.ItemsSource);
             view.Filter = item =>
             {
                 if (item is SolarSystem solarSystem)
                 {
-                    return solarSystem.SystemName.ToLower().Contains(filterText.ToLower())
-                    || solarSystem.CelestialBodies.Where(cb => cb.BodyName.ToLower().Contains(filterText.ToLower())).Any();
+                    return new string(solarSystem.SystemName.Where(char.IsLetter).ToArray()).ToLower().Contains(filterText)
+                    || solarSystem.CelestialBodies.Where(
+                        cb => new string(cb.BodyName.Where(char.IsLetter).ToArray()).ToLower().Contains(filterText)).Any();
                 }
                 return false;
             };
