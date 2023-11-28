@@ -81,6 +81,20 @@ namespace Starfield_Interactive_Smart_Slate
             // set up database and upgrade if needed
             DatabaseInitializer.InitializeDatabaseFile();
             var currentDatabaseVersion = DatabaseInitializer.CheckVersion();
+
+            // abort if target version is outdated
+            if (currentDatabaseVersion > DatabaseInitializer.TargetDatabaseVersion)
+            {
+                MessageBox.Show(
+                    $"Your data version ({currentDatabaseVersion}) is higher than your app's target ({DatabaseInitializer.TargetDatabaseVersion}). " +
+                    "You may be running an outdated version of the app. " +
+                    "Please download and use the latest version!",
+                    "Error"
+                );
+                Application.Current.Shutdown();
+                return;
+            }
+
             while (currentDatabaseVersion < DatabaseInitializer.TargetDatabaseVersion)
             {
                 if (currentDatabaseVersion == 1)
