@@ -561,11 +561,7 @@ namespace Starfield_Interactive_Smart_Slate
                                 // if celestial body (or any of its moons) has an outpost, include it in the list
                                 if (surfaceHasOutpost || moonsHaveOutposts)
                                 {
-                                    if (!surfaceHasOutpost)
-                                    {
-                                        celestialBody.GrayOut = true;
-                                    }
-
+                                    celestialBody.GrayOut = !surfaceHasOutpost;
                                     celestialBody.Show = true;
                                 }
                                 else
@@ -630,11 +626,7 @@ namespace Starfield_Interactive_Smart_Slate
                                 // if celestial body (or any of its moons) has lifeform, include it in the list
                                 if (surfaceHasLifeform || moonsHaveOutposts)
                                 {
-                                    if (!surfaceHasLifeform)
-                                    {
-                                        celestialBody.GrayOut = true;
-                                    }
-
+                                    celestialBody.GrayOut = !surfaceHasLifeform;
                                     celestialBody.Show = true;
                                 }
                                 else
@@ -1505,40 +1497,34 @@ namespace Starfield_Interactive_Smart_Slate
             return discoveredSolarSystems.Select(
                 solarSystem =>
                 {
-                    var solarSystemCopy = new SolarSystem
-                    {
-                        SystemID = solarSystem.SystemID,
-                        SystemName = solarSystem.SystemName,
-                        SystemLevel = solarSystem.SystemLevel,
-                        Discovered = solarSystem.Discovered,
-                        // if celestial body (or any of its moons) contains the resource, include it in the list
-                        CelestialBodies = solarSystem.CelestialBodies.Select(
-                            celestialBody =>
+                    var solarSystemCopy = solarSystem.DeepCopy();
+                    solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
+                        celestialBody =>
+                        {
+                            var surfaceHasResource = celestialBody.SurfaceContainsResource(resource);
+                            var moonsHaveResource = celestialBody.Moons?.Any(moon => moon.SurfaceContainsResource(resource)) ?? false;
+
+                            // if celestial body (or any of its moons) contains the resource, include it in the list
+                            if (surfaceHasResource || moonsHaveResource)
                             {
-                                var surfaceHasResource = celestialBody.SurfaceContainsResource(resource);
-                                var moonsHaveResource = celestialBody.Moons?.Any(moon => moon.SurfaceContainsResource(resource)) ?? false;
-
-                                if (surfaceHasResource || moonsHaveResource)
+                                if (!surfaceHasResource)
                                 {
-                                    if (!surfaceHasResource)
-                                    {
-                                        // gray out the parent planet if its surface doesn't actually contain the resource
-                                        celestialBody.GrayOut = true;
-                                    }
-
-                                    celestialBody.Show = true;
-                                }
-                                else
-                                {
-                                    celestialBody.Show = false;
+                                    // gray out the parent planet if its surface doesn't actually contain the resource
+                                    celestialBody.GrayOut = true;
                                 }
 
-                                return celestialBody;
+                                celestialBody.Show = true;
                             }
-                        )
-                        .Where(celestialBody => celestialBody.Show)
-                        .ToList()
-                    };
+                            else
+                            {
+                                celestialBody.Show = false;
+                            }
+
+                            return celestialBody;
+                        }
+                    )
+                    .Where(celestialBody => celestialBody.Show)
+                    .ToList();
                     return solarSystemCopy;
                 }
             ).Where(solarSystem => solarSystem.CelestialBodies.Any());
