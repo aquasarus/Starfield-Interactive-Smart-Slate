@@ -417,8 +417,13 @@
                                     VerticalContentAlignment="Center"
                                     BorderBrush="Gray"
                                     BorderThickness="1"
-                                    Content="Outposts"
-                                    Style="{StaticResource HeaderStyle}" />
+                                    Content="Outposts 🛈"
+                                    Style="{StaticResource HeaderStyle}"
+                                    ToolTipService.InitialShowDelay="300">
+                                    <Label.ToolTip>
+                                        <ToolTip Content="Right-click to delete.&#x0a;Check GitHub Wiki for how to recover a deleted outpost." />
+                                    </Label.ToolTip>
+                                </Label>
                                 <Button Name="addOutpostButton" Grid.Column="1"
                                     Width="65"
                                     Click="AddOutpostClicked"
