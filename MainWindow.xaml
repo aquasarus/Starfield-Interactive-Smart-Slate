@@ -1286,7 +1286,7 @@
                             FontSize="22"
                             NavigateUri="https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/wiki"
                             RequestNavigate="NavigateToHyperlink">
-                            Wiki / Instructions
+                            Advanced Instructions
                         </Hyperlink>
                     </Label>
 
