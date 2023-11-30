@@ -1,7 +1,10 @@
 ﻿# Welcome to Starfield ISS (Interactive Smart Slate)
 *An Explorer's Survey Compendium, featuring a vastly higher tech Data Slate than Starfield's in-game version.*
 
-[This project also lives on Nexus Mods.](https://www.nexusmods.com/starfield/mods/7074)
+- [This project also lives on **Nexus Mods**](https://www.nexusmods.com/starfield/mods/7074)
+- [Jump to **Installation**](#installation)
+- [Report a **Bug**](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues)
+- [Make a **Suggestion**](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/discussions/categories/ideas)
 
 ## Overview
 Starfield has such great potential for exploration content, but Survey Data in its current state serves as little more than a paper punch card. This app will help you gather your very own survey data in a viewable and searchable manner. The primary directive of this app (and all subsequent updates) is to help make exploration in Starfield more fun and rewarding.
@@ -15,7 +18,7 @@ Starfield has such great potential for exploration content, but Survey Data in i
 ### Features
 - **100% free. No ads. No monetization.** Won't ever be, though I suppose I won't turn down a thank-you gift.
 - **Open-source. Fully offline functionality.**
-    - All your data is yours to manipulate with, if you so choose (see [instructions](#installation--instructions) below for where your data is).
+    - All your data is yours to manipulate with, [if you so choose](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/wiki/User-Data).
     - The app only uses the internet to check GitHub for updates and (optionally) log analytics data.
 - <details>
     <summary>(Spoiler)</summary>
@@ -24,54 +27,66 @@ Starfield has such great potential for exploration content, but Survey Data in i
 
 #### Discover solar systems
 - See surface overview of planets and moons, just like in-game.
-- Track planetary lifeform survey progress based on the fauna and flora you've cataloged.  
+- Track planetary lifeform survey progress based on the fauna and flora you've cataloged.
+- Use filters to find all planets/moons with life, or your outposts.
 
-![Gif demo-ing discovering solar systems](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/discover-system.gif)
+![Gif demo-ing discovering solar systems](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/v1.2_discover_system.gif)
 
 #### Survey lifeforms, catalog their primary resource drops, and add any notes you desire
 - Auto-complete helps make manual input easier.
 
-![Gif demo-ing surveying lifeforms](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/add-lifeform-2.gif)
+![Gif demo-ing surveying lifeforms](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/v1.2_add_lifeform.gif)
 
 #### Search for inorganic resources in discovered solar systems
 
-![Gif demo-ing searching for inorganic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/inorganic-resource-search.gif)
+![Gif demo-ing searching for inorganic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/v1.2_inorganic_search.gif)
 
 #### Search for organic resources in fauna/flora you've cataloged
 
-![Gif demo-ing searching for organic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/organic-resource-search-2.gif)
+![Gif demo-ing searching for organic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/v1.2_organic_search.gif)
 
 #### Conveniently save and view pictures for your fauna/flora
 - Use UI + button to import a picture, or
 - Drag pictures into Lifeform Overview, or
 - Ctrl + V to paste from clipboard (best when combined with Windows screen cap tool `WinKey + Shift + S`).
 
-![Gif demo-ing searching for organic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/browse-pictures.gif)
+![Gif demo-ing searching for inorganic resources](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/v1.2_browse_pictures.gif)
 
-## Installation / Instructions
-- Find the [latest release](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/releases) and choose one of the following options:
-    - Option 1: Download `Starfield_ISS.zip`, extract all to a folder, then run `Starfield ISS.exe`.
+#### Keep track of what and where your outposts are
+
+![Gif demo-ing outpost tracking](https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Gifs/v1.2_track_outposts.gif)
+
+## Installation
+- Find the [latest release](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/releases) and choose:
+    - **Option 1**: Download `Starfield_ISS.zip`, extract all to a folder, then run `Starfield ISS.exe`.
 	    - Disclaimer: you should only do this if you trust me. I can theoretically attempt to package the executable with malicious code.
 		- This app is built on Windows Presentation Foundation and uses `.NET 7.0` as a dependency. When you run the app for the first time, Windows may direct you to install it automatically.
-    - Option 2: Download and review the source code. Compile with Visual Studio and run the application.
-- Everything should be pretty self-explanatory. If something is unclear or broken, [open an issue](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues) to let me know!
-    - Hover over 🛈 icons in the app for additional instructions.
-- All your survey data will be stored in `/<username>/AppData/local/Starfield_ISS/DataSlate.db` (SQLite)
-    - Some prefilled default data will inevitably contain errors. They will be fixed via backwards-compatible app updates.
-    - You may, of course, edit the DB file directly. I only recommend this if you know how SQLite works and how it can affect app compatibility. You could permanently break your app state by doing this.
+    - **Option 2**: Download and review the source code. Compile with Visual Studio and run the application.
 
-## Regarding App Updates
+#### Upgrading To A Newer Version
 - Updates are manual at the moment, though the app will check GitHub to compare your version with the latest release.
 - To install an update, simply download and run the latest version.
-- Since your survey data is stored in a user-specific folder (see above), the new version will not wipe your data.
+- Since your data is stored [elsewhere](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/wiki/User-Data), a new version will not wipe your data.
+
+## Instructions / Troubleshooting
+- Everything in the app should be self-explanatory. Visit the [Advanced Instructions Wiki](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/wiki) for more tips!
+- Found a problem? [Submit your **bug report** here.](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues)
 
 ## Upcoming Features
+No promises, but here's a list of what I want to work on next:
+- Searching for multiple resources simultaneously.
+- Extending current pictures/notes functionality to planets and moons.
+- The beginning of localization (supporting languages other than English).
+- Integrating the "farmable" attribute of lifeforms into the app.
+
+Here are some potential features in the distant future:
 - **Cataloging planet/moon traits.** I need to work on obtaining a comprehensive list of traits first.
 - **Cataloging secondary (chance-based) resource drops for fauna.**
 - **Prefilled 100% mode** for users who prefer to use this app as a wiki. I will add this when I am more confident with the accuracy of my default database.
 - **More complex outpost planning functions** are already available on [Frederik's spreadsheet](https://www.reddit.com/r/Starfield/comments/16g54cy/starfield_complete_list_of_resources_for_every/), but if there is demand I could add them in this app too.
 - **Immersive game-like UI**. This is a big one and I'll probably only do it if more than a handful of people are using the app. It'd be cool if the app looks like you're actually using a data slate.
-- [Add your own **suggestions/bug reports** here.](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues)
+
+Have an idea? [Start a discussion](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/discussions/categories/ideas) to let me know!
 
 ## Credits
 - Frederik, whose [massive data spreadsheet](https://www.reddit.com/r/Starfield/comments/16g54cy/starfield_complete_list_of_resources_for_every/) helped populate this app's default database.
