@@ -292,14 +292,21 @@ namespace Starfield_Interactive_Smart_Slate
             }
             else
             {
-                foreach (var solarSystem in discoveredSolarSystems)
+                foreach (var item in solarSystemsListView.ItemContainerGenerator.Items)
                 {
+                    var solarSystem = (SolarSystem)item;
                     if (solarSystem.CelestialBodies.Contains(celestialBody))
                     {
                         selectedSolarSystem = solarSystem;
                         break;
                     }
                 }
+            }
+
+            // only proceed if the displayed list contains the selected celestial body
+            if (selectedSolarSystem == null)
+            {
+                return;
             }
 
             // update data state
