@@ -212,7 +212,7 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 conn.Open();
                 using (SQLiteCommand cmd = new SQLiteCommand(@"
-                    CREATE TABLE Outposts (
+                    CREATE TABLE IF NOT EXISTS Outposts (
                         OutpostID INTEGER PRIMARY KEY,
                         OutpostName TEXT NOT NULL,
                         ParentBodyID INTEGER NOT NULL,
@@ -220,7 +220,7 @@ namespace Starfield_Interactive_Smart_Slate
                         OutpostDeleted INTEGER NOT NULL DEFAULT 0,
                         FOREIGN KEY (ParentBodyID) REFERENCES CelestialBodies(BodyID));
 
-                    CREATE TABLE OutpostPictures (
+                    CREATE TABLE IF NOT EXISTS OutpostPictures (
                         OutpostPictureID INTEGER PRIMARY KEY,
                         OutpostID INTEGER NOT NULL,
                         OutpostPicturePath TEXT NOT NULL,
