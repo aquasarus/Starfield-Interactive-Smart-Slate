@@ -17,7 +17,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <TabControl SelectionChanged="TabControl_SelectionChanged">
+        <TabControl>
             <TabControl.ItemContainerStyle>
                 <Style TargetType="TabItem">
                     <Setter Property="Height" Value="35" />

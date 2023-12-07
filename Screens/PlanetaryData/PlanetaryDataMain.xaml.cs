@@ -154,7 +154,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             var outpostSolarSystems = discoveredSolarSystems.Select(
                     solarSystem =>
                     {
-                        var solarSystemCopy = solarSystem.DeepCopy();
+                        var solarSystemCopy = solarSystem.Copy();
                         solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
                             celestialBody =>
                             {
@@ -190,7 +190,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             var outpostSolarSystems = discoveredSolarSystems.Select(
                     solarSystem =>
                     {
-                        var solarSystemCopy = solarSystem.DeepCopy();
+                        var solarSystemCopy = solarSystem.Copy();
                         solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
                             celestialBody =>
                             {

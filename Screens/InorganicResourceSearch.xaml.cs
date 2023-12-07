@@ -1,7 +1,5 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,19 +10,11 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 {
     public partial class InorganicResourceSearch : UserControl
     {
-        private List<SolarSystem>? discoveredSolarSystems;
+        private InorganicResourceSearchViewModel viewModel = InorganicResourceSearchViewModel.Instance;
 
         public InorganicResourceSearch()
         {
             InitializeComponent();
-            var resources = DataRepository.GetResources();
-            inorganicResourceListView.ItemsSource = resources.Where(r => r.GetType() == ResourceType.Inorganic);
-
-            IsVisibleChanged += (sender, args) =>
-            {
-                // TODO : causes slow tab switching
-                RefreshData();
-            };
         }
 
         private static void FilterResources(string filterText, ListView listView)
@@ -69,58 +59,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens
                 App.Current.PlayClickSound();
             }
 
-            inorganicSolarSystemResultsListView.ItemsSource = SearchCelestialBodiesForResource(selectedResource);
-        }
-
-        private void RefreshData()
-        {
-            var solarSystems = DataRepository.GetSolarSystems();
-            discoveredSolarSystems = solarSystems
-                .Where(solarSystem => solarSystem.Discovered)
-                .ToList();
+            viewModel.SearchCelestialBodiesForResource(selectedResource);
         }
 
         private void ResourceSearchListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             App.Current.PlayScrollSound();
-        }
-
-        private IEnumerable<SolarSystem> SearchCelestialBodiesForResource(Resource resource)
-        {
-            return discoveredSolarSystems.Select(
-                solarSystem =>
-                {
-                    var solarSystemCopy = solarSystem.DeepCopy();
-                    solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
-                        celestialBody =>
-                        {
-                            var surfaceHasResource = celestialBody.SurfaceContainsResource(resource);
-                            var moonsHaveResource = celestialBody.Moons?.Any(moon => moon.SurfaceContainsResource(resource)) ?? false;
-
-                            // if celestial body (or any of its moons) contains the resource, include it in the list
-                            if (surfaceHasResource || moonsHaveResource)
-                            {
-                                if (!surfaceHasResource)
-                                {
-                                    // gray out the parent planet if its surface doesn't actually contain the resource
-                                    celestialBody.GrayOut = true;
-                                }
-
-                                celestialBody.Show = true;
-                            }
-                            else
-                            {
-                                celestialBody.Show = false;
-                            }
-
-                            return celestialBody;
-                        }
-                    )
-                    .Where(celestialBody => celestialBody.Show)
-                    .ToList();
-                    return solarSystemCopy;
-                }
-            ).Where(solarSystem => solarSystem.CelestialBodies.Any());
         }
     }
 }

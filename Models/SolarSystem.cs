@@ -18,7 +18,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             CelestialBodies = CelestialBodiesBuilder.Values.OfType<CelestialBody>().ToList();
         }
 
-        public SolarSystem DeepCopy()
+        public SolarSystem Copy()
         {
             var solarSystemCopy = new SolarSystem
             {
@@ -26,7 +26,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 SystemName = SystemName,
                 SystemLevel = SystemLevel,
                 Discovered = Discovered,
-                CelestialBodies = CelestialBodies.ConvertAll(celestialBody => celestialBody.DeepCopy())
+                CelestialBodies = CelestialBodies.ConvertAll(celestialBody => celestialBody.Copy())
             };
 
             CelestialBody parentPlanet = null;

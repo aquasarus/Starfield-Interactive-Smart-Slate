@@ -112,33 +112,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
         }
 
-        public CelestialBody DeepCopy()
+        public CelestialBody Copy()
         {
-            // TODO: rework view model management
-            //ObservableCollection<Fauna> faunaCollection = null;
-            //if (Faunas != null)
-            //{
-            //    faunaCollection = new ObservableCollection<Fauna>(
-            //        Faunas.Select(fauna => fauna.DeepCopy(fast))
-            //    );
-            //}
-
-            //ObservableCollection<Flora> floraCollection = null;
-            //if (Floras != null)
-            //{
-            //    floraCollection = new ObservableCollection<Flora>(
-            //        Floras.Select(flora => flora.DeepCopy(fast))
-            //    );
-            //}
-
-            //ObservableCollection<Outpost> outpostCollection = null;
-            //if (Outposts != null)
-            //{
-            //    outpostCollection = new ObservableCollection<Outpost>(
-            //        Outposts.Select(outpost => outpost.DeepCopy(fast))
-            //    );
-            //}
-
             return new CelestialBody
             {
                 BodyID = BodyID,
@@ -154,7 +129,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 TotalFauna = TotalFauna,
                 TotalFlora = TotalFlora,
                 Resources = Resources,
-                //Resources = Resources?.ConvertAll(resource => resource.DeepCopy()),
                 Faunas = Faunas,
                 Floras = Floras,
                 Outposts = Outposts,

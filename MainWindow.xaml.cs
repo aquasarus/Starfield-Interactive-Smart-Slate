@@ -1,10 +1,6 @@
 ﻿using Starfield_Interactive_Smart_Slate.Dialogs;
-using Starfield_Interactive_Smart_Slate.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -16,16 +12,15 @@ using System.Windows.Threading;
 
 namespace Starfield_Interactive_Smart_Slate
 {
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private List<SolarSystem> discoveredSolarSystems;
         private DispatcherTimer updateTimer;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            MainViewModel.Instance.ReloadAllData();
 
             EnableSoundsCheckBox.DataContext = App.Current.UserSettings;
             EnableAnalyticsCheckBox.DataContext = App.Current.UserSettings;
@@ -47,14 +42,6 @@ namespace Starfield_Interactive_Smart_Slate
             UserIDLabel.Content = $"User ID: {DataRepository.UserID}";
         }
 
-        private void RefreshData()
-        {
-            var solarSystems = DataRepository.GetSolarSystems();
-            discoveredSolarSystems = solarSystems
-                .Where(solarSystem => solarSystem.Discovered)
-                .ToList();
-        }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             CheckForUpdate();
@@ -73,15 +60,6 @@ namespace Starfield_Interactive_Smart_Slate
             if (!((TabItem)sender).IsSelected)
             {
                 App.Current.PlayScrollSound();
-            }
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.Source is TabControl)
-            {
-                // maybe hack to refresh data on every tab change.
-                RefreshData();
             }
         }
 

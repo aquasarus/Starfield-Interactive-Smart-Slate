@@ -4,9 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Starfield_Interactive_Smart_Slate.Screens"
+    xmlns:main="clr-namespace:Starfield_Interactive_Smart_Slate"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    DataContext="{Binding Source={x:Static local:OrganicResourceSearchViewModel.Instance}}"
     SnapsToDevicePixels="True"
     Style="{StaticResource SofiaSansStyle}"
     mc:Ignorable="d">
@@ -66,6 +68,7 @@
                 </TextBox>
                 <ListView Name="organicResourceListView" Grid.Row="1"
                     Margin="1,0,1,0"
+                    ItemsSource="{Binding Source={x:Static main:MainViewModel.Instance}, Path=OrganicResources}"
                     SelectionChanged="OrganicResourceSelectionChanged"
                     SelectionMode="Single"
                     TabIndex="0">
@@ -120,6 +123,7 @@
                 HorizontalContentAlignment="Stretch"
                 BorderBrush="Gray"
                 BorderThickness="1"
+                ItemsSource="{Binding OrganicSearchResult}"
                 ScrollViewer.CanContentScroll="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -251,6 +255,7 @@
                     Margin="1,1,0,0"
                     Padding="5"
                     IsHitTestVisible="False"
+                    ItemsSource="{Binding DisplayedCelestialBody.Faunas}"
                     SelectionMode="Single">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -283,6 +288,7 @@
                     Margin="1,1,0,0"
                     Padding="5"
                     IsHitTestVisible="False"
+                    ItemsSource="{Binding DisplayedCelestialBody.Floras}"
                     SelectionMode="Single">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
