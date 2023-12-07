@@ -26,6 +26,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 
             IsVisibleChanged += (sender, args) =>
             {
+                // TODO : causes slow tab switching
                 RefreshData();
             };
         }

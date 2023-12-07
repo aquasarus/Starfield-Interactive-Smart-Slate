@@ -21,9 +21,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
-namespace Starfield_Interactive_Smart_Slate.Screens.PlanetData
+namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 {
-    public partial class PlanetDataMain : UserControl, INotifyPropertyChanged
+    public partial class PlanetaryDataMain : UserControl, INotifyPropertyChanged
     {
         private Window? activePictureViewer = null;
         private List<SolarSystem> allSolarSystems;
@@ -35,7 +35,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetData
         private CelestialBody selectedCelestialBody;
         private Entity? selectedEntity;
 
-        public PlanetDataMain()
+        public PlanetaryDataMain()
         {
             InitializeComponent();
 

@@ -38,8 +38,6 @@ namespace Starfield_Interactive_Smart_Slate
             Version version = Assembly.GetEntryAssembly().GetName().Version;
             VersionNumberLabel.Content = $"Version {version.Major}.{version.Minor}.{version.Build}";
 
-
-
             CheckForUpdate();
 
             // check for updates once a day in case the user never closes the app
@@ -273,20 +271,5 @@ namespace Starfield_Interactive_Smart_Slate
         }
 
         #endregion
-
-        private void CelestialBodyListView_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            e.Handled = true;
-            MouseWheelEventArgs mouseArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
-            mouseArgs.RoutedEvent = MouseWheelEvent;
-            mouseArgs.Source = sender;
-            var parent = VisualTreeHelper.GetParent(sender as UIElement) as UIElement;
-            parent.RaiseEvent(mouseArgs);
-        }
-
-        private void ResourceSearchListViewItem_MouseEnter(object sender, MouseEventArgs e)
-        {
-            App.Current.PlayScrollSound();
-        }
     }
 }
