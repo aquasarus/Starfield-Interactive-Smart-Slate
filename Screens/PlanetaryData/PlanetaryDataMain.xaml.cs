@@ -21,26 +21,26 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 {
     public partial class PlanetaryDataMain : UserControl, INotifyPropertyChanged
     {
+        private PlanetaryDataViewModel viewModel = PlanetaryDataViewModel.Instance;
+
         private Window? activePictureViewer = null;
+
         private List<SolarSystem> allSolarSystems;
         private List<SolarSystem> discoveredSolarSystems;
-        private CelestialBody displayedCelestialBody;
-        private Entity? displayedEntity;
-        private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
-        private List<Resource> selectableOrganicResources;
+
         private CelestialBody selectedCelestialBody;
+        private CelestialBody displayedCelestialBody;
+
+        private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
+
         private Entity? selectedEntity;
+        private Entity? displayedEntity;
 
         public PlanetaryDataMain()
         {
             InitializeComponent();
 
             var resources = DataRepository.GetResources();
-
-            selectableOrganicResources = resources.Where(r =>
-            {
-                return r.GetType() == ResourceType.Organic || r.GetType() == ResourceType.Placeholders;
-            }).ToList();
 
             lifeformNames = DataRepository.GetLifeformNames();
             celestialBodyTitleLabel.DataContext = this;
@@ -444,7 +444,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             {
                 LifeformEditor dialog = new LifeformEditor(
                     displayedEntity as Fauna,
-                    selectableOrganicResources,
                     lifeformNames[LifeformType.Fauna]
                 );
                 dialog.Owner = Window.GetWindow(this);
@@ -470,7 +469,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             {
                 LifeformEditor dialog = new LifeformEditor(
                     displayedEntity as Flora,
-                    selectableOrganicResources,
                     lifeformNames[LifeformType.Flora]
                 );
                 dialog.Owner = Window.GetWindow(this);

@@ -5,10 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Starfield_Interactive_Smart_Slate"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:planetaryData="clr-namespace:Starfield_Interactive_Smart_Slate.Screens.PlanetaryData"
     Title="Edit Lifeform"
     Width="500"
     Height="600"
     Closing="Window_Closing"
+    DataContext="{Binding Source={x:Static planetaryData:PlanetaryDataViewModel.Instance}}"
     PreviewKeyDown="Window_PreviewKeyDown"
     Style="{StaticResource SofiaSansStyle}"
     mc:Ignorable="d">
@@ -28,7 +30,9 @@
             Style="{StaticResource ContentSubtitleStyle}"
             ToolTipService.InitialShowDelay="200">
             <Label.ToolTip>
-                <ToolTip Content="{Binding LifeformTypeString}" ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear." />
+                <ToolTip Name="lifeformNameTooltip"
+                    Content="{Binding LifeformTypeString}"
+                    ContentStringFormat="{}If entered name matches an in-game {0} name, 🧬 will appear." />
             </Label.ToolTip>
         </Label>
         <Grid Grid.Row="1">
@@ -75,6 +79,7 @@
             Style="{StaticResource ContentSubtitleStyle}" />
         <ComboBox Name="lifeformResourceComboBox" Grid.Row="3"
             Margin="5,10,5,0"
+            ItemsSource="{Binding SelectableOrganicResources}"
             PreviewMouseLeftButtonDown="lifeformResourceComboBoxClicked" />
         <Label Grid.Row="4"
             Content="Notes"

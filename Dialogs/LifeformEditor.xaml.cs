@@ -1,5 +1,6 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
 using Starfield_Interactive_Smart_Slate.Models.Entities;
+using Starfield_Interactive_Smart_Slate.Screens.PlanetaryData;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,13 +12,12 @@ namespace Starfield_Interactive_Smart_Slate
 {
     public partial class LifeformEditor : Window
     {
-        public string LifeformTypeString { get; set; }
-
+        private PlanetaryDataViewModel viewModel = PlanetaryDataViewModel.Instance;
         private Entity originalEntity;
         private Dictionary<string, string> lifeformNames;
         private string? matchedNameString;
 
-        public LifeformEditor(LifeformEntity entity, List<Resource> resources, Dictionary<string, string> lifeformNames)
+        public LifeformEditor(LifeformEntity entity, Dictionary<string, string> lifeformNames)
         {
             InitializeComponent();
 
@@ -28,27 +28,21 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 Title = "Edit Fauna";
                 lifeformNameTitle.Content = "Fauna Name 🛈";
-                LifeformTypeString = "Fauna";
+                lifeformNameTooltip.Content = "Fauna";
             }
             else
             {
                 Title = "Edit Flora";
                 lifeformNameTitle.Content = "Flora Name 🛈";
-                LifeformTypeString = "Flora";
+                lifeformNameTooltip.Content = "Flora";
             }
 
-            DataContext = this;
-
             lifeformNameTextbox.Text = entity.Name;
-
-            var resourcesToDisplay = resources.OrderBy(r => r.FullName).ToList();
-            resourcesToDisplay.Insert(0, new Resource(-1, ResourceType.Organic, "Unknown", null, Rarity.Common));
-            lifeformResourceComboBox.ItemsSource = resourcesToDisplay;
 
             if (entity.IsSurveyed)
             {
                 var resourceDrop = entity.PrimaryDrops[0];
-                var index = resourcesToDisplay.IndexOf(resourceDrop);
+                var index = viewModel.SelectableOrganicResources.IndexOf(resourceDrop);
                 lifeformResourceComboBox.SelectedIndex = index;
             }
             else
@@ -92,7 +86,8 @@ namespace Starfield_Interactive_Smart_Slate
             lifeform.Name = lifeformNameTextbox.Text;
             lifeform.Notes = lifeformNotesTextbox.Text;
 
-            if (lifeformResourceComboBox.SelectedIndex != 0)
+            var selectedItem = lifeformResourceComboBox.SelectedItem as Resource;
+            if (selectedItem != null && selectedItem.FullName != "Unknown")
             {
                 lifeform.PrimaryDrops = new List<Resource> { lifeformResourceComboBox.SelectedItem as Resource };
             }
