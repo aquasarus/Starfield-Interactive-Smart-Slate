@@ -1,30 +1,13 @@
-﻿using Starfield_Interactive_Smart_Slate.Models;
-using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Starfield_Interactive_Smart_Slate.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate.Screens
 {
-    public class OrganicResourceSearchViewModel : INotifyPropertyChanged
+    public class OrganicResourceSearchViewModel : ObservableObject
     {
-        public IEnumerable<SolarSystem> OrganicSearchResult { get; set; }
-
-        public CelestialBody? SelectedCelestialBody { get; set; }
-
-        public CelestialBody? DisplayedCelestialBody { get; set; }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private static OrganicResourceSearchViewModel? instance;
-        private MainViewModel mainViewModel = MainViewModel.Instance;
-        private Resource currentSearch;
-
-        private OrganicResourceSearchViewModel()
-        {
-            mainViewModel.SolarSystemsUpdated += HandleSolarSystemsUpdated;
-        }
-
         public static OrganicResourceSearchViewModel Instance
         {
             get
@@ -36,6 +19,36 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 
                 return instance;
             }
+        }
+
+        public IEnumerable<SolarSystem> OrganicSearchResult
+        {
+            get => organicSearchResult;
+            set => SetProperty(ref organicSearchResult, value);
+        }
+
+        public CelestialBody? SelectedCelestialBody
+        {
+            get => selectedCelestialBody;
+            set => SetProperty(ref selectedCelestialBody, value);
+        }
+
+        public CelestialBody? DisplayedCelestialBody
+        {
+            get => displayedCelestialBody;
+            set => SetProperty(ref displayedCelestialBody, value);
+        }
+
+        private static OrganicResourceSearchViewModel? instance;
+        private MainViewModel mainViewModel = MainViewModel.Instance;
+        private Resource currentSearch;
+        private IEnumerable<SolarSystem> organicSearchResult;
+        private CelestialBody? selectedCelestialBody;
+        private CelestialBody? displayedCelestialBody;
+
+        private OrganicResourceSearchViewModel()
+        {
+            mainViewModel.PropertyChanged += HandlePropertyChanged;
         }
 
         public void SearchCelestialBodiesForResource(Resource resource)
@@ -89,8 +102,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens
                     return solarSystemCopy;
                 }
             ).Where(solarSystem => solarSystem.CelestialBodies.Any());
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OrganicSearchResult)));
         }
 
         public void ClearSelections(bool propagateDisplay = true)
@@ -101,7 +112,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens
         public void SelectCelestialBody(CelestialBody? celestialBody, bool propagateDisplay = true)
         {
             SelectedCelestialBody = celestialBody;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedCelestialBody)));
 
             if (propagateDisplay)
             {
@@ -112,15 +122,17 @@ namespace Starfield_Interactive_Smart_Slate.Screens
         public void DisplayCelestialBody(CelestialBody? celestialBody)
         {
             DisplayedCelestialBody = celestialBody;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedCelestialBody)));
         }
 
-        private void HandleSolarSystemsUpdated(object? sender, EventArgs e)
+        private void HandlePropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             // refresh existing resource search, if applicable
-            if (currentSearch != null)
+            if (e.PropertyName == nameof(MainViewModel.Instance.DiscoveredSolarSystems))
             {
-                SearchCelestialBodiesForResource(currentSearch);
+                if (currentSearch != null)
+                {
+                    SearchCelestialBodiesForResource(currentSearch);
+                }
             }
         }
     }

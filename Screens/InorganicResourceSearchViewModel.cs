@@ -1,26 +1,13 @@
-﻿using Starfield_Interactive_Smart_Slate.Models;
-using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Starfield_Interactive_Smart_Slate.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate.Screens
 {
-    public class InorganicResourceSearchViewModel : INotifyPropertyChanged
+    public class InorganicResourceSearchViewModel : ObservableObject
     {
-        public IEnumerable<SolarSystem> InorganicSearchResult { get; set; }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private static InorganicResourceSearchViewModel? instance;
-        private MainViewModel mainViewModel = MainViewModel.Instance;
-        private Resource currentSearch;
-
-        private InorganicResourceSearchViewModel()
-        {
-            mainViewModel.SolarSystemsUpdated += HandleSolarSystemsUpdated;
-        }
-
         public static InorganicResourceSearchViewModel Instance
         {
             get
@@ -32,6 +19,22 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 
                 return instance;
             }
+        }
+
+        public IEnumerable<SolarSystem> InorganicSearchResult
+        {
+            get => inorganicSearchResult;
+            set => SetProperty(ref inorganicSearchResult, value);
+        }
+
+        private static InorganicResourceSearchViewModel? instance;
+        private MainViewModel mainViewModel = MainViewModel.Instance;
+        private Resource currentSearch;
+        private IEnumerable<SolarSystem> inorganicSearchResult;
+
+        private InorganicResourceSearchViewModel()
+        {
+            mainViewModel.PropertyChanged += HandlePropertyChanged;
         }
 
         public void SearchCelestialBodiesForResource(Resource resource)
@@ -69,16 +72,17 @@ namespace Starfield_Interactive_Smart_Slate.Screens
                     return solarSystemCopy;
                 }
             ).Where(solarSystem => solarSystem.CelestialBodies.Any());
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InorganicSearchResult)));
         }
 
-        private void HandleSolarSystemsUpdated(object? sender, EventArgs e)
+        private void HandlePropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             // refresh existing resource search, if applicable
-            if (currentSearch != null)
+            if (e.PropertyName == nameof(MainViewModel.Instance.DiscoveredSolarSystems))
             {
-                SearchCelestialBodiesForResource(currentSearch);
+                if (currentSearch != null)
+                {
+                    SearchCelestialBodiesForResource(currentSearch);
+                }
             }
         }
     }
