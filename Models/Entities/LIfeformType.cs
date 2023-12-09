@@ -1,4 +1,4 @@
-﻿namespace Starfield_Interactive_Smart_Slate.Models
+﻿namespace Starfield_Interactive_Smart_Slate.Models.Entities
 {
     public enum LifeformType
     {

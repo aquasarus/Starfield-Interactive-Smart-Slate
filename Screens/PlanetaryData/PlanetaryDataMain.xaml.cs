@@ -19,49 +19,18 @@ using System.Windows.Media.Imaging;
 
 namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 {
-    public partial class PlanetaryDataMain : UserControl, INotifyPropertyChanged
+    public partial class PlanetaryDataMain : UserControl
     {
         private PlanetaryDataViewModel viewModel = PlanetaryDataViewModel.Instance;
+        private MainViewModel mainViewModel = MainViewModel.Instance;
 
         private Window? activePictureViewer = null;
-
-        private List<SolarSystem> allSolarSystems;
-        private List<SolarSystem> discoveredSolarSystems;
-
-        private CelestialBody selectedCelestialBody;
-        private CelestialBody displayedCelestialBody;
-
-        private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
-
-        private Entity? selectedEntity;
-        private Entity? displayedEntity;
 
         public PlanetaryDataMain()
         {
             InitializeComponent();
-
-            var resources = DataRepository.GetResources();
-
-            lifeformNames = DataRepository.GetLifeformNames();
-            celestialBodyTitleLabel.DataContext = this;
-            celestialBodyMiniTitleLabel.DataContext = this;
-
-            RefreshData();
-
             solarSystemsListView.Loaded += InitializeSolarSystemsListView;
-
-            pictureGrid.DataContext = this;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string DisplayedCelestialBodyName
-        { get { return displayedCelestialBody?.BodyName; } }
-
-        public string DisplayedSolarSystemName
-        { get { return displayedCelestialBody?.SystemName; } }
-
-        public int PictureGridColumns { get; set; }
 
         #region CELESTIAL BODIES -----------------------------------------------------------------------------------------------
 
@@ -69,20 +38,20 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             App.Current.PlayClickSound();
 
-            AddLifeformDialog dialog = new AddLifeformDialog(lifeformNames[LifeformType.Fauna], LifeformType.Fauna);
+            AddLifeformDialog dialog = new AddLifeformDialog(LifeformType.Fauna);
 
             dialog.Owner = Window.GetWindow(this);
             dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             if (dialog.ShowDialog() == true)
             {
-                var insertedFauna = DataRepository.AddFauna(dialog.lifeformNameInput.Text, displayedCelestialBody.BodyID);
+                var insertedFauna = DataRepository.AddFauna(dialog.lifeformNameInput.Text, viewModel.DisplayedCelestialBody.BodyID);
 
                 // update local data state
-                displayedCelestialBody.AddFauna(insertedFauna);
+                viewModel.DisplayedCelestialBody.AddFauna(insertedFauna);
 
                 // update UI state
-                DisplayCelestialBodyDetails(displayedCelestialBody);
+                DisplayCelestialBodyDetails(viewModel.DisplayedCelestialBody);
                 DisplayFaunaDetails(insertedFauna);
                 SetSelectedFaunaWithUI(insertedFauna);
 
@@ -97,20 +66,20 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             App.Current.PlayClickSound();
 
-            AddLifeformDialog dialog = new AddLifeformDialog(lifeformNames[LifeformType.Flora], LifeformType.Flora);
+            AddLifeformDialog dialog = new AddLifeformDialog(LifeformType.Flora);
 
             dialog.Owner = Window.GetWindow(this);
             dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             if (dialog.ShowDialog() == true)
             {
-                var insertedFlora = DataRepository.AddFlora(dialog.lifeformNameInput.Text, displayedCelestialBody.BodyID);
+                var insertedFlora = DataRepository.AddFlora(dialog.lifeformNameInput.Text, viewModel.DisplayedCelestialBody.BodyID);
 
                 // update local data state
-                displayedCelestialBody.AddFlora(insertedFlora);
+                viewModel.DisplayedCelestialBody.AddFlora(insertedFlora);
 
                 // update UI state
-                DisplayCelestialBodyDetails(displayedCelestialBody);
+                DisplayCelestialBodyDetails(viewModel.DisplayedCelestialBody);
                 DisplayFloraDetails(insertedFlora);
                 SetSelectedFloraWithUI(insertedFlora);
 
@@ -132,13 +101,13 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
             if (dialog.ShowDialog() == true)
             {
-                var insertedOutpost = DataRepository.AddOutpost(dialog.outpostNameInput.Text, displayedCelestialBody.BodyID);
+                var insertedOutpost = DataRepository.AddOutpost(dialog.outpostNameInput.Text, viewModel.DisplayedCelestialBody.BodyID);
 
                 // update local data state
-                displayedCelestialBody.AddOutpost(insertedOutpost);
+                viewModel.DisplayedCelestialBody.AddOutpost(insertedOutpost);
 
                 // update UI state
-                DisplayCelestialBodyDetails(displayedCelestialBody);
+                DisplayCelestialBodyDetails(viewModel.DisplayedCelestialBody);
                 DisplayOutpostDetails(insertedOutpost);
                 SetSelectedOutpostWithUI(insertedOutpost);
 
@@ -151,7 +120,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void ApplyLifeformFilter()
         {
-            var outpostSolarSystems = discoveredSolarSystems.Select(
+            var outpostSolarSystems = mainViewModel.DiscoveredSolarSystems.Select(
                     solarSystem =>
                     {
                         var solarSystemCopy = solarSystem.Copy();
@@ -187,7 +156,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void ApplyOutpostsFilter()
         {
-            var outpostSolarSystems = discoveredSolarSystems.Select(
+            var outpostSolarSystems = mainViewModel.DiscoveredSolarSystems.Select(
                     solarSystem =>
                     {
                         var solarSystemCopy = solarSystem.Copy();
@@ -236,7 +205,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is CelestialBody)
             {
                 var celestialBody = listViewItem.DataContext as CelestialBody;
-                if (selectedCelestialBody == null && displayedCelestialBody != celestialBody)
+                if (viewModel.SelectedCelestialBody == null && viewModel.DisplayedCelestialBody != celestialBody)
                 {
                     DisplayCelestialBodyDetails(celestialBody);
                     ClearAllSelectionsExcept();
@@ -269,8 +238,8 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         // clears all list selections except specified type
         private void ClearAllSelectionsExcept(Entity? exception = null)
         {
-            selectedEntity = null;
-            displayedEntity = null;
+            viewModel.SelectedEntity = null;
+            viewModel.DisplayedEntity = null;
 
             if (exception is Fauna)
             {
@@ -298,14 +267,11 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         // TODO: delete later if unused
         private void ClearCelestialBodyDetails()
         {
-            displayedCelestialBody = null;
-            selectedCelestialBody = null;
+            viewModel.DisplayedCelestialBody = null;
+            viewModel.SelectedCelestialBody = null;
 
             celestialBodyOverview.Text = null;
             celestialBodyResourcesLabel.Text = null;
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedCelestialBodyName)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedSolarSystemName)));
 
             celestialBodyOverviewGrid.Visibility = Visibility.Hidden;
 
@@ -342,7 +308,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             App.Current.PlayClickSound();
 
-            List<SolarSystem> alphabeticalSystems = allSolarSystems
+            List<SolarSystem> alphabeticalSystems = mainViewModel.AllSolarSystems
                 .Where(solarSystem => !solarSystem.Discovered)
                 .OrderBy(solarSystem => solarSystem.SystemName).ToList();
 
@@ -355,7 +321,11 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             {
                 SolarSystem selectedSolarSystem = dialog.SelectedSolarSystem;
                 DataRepository.DiscoverSolarSystem(selectedSolarSystem);
-                RefreshData();
+
+                // TODO: don't reload all data here
+                mainViewModel.ReloadAllData();
+                viewModel.SelectedEntity = null;
+                solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
 
                 var firstCelestialBodyOfSystem = selectedSolarSystem.CelestialBodies[0];
                 DisplayCelestialBodyDetails(firstCelestialBodyOfSystem);
@@ -371,7 +341,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             entityOverviewGrid.Visibility = Visibility.Hidden;
             editEntityButton.IsEnabled = false;
 
-            displayedCelestialBody = celestialBody;
+            viewModel.DisplayedCelestialBody = celestialBody;
 
             celestialBodyOverview.Text = celestialBody.ToString();
             celestialBodyResourcesLabel.Text = celestialBody.ResourcesString;
@@ -384,15 +354,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
             outpostsListView.ItemsSource = celestialBody.Outposts;
 
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedCelestialBodyName)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DisplayedSolarSystemName)));
-
             celestialBodyOverviewGrid.Visibility = Visibility.Visible;
         }
 
         private void DisplayEntityDetails(Entity entity)
         {
-            displayedEntity = entity;
+            viewModel.DisplayedEntity = entity;
 
             entityTitleLabel.Content = entity.Name;
             entityNotesTextBlock.Text = entity.Notes;
@@ -440,11 +407,10 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             App.Current.PlayClickSound();
 
-            if (displayedEntity is Fauna)
+            if (viewModel.DisplayedEntity is Fauna)
             {
                 LifeformEditor dialog = new LifeformEditor(
-                    displayedEntity as Fauna,
-                    lifeformNames[LifeformType.Fauna]
+                    viewModel.DisplayedEntity as Fauna
                 );
                 dialog.Owner = Window.GetWindow(this);
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -452,24 +418,23 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 if (dialog.ShowDialog() == true)
                 {
                     var resultingFauna = dialog.GetResultingFauna();
-                    DataRepository.EditFauna(displayedEntity as Fauna, resultingFauna);
-                    displayedCelestialBody.EditFauna(resultingFauna);
+                    DataRepository.EditFauna(viewModel.DisplayedEntity as Fauna, resultingFauna);
+                    viewModel.DisplayedCelestialBody.EditFauna(resultingFauna);
                     DisplayFaunaDetails(resultingFauna);
-                    if (selectedEntity != null)
+                    if (viewModel.SelectedEntity != null)
                     {
-                        selectedEntity = resultingFauna;
-                        faunasListView.SelectedItem = selectedEntity;
+                        viewModel.SelectedEntity = resultingFauna;
+                        faunasListView.SelectedItem = viewModel.SelectedEntity;
                     }
 
                     FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
                     ReapplyFilters();
                 }
             }
-            else if (displayedEntity is Flora)
+            else if (viewModel.DisplayedEntity is Flora)
             {
                 LifeformEditor dialog = new LifeformEditor(
-                    displayedEntity as Flora,
-                    lifeformNames[LifeformType.Flora]
+                    viewModel.DisplayedEntity as Flora
                 );
                 dialog.Owner = Window.GetWindow(this);
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -477,13 +442,13 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 if (dialog.ShowDialog() == true)
                 {
                     var resultingFlora = dialog.GetResultingFlora();
-                    DataRepository.EditFlora(displayedEntity as Flora, resultingFlora);
-                    displayedCelestialBody.EditFlora(resultingFlora);
+                    DataRepository.EditFlora(viewModel.DisplayedEntity as Flora, resultingFlora);
+                    viewModel.DisplayedCelestialBody.EditFlora(resultingFlora);
                     DisplayFloraDetails(resultingFlora);
-                    if (selectedEntity != null)
+                    if (viewModel.SelectedEntity != null)
                     {
-                        selectedEntity = resultingFlora;
-                        florasListView.SelectedItem = selectedEntity;
+                        viewModel.SelectedEntity = resultingFlora;
+                        florasListView.SelectedItem = viewModel.SelectedEntity;
                     }
 
                     FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
@@ -492,7 +457,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
             else // assume outpost
             {
-                OutpostEditor dialog = new OutpostEditor(displayedEntity as Outpost);
+                OutpostEditor dialog = new OutpostEditor(viewModel.DisplayedEntity as Outpost);
                 dialog.Owner = Window.GetWindow(this);
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
@@ -500,12 +465,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 {
                     var resultingOutpost = dialog.GetResultingOutpost();
                     DataRepository.EditOutpost(resultingOutpost);
-                    displayedCelestialBody.EditOutpost(resultingOutpost);
+                    viewModel.DisplayedCelestialBody.EditOutpost(resultingOutpost);
                     DisplayOutpostDetails(resultingOutpost);
-                    if (selectedEntity != null)
+                    if (viewModel.SelectedEntity != null)
                     {
-                        selectedEntity = resultingOutpost;
-                        outpostsListView.SelectedItem = selectedEntity;
+                        viewModel.SelectedEntity = resultingOutpost;
+                        outpostsListView.SelectedItem = viewModel.SelectedEntity;
                     }
                 }
             }
@@ -516,7 +481,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Fauna)
             {
                 var fauna = listViewItem.DataContext as Fauna;
-                if (selectedEntity == null)
+                if (viewModel.SelectedEntity == null)
                 {
                     DisplayFaunaDetails(fauna);
                 }
@@ -578,13 +543,13 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private CelestialBody? FindOriginalDisplayedCelestialBody()
         {
             // TODO: this is a hack. need to find a better way to manage current view models
-            // find and update original celestial body inside discoveredSolarSystems,
-            // because displayedCelestialBody may be a copy from an applied filter
-            foreach (var solarSystem in discoveredSolarSystems)
+            // find and update original celestial body inside mainViewModel.DiscoveredSolarSystems,
+            // because viewModel.DisplayedCelestialBody may be a copy from an applied filter
+            foreach (var solarSystem in mainViewModel.DiscoveredSolarSystems)
             {
                 foreach (var celestialBody in solarSystem.CelestialBodies)
                 {
-                    if (celestialBody != displayedCelestialBody && celestialBody.Equals(displayedCelestialBody))
+                    if (celestialBody != viewModel.DisplayedCelestialBody && celestialBody.Equals(viewModel.DisplayedCelestialBody))
                     {
                         return celestialBody;
                     }
@@ -599,7 +564,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Flora)
             {
                 var flora = listViewItem.DataContext as Flora;
-                if (selectedEntity == null)
+                if (viewModel.SelectedEntity == null)
                 {
                     DisplayFloraDetails(flora);
                 }
@@ -625,7 +590,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 var selectedCelestialBodyID = Settings.Default.SelectedCelestialBodyID;
                 if (selectedCelestialBodyID != -1)
                 {
-                    foreach (var solarSystem in discoveredSolarSystems)
+                    foreach (var solarSystem in mainViewModel.DiscoveredSolarSystems)
                     {
                         foreach (var celestialBody in solarSystem.CelestialBodies)
                         {
@@ -667,6 +632,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 // fail silently if initial UI cached state fails to load
                 if (Debugger.IsAttached)
                 {
+                    Settings.Default.Reset();
                     throw;
                 }
                 else
@@ -702,7 +668,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             else
             {
                 App.Current.PlayCancelSound();
-                solarSystemsListView.ItemsSource = discoveredSolarSystems;
+                solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
                 solarSystemFilterTextBox.Text = "";
                 solarSystemFilterTextBox.IsEnabled = true;
             }
@@ -727,7 +693,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (confirmDialog.ShowDialog() == true)
             {
                 DataRepository.DeleteOutpost(outpost.ID);
-                displayedCelestialBody.DeleteOutpost(outpost);
+                viewModel.DisplayedCelestialBody.DeleteOutpost(outpost);
                 ClearAllSelectionsExcept();
                 ResetEntityOverview();
 
@@ -759,7 +725,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             else
             {
                 App.Current.PlayCancelSound();
-                solarSystemsListView.ItemsSource = discoveredSolarSystems;
+                solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
                 solarSystemFilterTextBox.Text = "";
                 solarSystemFilterTextBox.IsEnabled = true;
             }
@@ -770,7 +736,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Outpost)
             {
                 var outpost = listViewItem.DataContext as Outpost;
-                if (selectedEntity == null)
+                if (viewModel.SelectedEntity == null)
                 {
                     DisplayOutpostDetails(outpost);
                 }
@@ -808,32 +774,20 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             // find the solar system based on selectedCelestialBody
             var containerGenerator = solarSystemsListView.ItemContainerGenerator;
             var selectedSolarSystem = containerGenerator.Items.FirstOrDefault(
-                solarSystem => ((SolarSystem)solarSystem).CelestialBodies.Contains(selectedCelestialBody)
+                solarSystem => ((SolarSystem)solarSystem).CelestialBodies.Contains(viewModel.SelectedCelestialBody)
             );
 
             if (selectedSolarSystem != null)
             {
                 var solarSystemListViewItem = containerGenerator.ContainerFromItem(selectedSolarSystem);
                 ListView celestialBodyListView = FindNestedListView(solarSystemListViewItem);
-                celestialBodyListView.SelectedItem = selectedCelestialBody;
+                celestialBodyListView.SelectedItem = viewModel.SelectedCelestialBody;
             }
-        }
-
-        private void RefreshData()
-        {
-            selectedEntity = null;
-            var solarSystems = DataRepository.GetSolarSystems();
-            allSolarSystems = solarSystems;
-            discoveredSolarSystems = solarSystems
-                .Where(solarSystem => solarSystem.Discovered)
-                .ToList();
-
-            solarSystemsListView.ItemsSource = discoveredSolarSystems;
         }
 
         private void ResetEntityOverview()
         {
-            displayedEntity = null;
+            viewModel.DisplayedEntity = null;
             entityOverviewGrid.Visibility = Visibility.Hidden;
             editEntityButton.IsEnabled = false;
         }
@@ -848,21 +802,21 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             lifeformFilter_MenuItem.IsChecked = false;
             outpostFilter_MenuItem.IsChecked = false;
-            solarSystemsListView.ItemsSource = discoveredSolarSystems;
+            solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
             solarSystemFilterTextBox.Text = "";
             solarSystemFilterTextBox.IsEnabled = true;
         }
 
         private void SetCelestialBodyOnLayoutUpdate(object sender, EventArgs e)
         {
-            SetSelectedCelestialBodyWithUI(displayedCelestialBody);
+            SetSelectedCelestialBodyWithUI(viewModel.DisplayedCelestialBody);
             solarSystemsListView.LayoutUpdated -= SetCelestialBodyOnLayoutUpdate;
         }
 
         private void SetSelectedCelestialBody(CelestialBody celestialBody)
         {
-            selectedCelestialBody = celestialBody;
-            Settings.Default.SelectedCelestialBodyID = selectedCelestialBody?.BodyID ?? -1;
+            viewModel.SelectedCelestialBody = celestialBody;
+            Settings.Default.SelectedCelestialBodyID = viewModel.SelectedCelestialBody?.BodyID ?? -1;
             Settings.Default.Save();
         }
 
@@ -914,7 +868,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
 
             ClearAllSelectionsExcept(fauna);
-            selectedEntity = fauna;
+            viewModel.SelectedEntity = fauna;
             faunasListView.SelectedItem = fauna;
             DisplayFaunaDetails(fauna);
 
@@ -922,9 +876,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             Settings.Default.Save();
 
             // persist celestial body selection if not already persisted
-            if (selectedCelestialBody == null)
+            if (viewModel.SelectedCelestialBody == null)
             {
-                SetSelectedCelestialBodyWithUI(displayedCelestialBody);
+                SetSelectedCelestialBodyWithUI(viewModel.DisplayedCelestialBody);
             }
         }
 
@@ -936,7 +890,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
 
             ClearAllSelectionsExcept(flora);
-            selectedEntity = flora;
+            viewModel.SelectedEntity = flora;
             florasListView.SelectedItem = flora;
             DisplayFloraDetails(flora);
 
@@ -944,9 +898,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             Settings.Default.Save();
 
             // persist celestial body selection if not already persisted
-            if (selectedCelestialBody == null)
+            if (viewModel.SelectedCelestialBody == null)
             {
-                SetSelectedCelestialBodyWithUI(displayedCelestialBody);
+                SetSelectedCelestialBodyWithUI(viewModel.DisplayedCelestialBody);
             }
         }
 
@@ -958,7 +912,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
 
             ClearAllSelectionsExcept(outpost);
-            selectedEntity = outpost;
+            viewModel.SelectedEntity = outpost;
             outpostsListView.SelectedItem = outpost;
             DisplayOutpostDetails(outpost);
 
@@ -966,9 +920,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             Settings.Default.Save();
 
             // persist celestial body selection if not already persisted
-            if (selectedCelestialBody == null)
+            if (viewModel.SelectedCelestialBody == null)
             {
-                SetSelectedCelestialBodyWithUI(displayedCelestialBody);
+                SetSelectedCelestialBodyWithUI(viewModel.DisplayedCelestialBody);
             }
         }
 
@@ -982,7 +936,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void ToggleSelectCelestialBody(CelestialBody celestialBody, ListView parent, ListViewItem clickedItem)
         {
-            if (celestialBody.Equals(selectedCelestialBody))
+            if (celestialBody.Equals(viewModel.SelectedCelestialBody))
             {
                 App.Current.PlayCancelSound();
 
@@ -1010,12 +964,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void ToggleSelectFauna(Fauna fauna, ListViewItem clickedItem)
         {
-            if (selectedEntity == fauna)
+            if (viewModel.SelectedEntity == fauna)
             {
                 App.Current.PlayCancelSound();
 
                 // like ClearFaunaSelection but keep displayedFauna
-                selectedEntity = null;
+                viewModel.SelectedEntity = null;
                 faunasListView.UnselectAll();
                 Settings.Default.SelectedFaunaID = -1;
                 Settings.Default.Save();
@@ -1033,12 +987,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void ToggleSelectFlora(Flora flora, ListViewItem clickedItem)
         {
-            if (selectedEntity == flora)
+            if (viewModel.SelectedEntity == flora)
             {
                 App.Current.PlayCancelSound();
 
                 // like ClearFloraSelection but keep displayedFlora
-                selectedEntity = null;
+                viewModel.SelectedEntity = null;
                 florasListView.UnselectAll();
                 Settings.Default.SelectedFloraID = -1;
                 Settings.Default.Save();
@@ -1060,12 +1014,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void ToggleSelectOutpost(Outpost outpost, ListViewItem clickedItem)
         {
-            if (selectedEntity == outpost)
+            if (viewModel.SelectedEntity == outpost)
             {
                 App.Current.PlayCancelSound();
 
                 // like ClearOutpostSelection but keep displayedOutpost
-                selectedEntity = null;
+                viewModel.SelectedEntity = null;
                 outpostsListView.UnselectAll();
                 Settings.Default.SelectedOutpostID = -1;
                 Settings.Default.Save();
@@ -1089,29 +1043,29 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             int pictureID;
 
-            if (displayedEntity is Fauna)
+            if (viewModel.DisplayedEntity is Fauna)
             {
-                pictureID = DataRepository.AddFaunaPicture(displayedEntity as Fauna, importedPictureUri.LocalPath);
+                pictureID = DataRepository.AddFaunaPicture(viewModel.DisplayedEntity as Fauna, importedPictureUri.LocalPath);
             }
-            else if (displayedEntity is Flora)
+            else if (viewModel.DisplayedEntity is Flora)
             {
-                pictureID = DataRepository.AddFloraPicture(displayedEntity as Flora, importedPictureUri.LocalPath);
+                pictureID = DataRepository.AddFloraPicture(viewModel.DisplayedEntity as Flora, importedPictureUri.LocalPath);
             }
-            else if (displayedEntity is Outpost)
+            else if (viewModel.DisplayedEntity is Outpost)
             {
-                pictureID = DataRepository.AddOutpostPicture(displayedEntity as Outpost, importedPictureUri.LocalPath);
+                pictureID = DataRepository.AddOutpostPicture(viewModel.DisplayedEntity as Outpost, importedPictureUri.LocalPath);
             }
             else
             {
                 return;
             }
 
-            displayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
+            viewModel.DisplayedEntity.AddPicture(new Picture(pictureID, importedPictureUri));
         }
 
         private void AddPictureDragEnter(object sender, DragEventArgs e)
         {
-            if (displayedEntity != null)
+            if (viewModel.DisplayedEntity != null)
             {
                 entityOverviewGrid.Opacity = 0.2;
                 dragDropOverlay.Visibility = Visibility.Visible;
@@ -1126,7 +1080,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void AddPictureOnDrop(object sender, DragEventArgs e)
         {
-            if (displayedEntity == null)
+            if (viewModel.DisplayedEntity == null)
                 return;
 
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -1141,7 +1095,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
                     if (allowedExtensions.Contains(fileExtension))
                     {
-                        var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, picture: new Uri(file));
+                        var importedPictureUri = Picture.ImportPicture(viewModel.DisplayedCelestialBody, viewModel.DisplayedEntity, picture: new Uri(file));
                         AddPicture(importedPictureUri);
                         importSuccess = true;
                     }
@@ -1173,7 +1127,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 if (openFileDialog.ShowDialog() == true)
                 {
                     var newPictureUri = new Uri(openFileDialog.FileName);
-                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, picture: newPictureUri);
+                    var importedPictureUri = Picture.ImportPicture(viewModel.DisplayedCelestialBody, viewModel.DisplayedEntity, picture: newPictureUri);
                     AddPicture(importedPictureUri);
 
                     App.Current.PlayClickSound();
@@ -1239,11 +1193,11 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             App.Current.PlayClickSound();
 
             var picture = ((MenuItem)sender).DataContext as Picture;
-            if (displayedEntity is Fauna)
+            if (viewModel.DisplayedEntity is Fauna)
             {
                 DataRepository.DeleteFaunaPicture(picture);
             }
-            else if (displayedEntity is Flora)
+            else if (viewModel.DisplayedEntity is Flora)
             {
                 DataRepository.DeleteFloraPicture(picture);
             }
@@ -1251,7 +1205,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             {
                 DataRepository.DeleteOutpostPicture(picture);
             }
-            displayedEntity.RemovePicture(picture);
+            viewModel.DisplayedEntity.RemovePicture(picture);
             picture.MoveToDeletedFolder();
         }
 
@@ -1281,8 +1235,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             int columnsInt = (int)Math.Floor(columns);
             columnsInt = Math.Max(columnsInt, 1);
 
-            PictureGridColumns = columnsInt;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PictureGridColumns)));
+            viewModel.PictureGridColumns = columnsInt;
         }
 
         #endregion PICTURES -----------------------------------------------------------------------------------------------
@@ -1291,12 +1244,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
 
             Debug.WriteLine($"KEY:{e.Key}   MOD:{Keyboard.Modifiers}");
-            if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control && displayedEntity != null)
+            if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control && viewModel.DisplayedEntity != null)
             {
                 if (Clipboard.ContainsImage())
                 {
                     BitmapSource clipboardImage = Clipboard.GetImage();
-                    var importedPictureUri = Picture.ImportPicture(displayedCelestialBody, displayedEntity, directSource: clipboardImage);
+                    var importedPictureUri = Picture.ImportPicture(viewModel.DisplayedCelestialBody, viewModel.DisplayedEntity, directSource: clipboardImage);
                     AddPicture(importedPictureUri);
                     App.Current.PlayClickSound();
                 }

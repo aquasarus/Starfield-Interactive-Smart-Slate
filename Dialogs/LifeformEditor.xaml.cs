@@ -13,16 +13,16 @@ namespace Starfield_Interactive_Smart_Slate
     public partial class LifeformEditor : Window
     {
         private PlanetaryDataViewModel viewModel = PlanetaryDataViewModel.Instance;
-        private Entity originalEntity;
-        private Dictionary<string, string> lifeformNames;
+        private MainViewModel mainViewModel = MainViewModel.Instance;
+
+        private LifeformEntity originalEntity;
         private string? matchedNameString;
 
-        public LifeformEditor(LifeformEntity entity, Dictionary<string, string> lifeformNames)
+        public LifeformEditor(LifeformEntity entity)
         {
             InitializeComponent();
 
             originalEntity = entity;
-            this.lifeformNames = lifeformNames;
 
             if (entity is Fauna)
             {
@@ -107,6 +107,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (matchIndicatorLabel == null) { return; } // wait for UI to load
 
+            var lifeformNames = mainViewModel.GetLifeformNames(originalEntity.LifeformType);
             var matchedNames = lifeformNames.Where(pair => pair.Key.StartsWith(lifeformNameTextbox.Text.ToLower()));
 
             // present suggestion if exactly 1 lifeform name is matched

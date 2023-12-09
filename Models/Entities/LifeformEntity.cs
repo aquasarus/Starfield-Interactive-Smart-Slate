@@ -8,7 +8,10 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public abstract LifeformType LifeformType { get; }
+
         public List<Resource> PrimaryDrops { get; set; }
+
         public List<Resource> SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
 
         public bool IsSurveyed

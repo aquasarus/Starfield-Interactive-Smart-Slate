@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    DataContext="{Binding Source={x:Static local:PlanetaryDataViewModel.Instance}}"
     KeyDown="UserControl_KeyDown"
     PreviewMouseLeftButtonDown="UserControl_PreviewMouseLeftButtonDown"
     SizeChanged="UserControl_SizeChanged"
@@ -53,11 +54,11 @@
                     <Grid Grid.Row="0" Height="55">
                         <Label Name="celestialBodyTitleLabel" Grid.Row="0"
                             VerticalContentAlignment="Top"
-                            Content="{Binding DisplayedCelestialBodyName}"
+                            Content="{Binding DisplayedCelestialBody.BodyName}"
                             Style="{StaticResource ContentTitleStyle}" />
                         <Label Name="celestialBodyMiniTitleLabel" Grid.Row="1"
                             VerticalContentAlignment="Bottom"
-                            Content="{Binding DisplayedSolarSystemName}"
+                            Content="{Binding DisplayedCelestialBody.SystemName}"
                             ContentStringFormat="{}· {0} System"
                             FontSize="15" />
                     </Grid>
@@ -165,6 +166,7 @@
                 HorizontalContentAlignment="Stretch"
                 BorderBrush="Gray"
                 BorderThickness="1"
+                ItemsSource="{Binding DisplayedSolarSystems}"
                 ScrollViewer.CanContentScroll="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>

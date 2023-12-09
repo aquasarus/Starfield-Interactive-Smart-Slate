@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Starfield_Interactive_Smart_Slate.Models;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,6 +22,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
         }
 
+        public List<SolarSystem> DisplayedSolarSystems
+        {
+            get => displayedSolarSystems;
+            set => SetProperty(ref displayedSolarSystems, value);
+        }
+
         // this is used for the lifeform edit combo box, because Terrormorphs have a scanned resource of None
         public List<Resource> SelectableOrganicResources
         {
@@ -28,9 +35,47 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             set => SetProperty(ref selectableOrganicResources, value);
         }
 
+        public CelestialBody? DisplayedCelestialBody
+        {
+            get => displayedCelestialBody;
+            set => SetProperty(ref displayedCelestialBody, value);
+        }
+
+        public CelestialBody? SelectedCelestialBody
+        {
+            get => selectedCelestialBody;
+            set => SetProperty(ref selectedCelestialBody, value);
+        }
+
+        public Entity? DisplayedEntity
+        {
+            get => displayedEntity;
+            set => SetProperty(ref displayedEntity, value);
+        }
+
+        public Entity? SelectedEntity
+        {
+            get => selectedEntity;
+            set => SetProperty(ref selectedEntity, value);
+        }
+
+
+        public int PictureGridColumns
+        {
+            get => pictureGridColumns;
+            set => SetProperty(ref pictureGridColumns, value);
+        }
+
         private static PlanetaryDataViewModel? instance;
         private MainViewModel mainViewModel = MainViewModel.Instance;
+        private List<SolarSystem> displayedSolarSystems;
         private List<Resource> selectableOrganicResources;
+        private CelestialBody? displayedCelestialBody;
+        private CelestialBody? selectedCelestialBody;
+        private Entity? selectedEntity;
+        private Entity? displayedEntity;
+
+        private int pictureGridColumns;
 
         private PlanetaryDataViewModel()
         {
@@ -57,9 +102,17 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void HandlePropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(mainViewModel.AllResources))
+            switch (e.PropertyName)
             {
-                LoadSelectableResources();
+                case nameof(mainViewModel.AllResources):
+                    LoadSelectableResources();
+                    break;
+                case nameof(mainViewModel.DiscoveredSolarSystems):
+                    if (DisplayedSolarSystems == null) // initialize
+                    {
+                        DisplayedSolarSystems = mainViewModel.DiscoveredSolarSystems;
+                    }
+                    break;
             }
         }
     }

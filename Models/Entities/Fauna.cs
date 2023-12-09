@@ -2,6 +2,11 @@
 {
     public class Fauna : LifeformEntity
     {
+        public override LifeformType LifeformType
+        {
+            get { return LifeformType.Fauna; }
+        }
+
         public Fauna DeepCopy()
         {
             return new Fauna

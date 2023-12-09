@@ -1,5 +1,4 @@
-﻿using Starfield_Interactive_Smart_Slate.Models;
-using System.Collections.Generic;
+﻿using Starfield_Interactive_Smart_Slate.Models.Entities;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -10,19 +9,22 @@ namespace Starfield_Interactive_Smart_Slate
 {
     public partial class AddLifeformDialog : Window
     {
+        private MainViewModel mainViewModel = MainViewModel.Instance;
+
         public string LifeformTypeString { get; set; }
 
-        private Dictionary<string, string> lifeformNames;
         private string? matchedNameString;
+        private LifeformType lifeformType;
 
-        public AddLifeformDialog(Dictionary<string, string> lifeformNames, LifeformType lifeformType)
+        public AddLifeformDialog(LifeformType lifeformType)
         {
-            this.lifeformNames = lifeformNames;
-            this.LifeformTypeString = lifeformType.ToString();
+            this.lifeformType = lifeformType;
+            LifeformTypeString = lifeformType.ToString();
             InitializeComponent();
             FocusManager.SetFocusedElement(this, lifeformNameInput);
+
+            // skipping a view model here for now since it's one simple binding
             DataContext = this;
-            lifeformNameInput.DataContext = this;
         }
 
         private void AddButtonClicked(object sender, RoutedEventArgs e)
@@ -41,6 +43,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             if (matchIndicatorLabel == null) { return; } // wait for UI to load
 
+            var lifeformNames = mainViewModel.GetLifeformNames(lifeformType);
             var matchedNames = lifeformNames.Where(pair => pair.Key.StartsWith(lifeformNameInput.Text.ToLower()));
 
             // present suggestion if exactly 1 lifeform name is matched

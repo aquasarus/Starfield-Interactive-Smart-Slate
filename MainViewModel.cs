@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Starfield_Interactive_Smart_Slate.Models;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -50,12 +51,19 @@ namespace Starfield_Interactive_Smart_Slate
             set => SetProperty(ref discoveredSolarSystems, value);
         }
 
+        public Dictionary<LifeformType, Dictionary<string, string>> LifeformNames
+        {
+            get => lifeformNames;
+            set => SetProperty(ref lifeformNames, value);
+        }
+
         private static MainViewModel? instance;
         private List<Resource> allResources;
         private List<Resource> inorganicResources;
         private List<Resource> organicResources;
         private List<SolarSystem> allSolarSystems;
         private List<SolarSystem> discoveredSolarSystems;
+        private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
 
         private MainViewModel() { }
 
@@ -73,6 +81,14 @@ namespace Starfield_Interactive_Smart_Slate
             DiscoveredSolarSystems = solarSystems
                 .Where(solarSystem => solarSystem.Discovered)
                 .ToList();
+
+            // load all lifeform names
+            LifeformNames = DataRepository.GetLifeformNames();
+        }
+
+        public Dictionary<string, string> GetLifeformNames(LifeformType type)
+        {
+            return lifeformNames[type];
         }
     }
 }
