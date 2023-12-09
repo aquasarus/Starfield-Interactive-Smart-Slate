@@ -29,6 +29,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 
         private static InorganicResourceSearchViewModel? instance;
         private MainViewModel mainViewModel = MainViewModel.Instance;
+
         private Resource currentSearch;
         private IEnumerable<SolarSystem> inorganicSearchResult;
 

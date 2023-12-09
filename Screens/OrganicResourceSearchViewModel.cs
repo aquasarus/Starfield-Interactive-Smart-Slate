@@ -41,6 +41,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 
         private static OrganicResourceSearchViewModel? instance;
         private MainViewModel mainViewModel = MainViewModel.Instance;
+
         private Resource currentSearch;
         private IEnumerable<SolarSystem> organicSearchResult;
         private CelestialBody? selectedCelestialBody;
