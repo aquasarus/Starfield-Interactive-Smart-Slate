@@ -205,13 +205,16 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is CelestialBody)
             {
                 var celestialBody = listViewItem.DataContext as CelestialBody;
-                if (viewModel.SelectedCelestialBody == null && viewModel.DisplayedCelestialBody != celestialBody)
+                if (viewModel.DisplayedCelestialBody != celestialBody)
                 {
-                    DisplayCelestialBodyDetails(celestialBody);
-                    ClearAllSelectionsExcept();
-                }
+                    App.Current.PlayScrollSound();
 
-                App.Current.PlayScrollSound();
+                    if (viewModel.SelectedCelestialBody == null)
+                    {
+                        DisplayCelestialBodyDetails(celestialBody);
+                        ClearAllSelectionsExcept();
+                    }
+                }
             }
         }
 
@@ -407,12 +410,15 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Fauna)
             {
                 var fauna = listViewItem.DataContext as Fauna;
-                if (viewModel.SelectedEntity == null)
+                if (viewModel.DisplayedEntity != fauna)
                 {
-                    DisplayEntityDetails(fauna);
-                }
+                    App.Current.PlayScrollSound();
 
-                App.Current.PlayScrollSound();
+                    if (viewModel.SelectedEntity == null)
+                    {
+                        DisplayEntityDetails(fauna);
+                    }
+                }
             }
         }
 
@@ -490,12 +496,15 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Flora)
             {
                 var flora = listViewItem.DataContext as Flora;
-                if (viewModel.SelectedEntity == null)
+                if (viewModel.DisplayedEntity != flora)
                 {
-                    DisplayEntityDetails(flora);
-                }
+                    App.Current.PlayScrollSound();
 
-                App.Current.PlayScrollSound();
+                    if (viewModel.SelectedEntity == null)
+                    {
+                        DisplayEntityDetails(flora);
+                    }
+                }
             }
         }
 
@@ -662,12 +671,15 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             if (sender is ListViewItem listViewItem && listViewItem.DataContext is Outpost)
             {
                 var outpost = listViewItem.DataContext as Outpost;
-                if (viewModel.SelectedEntity == null)
+                if (viewModel.DisplayedEntity != outpost)
                 {
-                    DisplayEntityDetails(outpost);
-                }
+                    App.Current.PlayScrollSound();
 
-                App.Current.PlayScrollSound();
+                    if (viewModel.SelectedEntity == null)
+                    {
+                        DisplayEntityDetails(outpost);
+                    }
+                }
             }
         }
 
