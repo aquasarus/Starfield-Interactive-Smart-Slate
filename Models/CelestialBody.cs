@@ -1,30 +1,43 @@
-﻿using Starfield_Interactive_Smart_Slate.Models.Entities;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Starfield_Interactive_Smart_Slate.Models.Entities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate.Models
 {
-    public class CelestialBody : INotifyPropertyChanged
+    public class CelestialBody : ObservableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public int BodyID { get; set; }
+
         public string BodyName { get; set; }
+
         public string SystemName { get; set; }
+
         public bool IsMoon { get; set; }
+
         public string BodyType { get; set; }
+
         public double Gravity { get; set; }
+
         public string Temperature { get; set; }
+
         public string Atmosphere { get; set; }
+
         public string Magnetosphere { get; set; }
+
         public string Water { get; set; }
+
         public int TotalFauna { get; set; }
+
         public int TotalFlora { get; set; }
+
         public List<Resource>? Resources { get; set; }
+
         public ObservableCollection<Fauna>? Faunas { get; set; }
+
         public ObservableCollection<Flora>? Floras { get; set; }
+
         public ObservableCollection<Outpost>? Outposts { get; set; }
 
         // helper attributes to display resource search
@@ -148,42 +161,57 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public void NotifyLayoutUpdate()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasOutpost)));
+            OnPropertyChanged(nameof(LifeformProgress));
+            OnPropertyChanged(nameof(HasOutpost));
         }
 
         public void AddFauna(Fauna fauna)
         {
+            // initialize and set up binding dependencies
             if (Faunas == null)
             {
                 Faunas = new ObservableCollection<Fauna>();
+                Faunas.CollectionChanged += (sender, e) =>
+                {
+                    OnPropertyChanged(nameof(LifeformProgress));
+                    OnPropertyChanged(nameof(CanAddFauna));
+                    OnPropertyChanged(nameof(OverviewString));
+                };
             }
+
             Faunas.Add(fauna);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanAddFauna)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OverviewString)));
         }
 
         public void AddFlora(Flora flora)
         {
+            // initialize and set up binding dependencies
             if (Floras == null)
             {
                 Floras = new ObservableCollection<Flora>();
+                Floras.CollectionChanged += (sender, e) =>
+                {
+                    OnPropertyChanged(nameof(LifeformProgress));
+                    OnPropertyChanged(nameof(CanAddFlora));
+                    OnPropertyChanged(nameof(OverviewString));
+                };
             }
+
             Floras.Add(flora);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanAddFlora)));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OverviewString)));
         }
 
         public void AddOutpost(Outpost outpost)
         {
+            // initialize and set up binding dependencies
             if (Outposts == null)
             {
                 Outposts = new ObservableCollection<Outpost>();
+                Outposts.CollectionChanged += (sender, e) =>
+                {
+                    OnPropertyChanged(nameof(HasOutpost));
+                };
             }
+
             Outposts.Add(outpost);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasOutpost)));
         }
 
         public void DeleteOutpost(Outpost deletedOutpost)
@@ -196,8 +224,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HasOutpost)));
         }
 
         public void EditFauna(Fauna editedFauna)
@@ -210,7 +236,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
+            OnPropertyChanged(nameof(LifeformProgress));
         }
 
         public void EditFlora(Flora editedFlora)
@@ -223,7 +249,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     break;
                 }
             }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
+            OnPropertyChanged(nameof(LifeformProgress));
         }
 
         public void EditOutpost(Outpost editedOutpost)
