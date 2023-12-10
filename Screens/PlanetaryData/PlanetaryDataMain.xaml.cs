@@ -319,8 +319,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void DisplayCelestialBodyDetails(CelestialBody celestialBody)
         {
-            entityOverviewGrid.Visibility = Visibility.Hidden;
-
             viewModel.DisplayedEntity = null;
 
             viewModel.DisplayedCelestialBody = celestialBody;
@@ -345,7 +343,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
             entityTitleLabel.Content = entity.Name;
             entityNotesTextBlock.Text = entity.Notes;
-            entityOverviewGrid.Visibility = Visibility.Visible;
             pictureGrid.ItemsSource = entity.Pictures;
 
             entityOverviewScrollViewer.ScrollToTop();
@@ -769,7 +766,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private void ResetEntityOverview()
         {
             viewModel.DisplayedEntity = null;
-            entityOverviewGrid.Visibility = Visibility.Hidden;
         }
 
         private void resetFilter_MenuItem_Click(object sender, RoutedEventArgs e)

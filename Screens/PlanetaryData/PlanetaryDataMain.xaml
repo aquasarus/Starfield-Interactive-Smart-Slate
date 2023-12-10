@@ -499,7 +499,7 @@
                 Drop="AddPictureOnDrop">
                 <ScrollViewer Name="entityOverviewScrollViewer" VerticalScrollBarVisibility="Auto">
                     <Grid Margin="15,5,15,0">
-                        <Grid Name="entityOverviewGrid" Visibility="Hidden">
+                        <Grid Name="entityOverviewGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -510,6 +510,16 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
+                            <Grid.Style>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DisplayedEntity}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
 
                             <Grid Grid.Row="0" Height="55">
                                 <Label Name="entityTitleLabel" Grid.Row="0"
