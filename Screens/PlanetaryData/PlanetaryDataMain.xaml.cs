@@ -52,7 +52,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
                 // update UI state
                 DisplayCelestialBodyDetails(viewModel.DisplayedCelestialBody);
-                DisplayFaunaDetails(insertedFauna);
+                DisplayEntityDetails(insertedFauna);
                 SetSelectedFaunaWithUI(insertedFauna);
 
                 editEntityButton.Focus();
@@ -80,7 +80,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
                 // update UI state
                 DisplayCelestialBodyDetails(viewModel.DisplayedCelestialBody);
-                DisplayFloraDetails(insertedFlora);
+                DisplayEntityDetails(insertedFlora);
                 SetSelectedFloraWithUI(insertedFlora);
 
                 editEntityButton.Focus();
@@ -108,7 +108,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
                 // update UI state
                 DisplayCelestialBodyDetails(viewModel.DisplayedCelestialBody);
-                DisplayOutpostDetails(insertedOutpost);
+                DisplayEntityDetails(insertedOutpost);
                 SetSelectedOutpostWithUI(insertedOutpost);
 
                 editEntityButton.Focus();
@@ -329,39 +329,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             entityOverviewScrollViewer.ScrollToTop();
         }
 
-        private void DisplayFaunaDetails(Fauna fauna)
-        {
-            entitySubtitleLabel.Content = "· Fauna";
-
-            lifeformResourceTitleLabel.Visibility = Visibility.Visible;
-            lifeformResourceLabel.Visibility = Visibility.Visible;
-            lifeformResourceLabel.Content = fauna.ResourceString;
-
-            DisplayEntityDetails(fauna);
-        }
-
-        private void DisplayFloraDetails(Flora flora)
-        {
-            entitySubtitleLabel.Content = "· Flora";
-
-            lifeformResourceTitleLabel.Visibility = Visibility.Visible;
-            lifeformResourceLabel.Visibility = Visibility.Visible;
-            lifeformResourceLabel.Content = flora.ResourceString;
-
-            DisplayEntityDetails(flora);
-        }
-
-        private void DisplayOutpostDetails(Outpost outpost)
-        {
-            entitySubtitleLabel.Content = "· Outpost";
-
-            // outposts have no resource drops
-            lifeformResourceTitleLabel.Visibility = Visibility.Collapsed;
-            lifeformResourceLabel.Visibility = Visibility.Collapsed;
-
-            DisplayEntityDetails(outpost);
-        }
-
         private void EditEntityClicked(object sender, RoutedEventArgs e)
         {
             App.Current.PlayClickSound();
@@ -379,7 +346,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     var resultingFauna = dialog.GetResultingFauna();
                     DataRepository.EditFauna(viewModel.DisplayedEntity as Fauna, resultingFauna);
                     viewModel.DisplayedCelestialBody.EditFauna(resultingFauna);
-                    DisplayFaunaDetails(resultingFauna);
+                    DisplayEntityDetails(resultingFauna);
                     if (viewModel.SelectedEntity != null)
                     {
                         viewModel.SelectedEntity = resultingFauna;
@@ -403,7 +370,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     var resultingFlora = dialog.GetResultingFlora();
                     DataRepository.EditFlora(viewModel.DisplayedEntity as Flora, resultingFlora);
                     viewModel.DisplayedCelestialBody.EditFlora(resultingFlora);
-                    DisplayFloraDetails(resultingFlora);
+                    DisplayEntityDetails(resultingFlora);
                     if (viewModel.SelectedEntity != null)
                     {
                         viewModel.SelectedEntity = resultingFlora;
@@ -425,7 +392,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     var resultingOutpost = dialog.GetResultingOutpost();
                     DataRepository.EditOutpost(resultingOutpost);
                     viewModel.DisplayedCelestialBody.EditOutpost(resultingOutpost);
-                    DisplayOutpostDetails(resultingOutpost);
+                    DisplayEntityDetails(resultingOutpost);
                     if (viewModel.SelectedEntity != null)
                     {
                         viewModel.SelectedEntity = resultingOutpost;
@@ -442,7 +409,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 var fauna = listViewItem.DataContext as Fauna;
                 if (viewModel.SelectedEntity == null)
                 {
-                    DisplayFaunaDetails(fauna);
+                    DisplayEntityDetails(fauna);
                 }
 
                 App.Current.PlayScrollSound();
@@ -525,7 +492,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 var flora = listViewItem.DataContext as Flora;
                 if (viewModel.SelectedEntity == null)
                 {
-                    DisplayFloraDetails(flora);
+                    DisplayEntityDetails(flora);
                 }
 
                 App.Current.PlayScrollSound();
@@ -697,7 +664,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 var outpost = listViewItem.DataContext as Outpost;
                 if (viewModel.SelectedEntity == null)
                 {
-                    DisplayOutpostDetails(outpost);
+                    DisplayEntityDetails(outpost);
                 }
 
                 App.Current.PlayScrollSound();
@@ -827,7 +794,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             ClearAllSelectionsExcept(fauna);
             viewModel.SelectedEntity = fauna;
             faunasListView.SelectedItem = fauna;
-            DisplayFaunaDetails(fauna);
+            DisplayEntityDetails(fauna);
 
             Settings.Default.SelectedFaunaID = fauna.ID;
             Settings.Default.Save();
@@ -849,7 +816,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             ClearAllSelectionsExcept(flora);
             viewModel.SelectedEntity = flora;
             florasListView.SelectedItem = flora;
-            DisplayFloraDetails(flora);
+            DisplayEntityDetails(flora);
 
             Settings.Default.SelectedFloraID = flora.ID;
             Settings.Default.Save();
@@ -871,7 +838,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             ClearAllSelectionsExcept(outpost);
             viewModel.SelectedEntity = outpost;
             outpostsListView.SelectedItem = outpost;
-            DisplayOutpostDetails(outpost);
+            DisplayEntityDetails(outpost);
 
             Settings.Default.SelectedOutpostID = outpost.ID;
             Settings.Default.Save();
