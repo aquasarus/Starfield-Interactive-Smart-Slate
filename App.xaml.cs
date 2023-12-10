@@ -138,6 +138,12 @@ namespace Starfield_Interactive_Smart_Slate
                     DatabaseInitializer.MigrateV7ToV8();
                     currentDatabaseVersion++;
                 }
+
+                if (currentDatabaseVersion == 8)
+                {
+                    DatabaseInitializer.MigrateV8toV9();
+                    currentDatabaseVersion++;
+                }
             }
 
             // if the current version is unexpectedly higher (e.g. user downgraded a build), don't overwrite version number
