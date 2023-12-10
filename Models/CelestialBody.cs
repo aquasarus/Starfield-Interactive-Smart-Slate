@@ -90,9 +90,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
             get { return !((Floras?.Count ?? 0) == TotalFlora); }
         }
 
-        public override string ToString()
+        public string OverviewString
         {
-            string overviewString = $"Type: {BodyType}\n" +
+            get
+            {
+                string overviewString = $"Type: {BodyType}\n" +
                 $"Gravity: {Gravity}\n" +
                 $"Temperature: {Temperature}\n" +
                 $"Atmosphere: {Atmosphere}\n" +
@@ -101,7 +103,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 $"Flora: {GetFloraCountString()}\n" +
                 $"Water: {Water}";
 
-            return overviewString;
+                return overviewString;
+            }
         }
 
         public override bool Equals(object? obj)
@@ -157,6 +160,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
             Faunas.Add(fauna);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanAddFauna)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OverviewString)));
         }
 
         public void AddFlora(Flora flora)
@@ -167,6 +172,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
             Floras.Add(flora);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LifeformProgress)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanAddFlora)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(OverviewString)));
         }
 
         public void AddOutpost(Outpost outpost)
