@@ -321,14 +321,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             viewModel.DisplayedEntity = null;
             viewModel.DisplayedCelestialBody = celestialBody;
-
-            faunasListView.ItemsSource = celestialBody.Faunas;
-            addFaunaButton.IsEnabled = ((celestialBody.Faunas?.Count ?? 0) == celestialBody.TotalFauna) ? false : true;
-
-            florasListView.ItemsSource = celestialBody.Floras;
-            addFloraButton.IsEnabled = ((celestialBody.Floras?.Count ?? 0) == celestialBody.TotalFlora) ? false : true;
-
-            outpostsListView.ItemsSource = celestialBody.Outposts;
         }
 
         private void DisplayEntityDetails(Entity entity)

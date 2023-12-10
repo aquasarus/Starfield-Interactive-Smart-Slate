@@ -72,18 +72,22 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public bool HasOutpost
         {
-            get
-            {
-                return Outposts != null && Outposts.Count > 0;
-            }
+            get { return Outposts != null && Outposts.Count > 0; }
         }
 
         public bool HasLifeform
         {
-            get
-            {
-                return TotalFauna > 0 || TotalFlora > 0;
-            }
+            get { return TotalFauna > 0 || TotalFlora > 0; }
+        }
+
+        public bool CanAddFauna
+        {
+            get { return !((Faunas?.Count ?? 0) == TotalFauna); }
+        }
+
+        public bool CanAddFlora
+        {
+            get { return !((Floras?.Count ?? 0) == TotalFlora); }
         }
 
         public override string ToString()

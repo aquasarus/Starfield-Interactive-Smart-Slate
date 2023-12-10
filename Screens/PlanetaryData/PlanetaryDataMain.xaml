@@ -314,13 +314,14 @@
                         Width="65"
                         Click="AddFaunaClicked"
                         Content="Add"
-                        IsEnabled="false"
+                        IsEnabled="{Binding DisplayedCelestialBody.CanAddFauna}"
                         Style="{StaticResource ThinHeaderStyle}" />
                 </Grid>
 
                 <ListView Name="faunasListView" Grid.Row="1"
                     Margin="1,1,0,0"
                     Padding="5"
+                    ItemsSource="{Binding DisplayedCelestialBody.Faunas}"
                     SelectionMode="Single">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -368,12 +369,13 @@
                         Width="65"
                         Click="AddFloraClicked"
                         Content="Add"
-                        IsEnabled="false"
+                        IsEnabled="{Binding DisplayedCelestialBody.CanAddFlora}"
                         Style="{StaticResource ThinHeaderStyle}" />
                 </Grid>
                 <ListView Name="florasListView" Grid.Row="1"
                     Margin="1,1,0,0"
                     Padding="5"
+                    ItemsSource="{Binding DisplayedCelestialBody.Floras}"
                     SelectionMode="Single">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -431,6 +433,7 @@
                 <ListView Name="outpostsListView" Grid.Row="1"
                     Margin="1,1,0,0"
                     Padding="5"
+                    ItemsSource="{Binding DisplayedCelestialBody.Outposts}"
                     SelectionMode="Single">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
