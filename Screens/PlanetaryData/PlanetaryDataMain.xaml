@@ -42,7 +42,7 @@
                 Padding="15,5,15,0"
                 BorderBrush="Gray"
                 BorderThickness="1">
-                <Grid Name="celestialBodyOverviewGrid" Visibility="Hidden">
+                <Grid Name="celestialBodyOverviewGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -50,6 +50,16 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Visible" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DisplayedCelestialBody}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
 
                     <Grid Grid.Row="0" Height="55">
                         <Label Name="celestialBodyTitleLabel" Grid.Row="0"
@@ -70,6 +80,7 @@
                     <Label Grid.Row="2">
                         <TextBlock Name="celestialBodyOverview"
                             FontSize="20"
+                            Text="{Binding DisplayedCelestialBody}"
                             TextWrapping="Wrap" />
                     </Label>
 
@@ -80,6 +91,7 @@
                     <Label Grid.Row="4">
                         <TextBlock Name="celestialBodyResourcesLabel"
                             FontSize="20"
+                            Text="{Binding DisplayedCelestialBody.ResourcesString}"
                             TextWrapping="Wrap" />
                     </Label>
                 </Grid>
