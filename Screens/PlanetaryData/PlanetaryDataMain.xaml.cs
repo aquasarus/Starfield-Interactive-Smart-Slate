@@ -6,13 +6,11 @@ using Starfield_Interactive_Smart_Slate.Models.Entities;
 using Starfield_Interactive_Smart_Slate.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -431,26 +429,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             AnalyticsUtil.TrackEvent("Select fauna");
         }
 
-        // find solar systems where solar system name or a child celestial body name matches filterText
-        // ignores case, whitespace, symbols
-        private void FilterSolarSystems(string filterText)
-        {
-            filterText = new string(filterText.Where(char.IsLetter).ToArray()).ToLower();
-            ICollectionView view = CollectionViewSource.GetDefaultView(solarSystemsListView.ItemsSource);
-            view.Filter = item =>
-            {
-                if (item is SolarSystem solarSystem)
-                {
-                    return new string(solarSystem.SystemName.Where(char.IsLetter).ToArray()).ToLower().Contains(filterText)
-                    || solarSystem.CelestialBodies.Where(
-                        cb => new string(cb.BodyName.Where(char.IsLetter).ToArray()).ToLower().Contains(filterText)).Any();
-                }
-                return false;
-            };
-
-            recoverCelestialBodySelection();
-        }
-
         private ListView FindNestedListView(DependencyObject parent)
         {
             for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
@@ -866,7 +844,8 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             if (!outpostFilter_MenuItem.IsChecked)
             {
-                FilterSolarSystems(solarSystemFilterTextBox.Text);
+                viewModel.FilterSolarSystems(solarSystemFilterTextBox.Text);
+                recoverCelestialBodySelection();
             }
         }
 

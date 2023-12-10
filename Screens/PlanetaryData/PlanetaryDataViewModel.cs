@@ -4,6 +4,7 @@ using Starfield_Interactive_Smart_Slate.Models.Entities;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Data;
 
 namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 {
@@ -80,6 +81,32 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             LoadSelectableResources();
             mainViewModel.PropertyChanged += HandlePropertyChanged;
+        }
+
+        // find solar systems where solar system name or a child celestial body name matches filterText
+        // ignores case, whitespace, symbols
+        public void FilterSolarSystems(string filterText)
+        {
+            ICollectionView view = CollectionViewSource.GetDefaultView(DisplayedSolarSystems);
+
+            if (string.IsNullOrWhiteSpace(filterText))
+            {
+                view.Filter = null;
+            }
+            else
+            {
+                filterText = new string(filterText.Where(char.IsLetter).ToArray()).ToLower();
+                view.Filter = item =>
+                {
+                    if (item is SolarSystem solarSystem)
+                    {
+                        return new string(solarSystem.SystemName.Where(char.IsLetter).ToArray()).ToLower().Contains(filterText)
+                        || solarSystem.CelestialBodies.Where(
+                            cb => new string(cb.BodyName.Where(char.IsLetter).ToArray()).ToLower().Contains(filterText)).Any();
+                    }
+                    return false;
+                };
+            }
         }
 
         private void LoadSelectableResources()
