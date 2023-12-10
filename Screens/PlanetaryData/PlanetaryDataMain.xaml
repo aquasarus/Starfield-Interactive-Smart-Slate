@@ -539,7 +539,7 @@
                             <Grid Grid.Row="0" Height="55">
                                 <Label Name="entityTitleLabel" Grid.Row="0"
                                     VerticalContentAlignment="Top"
-                                    Content="Pack Octomaggot"
+                                    Content="{Binding DisplayedEntity.Name}"
                                     Style="{StaticResource ContentTitleStyle}" />
                                 <Label Name="entitySubtitleLabel" Grid.Row="1"
                                     VerticalContentAlignment="Bottom"
@@ -564,6 +564,7 @@
                             <ItemsControl Name="pictureGrid" Grid.Row="4"
                                 Margin="0,5,0,0"
                                 HorizontalAlignment="Left"
+                                ItemsSource="{Binding DisplayedEntity.Pictures}"
                                 Loaded="PictureGridLoaded">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -640,7 +641,7 @@
                             <Label Grid.Row="6">
                                 <TextBlock Name="entityNotesTextBlock"
                                     FontSize="17"
-                                    Text="Placeholder sample text"
+                                    Text="{Binding DisplayedEntity.Notes}"
                                     TextWrapping="Wrap" />
                             </Label>
                         </Grid>

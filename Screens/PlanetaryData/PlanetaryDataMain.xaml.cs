@@ -326,11 +326,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private void DisplayEntityDetails(Entity entity)
         {
             viewModel.DisplayedEntity = entity;
-
-            entityTitleLabel.Content = entity.Name;
-            entityNotesTextBlock.Text = entity.Notes;
-            pictureGrid.ItemsSource = entity.Pictures;
-
             entityOverviewScrollViewer.ScrollToTop();
         }
 
