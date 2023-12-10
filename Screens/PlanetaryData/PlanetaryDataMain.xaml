@@ -475,9 +475,18 @@
                     Width="65"
                     Margin="1,0,0,0"
                     Click="EditEntityClicked"
-                    Content="Edit"
-                    IsEnabled="false"
-                    Style="{StaticResource ThinHeaderStyle}" />
+                    Content="Edit">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource ThinHeaderStyle}" TargetType="Button">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DisplayedEntity}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
             <Border Grid.Row="1"
                 Margin="0,1,0,0"

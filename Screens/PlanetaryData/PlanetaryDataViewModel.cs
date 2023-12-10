@@ -59,7 +59,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             set => SetProperty(ref selectedEntity, value);
         }
 
-
         public int PictureGridColumns
         {
             get => pictureGridColumns;

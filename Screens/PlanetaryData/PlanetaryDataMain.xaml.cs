@@ -264,25 +264,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
         }
 
-        // TODO: delete later if unused
-        private void ClearCelestialBodyDetails()
-        {
-            viewModel.DisplayedCelestialBody = null;
-            viewModel.SelectedCelestialBody = null;
-
-            celestialBodyOverview.Text = null;
-            celestialBodyResourcesLabel.Text = null;
-
-            celestialBodyOverviewGrid.Visibility = Visibility.Hidden;
-
-            ResetEntityOverview();
-            ClearAllSelectionsExcept();
-
-            faunasListView.ItemsSource = null;
-            florasListView.ItemsSource = null;
-            outpostsListView.ItemsSource = null;
-        }
-
         private void ClearFaunaSelection()
         {
             faunasListView.UnselectAll();
@@ -339,7 +320,8 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private void DisplayCelestialBodyDetails(CelestialBody celestialBody)
         {
             entityOverviewGrid.Visibility = Visibility.Hidden;
-            editEntityButton.IsEnabled = false;
+
+            viewModel.DisplayedEntity = null;
 
             viewModel.DisplayedCelestialBody = celestialBody;
 
@@ -364,7 +346,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             entityTitleLabel.Content = entity.Name;
             entityNotesTextBlock.Text = entity.Notes;
             entityOverviewGrid.Visibility = Visibility.Visible;
-            editEntityButton.IsEnabled = true;
             pictureGrid.ItemsSource = entity.Pictures;
 
             entityOverviewScrollViewer.ScrollToTop();
@@ -789,7 +770,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             viewModel.DisplayedEntity = null;
             entityOverviewGrid.Visibility = Visibility.Hidden;
-            editEntityButton.IsEnabled = false;
         }
 
         private void resetFilter_MenuItem_Click(object sender, RoutedEventArgs e)
