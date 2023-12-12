@@ -8,6 +8,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
 {
     public class CelestialBody : ObservableObject
     {
+        // TODO: most of these should probably be "set once only" properties
         public int BodyID { get; set; }
 
         public string BodyName { get; set; }
@@ -34,11 +35,23 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public List<Resource>? Resources { get; set; }
 
-        public ObservableCollection<Fauna>? Faunas { get; set; }
+        public ObservableCollection<Fauna>? Faunas
+        {
+            get => faunas;
+            set => SetProperty(ref faunas, value);
+        }
 
-        public ObservableCollection<Flora>? Floras { get; set; }
+        public ObservableCollection<Flora>? Floras
+        {
+            get => floras;
+            set => SetProperty(ref floras, value);
+        }
 
-        public ObservableCollection<Outpost>? Outposts { get; set; }
+        public ObservableCollection<Outpost>? Outposts
+        {
+            get => outposts;
+            set => SetProperty(ref outposts, value);
+        }
 
         // helper attributes to display resource search
         public List<CelestialBody>? Moons;
@@ -119,6 +132,10 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 return overviewString;
             }
         }
+
+        private ObservableCollection<Fauna>? faunas;
+        private ObservableCollection<Flora>? floras;
+        private ObservableCollection<Outpost>? outposts;
 
         public override bool Equals(object? obj)
         {
