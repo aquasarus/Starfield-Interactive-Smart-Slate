@@ -53,10 +53,13 @@ namespace Starfield_Interactive_Smart_Slate.Models
             set => SetProperty(ref outposts, value);
         }
 
-        // helper attributes to display resource search
+        #region ---- helper attributes to display resource search ----
         public List<CelestialBody>? Moons;
+
         public bool Show { get; set; }
+
         public bool GrayOut { get; set; }
+        #endregion
 
         public string? LifeformProgress
         {
