@@ -583,6 +583,7 @@ namespace Starfield_Interactive_Smart_Slate
                 foreach (var system in systemsWithBodiesMap.Values.OfType<SolarSystem>())
                 {
                     system.BuildList();
+                    system.ShowAllCelestialBodies();
                 }
 
                 return systemsWithBodiesMap.Values.OfType<SolarSystem>().ToList();

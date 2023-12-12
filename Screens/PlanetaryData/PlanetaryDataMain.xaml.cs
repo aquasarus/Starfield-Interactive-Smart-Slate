@@ -6,6 +6,7 @@ using Starfield_Interactive_Smart_Slate.Models.Entities;
 using Starfield_Interactive_Smart_Slate.Properties;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -27,7 +28,16 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         public PlanetaryDataMain()
         {
             InitializeComponent();
+            viewModel.PropertyChanged += HandlePropertyChanged;
             solarSystemsListView.Loaded += InitializeSolarSystemsListView;
+        }
+
+        private void HandlePropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(viewModel.DisplayedSolarSystems))
+            {
+                recoverCelestialBodySelection();
+            }
         }
 
         #region CELESTIAL BODIES -----------------------------------------------------------------------------------------------
@@ -56,7 +66,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 editEntityButton.Focus();
 
                 FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
-                ReapplyFilters();
             }
         }
 
@@ -84,7 +93,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 editEntityButton.Focus();
 
                 FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
-                ReapplyFilters();
             }
         }
 
@@ -112,80 +120,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 editEntityButton.Focus();
 
                 FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
-                ReapplyFilters();
             }
-        }
-
-        private void ApplyLifeformFilter()
-        {
-            var outpostSolarSystems = mainViewModel.DiscoveredSolarSystems.Select(
-                    solarSystem =>
-                    {
-                        var solarSystemCopy = solarSystem.Copy();
-                        solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
-                            celestialBody =>
-                            {
-                                var surfaceHasLifeform = celestialBody.HasLifeform;
-                                var moonsHaveOutposts = celestialBody.Moons?.Any(moon => moon.HasLifeform) ?? false;
-
-                                // if celestial body (or any of its moons) has lifeform, include it in the list
-                                if (surfaceHasLifeform || moonsHaveOutposts)
-                                {
-                                    celestialBody.GrayOut = !surfaceHasLifeform;
-                                    celestialBody.Show = true;
-                                }
-                                else
-                                {
-                                    celestialBody.Show = false;
-                                }
-
-                                return celestialBody;
-                            }
-                        ).Where(celestialBody => celestialBody.Show)
-                        .ToList();
-
-                        return solarSystemCopy;
-                    }
-                ).Where(solarSystem => solarSystem.CelestialBodies.Any());
-            solarSystemsListView.ItemsSource = outpostSolarSystems;
-
-            recoverCelestialBodySelection();
-        }
-
-        private void ApplyOutpostsFilter()
-        {
-            var outpostSolarSystems = mainViewModel.DiscoveredSolarSystems.Select(
-                    solarSystem =>
-                    {
-                        var solarSystemCopy = solarSystem.Copy();
-                        solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
-                            celestialBody =>
-                            {
-                                var surfaceHasOutpost = celestialBody.HasOutpost;
-                                var moonsHaveOutposts = celestialBody.Moons?.Any(moon => moon.HasOutpost) ?? false;
-
-                                // if celestial body (or any of its moons) has an outpost, include it in the list
-                                if (surfaceHasOutpost || moonsHaveOutposts)
-                                {
-                                    celestialBody.GrayOut = !surfaceHasOutpost;
-                                    celestialBody.Show = true;
-                                }
-                                else
-                                {
-                                    celestialBody.Show = false;
-                                }
-
-                                return celestialBody;
-                            }
-                        ).Where(celestialBody => celestialBody.Show)
-                        .ToList();
-
-                        return solarSystemCopy;
-                    }
-                ).Where(solarSystem => solarSystem.CelestialBodies.Any());
-            solarSystemsListView.ItemsSource = outpostSolarSystems;
-
-            recoverCelestialBodySelection();
         }
 
         private void celestialBodiesFilterButton_Click(object sender, RoutedEventArgs e)
@@ -306,14 +241,16 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
                 // TODO: don't reload all data here
                 mainViewModel.ReloadAllData();
-                viewModel.SelectedEntity = null;
-                solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
 
+                // reset current selections/filters
+                viewModel.SelectedEntity = null;
+                ResetFilters();
+
+                // show first celestial body of new system
                 var firstCelestialBodyOfSystem = selectedSolarSystem.CelestialBodies[0];
                 DisplayCelestialBodyDetails(firstCelestialBodyOfSystem);
 
-                ResetFilters();
-
+                // select first celestial body of new system
                 solarSystemsListView.LayoutUpdated += SetCelestialBodyOnLayoutUpdate;
             }
         }
@@ -355,7 +292,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     }
 
                     FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
-                    ReapplyFilters();
                 }
             }
             else if (viewModel.DisplayedEntity is Flora)
@@ -379,7 +315,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     }
 
                     FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
-                    ReapplyFilters();
                 }
             }
             else // assume outpost
@@ -576,12 +511,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 solarSystemFilterTextBox.Text = "(Filter for Lifeforms)";
                 solarSystemFilterTextBox.IsEnabled = false;
 
-                ApplyLifeformFilter();
+                viewModel.FilterSolarSystemsByLifeforms();
             }
             else
             {
                 App.Current.PlayCancelSound();
-                solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
+                viewModel.ResetAllFilters();
                 solarSystemFilterTextBox.Text = "";
                 solarSystemFilterTextBox.IsEnabled = true;
             }
@@ -611,7 +546,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 ResetEntityOverview();
 
                 FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
-                ReapplyFilters();
             }
         }
 
@@ -633,12 +567,12 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 solarSystemFilterTextBox.Text = "(Filter for Outposts)";
                 solarSystemFilterTextBox.IsEnabled = false;
 
-                ApplyOutpostsFilter();
+                viewModel.FilterSolarSystemsByOutposts();
             }
             else
             {
                 App.Current.PlayCancelSound();
-                solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
+                viewModel.ResetAllFilters();
                 solarSystemFilterTextBox.Text = "";
                 solarSystemFilterTextBox.IsEnabled = true;
             }
@@ -668,18 +602,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             ToggleSelectOutpost(outpost, clickedItem);
             e.Handled = true;
             AnalyticsUtil.TrackEvent("Select outpost");
-        }
-
-        private void ReapplyFilters()
-        {
-            if (outpostFilter_MenuItem.IsChecked)
-            {
-                ApplyOutpostsFilter();
-            }
-            else if (lifeformFilter_MenuItem.IsChecked)
-            {
-                ApplyLifeformFilter();
-            }
         }
 
         private void recoverCelestialBodySelection()
@@ -716,7 +638,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             lifeformFilter_MenuItem.IsChecked = false;
             outpostFilter_MenuItem.IsChecked = false;
-            solarSystemsListView.ItemsSource = mainViewModel.DiscoveredSolarSystems;
+            viewModel.ResetAllFilters();
             solarSystemFilterTextBox.Text = "";
             solarSystemFilterTextBox.IsEnabled = true;
         }
@@ -844,8 +766,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         {
             if (!outpostFilter_MenuItem.IsChecked)
             {
-                viewModel.FilterSolarSystems(solarSystemFilterTextBox.Text);
-                recoverCelestialBodySelection();
+                viewModel.SearchSolarSystemsByText(solarSystemFilterTextBox.Text);
             }
         }
 

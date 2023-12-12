@@ -85,7 +85,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         // find solar systems where solar system name or a child celestial body name matches filterText
         // ignores case, whitespace, symbols
-        public void FilterSolarSystems(string filterText)
+        public void SearchSolarSystemsByText(string filterText)
         {
             ICollectionView view = CollectionViewSource.GetDefaultView(DisplayedSolarSystems);
 
@@ -107,6 +107,77 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     return false;
                 };
             }
+
+            OnPropertyChanged(nameof(DisplayedSolarSystems));
+        }
+
+        public void FilterSolarSystemsByLifeforms()
+        {
+            // use DiscoveredSolarSystems as base
+            DisplayedSolarSystems = mainViewModel.DiscoveredSolarSystems.Select(
+                solarSystem =>
+                {
+                    solarSystem.ResetShownCelestialBodies();
+
+                    // build ShownCelestialBodies list
+                    foreach (var celestialBody in solarSystem.CelestialBodies)
+                    {
+                        var surfaceHasLifeform = celestialBody.HasLifeform;
+                        var moonsHaveOutposts = celestialBody.Moons?.Any(moon => moon.HasLifeform) ?? false;
+
+                        // if celestial body (or any of its moons) has lifeform, include it in the list
+                        if (surfaceHasLifeform || moonsHaveOutposts)
+                        {
+                            celestialBody.GrayOut = !surfaceHasLifeform;
+                            solarSystem.ShownCelestialBodies.Add(celestialBody);
+                        }
+                    }
+
+                    return solarSystem;
+                }
+            ).Where(solarSystem => solarSystem.ShownCelestialBodies.Any())
+            .ToList();
+        }
+
+        public void FilterSolarSystemsByOutposts()
+        {
+            // use DiscoveredSolarSystems as base
+            DisplayedSolarSystems = mainViewModel.DiscoveredSolarSystems.Select(
+                solarSystem =>
+                {
+                    solarSystem.ResetShownCelestialBodies();
+
+                    // build ShownCelestialBodies list
+                    foreach (var celestialBody in solarSystem.CelestialBodies)
+                    {
+                        var surfaceHasOutpost = celestialBody.HasOutpost;
+                        var moonsHaveOutposts = celestialBody.Moons?.Any(moon => moon.HasOutpost) ?? false;
+
+                        // if celestial body (or any of its moons) has an outpost, include it in the list
+                        if (surfaceHasOutpost || moonsHaveOutposts)
+                        {
+                            celestialBody.GrayOut = !surfaceHasOutpost;
+                            solarSystem.ShownCelestialBodies.Add(celestialBody);
+                        }
+                    }
+
+                    return solarSystem;
+                }
+            ).Where(solarSystem => solarSystem.ShownCelestialBodies.Any())
+            .ToList();
+        }
+
+        public void ResetAllFilters()
+        {
+            DisplayedSolarSystems = mainViewModel.DiscoveredSolarSystems;
+
+            foreach (var solarSystem in DisplayedSolarSystems)
+            {
+                solarSystem.ShowAllCelestialBodies();
+            }
+
+            // force notify here because the data may not change
+            OnPropertyChanged(nameof(DisplayedSolarSystems));
         }
 
         private void LoadSelectableResources()

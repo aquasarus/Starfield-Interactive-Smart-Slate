@@ -206,7 +206,7 @@
                             </Label>
                             <ListView Grid.Row="1"
                                 Padding="5"
-                                ItemsSource="{Binding CelestialBodies}"
+                                ItemsSource="{Binding ShownCelestialBodies}"
                                 PreviewMouseWheel="CelestialBodyListView_PreviewMouseWheel"
                                 SelectionMode="Single">
                                 <ListView.ItemTemplate>
