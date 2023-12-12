@@ -38,19 +38,56 @@ namespace Starfield_Interactive_Smart_Slate.Models
         public ObservableCollection<Fauna>? Faunas
         {
             get => faunas;
-            set => SetProperty(ref faunas, value);
+            set
+            {
+                SetProperty(ref faunas, value);
+
+                if (faunas != null)
+                {
+                    faunas.CollectionChanged += (sender, e) =>
+                    {
+                        OnPropertyChanged(nameof(LifeformProgress));
+                        OnPropertyChanged(nameof(CanAddFauna));
+                        OnPropertyChanged(nameof(OverviewString));
+                    };
+                }
+            }
         }
 
         public ObservableCollection<Flora>? Floras
         {
             get => floras;
-            set => SetProperty(ref floras, value);
+            set
+            {
+                SetProperty(ref floras, value);
+
+                if (floras != null)
+                {
+                    floras.CollectionChanged += (sender, e) =>
+                    {
+                        OnPropertyChanged(nameof(LifeformProgress));
+                        OnPropertyChanged(nameof(CanAddFlora));
+                        OnPropertyChanged(nameof(OverviewString));
+                    };
+                }
+            }
         }
 
         public ObservableCollection<Outpost>? Outposts
         {
             get => outposts;
-            set => SetProperty(ref outposts, value);
+            set
+            {
+                SetProperty(ref outposts, value);
+
+                if (outposts != null)
+                {
+                    outposts.CollectionChanged += (sender, e) =>
+                    {
+                        OnPropertyChanged(nameof(HasOutpost));
+                    };
+                }
+            }
         }
 
         #region ---- helper attributes to display resource search ----
@@ -191,12 +228,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
             if (Faunas == null)
             {
                 Faunas = new ObservableCollection<Fauna>();
-                Faunas.CollectionChanged += (sender, e) =>
-                {
-                    OnPropertyChanged(nameof(LifeformProgress));
-                    OnPropertyChanged(nameof(CanAddFauna));
-                    OnPropertyChanged(nameof(OverviewString));
-                };
             }
 
             Faunas.Add(fauna);
@@ -208,12 +239,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
             if (Floras == null)
             {
                 Floras = new ObservableCollection<Flora>();
-                Floras.CollectionChanged += (sender, e) =>
-                {
-                    OnPropertyChanged(nameof(LifeformProgress));
-                    OnPropertyChanged(nameof(CanAddFlora));
-                    OnPropertyChanged(nameof(OverviewString));
-                };
             }
 
             Floras.Add(flora);
@@ -225,10 +250,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
             if (Outposts == null)
             {
                 Outposts = new ObservableCollection<Outpost>();
-                Outposts.CollectionChanged += (sender, e) =>
-                {
-                    OnPropertyChanged(nameof(HasOutpost));
-                };
             }
 
             Outposts.Add(outpost);
