@@ -415,7 +415,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                         {
                             if (celestialBody.BodyID == selectedCelestialBodyID)
                             {
-                                SetSelectedCelestialBodyWithUI(celestialBody, solarSystem);
+                                SetSelectedCelestialBodyWithUI(celestialBody);
                                 DisplayCelestialBodyDetails(celestialBody);
 
                                 // restore last session's fauna/flora selection
@@ -627,44 +627,27 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             Settings.Default.Save();
         }
 
-        private void SetSelectedCelestialBodyWithUI(CelestialBody celestialBody, SolarSystem? parentSolarSystem = null)
+        private void SetSelectedCelestialBodyWithUI(CelestialBody celestialBody)
         {
-            // find parent solar system if necessary
-            SolarSystem selectedSolarSystem = null;
-            if (parentSolarSystem != null)
-            {
-                selectedSolarSystem = parentSolarSystem;
-            }
-            else
-            {
-                foreach (var item in solarSystemsListView.ItemContainerGenerator.Items)
-                {
-                    var solarSystem = (SolarSystem)item;
-                    if (solarSystem.CelestialBodies.Contains(celestialBody))
-                    {
-                        selectedSolarSystem = solarSystem;
-                        break;
-                    }
-                }
-            }
-
-            // only proceed if the displayed list contains the selected celestial body
-            if (selectedSolarSystem == null)
-            {
-                return;
-            }
-
-            // update data state
-            SetSelectedCelestialBody(celestialBody);
-
-            // set UI to selected state
+            var selectedSolarSystem = celestialBody.ParentSystem;
             var solarSystemListViewItem = solarSystemsListView
                 .ItemContainerGenerator.ContainerFromItem(selectedSolarSystem);
-            ListView celestialBodyListView = FindNestedListView(solarSystemListViewItem);
-            celestialBodyListView.SelectedItem = celestialBody;
 
-            // scroll parent solar system into view
-            solarSystemsListView.ScrollIntoView(selectedSolarSystem);
+            // only proceed if the displayed list contains the selected celestial body
+            // solarSystemListViewItem can be null if the selected solar system is not currently displayed
+            // this can happen if the user is focused on a celestial body, then applies an excluding filter
+            if (solarSystemListViewItem != null)
+            {
+                // update data state
+                SetSelectedCelestialBody(celestialBody);
+
+                // set UI to selected state
+                ListView celestialBodyListView = FindNestedListView(solarSystemListViewItem);
+                celestialBodyListView.SelectedItem = celestialBody;
+
+                // scroll parent solar system into view
+                solarSystemsListView.ScrollIntoView(selectedSolarSystem);
+            }
         }
 
         private void SetSelectedFaunaWithUI(Fauna fauna)
