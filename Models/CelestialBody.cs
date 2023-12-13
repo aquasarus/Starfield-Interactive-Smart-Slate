@@ -216,12 +216,6 @@ namespace Starfield_Interactive_Smart_Slate.Models
             };
         }
 
-        public void NotifyLayoutUpdate()
-        {
-            OnPropertyChanged(nameof(LifeformProgress));
-            OnPropertyChanged(nameof(HasOutpost));
-        }
-
         public void AddFauna(Fauna fauna)
         {
             // initialize and set up binding dependencies

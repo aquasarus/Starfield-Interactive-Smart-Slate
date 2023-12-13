@@ -64,8 +64,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 SetSelectedFaunaWithUI(insertedFauna);
 
                 editEntityButton.Focus();
-
-                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
             }
         }
 
@@ -91,8 +89,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 SetSelectedFloraWithUI(insertedFlora);
 
                 editEntityButton.Focus();
-
-                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
             }
         }
 
@@ -118,8 +114,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 SetSelectedOutpostWithUI(insertedOutpost);
 
                 editEntityButton.Focus();
-
-                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
             }
         }
 
@@ -290,8 +284,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                         viewModel.SelectedEntity = resultingFauna;
                         faunasListView.SelectedItem = viewModel.SelectedEntity;
                     }
-
-                    FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
                 }
             }
             else if (viewModel.DisplayedEntity is Flora)
@@ -313,8 +305,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                         viewModel.SelectedEntity = resultingFlora;
                         florasListView.SelectedItem = viewModel.SelectedEntity;
                     }
-
-                    FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
                 }
             }
             else // assume outpost
@@ -382,25 +372,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                     }
                 }
             }
-            return null;
-        }
-
-        private CelestialBody? FindOriginalDisplayedCelestialBody()
-        {
-            // TODO: this is a hack. need to find a better way to manage current view models
-            // find and update original celestial body inside mainViewModel.DiscoveredSolarSystems,
-            // because viewModel.DisplayedCelestialBody may be a copy from an applied filter
-            foreach (var solarSystem in mainViewModel.DiscoveredSolarSystems)
-            {
-                foreach (var celestialBody in solarSystem.CelestialBodies)
-                {
-                    if (celestialBody != viewModel.DisplayedCelestialBody && celestialBody.Equals(viewModel.DisplayedCelestialBody))
-                    {
-                        return celestialBody;
-                    }
-                }
-            }
-
             return null;
         }
 
@@ -544,8 +515,6 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 viewModel.DisplayedCelestialBody.DeleteOutpost(outpost);
                 ClearAllSelectionsExcept();
                 ResetEntityOverview();
-
-                FindOriginalDisplayedCelestialBody()?.NotifyLayoutUpdate();
             }
         }
 
