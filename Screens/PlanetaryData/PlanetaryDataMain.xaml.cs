@@ -232,9 +232,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             {
                 SolarSystem selectedSolarSystem = dialog.SelectedSolarSystem;
                 DataRepository.DiscoverSolarSystem(selectedSolarSystem);
-
-                // TODO: don't reload all data here
-                mainViewModel.ReloadAllData();
+                mainViewModel.DiscoverSolarSystem(selectedSolarSystem);
 
                 // reset current selections/filters
                 viewModel.SelectedEntity = null;

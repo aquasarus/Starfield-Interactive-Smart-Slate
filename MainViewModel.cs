@@ -90,5 +90,14 @@ namespace Starfield_Interactive_Smart_Slate
         {
             return lifeformNames[type];
         }
+
+        public void DiscoverSolarSystem(SolarSystem solarSystem)
+        {
+            solarSystem.Discovered = true;
+            DiscoveredSolarSystems = AllSolarSystems
+                .Where(solarSystem => solarSystem.Discovered)
+                .ToList();
+            OnPropertyChanged(nameof(DiscoveredSolarSystems));
+        }
     }
 }
