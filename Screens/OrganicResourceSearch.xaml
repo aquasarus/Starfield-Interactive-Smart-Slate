@@ -173,10 +173,9 @@
                                                 </TextBlock.Style>
                                             </TextBlock>
                                             <Image Name="CelestialBodyOutpostIcon" Grid.Column="1"
-                                                Height="11"
                                                 Margin="7,0,0,0"
                                                 HorizontalAlignment="Right"
-                                                Source="../Images/starfield_outpost_icon.png"
+                                                Style="{StaticResource OutpostIcon}"
                                                 Visibility="Collapsed" />
                                             <TextBlock Grid.Column="2" HorizontalAlignment="Right">
                                                 <TextBlock.Style>

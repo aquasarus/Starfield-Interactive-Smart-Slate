@@ -30,5 +30,10 @@
             <Setter Property="FontSize" Value="17" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
+
+        <Style x:Key="OutpostIcon" TargetType="Image">
+            <Setter Property="Source" Value="Images/starfield_outpost_icon.png" />
+            <Setter Property="Height" Value="11" />
+        </Style>
     </Application.Resources>
 </Application>
