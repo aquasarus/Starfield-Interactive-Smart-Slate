@@ -575,20 +575,22 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
         private void recoverCelestialBodySelection()
         {
-            // wait for UI to load, then attempt to recover selected item
-            solarSystemsListView.UpdateLayout();
-
-            // find the solar system based on selectedCelestialBody
-            var containerGenerator = solarSystemsListView.ItemContainerGenerator;
-            var selectedSolarSystem = containerGenerator.Items.FirstOrDefault(
-                solarSystem => ((SolarSystem)solarSystem).CelestialBodies.Contains(viewModel.SelectedCelestialBody)
-            );
-
-            if (selectedSolarSystem != null)
+            if (viewModel.SelectedCelestialBody != null)
             {
+                // wait for UI to load, then attempt to recover selected item
+                solarSystemsListView.UpdateLayout();
+
+                var selectedSolarSystem = viewModel.SelectedCelestialBody.ParentSystem;
+                var containerGenerator = solarSystemsListView.ItemContainerGenerator;
                 var solarSystemListViewItem = containerGenerator.ContainerFromItem(selectedSolarSystem);
-                ListView celestialBodyListView = FindNestedListView(solarSystemListViewItem);
-                celestialBodyListView.SelectedItem = viewModel.SelectedCelestialBody;
+
+                // solarSystemListViewItem can be null if the selected solar system is not currently displayed
+                // this can happen if the user is focused on a celestial body, then applies an excluding filter
+                if (solarSystemListViewItem != null)
+                {
+                    ListView celestialBodyListView = FindNestedListView(solarSystemListViewItem);
+                    celestialBodyListView.SelectedItem = viewModel.SelectedCelestialBody;
+                }
             }
         }
 

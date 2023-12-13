@@ -13,7 +13,8 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public string BodyName { get; set; }
 
-        public string SystemName { get; set; }
+        // be careful with this circular reference! it should only be used as a helper pointer.
+        public SolarSystem ParentSystem { get; set; }
 
         public bool IsMoon { get; set; }
 
@@ -195,7 +196,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
             {
                 BodyID = BodyID,
                 BodyName = BodyName,
-                SystemName = SystemName,
+                ParentSystem = ParentSystem,
                 IsMoon = IsMoon,
                 BodyType = BodyType,
                 Gravity = Gravity,

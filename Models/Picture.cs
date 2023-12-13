@@ -113,7 +113,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
                 Directory.CreateDirectory(picturesFolder);
             }
 
-            var solarSystemFolder = Path.Combine(picturesFolder, RemoveDisallowedCharacters(celestialBody.SystemName));
+            var solarSystemFolder = Path.Combine(picturesFolder, RemoveDisallowedCharacters(celestialBody.ParentSystem.SystemName));
             if (!Directory.Exists(solarSystemFolder))
             {
                 Directory.CreateDirectory(solarSystemFolder);

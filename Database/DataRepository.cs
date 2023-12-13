@@ -550,7 +550,7 @@ namespace Starfield_Interactive_Smart_Slate
                             {
                                 BodyID = bodyID,
                                 BodyName = bodyName,
-                                SystemName = systemName,
+                                ParentSystem = system,
                                 IsMoon = isMoon,
                                 BodyType = bodyType,
                                 Gravity = gravity,

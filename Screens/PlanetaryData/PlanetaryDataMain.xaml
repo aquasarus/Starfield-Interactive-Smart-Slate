@@ -73,7 +73,7 @@
                             Style="{StaticResource ContentTitleStyle}" />
                         <Label Name="celestialBodyMiniTitleLabel" Grid.Row="1"
                             VerticalContentAlignment="Bottom"
-                            Content="{Binding DisplayedCelestialBody.SystemName}"
+                            Content="{Binding DisplayedCelestialBody.ParentSystem.SystemName}"
                             ContentStringFormat="{}· {0} System"
                             FontSize="15" />
                     </Grid>
