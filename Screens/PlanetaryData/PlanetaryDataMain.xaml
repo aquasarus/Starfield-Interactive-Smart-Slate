@@ -184,7 +184,9 @@
                 BorderBrush="Gray"
                 BorderThickness="1"
                 ItemsSource="{Binding DisplayedSolarSystems}"
-                ScrollViewer.CanContentScroll="False">
+                ScrollViewer.CanContentScroll="True"
+                VirtualizingPanel.ScrollUnit="Pixel"
+                VirtualizingStackPanel.VirtualizationMode="Recycling">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,0,1,0">
