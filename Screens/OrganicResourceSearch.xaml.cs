@@ -58,7 +58,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
             }
             else
             {
-                AnalyticsUtil.TrackEvent("Search organic resource");
+                AnalyticsUtil.TrackResourceEvent("Search organic resource", selectedResource);
                 App.Current.PlayClickSound();
             }
 

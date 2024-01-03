@@ -1,5 +1,6 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Starfield_Interactive_Smart_Slate.Models;
 using System;
 using System.Collections.Generic;
 
@@ -9,9 +10,22 @@ namespace Starfield_Interactive_Smart_Slate
     {
         public static void TrackEvent(string eventName)
         {
-            Analytics.TrackEvent(eventName, new Dictionary<string, string>
+            TrackEventWithProperties(eventName);
+        }
+
+        public static void TrackEventWithProperties(string eventName, Dictionary<string, string>? properties = null)
+        {
+            if (properties == null) properties = new Dictionary<string, string>();
+
+            properties.TryAdd("UserID", DataRepository.UserID);
+            Analytics.TrackEvent(eventName, properties);
+        }
+
+        public static void TrackResourceEvent(string eventName, Resource resource)
+        {
+            TrackEventWithProperties(eventName, new Dictionary<string, string>
             {
-                { "UserID", DataRepository.UserID }
+                { "ResourceName", resource.FullName }
             });
         }
 

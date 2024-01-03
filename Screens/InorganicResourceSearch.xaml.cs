@@ -55,7 +55,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
             }
             else
             {
-                AnalyticsUtil.TrackEvent("Search inorganic resource");
+                AnalyticsUtil.TrackResourceEvent("Search inorganic resource", selectedResource);
                 App.Current.PlayClickSound();
             }
 
