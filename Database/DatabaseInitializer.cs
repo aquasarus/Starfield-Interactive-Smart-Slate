@@ -9,7 +9,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
-        public static int TargetDatabaseVersion = 9;
+        public static int TargetDatabaseVersion = 10;
 
         public static string UserDatabaseFolder()
         {
@@ -251,6 +251,23 @@ namespace Starfield_Interactive_Smart_Slate
                     WHERE LifeformName = 'Herding Rockground Scavenger'
                 ", conn))
                 {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void MigrateV9toV10()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO UserInfo
+                        (InfoKey, InfoValue)
+                    VALUES
+                        (@UnlockLifeformCountsKey, 0)", conn))
+                {
+                    cmd.Parameters.AddWithValue("@UnlockLifeformCountsKey", UserSettings.UnlockLifeformCountsKey);
                     cmd.ExecuteNonQuery();
                 }
             }

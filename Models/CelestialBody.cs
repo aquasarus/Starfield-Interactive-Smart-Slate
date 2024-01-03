@@ -149,12 +149,28 @@ namespace Starfield_Interactive_Smart_Slate.Models
 
         public bool CanAddFauna
         {
-            get { return !((Faunas?.Count ?? 0) == TotalFauna); }
+            get
+            {
+                if (App.Current.UserSettings.UnlockLifeformCounts)
+                {
+                    return true;
+                }
+
+                return !((Faunas?.Count ?? 0) >= TotalFauna);
+            }
         }
 
         public bool CanAddFlora
         {
-            get { return !((Floras?.Count ?? 0) == TotalFlora); }
+            get
+            {
+                if (App.Current.UserSettings.UnlockLifeformCounts)
+                {
+                    return true;
+                }
+
+                return !((Floras?.Count ?? 0) >= TotalFlora);
+            }
         }
 
         public string OverviewString
@@ -367,6 +383,12 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
 
             return (found, faunaCollection, floraCollection);
+        }
+
+        public void NotifyLifeformUnlockChanged()
+        {
+            OnPropertyChanged(nameof(CanAddFauna));
+            OnPropertyChanged(nameof(CanAddFlora));
         }
 
         private string GetFaunaCountString()

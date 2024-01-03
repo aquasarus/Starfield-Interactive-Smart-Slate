@@ -31,7 +31,9 @@ namespace Starfield_Interactive_Smart_Slate
         public App()
         {
             current = this;
-            UserSettings = new UserSettings();
+
+            // TODO: maybe refactor all usages to directly use .Instance?
+            UserSettings = UserSettings.Instance;
         }
 
         public void PlayScrollSound()
@@ -142,6 +144,12 @@ namespace Starfield_Interactive_Smart_Slate
                 if (currentDatabaseVersion == 8)
                 {
                     DatabaseInitializer.MigrateV8toV9();
+                    currentDatabaseVersion++;
+                }
+
+                if (currentDatabaseVersion == 9)
+                {
+                    DatabaseInitializer.MigrateV9toV10();
                     currentDatabaseVersion++;
                 }
             }

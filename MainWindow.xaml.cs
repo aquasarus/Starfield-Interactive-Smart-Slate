@@ -1,4 +1,5 @@
 ﻿using Starfield_Interactive_Smart_Slate.Dialogs;
+using Starfield_Interactive_Smart_Slate.Screens.PlanetaryData;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
@@ -25,6 +26,7 @@ namespace Starfield_Interactive_Smart_Slate
             EnableSoundsCheckBox.DataContext = App.Current.UserSettings;
             EnableAnalyticsCheckBox.DataContext = App.Current.UserSettings;
             EnableUpdateNotificationCheckBox.DataContext = App.Current.UserSettings;
+            UnlockLifeformCountsCheckBox.DataContext = App.Current.UserSettings;
 
             // show version number
             Version version = Assembly.GetEntryAssembly().GetName().Version;
@@ -146,6 +148,20 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 App.Current.PlayCancelSound();
             }
+        }
+
+        private void UnlockLifeformCountsCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Current.UserSettings.UnlockLifeformCounts)
+            {
+                App.Current.PlayClickSound();
+            }
+            else
+            {
+                App.Current.PlayCancelSound();
+            }
+
+            PlanetaryDataViewModel.Instance.DisplayedCelestialBody?.NotifyLifeformUnlockChanged();
         }
 
         #endregion

@@ -6,10 +6,24 @@ namespace Starfield_Interactive_Smart_Slate.Database
 {
     public class UserSettings : ObservableObject
     {
+        public static UserSettings Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UserSettings();
+                }
+
+                return instance;
+            }
+        }
+
         public static readonly string EnableSoundsKey = "EnableSounds";
         public static readonly string EnableAnalyticsKey = "EnableAnalytics";
         public static readonly string EnableUpdateNotificationKey = "EnableUpdateNotification";
         public static readonly string HasShownAnalyticsPopupKey = "HasShownAnalyticsPopup";
+        public static readonly string UnlockLifeformCountsKey = "UnlockLifeformCounts";
 
         public bool EnableSounds
         {
@@ -55,10 +69,25 @@ namespace Starfield_Interactive_Smart_Slate.Database
             }
         }
 
+        public bool UnlockLifeformCounts
+        {
+            get
+            {
+                return unlockLifeformCounts;
+            }
+            set
+            {
+                DataRepository.SetUserSettingBool(UnlockLifeformCountsKey, value);
+                SetProperty(ref unlockLifeformCounts, value);
+            }
+        }
+
+        private static UserSettings? instance;
         private bool enableSounds;
         private bool enableAnalytics;
         private bool enableUpdateNotification;
         private bool hasShownAnalyticsPopup;
+        private bool unlockLifeformCounts;
 
         public void LoadSettings()
         {
@@ -75,6 +104,9 @@ namespace Starfield_Interactive_Smart_Slate.Database
 
             hasShownAnalyticsPopup = DataRepository.GetUserSettingBool(HasShownAnalyticsPopupKey);
             OnPropertyChanged(new PropertyChangedEventArgs(nameof(HasShownAnalyticsPopup)));
+
+            unlockLifeformCounts = DataRepository.GetUserSettingBool(UnlockLifeformCountsKey);
+            OnPropertyChanged(new PropertyChangedEventArgs(nameof(UnlockLifeformCounts)));
         }
     }
 }
