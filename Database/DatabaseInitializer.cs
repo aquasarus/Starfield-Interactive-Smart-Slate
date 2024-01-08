@@ -265,8 +265,10 @@ namespace Starfield_Interactive_Smart_Slate
                     INSERT INTO UserInfo
                         (InfoKey, InfoValue)
                     VALUES
+                        (@LanguageKey, 'English'),
                         (@UnlockLifeformCountsKey, 0)", conn))
                 {
+                    cmd.Parameters.AddWithValue("@LanguageKey", UserSettings.LanguageKey);
                     cmd.Parameters.AddWithValue("@UnlockLifeformCountsKey", UserSettings.UnlockLifeformCountsKey);
                     cmd.ExecuteNonQuery();
                 }
