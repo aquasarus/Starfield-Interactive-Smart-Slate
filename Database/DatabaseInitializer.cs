@@ -270,6 +270,90 @@ namespace Starfield_Interactive_Smart_Slate
                     cmd.Parameters.AddWithValue("@UnlockLifeformCountsKey", UserSettings.UnlockLifeformCountsKey);
                     cmd.ExecuteNonQuery();
                 }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    DELETE FROM LifeformNames
+                    WHERE LifeformName IN (
+                        'Hunting Nail Tail', 
+                        'Trilibite Filterer',
+                        'Flocking Scepterer Filterer',
+                        'Cassoway Grazer'
+                    )", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Swarming Stingback'
+                    WHERE LifeformName = 'Swarmking Stingback'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Hunting Clickbeetle Scavenger'
+                    WHERE LifeformName = 'Hunting Clickbeetle Scanvenger'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Chasmbass'
+                    WHERE LifeformName = 'Chambass'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Wanderer''s Husk'
+                    WHERE LifeformName = 'Wanderer''S Husk'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Wander''s Husk'
+                    WHERE LifeformName = 'Wander''S Husk'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Hunter''s Stalk'
+                    WHERE LifeformName = 'Hunter''S Stalk'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Hecate''s Fireleaf'
+                    WHERE LifeformName = 'Hecate''S Fireleaf'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE LifeformNames
+                    SET LifeformName = 'Explorer''s Coleus'
+                    WHERE LifeformName = 'Explorer''S Coleus'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
