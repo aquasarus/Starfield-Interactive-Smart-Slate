@@ -117,7 +117,7 @@
                             Margin="0,10,0,0"
                             VerticalContentAlignment="Center"
                             Click="UnlockLifeformCountsCheckBox_Click"
-                            Content="Unlock Fauna/Flora counts from in-game defaults 🛈"
+                            Content="Unlock fauna/flora counts from in-game defaults 🛈"
                             FontSize="18"
                             IsChecked="{Binding UnlockLifeformCounts}"
                             ToolTipService.InitialShowDelay="200">
