@@ -1,0 +1,335 @@
+Ankylosaure [Herbivore]
+Fourmivore [Géophage]
+[Alpha] Ankylosaure
+[Alpha] Crocofrayant
+[Alpha] Dragon
+[Alpha] Exocoureur
+[Alpha] Perroquet-buse
+Artichaut [Filtreur]
+Artichaut [Géophage]
+Ashta
+Scarabée [Filtreur]
+Scarabée [Géophage]
+Scarabée [Brouteur]
+Scarabée [Charogne]
+Coléocrabe [Brouteur]
+Carascargot [Filtreur]
+Carascargot [Géophage]
+Carascargot [Brouteur]
+Carascargot [Charogne]
+Cassowary [Brouteur]
+Chenille [Filtreur]
+Chenille [Charogne]
+Centicrâne [Filtreur]
+Centicrâne [Géophage]
+Centicrâne [Brouteur]
+Centicrâne [Herbivore]
+Centicrâne [Charogne]
+Perche abyssale
+Cockatrice [Filtreur]
+Cafard [Géophage]
+Pot corail [Filtreur]
+Mante corail [Charogne]
+Cœur de corail [Filtreur]
+Cœur de corail [Géophage]
+Cœur de corail [Brouteur]
+Cœur de corail [Herbivore]
+Cœur de corail [Charogne]
+Crabe [Charogne]
+Mouche-crabe [Herbivore]
+Crocalypse [Brouteur]
+Cyclozard [Brouteur]
+Drone [Filtreur]
+Drone [Brouteur]
+Porteur d'œufs [Herbivore]
+Sac d'œufs [Filtreur]
+Sac d'œufs [Géophage]
+Sac d'œufs [Charogne]
+Exobestiole [Charogne]
+Cornu ardent [Filtreur]
+Cornu ardent [Géophage]
+Cornu ardent [Brouteur]
+Cornu ardent [Herbivore]
+Cornu ardent [Charogne]
+[Harde] Ankylosaure [Géophage]
+[Harde] Ankylosaure [Brouteur]
+[Harde] Coléocrabe [Brouteur]
+[Harde] Coléocrabe [Herbivore]
+[Harde] Crabe cloqué [Herbivore]
+[Harde] Huître-os [Brouteur]
+[Harde] Chenille [Charogne]
+[Harde] Céphalopode [Charogne]
+[Harde] Cafard [Charogne]
+[Harde] Rampe-corail [Géophage]
+[Harde] Crabe [Filtreur]
+[Harde] Crabe [Géophage]
+[Harde] Crabe [Herbivore]
+[Harde] Cyclozard [Charogne]
+[Harde] Dodo [Brouteur]
+[Harde] Croupœuf [Filtreur]
+[Harde] Exobestiole
+[Harde] Exobestiole [Géophage]
+[Harde] Exocoureur [Géophage]
+[Harde] Geckon [Charogne]
+[Harde] Hippodon [Herbivore]
+[Harde] Hippodon [Charogne]
+[Harde] Couteau [Géophage]
+[Harde] Marcherécif [Brouteur]
+[Harde] Marcherécif [Herbivore]
+[Harde] Marcherécif [Charogne]
+[Harde] Phyllie [Filtreur]
+[Harde] Phyllie [Brouteur]
+[Harde] Phyllie [Herbivore]
+[Harde] Serre-gueule [Brouteur]
+[Harde] Granbras [Herbivore]
+[Harde] Nautile [Filtreur]
+[Harde] Octovers [Brouteur]
+[Harde] Orchidée [Géophage]
+[Harde] Orchidée [Charogne]
+[Harde] Carapace ronde [Brouteur]
+[Harde] Sceptre [Filtreur]
+[Harde] Sceptre [Géophage]
+[Harde] Scorpion [Géophage]
+[Harde] Scorpion [Charogne]
+[Harde] Paresseux [Brouteur]
+[Harde] Trident [Brouteur]
+[Harde] Tricorne [Brouteur]
+[Harde] Vuvuzelisque [Brouteur]
+Fantôme [Brouteur]
+Planeur [Filtreur]
+Planeur [Charogne]
+[Troupeau] Arachnomouche [Filtreur]
+[Troupeau] Coléocrabe [Filtreur]
+[Troupeau] Coléocrabe [Brouteur]
+[Troupeau] Coléocrabe [Charogne]
+[Troupeau] Grand-corne [Géophage]
+[Troupeau] Crabe cloqué [Filtreur]
+[Troupeau] Crabe cloqué [Brouteur]
+[Troupeau] Crabe cloqué [Charogne]
+[Troupeau] Crin d'os [Brouteur]
+[Troupeau] Crin d'os [Herbivore]
+[Troupeau] Céphalocalmar [Charogne]
+[Troupeau] Cassowary [Charogne]
+[Troupeau] Cockatrice [Herbivore]
+[Troupeau] Pot corail [Filtreur]
+[Troupeau] Mante corail
+[Troupeau] Mante corail [Filtreur]
+[Troupeau] Rampe-corail [Filtreur]
+[Troupeau] Rampe-corail [Brouteur]
+[Troupeau] Crabe [Brouteur]
+[Troupeau] Crabe [Herbivore]
+[Troupeau] Mouche-crabe [Géophage]
+[Troupeau] Mouche-crabe [Brouteur]
+[Troupeau] Dodo [Charogne]
+[Troupeau] Dragon [Charogne]
+[Troupeau] Sac d'œufs [Filtreur]
+[Troupeau] Geckon [Brouteur]
+[Troupeau] Planeur [Brouteur]
+[Troupeau] Planeur [Herbivore]
+[Troupeau] Planeur [Charogne]
+[Troupeau] Hippodon [Charogne]
+[Troupeau] Marcherécif [Géophage]
+[Troupeau] Marcherécif [Brouteur]
+[Troupeau] Phyllie [Brouteur]
+[Troupeau] Poisson-lion [Filtreur]
+[Troupeau] Poisson-lion [Brouteur]
+[Troupeau] Serre-gueule [Brouteur]
+[Troupeau] Serre-gueule [Charogne]
+[Troupeau] Long-corne [Géophage]
+[Troupeau] Long-corne [Herbivore]
+[Troupeau] Mantodea [Brouteur]
+[Troupeau] Mantodea [Charogne]
+[Troupeau] Moniteur [Brouteur]
+[Troupeau] Morion [Brouteur]
+[Troupeau] Nautile [Filtreur]
+[Troupeau] Octovers [Filtreur]
+[Troupeau] Octovers [Herbivore]
+[Troupeau] Octovers [Charogne]
+[Troupeau] Olgreg
+[Troupeau] Carapace ronde [Brouteur]
+[Troupeau] Carapace ronde [Charogne]
+[Troupeau] Sceptre [Filtreur]
+[Troupeau] Sentinelle [Filtreur]
+[Troupeau] Escargot [Brouteur]
+[Troupeau] Guêpe-araignée [Brouteur]
+[Troupeau] Tournesol [Filtreur]
+[Troupeau] Ténia [Brouteur]
+[Troupeau] Ténia [Charogne]
+[Troupeau] Tricorne [Géophage]
+[Troupeau] Tricorne [Brouteur]
+[Troupeau] Tricorne [Herbivore]
+[Troupeau] Crapaud-croc [Filtreur]
+[Troupeau] Vuvuzelisque [Filtreur]
+[Troupeau] Vuvuzelisque [Géophage]
+[Troupeau] Vuvuzelisque [Brouteur]
+[Troupeau] Vuvuzelisque [Herbivore]
+[Troupeau] Vuvuzelisque [Charogne]
+[Chasse] Lophius
+[Chasse] Lophius [Dépeceur]
+[Chasse] Ankylosaure
+[Chasse] Arachnomantis [Dépeceur]
+[Chasse] Arapaima
+[Chasse] Grand-corne
+[Chasse] Crin d'os
+[Chasse] Huître-os
+[Chasse] Céphalocalmar
+[Chasse] Chenille [Charogne]
+[Chasse] Céphalopode
+[Chasse] Cafard
+[Chasse] Mante corail
+[Chasse] Mante corail [Dépeceur]
+[Chasse] Crabe corail
+[Chasse] Rampe-corail
+[Chasse] Crabe
+[Chasse] Crabe [Charogne]
+[Chasse] Cricket
+[Chasse] Cricket [Dépeceur]
+[Chasse] Crocalypse
+[Chasse] Dodo
+[Chasse] Dragon
+[Chasse] Exobestiole
+[Chasse] Exocoureur
+[Chasse] Planeur
+[Chasse] Martosaure
+[Chasse] Ikuradon
+[Chasse] Kronosaure
+[Chasse] Marcherécif
+[Chasse] Serre-gueule
+[Chasse] Serre-gueule [Herbivore]
+[Chasse] Nautile [Charogne]
+[Chasse] Cauchemar
+[Chasse] Octovers
+[Chasse] Raptor
+[Chasse] Carapace ronde [Brouteur]
+[Chasse] Scorpion
+[Chasse] Baleine-requin
+[Chasse] Paresseux [Géophage]
+[Chasse] Guêpe-araignée [Dépeceur]
+[Chasse] Tournesol
+[Chasse] Mante épineuse
+[Chasse] Tricorne
+[Chasse] Crapaud-croc
+[Chasse] Vuvuzelisque
+Couteau [Filtreur]
+Couteau [Géophage]
+Couteau [Brouteur]
+Couteau [Charogne]
+Phyllie [Brouteur]
+Phyllie [Herbivore]
+Phyllie [Charogne]
+Serre-gueule [Brouteur]
+Long-corne [Brouteur]
+Metropus [Filtreur]
+Metropus [Charogne]
+Millibaleine [Filtreur]
+Millibaleine [Géophage]
+Millibaleine [Brouteur]
+Millibaleine [Charogne]
+Morion [Brouteur]
+Nautilus [Brouteur]
+Nautilus [Charogne]
+[Meute] Ankylosaure
+[Meute] Coléocrabe
+[Meute] Huître-os
+[Meute] Chenille
+[Meute] Céphalopode
+[Meute] Cafard
+[Meute] Cafard [Dépeceur]
+[Meute] Mante corail
+[Meute] Mante corail [Dépeceur]
+[Meute] Crabe corail [Dépeceur]
+[Meute] Rampe-corail
+[Meute] Crabe
+[Meute] Crabe [Dépeceur]
+[Meute] Mouche-crabe
+[Meute] Cricket
+[Meute] Crocalypse
+[Meute] Crocofrayant
+[Meute] Dragondon
+[Meute] Croupœuf [Dépeceur]
+[Meute] Exobestiole
+[Meute] Exobestiole [Charogne]
+[Meute] Exocoureur
+[Meute] Martosaure
+[Meute] Kronosaure
+[Meute] Long-corne
+[Meute] Mossasaure
+[Meute] Octovers
+[Meute] Scorpion
+[Meute] Baleine-requin
+[Meute] Guêpe-araignée
+[Meute] Mante épineuse
+[Meute] Crapaud-croc
+[Meute] Unirequin
+[Meute] Vautour
+[Meute] Vautour [Dépeceur]
+[Meute] Requin-baleine
+Perroquet-buse [Filtreur]
+Perroquet-buse [Charogne]
+Pearl [Filtreur]
+Pearl [Herbivore]
+Pomme de pin [Géophage]
+Pomme de pin [Herbivore]
+Pomme de pin [Charogne]
+Puffball [Filtreur]
+Carapace ronde [Géophage]
+Carapace ronde [Brouteur]
+Sceptre [Filtreur]
+[Grégaire] Arapaima [Filtreur]
+[Grégaire] Arapaima [Charogne]
+[Grégaire] Exobaleine [Filtreur]
+[Grégaire] Kronosaure [Filtreur]
+[Grégaire] Kronosaure [Brouteur]
+[Grégaire] Kronosaure [Charogne]
+[Grégaire] Poisson-appât [Charogne]
+[Grégaire] Baleine-requin [Charogne]
+[Grégaire] Unirequin [Charogne]
+Scorpion [Brouteur]
+Hippocampe [Brouteur]
+[Banc] Exobaleine [Filtreur]
+[Banc] Poisson-appât [Charogne]
+[Banc] Unirequin [Charogne]
+Escargot [Géophage]
+Ver-épic [Filtreur]
+Ver-épic [Brouteur]
+Ver-épic [Herbivore]
+Spore [Filtreur]
+[Nuée] Arachnomouche [Charogne]
+[Nuée] Coléocrabe
+[Nuée] Cafard
+[Nuée] Crabe
+[Nuée] Crabe [Dépeceur]
+[Nuée] Dragon
+[Nuée] Porteur d'œufs
+[Nuée] Exocoureur
+[Nuée] Planeur
+[Nuée] Octovers
+[Nuée] Scorpion
+[Nuée] Sentinelle
+[Nuée] Guêpe-araignée
+[Nuée] [Dépeceur] Scorpion
+[Nuée] Tournesol
+[Nuée] Requin-baleine
+Horrimorphe
+Épine [Filtreur]
+Épine [Géophage]
+Épine [Brouteur]
+Épine [Charogne]
+Échinoserre [Brouteur]
+Trident [Filtreur]
+Trident [Géophage]
+Trident [Herbivore]
+Trident [Charogne]
+Tricorne [Brouteur]
+Tricorne [Charogne]
+Trilobite
+Trilobite [Filtreur]
+Trilobite [Géophage]
+Trilobite [Brouteur]
+Trilobite [Charogne]
+Trivers [Filtreur]
+Trivers [Charogne]
+Crapaud-croc [Brouteur]
+Vampire [Géophage]
+Ver [Géophage]
+Ver [Charogne]

@@ -1,6 +1,7 @@
 ﻿using Starfield_Interactive_Smart_Slate.Dialogs;
 using Starfield_Interactive_Smart_Slate.Screens.PlanetaryData;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
@@ -27,6 +28,7 @@ namespace Starfield_Interactive_Smart_Slate
             EnableAnalyticsCheckBox.DataContext = App.Current.UserSettings;
             EnableUpdateNotificationCheckBox.DataContext = App.Current.UserSettings;
             UnlockLifeformCountsCheckBox.DataContext = App.Current.UserSettings;
+            LanguageComboBox.DataContext = App.Current.UserSettings;
 
             // show version number
             Version version = Assembly.GetEntryAssembly().GetName().Version;
@@ -42,6 +44,8 @@ namespace Starfield_Interactive_Smart_Slate
 
             // initialize user ID label
             UserIDLabel.Content = $"User ID: {DataRepository.UserID}";
+
+            LanguageComboBox.ItemsSource = new List<string>() { "English", "French" };
         }
 
         private void Timer_Tick(object sender, EventArgs e)

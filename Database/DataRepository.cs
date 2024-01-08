@@ -67,7 +67,50 @@ namespace Starfield_Interactive_Smart_Slate
             }
         }
 
+        public static string GetUserSettingString(string infoKey)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    SELECT
+                        InfoValue
+                    FROM
+                        UserInfo
+                    WHERE
+                        InfoKey = @InfoKey
+                ", conn))
+                {
+                    cmd.Parameters.AddWithValue("@InfoKey", infoKey);
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    return reader.GetString(0);
+                }
+            }
+        }
+
         public static void SetUserSettingBool(string infoKey, bool infoValue)
+        {
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE
+                        UserInfo
+                    SET
+                        InfoValue = @InfoValue
+                    WHERE
+                        InfoKey = @InfoKey", conn))
+                {
+                    cmd.Parameters.AddWithValue("@InfoKey", infoKey);
+                    cmd.Parameters.AddWithValue("@InfoValue", infoValue);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SetUserSettingString(string infoKey, string infoValue)
         {
             using (SQLiteConnection conn = CreateConnection())
             {

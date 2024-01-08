@@ -24,6 +24,7 @@ namespace Starfield_Interactive_Smart_Slate.Database
         public static readonly string EnableUpdateNotificationKey = "EnableUpdateNotification";
         public static readonly string HasShownAnalyticsPopupKey = "HasShownAnalyticsPopup";
         public static readonly string UnlockLifeformCountsKey = "UnlockLifeformCounts";
+        public static readonly string LanguageKey = "Language";
 
         public bool EnableSounds
         {
@@ -82,12 +83,26 @@ namespace Starfield_Interactive_Smart_Slate.Database
             }
         }
 
+        public string Language
+        {
+            get
+            {
+                return language;
+            }
+            set
+            {
+                DataRepository.SetUserSettingString(LanguageKey, value);
+                SetProperty(ref language, value);
+            }
+        }
+
         private static UserSettings? instance;
         private bool enableSounds;
         private bool enableAnalytics;
         private bool enableUpdateNotification;
         private bool hasShownAnalyticsPopup;
         private bool unlockLifeformCounts;
+        private string language;
 
         public void LoadSettings()
         {
@@ -107,6 +122,9 @@ namespace Starfield_Interactive_Smart_Slate.Database
 
             unlockLifeformCounts = DataRepository.GetUserSettingBool(UnlockLifeformCountsKey);
             OnPropertyChanged(new PropertyChangedEventArgs(nameof(UnlockLifeformCounts)));
+
+            language = DataRepository.GetUserSettingString(LanguageKey);
+            OnPropertyChanged(new PropertyChangedEventArgs(nameof(Language)));
         }
     }
 }

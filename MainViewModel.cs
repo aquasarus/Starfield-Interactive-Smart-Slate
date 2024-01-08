@@ -1,8 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Starfield_Interactive_Smart_Slate.Models;
 using Starfield_Interactive_Smart_Slate.Models.Entities;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Windows;
+using Path = System.IO.Path;
 
 namespace Starfield_Interactive_Smart_Slate
 {
@@ -51,19 +55,15 @@ namespace Starfield_Interactive_Smart_Slate
             set => SetProperty(ref discoveredSolarSystems, value);
         }
 
-        public Dictionary<LifeformType, Dictionary<string, string>> LifeformNames
-        {
-            get => lifeformNames;
-            set => SetProperty(ref lifeformNames, value);
-        }
-
         private static MainViewModel? instance;
         private List<Resource> allResources;
         private List<Resource> inorganicResources;
         private List<Resource> organicResources;
         private List<SolarSystem> allSolarSystems;
         private List<SolarSystem> discoveredSolarSystems;
-        private Dictionary<LifeformType, Dictionary<string, string>> lifeformNames;
+
+        // map of language -> map of fauna/flora -> map of lowercase name -> actual lifeform name
+        private Dictionary<string, Dictionary<LifeformType, Dictionary<string, string>>> lifeformNames;
 
         private MainViewModel() { }
 
@@ -83,12 +83,51 @@ namespace Starfield_Interactive_Smart_Slate
                 .ToList();
 
             // load all lifeform names
-            LifeformNames = DataRepository.GetLifeformNames();
+            lifeformNames = new Dictionary<string, Dictionary<LifeformType, Dictionary<string, string>>>();
+            var defaultNames = DataRepository.GetLifeformNames();
+            lifeformNames.Add("English", defaultNames);
+
+            // load other languages
+            // TODO: once we add a lot of languages, load upon user selection instead
+            var frenchLifeformNames = new Dictionary<LifeformType, Dictionary<string, string>>();
+            frenchLifeformNames[LifeformType.Fauna] = new Dictionary<string, string>();
+            frenchLifeformNames[LifeformType.Flora] = new Dictionary<string, string>();
+            lifeformNames.Add("French", frenchLifeformNames);
+
+            try
+            {
+                var folderPath = AppDomain.CurrentDomain.BaseDirectory;
+                folderPath = Path.Combine(folderPath, "Localization");
+                folderPath = Path.Combine(folderPath, "fr");
+
+                var frenchFaunasFile = Path.Combine(folderPath, "translated_french_fauna_names.txt");
+
+                if (File.Exists(frenchFaunasFile))
+                {
+                    var frenchFaunasList = File.ReadAllLines(frenchFaunasFile).ToList();
+
+                    // build auto-complete dictionary
+                    foreach (var faunaName in frenchFaunasList)
+                    {
+                        var autocompleteMatcher = faunaName.ToLower().Replace("[", "").Replace("]", "");
+                        frenchLifeformNames[LifeformType.Fauna][autocompleteMatcher] = faunaName;
+                    }
+                }
+                else
+                {
+                    throw new Exception($"{frenchFaunasFile} not found!");
+                }
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("An error occurred while reading language files: " + e.Message);
+            }
         }
 
         public Dictionary<string, string> GetLifeformNames(LifeformType type)
         {
-            return lifeformNames[type];
+            var language = App.Current.UserSettings.Language;
+            return lifeformNames[language][type];
         }
 
         public void DiscoverSolarSystem(SolarSystem solarSystem)

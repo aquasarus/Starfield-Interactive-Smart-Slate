@@ -23,10 +23,10 @@ known_modifiers = {
     'Swarming': 'Nuée',
 }
 
-# these are names 
+# these are names that span multiple words, but don't have normal modifier schemes
 known_special_names = {
     'Red Mile Mauler': '',
-    'Apex Dust Devil Exorunner': '',
+    'Apex Dust Devil Exorunner': '', # Apex and Exorunner are modifiers here
     'Rainbow Agnathan': '',
     'Pack Prong Wing Seabat': '', # Pack seems to be the only modifier here, with Prong Wing Seabat as the species name
     'Grazing Ensifer': '',
@@ -179,44 +179,89 @@ known_species_names = {
     'Nautiloos': 'Nautile',
 }
 
-# TODOs
-# INCLUDE BRACKETS
-# The Pup => Le Rejeton
-
 fauna_names = []
 cursor.execute('SELECT LifeformName FROM LifeformNames WHERE LifeformType = ?', (0,))
 rows = cursor.fetchall()
 
-word_count = {}
+# word_count = {}
+# for row in rows:
+#     lifeform_name = row[0]
+
+#     if lifeform_name in known_special_names:
+#         continue
+
+#     split_name = lifeform_name.split()
+
+#     for word in split_name:
+#         if word in word_count:
+#             word_count[word] += 1
+#         else:
+#             word_count[word] = 1
+
+# sorted_items = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
+
+# potential_species = ''
+# for key, value in sorted_items:
+#     if key not in known_modifiers and key not in known_species_names:
+#         # potential_species += f'{key}: {value}\n'
+#         potential_species += f'{key}\n'
+
+# print(potential_species)
+# pyperclip.copy(potential_species)
+
+# print(f'\nTotal words: {len(sorted_items)}')
+# print(f'Total modifiers: {len(known_modifiers)}')
+# print(f'Current species count: {len(sorted_items) - len(known_modifiers)}')
+
+
+translation = {}
+output = ''
 for row in rows:
     lifeform_name = row[0]
 
     if lifeform_name in known_special_names:
-        continue
+        # translate known special names (hardcoded matches)
+        if known_special_names[lifeform_name] != '':
+            translation[lifeform_name] = known_special_names[lifeform_name]
+            print(f'Translated: {lifeform_name}  ->  {translation[lifeform_name]}')
+            output += f'{translation[lifeform_name]}\n'
+    else:
+        split_name = lifeform_name.split()
+        modified_split_name = ''
 
-    split_name = lifeform_name.split()
+        # translate all modifiers, if found
+        for word in split_name:
+            if word in known_modifiers:
+                modified_split_name += f' [{known_modifiers[word]}]'
+            else:
+                modified_split_name += f' {word}'
 
-    for word in split_name:
-        if word in word_count:
-            word_count[word] += 1
-        else:
-            word_count[word] = 1
+        modified_split_name = modified_split_name.lstrip()
 
-sorted_items = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
+        # translate species name
+        for word in modified_split_name.split():
+            species_name_count = 0
+            if not word.startswith('['):
+                species_name_count += 1
+                species_name = word
 
-potential_species = ''
-for key, value in sorted_items:
-    if key not in known_modifiers and key not in known_species_names:
-        # potential_species += f'{key}: {value}\n'
-        potential_species += f'{key}\n'
+        if species_name_count > 1:
+            print(f'[ERROR] Failed to parse species name: {modified_split_name}')
+            sys.exit()
 
-print(potential_species)
-pyperclip.copy(potential_species)
+        if species_name in known_species_names:
+            modified_split_name = modified_split_name.replace(species_name, known_species_names[species_name])
 
-print(f'\nTotal words: {len(sorted_items)}')
-print(f'Total modifiers: {len(known_modifiers)}')
-print(f'Current species count: {len(sorted_items) - len(known_modifiers)}')
-print('Target species count: 218')
+            # only accept fully translated names
+            translation[lifeform_name] = modified_split_name
+            print(f'Translated: {lifeform_name}  ->  {translation[lifeform_name]}')
+            output += f'{translation[lifeform_name]}\n'
+
+print(f'Total English lifeforms: {len(rows)}')
+print(f'Total translated French lifeforms: {len(translation)}')
+
+# copy to clipboard
+pyperclip.copy(output)
 
 conn.commit()
 conn.close()

@@ -108,16 +108,28 @@ namespace Starfield_Interactive_Smart_Slate
             if (matchIndicatorLabel == null) { return; } // wait for UI to load
 
             var lifeformNames = mainViewModel.GetLifeformNames(originalEntity.LifeformType);
-            var matchedNames = lifeformNames.Where(pair => pair.Key.StartsWith(lifeformNameTextbox.Text.ToLower()));
+
+            string inputToMatch;
+            if (App.Current.UserSettings.Language == "English")
+            {
+                inputToMatch = lifeformNameTextbox.Text.ToLower();
+            }
+            else
+            {
+                // ignore [ ] characters for French version
+                inputToMatch = lifeformNameTextbox.Text.ToLower().Replace("[", "").Replace("]", "");
+            }
+
+            var matchedNames = lifeformNames.Where(pair => pair.Key.StartsWith(inputToMatch));
 
             // present suggestion if exactly 1 lifeform name is matched
             if (matchedNames.Count() == 1)
             {
                 matchedNameString = matchedNames.First().Value;
             }
-            else if (matchedNames.Any(name => name.Key == lifeformNameTextbox.Text.ToLower()))
+            else if (matchedNames.Any(name => name.Key == inputToMatch))
             {
-                matchedNameString = matchedNames.First(name => name.Key == lifeformNameTextbox.Text.ToLower()).Value;
+                matchedNameString = matchedNames.First(name => name.Key == inputToMatch).Value;
             }
             else
             {
@@ -129,7 +141,17 @@ namespace Starfield_Interactive_Smart_Slate
                 // restore capitalized version
                 if (!matchedNameString.StartsWith(lifeformNameTextbox.Text))
                 {
-                    lifeformNameTextbox.Text = matchedNameString.Substring(0, lifeformNameTextbox.Text.Length);
+                    if (App.Current.UserSettings.Language == "English")
+                    {
+                        lifeformNameTextbox.Text = matchedNameString.Substring(0, lifeformNameTextbox.Text.Length);
+                    }
+                    else
+                    {
+                        // [ and ] characters should not count towards total string length
+                        var matchSubstring = matchedNameString.Substring(0, inputToMatch.Length);
+                        var bracketCount = matchSubstring.Count(c => c == '[') + matchSubstring.Count(c => c == ']');
+                        lifeformNameTextbox.Text = matchedNameString.Substring(0, inputToMatch.Length + bracketCount);
+                    }
                     lifeformNameTextbox.SelectionStart = lifeformNameTextbox.Text.Length;
                 }
 
