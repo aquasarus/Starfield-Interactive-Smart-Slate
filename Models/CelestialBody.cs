@@ -326,9 +326,29 @@ namespace Starfield_Interactive_Smart_Slate.Models
             Moons.Add(celestialBody);
         }
 
+        // TODO: maybe delete this if SurfaceContainsResources() makes this obsolete
         public bool SurfaceContainsResource(Resource resource)
         {
             return Resources?.Contains(resource) ?? false;
+        }
+
+        // check if surface contains all input resources
+        public bool SurfaceContainsResources(IEnumerable<Resource> resources)
+        {
+            if (resources == null || resources.Count() == 0)
+            {
+                return false;
+            }
+
+            foreach (var resource in resources)
+            {
+                if (Resources == null || !Resources.Contains(resource))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) GetLifeformsWithResource(Resource resource)

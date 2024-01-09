@@ -1,4 +1,5 @@
 ﻿using Starfield_Interactive_Smart_Slate.Models;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,19 +48,35 @@ namespace Starfield_Interactive_Smart_Slate.Screens
 
         private void InorganicResourceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedResource = (Resource)inorganicResourceListView.SelectedItem;
+            var selectedItems = inorganicResourceListView.SelectedItems;
 
-            if (selectedResource == null)
+            if (selectedItems.Count == 0)
             {
                 App.Current.PlayCancelSound();
+                viewModel.SearchCelestialBodiesForResource(null);
+            }
+            else if (selectedItems.Count == 1)
+            {
+                App.Current.PlayClickSound();
+
+                var selectedResource = (Resource)selectedItems[0];
+                AnalyticsUtil.TrackResourceEvent("Search inorganic resource", selectedResource);
+                viewModel.SearchCelestialBodiesForResource(new List<Resource> { selectedResource });
             }
             else
             {
-                AnalyticsUtil.TrackResourceEvent("Search inorganic resource", selectedResource);
                 App.Current.PlayClickSound();
-            }
 
-            viewModel.SearchCelestialBodiesForResource(selectedResource);
+                // cast to non-generic type
+                var selectedResources = new List<Resource>();
+                foreach (Resource resource in selectedItems)
+                {
+                    selectedResources.Add(resource);
+                }
+
+                // TODO: multi-search event
+                viewModel.SearchCelestialBodiesForResource(selectedResources);
+            }
         }
 
         private void ResourceSearchListViewItem_MouseEnter(object sender, MouseEventArgs e)

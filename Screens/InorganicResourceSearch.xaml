@@ -69,7 +69,6 @@
                     Margin="1,0,1,0"
                     ItemsSource="{Binding Source={x:Static main:MainViewModel.Instance}, Path=InorganicResources}"
                     SelectionChanged="InorganicResourceSelectionChanged"
-                    SelectionMode="Single"
                     TabIndex="0">
                     <ListView.View>
                         <GridView>
