@@ -25,23 +25,23 @@ known_modifiers = {
 
 # these are names that span multiple words, but don't have normal modifier schemes
 known_special_names = {
-    'Red Mile Mauler': '',
-    'Apex Dust Devil Exorunner': '', # Apex and Exorunner are modifiers here
-    'Rainbow Agnathan': '',
-    'Pack Prong Wing Seabat': '', # Pack seems to be the only modifier here, with Prong Wing Seabat as the species name
-    'Grazing Ensifer': '',
-    'Greater Jaffa Lizard': '',
-    'Lesser Jaffa Lizard': '',
-    'Flying Leech': '',
-    'Elk Crangon': '',
-    'Crawling Eurypterid': '',
-    'Crag Sprinter': '',
-    'Baleen Rotifer': '',
+    'Red Mile Mauler': 'Boxeur de la ligne rouge',
+    'Apex Dust Devil Exorunner': '[Alpha] Rôdeur des sables exocoureur', # Apex and Exorunner are modifiers here
+    'Rainbow Agnathan': 'Agnathan arc-en-ciel',
+    'Pack Prong Wing Seabat': '[Meute] Aile dentue noctule', # Pack seems to be the only modifier here, with Prong Wing Seabat as the species name
+    'Grazing Ensifer': 'Ensifer paissant',
+    'Greater Jaffa Lizard': 'Grand lézard Jaffa',
+    'Lesser Jaffa Lizard': 'Petit lézard Jaffa',
+    'Flying Leech': 'Sangsue volante',
+    'Elk Crangon': 'Orignal de Crangon',
+    'Crawling Eurypterid': 'Euryptéride rampant',
+    'Crag Sprinter': 'Sprinteur des falaises',
+    'Baleen Rotifer': 'Rotifère baleine',
     'Terrormorph': 'Horrimorphe',
 
-    'Cataxi Hunter': '',
-    'Cataxi Warrior': '',
-    'Grylloba Hunter': '',
+    'Cataxi Hunter': 'Chasseur Cataxi',
+    'Cataxi Warrior': 'Guerrier Cataxi',
+    'Grylloba Hunter': 'Chasseur Grylloba',
 }
 
 known_species_names = {

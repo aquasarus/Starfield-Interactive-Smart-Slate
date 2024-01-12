@@ -3,11 +3,13 @@ Fourmivore [Géophage]
 [Alpha] Ankylosaure
 [Alpha] Crocofrayant
 [Alpha] Dragon
+[Alpha] Rôdeur des sables exocoureur
 [Alpha] Exocoureur
 [Alpha] Perroquet-buse
 Artichaut [Filtreur]
 Artichaut [Géophage]
 Ashta
+Rotifère baleine
 Scarabée [Filtreur]
 Scarabée [Géophage]
 Scarabée [Brouteur]
@@ -18,6 +20,8 @@ Carascargot [Géophage]
 Carascargot [Brouteur]
 Carascargot [Charogne]
 Cassowary [Brouteur]
+Chasseur Cataxi
+Guerrier Cataxi
 Chenille [Filtreur]
 Chenille [Charogne]
 Centicrâne [Filtreur]
@@ -37,6 +41,8 @@ Cœur de corail [Herbivore]
 Cœur de corail [Charogne]
 Crabe [Charogne]
 Mouche-crabe [Herbivore]
+Sprinteur des falaises
+Euryptéride rampant
 Crocalypse [Brouteur]
 Cyclozard [Brouteur]
 Drone [Filtreur]
@@ -45,6 +51,7 @@ Porteur d'œufs [Herbivore]
 Sac d'œufs [Filtreur]
 Sac d'œufs [Géophage]
 Sac d'œufs [Charogne]
+Orignal de Crangon
 Exobestiole [Charogne]
 Cornu ardent [Filtreur]
 Cornu ardent [Géophage]
@@ -95,9 +102,13 @@ Cornu ardent [Charogne]
 [Harde] Trident [Brouteur]
 [Harde] Tricorne [Brouteur]
 [Harde] Vuvuzelisque [Brouteur]
+Sangsue volante
 Fantôme [Brouteur]
 Planeur [Filtreur]
 Planeur [Charogne]
+Ensifer paissant
+Grand lézard Jaffa
+Chasseur Grylloba
 [Troupeau] Arachnomouche [Filtreur]
 [Troupeau] Coléocrabe [Filtreur]
 [Troupeau] Coléocrabe [Brouteur]
@@ -217,6 +228,7 @@ Couteau [Charogne]
 Phyllie [Brouteur]
 Phyllie [Herbivore]
 Phyllie [Charogne]
+Petit lézard Jaffa
 Serre-gueule [Brouteur]
 Long-corne [Brouteur]
 Metropus [Filtreur]
@@ -255,6 +267,7 @@ Nautilus [Charogne]
 [Meute] Long-corne
 [Meute] Mossasaure
 [Meute] Octovers
+[Meute] Aile dentue noctule
 [Meute] Scorpion
 [Meute] Baleine-requin
 [Meute] Guêpe-araignée
@@ -272,6 +285,8 @@ Pomme de pin [Géophage]
 Pomme de pin [Herbivore]
 Pomme de pin [Charogne]
 Puffball [Filtreur]
+Agnathan arc-en-ciel
+Boxeur de la ligne rouge
 Carapace ronde [Géophage]
 Carapace ronde [Brouteur]
 Sceptre [Filtreur]
