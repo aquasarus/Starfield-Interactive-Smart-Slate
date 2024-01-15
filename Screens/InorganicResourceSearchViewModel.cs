@@ -38,9 +38,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens
             mainViewModel.PropertyChanged += HandlePropertyChanged;
         }
 
-        public void SearchCelestialBodiesForResource(IEnumerable<Resource> resource)
+        public void SearchCelestialBodiesForResource(IEnumerable<Resource> resources)
         {
-            currentSearch = resource;
+            currentSearch = resources;
             InorganicSearchResult = mainViewModel.DiscoveredSolarSystems.Select(
                 solarSystem =>
                 {
@@ -50,8 +50,8 @@ namespace Starfield_Interactive_Smart_Slate.Screens
                     solarSystemCopy.CelestialBodies = solarSystemCopy.CelestialBodies.Select(
                         celestialBody =>
                         {
-                            var surfaceHasResource = celestialBody.SurfaceContainsResources(resource);
-                            var moonsHaveResource = celestialBody.Moons?.Any(moon => moon.SurfaceContainsResources(resource)) ?? false;
+                            var surfaceHasResource = celestialBody.SurfaceContainsResources(resources);
+                            var moonsHaveResource = celestialBody.Moons?.Any(moon => moon.SurfaceContainsResources(resources)) ?? false;
 
                             // if celestial body (or any of its moons) contains the resource, include it in the list
                             if (surfaceHasResource || moonsHaveResource)

@@ -1,5 +1,6 @@
 ﻿using Starfield_Interactive_Smart_Slate.Common;
 using Starfield_Interactive_Smart_Slate.Models;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,19 +51,42 @@ namespace Starfield_Interactive_Smart_Slate.Screens
         {
             viewModel.ClearSelections();
 
-            var selectedResource = (Resource)organicResourceListView.SelectedItem;
+            var selectedItems = organicResourceListView.SelectedItems;
 
-            if (selectedResource == null)
+            if (selectedItems.Count == 0)
             {
                 App.Current.PlayCancelSound();
+                viewModel.SearchCelestialBodiesForResource(null);
+            }
+            else if (selectedItems.Count == 1)
+            {
+                App.Current.PlayClickSound();
+
+                // cast to non-generic type
+                var selectedResources = new List<Resource>();
+                foreach (Resource resource in selectedItems)
+                {
+                    selectedResources.Add(resource);
+                }
+
+                var selectedResource = (Resource)selectedItems[0];
+                AnalyticsUtil.TrackResourceEvent("Search organic resource", selectedResource);
+                viewModel.SearchCelestialBodiesForResource(selectedResources);
             }
             else
             {
-                AnalyticsUtil.TrackResourceEvent("Search organic resource", selectedResource);
                 App.Current.PlayClickSound();
-            }
 
-            viewModel.SearchCelestialBodiesForResource(selectedResource);
+                // cast to non-generic type
+                var selectedResources = new List<Resource>();
+                foreach (Resource resource in selectedItems)
+                {
+                    selectedResources.Add(resource);
+                }
+
+                // TODO: multi-search event
+                viewModel.SearchCelestialBodiesForResource(selectedResources);
+            }
         }
 
         private void OrganicResultsListItem_MouseEnter(object sender, MouseEventArgs e)

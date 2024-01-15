@@ -351,9 +351,22 @@ namespace Starfield_Interactive_Smart_Slate.Models
             return true;
         }
 
-        public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) GetLifeformsWithResource(Resource resource)
+        public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) GetLifeformsWithResource(IEnumerable<Resource> resources)
         {
-            if (TotalFauna == 0 && TotalFlora == 0)
+            if (resources != null && resources.Count() > 1)
+            {
+                return SearchLifeformsWithMultipleResources(resources);
+            }
+            else
+            {
+                return SearchLifeformsWithSingleResource(resources?.First());
+            }
+        }
+
+        // returns a boolean "found" flag, with matched lifeforms
+        public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) SearchLifeformsWithSingleResource(Resource? resource)
+        {
+            if ((TotalFauna == 0 && TotalFlora == 0) || resource == null)
             {
                 return (false, null, null); // short circuit for celestial bodies with no life
             }
@@ -403,6 +416,62 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
 
             return (found, faunaCollection, floraCollection);
+        }
+
+        // returns a boolean "found" flag, with matched lifeforms
+        // "found" is only true if all input resources were matched
+        public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) SearchLifeformsWithMultipleResources(IEnumerable<Resource> resources)
+        {
+            if (TotalFauna == 0 && TotalFlora == 0)
+            {
+                return (false, null, null); // short circuit for celestial bodies with no life
+            }
+
+            var foundAtLeastOneResource = false;
+            var missedAtLeastOneResource = false;
+
+            var foundFaunas = new ObservableCollection<Fauna>();
+            var foundFloras = new ObservableCollection<Flora>();
+
+            // TODO: this needs to be revised if faunas/floras start to contain more than 1 resource each
+            foreach (var resource in resources)
+            {
+                var found = false;
+
+                if (Faunas != null)
+                {
+                    foreach (var fauna in Faunas)
+                    {
+                        if (fauna.PrimaryDrops?.Any(drop => drop.Equals(resource)) ?? false)
+                        {
+                            foundFaunas.Add(fauna);
+                            found = true;
+                            foundAtLeastOneResource = true;
+                        }
+                    }
+                }
+
+                if (Floras != null)
+                {
+                    foreach (var flora in Floras)
+                    {
+                        if (flora.PrimaryDrops?.Any(drop => drop.Equals(resource)) ?? false)
+                        {
+                            foundFloras.Add(flora);
+                            found = true;
+                            foundAtLeastOneResource = true;
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    missedAtLeastOneResource = true;
+                }
+            }
+
+            var foundAll = foundAtLeastOneResource && !missedAtLeastOneResource;
+            return (foundAll, foundFaunas, foundFloras);
         }
 
         public void NotifyLifeformUnlockChanged()

@@ -42,7 +42,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
         private static OrganicResourceSearchViewModel? instance;
         private MainViewModel mainViewModel = MainViewModel.Instance;
 
-        private Resource currentSearch;
+        private IEnumerable<Resource> currentSearch;
         private IEnumerable<SolarSystem> organicSearchResult;
         private CelestialBody? selectedCelestialBody;
         private CelestialBody? displayedCelestialBody;
@@ -52,9 +52,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens
             mainViewModel.PropertyChanged += HandlePropertyChanged;
         }
 
-        public void SearchCelestialBodiesForResource(Resource resource)
+        public void SearchCelestialBodiesForResource(IEnumerable<Resource> resources)
         {
-            currentSearch = resource;
+            currentSearch = resources;
             OrganicSearchResult = mainViewModel.DiscoveredSolarSystems.Select(
                 solarSystem =>
                 {
@@ -65,7 +65,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
                     // so I have to loop it manually
                     foreach (var celestialBody in solarSystemCopy.CelestialBodies)
                     {
-                        var lifeformResult = celestialBody.GetLifeformsWithResource(resource);
+                        var lifeformResult = celestialBody.GetLifeformsWithResource(resources);
                         var found = lifeformResult.Item1;
                         var faunaList = lifeformResult.Item2;
                         var floraList = lifeformResult.Item3;
