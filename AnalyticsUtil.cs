@@ -3,6 +3,8 @@ using Microsoft.AppCenter.Crashes;
 using Starfield_Interactive_Smart_Slate.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Starfield_Interactive_Smart_Slate
 {
@@ -26,6 +28,28 @@ namespace Starfield_Interactive_Smart_Slate
             TrackEventWithProperties(eventName, new Dictionary<string, string>
             {
                 { "ResourceName", resource.FullName }
+            });
+        }
+
+        public static void TrackMultipleResourcesEvent(string eventName, IEnumerable<Resource> resources)
+        {
+            var resourcesStringBuilder = new StringBuilder();
+            foreach (var resource in resources.OrderBy(r => r.FullName))
+            {
+                if (resourcesStringBuilder.Length == 0)
+                {
+                    resourcesStringBuilder.Append(resource.FullName);
+
+                }
+                else
+                {
+                    resourcesStringBuilder.Append($" + {resource.FullName}");
+                }
+            }
+
+            TrackEventWithProperties(eventName, new Dictionary<string, string>
+            {
+                { "ResourceNames", resourcesStringBuilder.ToString() }
             });
         }
 

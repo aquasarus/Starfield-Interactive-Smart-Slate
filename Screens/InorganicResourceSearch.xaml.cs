@@ -74,7 +74,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens
                     selectedResources.Add(resource);
                 }
 
-                // TODO: multi-search event
+                AnalyticsUtil.TrackMultipleResourcesEvent("Search multiple inorganic resources", selectedResources);
                 viewModel.SearchCelestialBodiesForResource(selectedResources);
             }
         }
