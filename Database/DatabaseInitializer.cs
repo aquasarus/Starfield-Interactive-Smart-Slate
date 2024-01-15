@@ -279,7 +279,8 @@ namespace Starfield_Interactive_Smart_Slate
                         'Hunting Nail Tail', 
                         'Trilibite Filterer',
                         'Flocking Scepterer Filterer',
-                        'Cassoway Grazer'
+                        'Cassoway Grazer',
+                        'Appolo Fireleaf'
                     )", conn))
                 {
                     cmd.ExecuteNonQuery();
