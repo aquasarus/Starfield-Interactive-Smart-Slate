@@ -94,12 +94,12 @@ namespace Starfield_Interactive_Smart_Slate
             frenchLifeformNames[LifeformType.Flora] = new Dictionary<string, string>();
             lifeformNames.Add("French", frenchLifeformNames);
 
+            var folderPath = AppDomain.CurrentDomain.BaseDirectory;
+            folderPath = Path.Combine(folderPath, "Localization");
+            folderPath = Path.Combine(folderPath, "fr");
+
             try
             {
-                var folderPath = AppDomain.CurrentDomain.BaseDirectory;
-                folderPath = Path.Combine(folderPath, "Localization");
-                folderPath = Path.Combine(folderPath, "fr");
-
                 var frenchFaunasFile = Path.Combine(folderPath, "translated_french_fauna_names.txt");
 
                 if (File.Exists(frenchFaunasFile))
@@ -116,6 +116,31 @@ namespace Starfield_Interactive_Smart_Slate
                 else
                 {
                     throw new Exception($"{frenchFaunasFile} not found!");
+                }
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show("An error occurred while reading language files: " + e.Message);
+            }
+
+            try
+            {
+                var frenchFlorasFile = Path.Combine(folderPath, "translated_french_flora_names.txt");
+
+                if (File.Exists(frenchFlorasFile))
+                {
+                    var frenchFlorasList = File.ReadAllLines(frenchFlorasFile).ToList();
+
+                    // build auto-complete dictionary
+                    foreach (var floraName in frenchFlorasList)
+                    {
+                        var autocompleteMatcher = floraName.ToLower().Replace("[", "").Replace("]", "");
+                        frenchLifeformNames[LifeformType.Flora][autocompleteMatcher] = floraName;
+                    }
+                }
+                else
+                {
+                    throw new Exception($"{frenchFlorasFile} not found!");
                 }
             }
             catch (IOException e)
