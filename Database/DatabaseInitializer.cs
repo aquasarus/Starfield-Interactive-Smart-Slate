@@ -356,6 +356,16 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     cmd.ExecuteNonQuery();
                 }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE CelestialBodies
+                    SET
+                        TotalFlora = 3
+                    WHERE BodyName = 'Syrma IV'
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
