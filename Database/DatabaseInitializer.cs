@@ -280,7 +280,9 @@ namespace Starfield_Interactive_Smart_Slate
                         'Trilibite Filterer',
                         'Flocking Scepterer Filterer',
                         'Cassoway Grazer',
-                        'Appolo Fireleaf'
+                        'Appolo Fireleaf',
+                        'Brissle Barrel',
+                        'Bowing Shade Leaf'
                     )", conn))
                 {
                     cmd.ExecuteNonQuery();
