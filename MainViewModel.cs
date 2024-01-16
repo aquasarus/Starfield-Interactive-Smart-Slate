@@ -109,7 +109,7 @@ namespace Starfield_Interactive_Smart_Slate
                     // build auto-complete dictionary
                     foreach (var faunaName in frenchFaunasList)
                     {
-                        var autocompleteMatcher = faunaName.ToLower().Replace("[", "").Replace("]", "");
+                        var autocompleteMatcher = faunaName.ToLower();
                         frenchLifeformNames[LifeformType.Fauna][autocompleteMatcher] = faunaName;
                     }
                 }
@@ -134,7 +134,7 @@ namespace Starfield_Interactive_Smart_Slate
                     // build auto-complete dictionary
                     foreach (var floraName in frenchFlorasList)
                     {
-                        var autocompleteMatcher = floraName.ToLower().Replace("[", "").Replace("]", "");
+                        var autocompleteMatcher = floraName.ToLower();
                         frenchLifeformNames[LifeformType.Flora][autocompleteMatcher] = floraName;
                     }
                 }

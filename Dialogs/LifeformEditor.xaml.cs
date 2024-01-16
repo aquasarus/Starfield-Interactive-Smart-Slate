@@ -109,17 +109,7 @@ namespace Starfield_Interactive_Smart_Slate
 
             var lifeformNames = mainViewModel.GetLifeformNames(originalEntity.LifeformType);
 
-            string inputToMatch;
-            if (App.Current.UserSettings.Language == "English")
-            {
-                inputToMatch = lifeformNameTextbox.Text.ToLower();
-            }
-            else
-            {
-                // ignore [ ] characters for French version
-                inputToMatch = lifeformNameTextbox.Text.ToLower().Replace("[", "").Replace("]", "");
-            }
-
+            var inputToMatch = lifeformNameTextbox.Text.ToLower();
             var matchedNames = lifeformNames.Where(pair => pair.Key.StartsWith(inputToMatch));
 
             // present suggestion if exactly 1 lifeform name is matched
@@ -141,17 +131,7 @@ namespace Starfield_Interactive_Smart_Slate
                 // restore capitalized version
                 if (!matchedNameString.StartsWith(lifeformNameTextbox.Text))
                 {
-                    if (App.Current.UserSettings.Language == "English")
-                    {
-                        lifeformNameTextbox.Text = matchedNameString.Substring(0, lifeformNameTextbox.Text.Length);
-                    }
-                    else
-                    {
-                        // [ and ] characters should not count towards total string length
-                        var matchSubstring = matchedNameString.Substring(0, inputToMatch.Length);
-                        var bracketCount = matchSubstring.Count(c => c == '[') + matchSubstring.Count(c => c == ']');
-                        lifeformNameTextbox.Text = matchedNameString.Substring(0, inputToMatch.Length + bracketCount);
-                    }
+                    lifeformNameTextbox.Text = matchedNameString.Substring(0, lifeformNameTextbox.Text.Length);
                     lifeformNameTextbox.SelectionStart = lifeformNameTextbox.Text.Length;
                 }
 
