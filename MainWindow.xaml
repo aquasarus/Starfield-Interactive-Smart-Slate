@@ -122,7 +122,7 @@
                             IsChecked="{Binding UnlockLifeformCounts}"
                             ToolTipService.InitialShowDelay="200">
                             <CheckBox.ToolTip>
-                                <ToolTip Content="Enable this if you use mods that change total fauna/flora counts." />
+                                <ToolTip Content="Enable this if you use mods that change total fauna/flora counts.&#x0a;Note that this will slightly break survey progress behavior, since the total fauna/flora will no longer be known." />
                             </CheckBox.ToolTip>
                         </CheckBox>
                         <Grid Grid.Row="6"

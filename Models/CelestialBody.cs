@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Starfield_Interactive_Smart_Slate.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -110,7 +111,16 @@ namespace Starfield_Interactive_Smart_Slate.Models
                     int surveyedFloras = Floras?.Where(flora => flora.IsSurveyed).Count() ?? 0;
                     int florasPoints = surveyedFloras + (Floras?.Count ?? 0);
                     double surveyPercent = 100.0 * (faunasPoints + florasPoints) / ((TotalFauna + TotalFlora) * 2);
+
+                    // cap at 100% in case fauna/flora count is unlocked by user
+                    surveyPercent = Math.Min(surveyPercent, 100.0);
+
                     return $"🧬 ({surveyPercent:F0}%)";
+                }
+                // if user unlocks and adds life to a planet with originally no life
+                else if (HasLifeform)
+                {
+                    return "🧬";
                 }
                 else
                 {
@@ -142,9 +152,25 @@ namespace Starfield_Interactive_Smart_Slate.Models
             get { return Outposts != null && Outposts.Count > 0; }
         }
 
+        // TODO: if UI ever observes this, notify changes when a user adds life to a planet with no default lifeforms
         public bool HasLifeform
         {
-            get { return TotalFauna > 0 || TotalFlora > 0; }
+            get
+            {
+                if (TotalFauna > 0 || TotalFlora > 0)
+                {
+                    return true;
+                }
+                // in case user unlocks fauna/flora counts
+                else if ((Faunas?.Count() ?? 0) > 0 || (Floras?.Count() ?? 0) > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
         public bool CanAddFauna
@@ -366,9 +392,11 @@ namespace Starfield_Interactive_Smart_Slate.Models
         // returns a boolean "found" flag, with matched lifeforms
         public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) SearchLifeformsWithSingleResource(Resource? resource)
         {
-            if ((TotalFauna == 0 && TotalFlora == 0) || resource == null)
+            var faunaCount = Faunas?.Count() ?? 0;
+            var floraCount = Floras?.Count() ?? 0;
+            if ((faunaCount == 0 && floraCount == 0) || resource == null)
             {
-                return (false, null, null); // short circuit for celestial bodies with no life
+                return (false, null, null); // short circuit for celestial bodies with no known life
             }
 
             var found = false;
@@ -422,7 +450,7 @@ namespace Starfield_Interactive_Smart_Slate.Models
         // "found" is only true if all input resources were matched
         public (bool, ObservableCollection<Fauna>?, ObservableCollection<Flora>?) SearchLifeformsWithMultipleResources(IEnumerable<Resource> resources)
         {
-            if (TotalFauna == 0 && TotalFlora == 0)
+            if (!HasLifeform)
             {
                 return (false, null, null); // short circuit for celestial bodies with no life
             }
