@@ -243,6 +243,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                 DisplayCelestialBodyDetails(firstCelestialBodyOfSystem);
 
                 // select first celestial body of new system
+                // calling ScrollIntoView() here even though SetSelectedCelestialBodyWithUI() already calls it
+                // this is because the list item may not be found if the scroll position is not showing it
+                solarSystemsListView.ScrollIntoView(selectedSolarSystem);
                 solarSystemsListView.LayoutUpdated += SetCelestialBodyOnLayoutUpdate;
             }
         }
@@ -645,6 +648,9 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
                 // scroll parent solar system into view
                 solarSystemsListView.ScrollIntoView(selectedSolarSystem);
+
+                // clear previous selection
+                Framework.ClearInnerListViews(solarSystemsListView, celestialBodyListView);
             }
         }
 
