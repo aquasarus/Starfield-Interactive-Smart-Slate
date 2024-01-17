@@ -426,6 +426,7 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
                         {
                             if (celestialBody.BodyID == selectedCelestialBodyID)
                             {
+                                solarSystemsListView.ScrollIntoView(solarSystem);
                                 SetSelectedCelestialBodyWithUI(celestialBody);
                                 DisplayCelestialBodyDetails(celestialBody);
 
