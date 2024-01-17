@@ -65,6 +65,29 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
             }
         }
 
+        // like IconsString, but only include icons relevant for resource search
+        public string? IconsStringRelevantForSearch
+        {
+            get
+            {
+                var icons = "";
+
+                if (IsFarmable)
+                {
+                    if (this is Fauna)
+                    {
+                        icons += "🐄";
+                    }
+                    else
+                    {
+                        icons += "🥕";
+                    }
+                }
+
+                return icons == "" ? null : icons;
+            }
+        }
+
         public string ResourceString
         {
             get
