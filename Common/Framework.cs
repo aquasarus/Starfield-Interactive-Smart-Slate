@@ -37,5 +37,20 @@ namespace Starfield_Interactive_Smart_Slate.Common
 
             return parent as ListView;
         }
+
+        public static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
+        {
+            do
+            {
+                if (current is T ancestor)
+                {
+                    return ancestor;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+
+            return null;
+        }
     }
 }

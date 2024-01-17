@@ -349,9 +349,14 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private void FaunaListView_Select(object sender, MouseEventArgs e)
         {
             ListViewItem clickedItem = sender as ListViewItem;
+            FaunaClicked(clickedItem);
+            e.Handled = true;
+        }
+
+        private void FaunaClicked(ListViewItem clickedItem)
+        {
             Fauna fauna = clickedItem.DataContext as Fauna;
             ToggleSelectFauna(fauna, clickedItem);
-            e.Handled = true;
             AnalyticsUtil.TrackEvent("Select fauna");
         }
 
@@ -396,9 +401,14 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private void FloraListView_Select(object sender, MouseEventArgs e)
         {
             ListViewItem clickedItem = sender as ListViewItem;
+            FloraClicked(clickedItem);
+            e.Handled = true;
+        }
+
+        private void FloraClicked(ListViewItem clickedItem)
+        {
             Flora flora = clickedItem.DataContext as Flora;
             ToggleSelectFlora(flora, clickedItem);
-            e.Handled = true;
             AnalyticsUtil.TrackEvent("Select flora");
         }
 
@@ -500,6 +510,14 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
 
             var outpost = ((MenuItem)sender).DataContext as Outpost;
 
+            // find corresponding list view item
+            ContextMenu contextMenu = (ContextMenu)((MenuItem)sender).Parent;
+            FrameworkElement targetElement = (FrameworkElement)contextMenu.PlacementTarget;
+            ListViewItem listViewItem = Framework.FindAncestor<ListViewItem>(targetElement);
+
+            // simulate selection to deselect other list view items
+            OutpostClicked(listViewItem);
+
             var confirmDialog = new BasicYesNoDialog(
                 "Delete Outpost",
                 "You are about to delete this outpost:\n\n" +
@@ -524,6 +542,21 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             App.Current.PlayClickSound();
 
             var lifeform = ((MenuItem)sender).DataContext as LifeformEntity;
+
+            // find corresponding list view item
+            ContextMenu contextMenu = (ContextMenu)((MenuItem)sender).Parent;
+            FrameworkElement targetElement = (FrameworkElement)contextMenu.PlacementTarget;
+            ListViewItem listViewItem = Framework.FindAncestor<ListViewItem>(targetElement);
+
+            // simulate selection to deselect other list view items
+            if (lifeform.LifeformType == LifeformType.Fauna)
+            {
+                FaunaClicked(listViewItem);
+            }
+            else
+            {
+                FloraClicked(listViewItem);
+            }
 
             var confirmDialog = new BasicYesNoDialog(
                 $"Delete {lifeform.LifeformType}",
@@ -603,9 +636,14 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
         private void OutpostListView_Select(object sender, MouseEventArgs e)
         {
             ListViewItem clickedItem = sender as ListViewItem;
+            OutpostClicked(clickedItem);
+            e.Handled = true;
+        }
+
+        private void OutpostClicked(ListViewItem clickedItem)
+        {
             Outpost outpost = clickedItem.DataContext as Outpost;
             ToggleSelectOutpost(outpost, clickedItem);
-            e.Handled = true;
             AnalyticsUtil.TrackEvent("Select outpost");
         }
 
