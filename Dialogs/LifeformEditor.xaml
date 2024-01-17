@@ -21,6 +21,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -81,15 +82,21 @@
             Margin="5,10,5,0"
             ItemsSource="{Binding SelectableOrganicResources}"
             PreviewMouseLeftButtonDown="lifeformResourceComboBoxClicked" />
-        <Label Grid.Row="4"
+        <CheckBox Name="OutpostProductionCheckBox" Grid.Row="4"
+            Margin="5,10,5,0"
+            VerticalContentAlignment="Center"
+            Click="OutpostProductionCheckBox_Click"
+            Content="🐄 (Outpost production allowed)"
+            IsChecked="{Binding IsFarmable}" />
+        <Label Grid.Row="5"
             Content="Notes"
             Style="{StaticResource ContentSubtitleStyle}" />
-        <TextBox Name="lifeformNotesTextbox" Grid.Row="5"
+        <TextBox Name="lifeformNotesTextbox" Grid.Row="6"
             Margin="5,10,5,0"
             Padding="7"
             AcceptsReturn="True"
             FontSize="17" />
-        <Button Name="SaveButton" Grid.Row="6"
+        <Button Name="SaveButton" Grid.Row="7"
             Width="70"
             Height="30"
             Margin="0,10,75,0"
@@ -101,7 +108,7 @@
                 <ToolTip Content="Ctrl + Enter to Save." />
             </Button.ToolTip>
         </Button>
-        <Button Grid.Row="6"
+        <Button Grid.Row="7"
             Width="70"
             Height="30"
             Margin="0,10,0,0"

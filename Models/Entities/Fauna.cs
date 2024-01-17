@@ -13,6 +13,7 @@
                 ID = ID,
                 Name = Name,
                 Notes = Notes,
+                IsFarmable = IsFarmable,
                 PrimaryDrops = PrimaryDrops?.ConvertAll(drop => drop.DeepCopy()),
                 SecondaryDrops = SecondaryDrops?.ConvertAll(drop => drop.DeepCopy()),
                 Pictures = Pictures

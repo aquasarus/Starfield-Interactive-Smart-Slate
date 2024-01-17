@@ -309,7 +309,8 @@ namespace Starfield_Interactive_Smart_Slate
                         f.ParentBodyID,
                         f.FaunaNotes,
                         fp.FaunaPicturePath,
-                        fp.FaunaPictureID
+                        fp.FaunaPictureID,
+                        f.FaunaFarmable
                     FROM
                         Faunas f
                     LEFT JOIN
@@ -335,6 +336,8 @@ namespace Starfield_Interactive_Smart_Slate
                             string faunaPicturePath = reader.IsDBNull(4) ? null : reader.GetString(4);
                             int faunaPictureID = reader.IsDBNull(5) ? -1 : reader.GetInt32(5);
 
+                            bool faunaFarmable = reader.GetInt32(6) == 1;
+
                             if (!celestialBodyFaunasMap.ContainsKey(parentBodyID))
                             {
                                 celestialBodyFaunasMap[parentBodyID] = new ObservableCollection<Fauna>();
@@ -346,7 +349,8 @@ namespace Starfield_Interactive_Smart_Slate
                                 {
                                     ID = faunaID,
                                     Name = faunaName,
-                                    Notes = faunaNotes
+                                    Notes = faunaNotes,
+                                    IsFarmable = faunaFarmable
                                 };
 
                                 if (faunaResourcesMap.ContainsKey(faunaID))
@@ -387,7 +391,8 @@ namespace Starfield_Interactive_Smart_Slate
                         f.ParentBodyID,
                         f.FloraNotes,
                         fp.FloraPicturePath,
-                        fp.FloraPictureID
+                        fp.FloraPictureID,
+                        f.FloraFarmable
                     FROM
                         Floras f
                     LEFT JOIN
@@ -411,6 +416,7 @@ namespace Starfield_Interactive_Smart_Slate
                             string floraNotes = reader.IsDBNull(3) ? null : reader.GetString(3);
                             string floraPicturePath = reader.IsDBNull(4) ? null : reader.GetString(4);
                             int floraPictureID = reader.IsDBNull(5) ? -1 : reader.GetInt32(5);
+                            bool floraFarmable = reader.GetInt32(6) == 1;
 
                             if (!celestialBodyFlorasMap.ContainsKey(parentBodyID))
                             {
@@ -423,7 +429,8 @@ namespace Starfield_Interactive_Smart_Slate
                                 {
                                     ID = floraID,
                                     Name = floraName,
-                                    Notes = floraNotes
+                                    Notes = floraNotes,
+                                    IsFarmable = floraFarmable
                                 };
 
                                 if (floraResourcesMap.ContainsKey(floraID))
@@ -845,13 +852,15 @@ namespace Starfield_Interactive_Smart_Slate
                         Faunas
                     SET
                         FaunaName = @FaunaName,
-                        FaunaNotes = @FaunaNotes
+                        FaunaNotes = @FaunaNotes,
+                        FaunaFarmable = @FaunaFarmable
                     WHERE
                         FaunaID = @FaunaID", conn))
                 {
                     cmd.Parameters.AddWithValue("@FaunaID", newFauna.ID);
                     cmd.Parameters.AddWithValue("@FaunaName", newFauna.Name);
                     cmd.Parameters.AddWithValue("@FaunaNotes", newFauna.Notes);
+                    cmd.Parameters.AddWithValue("@FaunaFarmable", newFauna.IsFarmable ? 1 : 0);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -908,13 +917,15 @@ namespace Starfield_Interactive_Smart_Slate
                         Floras
                     SET
                         FloraName = @FloraName,
-                        FloraNotes = @FloraNotes
+                        FloraNotes = @FloraNotes,
+                        FloraFarmable = @FloraFarmable
                     WHERE
                         FloraID = @FloraID", conn))
                 {
                     cmd.Parameters.AddWithValue("@FloraID", newFlora.ID);
                     cmd.Parameters.AddWithValue("@FloraName", newFlora.Name);
                     cmd.Parameters.AddWithValue("@FloraNotes", newFlora.Notes);
+                    cmd.Parameters.AddWithValue("@FloraFarmable", newFlora.IsFarmable ? 1 : 0);
 
                     cmd.ExecuteNonQuery();
                 }

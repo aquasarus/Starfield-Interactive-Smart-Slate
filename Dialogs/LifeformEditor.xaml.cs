@@ -12,6 +12,8 @@ namespace Starfield_Interactive_Smart_Slate
 {
     public partial class LifeformEditor : Window
     {
+        public bool IsFarmable { get; set; }
+
         private PlanetaryDataViewModel viewModel = PlanetaryDataViewModel.Instance;
         private MainViewModel mainViewModel = MainViewModel.Instance;
 
@@ -23,21 +25,26 @@ namespace Starfield_Interactive_Smart_Slate
             InitializeComponent();
 
             originalEntity = entity;
+            OutpostProductionCheckBox.DataContext = this;
 
             if (entity is Fauna)
             {
                 Title = "Edit Fauna";
                 lifeformNameTitle.Content = "Fauna Name 🛈";
                 lifeformNameTooltip.Content = "Fauna";
+                OutpostProductionCheckBox.Content = "🐄 (Outpost production allowed)";
             }
             else
             {
                 Title = "Edit Flora";
                 lifeformNameTitle.Content = "Flora Name 🛈";
                 lifeformNameTooltip.Content = "Flora";
+                OutpostProductionCheckBox.Content = "🥕 (Outpost production allowed)";
             }
 
             lifeformNameTextbox.Text = entity.Name;
+
+            OutpostProductionCheckBox.IsChecked = entity.IsFarmable;
 
             if (entity.IsSurveyed)
             {
@@ -85,6 +92,7 @@ namespace Starfield_Interactive_Smart_Slate
         {
             lifeform.Name = lifeformNameTextbox.Text;
             lifeform.Notes = lifeformNotesTextbox.Text;
+            lifeform.IsFarmable = IsFarmable;
 
             var selectedItem = lifeformResourceComboBox.SelectedItem as Resource;
             if (selectedItem != null && selectedItem.FullName != "Unknown")
@@ -183,6 +191,18 @@ namespace Starfield_Interactive_Smart_Slate
                 this.DialogResult = true;
                 Close();
                 e.Handled = true;
+            }
+        }
+
+        private void OutpostProductionCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsFarmable)
+            {
+                App.Current.PlayClickSound();
+            }
+            else
+            {
+                App.Current.PlayCancelSound();
             }
         }
     }

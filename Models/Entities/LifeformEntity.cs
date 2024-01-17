@@ -16,6 +16,8 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
 
         public List<Resource> SecondaryDrops { get; set; } // TODO: not yet hooked up with UI
 
+        public bool IsFarmable { get; set; } // TODO: update this if we want to support multiple PrimaryDrops/SecondaryDrops
+
         public bool IsSurveyed
         {
             get
@@ -29,6 +31,18 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
             get
             {
                 var icons = "";
+
+                if (IsFarmable)
+                {
+                    if (this is Fauna)
+                    {
+                        icons += "🐄";
+                    }
+                    else
+                    {
+                        icons += "🥕";
+                    }
+                }
 
                 if (!string.IsNullOrWhiteSpace(Notes))
                 {

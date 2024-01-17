@@ -107,6 +107,7 @@ namespace Starfield_Interactive_Smart_Slate
                 }
             }
         }
+
         public static void MigrateV2ToV3()
         {
             using (SQLiteConnection conn = DataRepository.CreateConnection())
@@ -138,6 +139,7 @@ namespace Starfield_Interactive_Smart_Slate
                 }
             }
         }
+
         public static void MigrateV4ToV5()
         {
             using (SQLiteConnection conn = DataRepository.CreateConnection())
@@ -381,6 +383,22 @@ namespace Starfield_Interactive_Smart_Slate
                 using (SQLiteCommand cmd = new SQLiteCommand(@"
                     ALTER TABLE Floras
                     ADD COLUMN FloraDeleted INTEGER NOT NULL DEFAULT 0;
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    ALTER TABLE Faunas
+                    ADD COLUMN FaunaFarmable INTEGER NOT NULL DEFAULT 0;
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    ALTER TABLE Floras
+                    ADD COLUMN FloraFarmable INTEGER NOT NULL DEFAULT 0;
                 ", conn))
                 {
                     cmd.ExecuteNonQuery();

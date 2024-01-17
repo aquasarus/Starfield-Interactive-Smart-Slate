@@ -7,7 +7,7 @@
     xmlns:planetarydata="clr-namespace:Starfield_Interactive_Smart_Slate.Screens.PlanetaryData"
     xmlns:screens="clr-namespace:Starfield_Interactive_Smart_Slate.Screens"
     Title="Starfield Interactive Smart Slate"
-    Width="1525"
+    Width="1545"
     Height="1000"
     KeyDown="Window_KeyDown"
     Loaded="Window_Loaded"
