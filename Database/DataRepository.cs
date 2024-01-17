@@ -314,6 +314,8 @@ namespace Starfield_Interactive_Smart_Slate
                         Faunas f
                     LEFT JOIN
                         FaunaPictures fp ON fp.FaunaID = f.FaunaID
+                    WHERE
+                        f.FaunaDeleted = 0
                     ORDER BY
                         f.FaunaID, fp.FaunaPictureID
                 ";
@@ -390,6 +392,8 @@ namespace Starfield_Interactive_Smart_Slate
                         Floras f
                     LEFT JOIN
                         FloraPictures fp ON fp.FloraID = f.FloraID
+                    WHERE
+                        f.FloraDeleted = 0
                     ORDER BY
                         f.FloraID, fp.FloraPictureID
                 ";
@@ -766,6 +770,46 @@ namespace Starfield_Interactive_Smart_Slate
                         ID = insertedID,
                         Name = outpostName
                     };
+                }
+            }
+        }
+
+        public static void DeleteFauna(int faunaID)
+        {
+            AnalyticsUtil.TrackEvent("Delete fauna");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE
+                        Faunas
+                    SET
+                        FaunaDeleted = 1
+                    WHERE
+                        FaunaID = @FaunaID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@FaunaID", faunaID);
+                    var result = cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void DeleteFlora(int floraID)
+        {
+            AnalyticsUtil.TrackEvent("Delete flora");
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE
+                        Floras
+                    SET
+                        FloraDeleted = 1
+                    WHERE
+                        FloraID = @FloraID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@FloraID", floraID);
+                    var result = cmd.ExecuteNonQuery();
                 }
             }
         }

@@ -345,6 +345,11 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                 <TextBlock Grid.Column="1" Text="{Binding IconsString}" />
+                                <Grid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Click="LifeformDeleteClicked" Header="Delete" />
+                                    </ContextMenu>
+                                </Grid.ContextMenu>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -399,6 +404,11 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Text="{Binding Name}" />
                                 <TextBlock Grid.Column="1" Text="{Binding IconsString}" />
+                                <Grid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Click="LifeformDeleteClicked" Header="Delete" />
+                                    </ContextMenu>
+                                </Grid.ContextMenu>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>

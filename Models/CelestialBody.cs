@@ -270,6 +270,18 @@ namespace Starfield_Interactive_Smart_Slate.Models
             Faunas.Add(fauna);
         }
 
+        public void DeleteFauna(Fauna deletedFauna)
+        {
+            foreach (var fauna in Faunas)
+            {
+                if (fauna.ID == deletedFauna.ID)
+                {
+                    Faunas.Remove(fauna);
+                    break;
+                }
+            }
+        }
+
         public void AddFlora(Flora flora)
         {
             // initialize and set up binding dependencies
@@ -279,6 +291,18 @@ namespace Starfield_Interactive_Smart_Slate.Models
             }
 
             Floras.Add(flora);
+        }
+
+        public void DeleteFlora(Flora deletedFlora)
+        {
+            foreach (var flora in Floras)
+            {
+                if (flora.ID == deletedFlora.ID)
+                {
+                    Floras.Remove(flora);
+                    break;
+                }
+            }
         }
 
         public void AddOutpost(Outpost outpost)

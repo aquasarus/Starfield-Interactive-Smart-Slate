@@ -369,6 +369,22 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     cmd.ExecuteNonQuery();
                 }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    ALTER TABLE Faunas
+                    ADD COLUMN FaunaDeleted INTEGER NOT NULL DEFAULT 0;
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    ALTER TABLE Floras
+                    ADD COLUMN FloraDeleted INTEGER NOT NULL DEFAULT 0;
+                ", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }

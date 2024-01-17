@@ -519,6 +519,41 @@ namespace Starfield_Interactive_Smart_Slate.Screens.PlanetaryData
             }
         }
 
+        private void LifeformDeleteClicked(object sender, RoutedEventArgs e)
+        {
+            App.Current.PlayClickSound();
+
+            var lifeform = ((MenuItem)sender).DataContext as LifeformEntity;
+
+            var confirmDialog = new BasicYesNoDialog(
+                $"Delete {lifeform.LifeformType}",
+                $"You are about to delete this {lifeform.LifeformType.ToString().ToLower()}:\n\n" +
+                $"{lifeform.Name}\n\n" +
+                "Are you sure? (This is reversible. Check the GitHub Wiki for instructions.)",
+                "Delete",
+                "Cancel"
+            );
+            confirmDialog.Owner = Window.GetWindow(this);
+
+            if (confirmDialog.ShowDialog() == true)
+            {
+                if (lifeform.LifeformType == LifeformType.Fauna)
+                {
+                    DataRepository.DeleteFauna(lifeform.ID);
+                    viewModel.DisplayedCelestialBody.DeleteFauna((Fauna)lifeform);
+                }
+                // assume Flora
+                else
+                {
+                    DataRepository.DeleteFlora(lifeform.ID);
+                    viewModel.DisplayedCelestialBody.DeleteFlora((Flora)lifeform);
+                }
+
+                ClearAllSelectionsExcept();
+                ResetEntityOverview();
+            }
+        }
+
         private void outpostFilter_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             MenuItem clickedMenuItem = sender as MenuItem;
