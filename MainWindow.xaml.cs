@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,6 +34,8 @@ namespace Starfield_Interactive_Smart_Slate
             // show version number
             Version version = Assembly.GetEntryAssembly().GetName().Version;
             VersionNumberLabel.Content = $"Version {version.Major}.{version.Minor}.{version.Build}";
+
+            LogUsageSnapshot();
 
             CheckForUpdate();
 
@@ -201,6 +204,51 @@ namespace Starfield_Interactive_Smart_Slate
             {
                 UseShellExecute = true // need to set this to get web links to work here
             });
+        }
+
+        private async void LogUsageSnapshot()
+        {
+            try
+            {
+                // get minimum lifeform count dynamically from a config file stored on GitHub
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response =
+                    await client.GetAsync("https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Configs/analytics_min_lifeform_count.txt");
+                response.EnsureSuccessStatusCode();
+                string htmlContent = await response.Content.ReadAsStringAsync();
+                var minLifeformCount = int.Parse(htmlContent);
+
+                // log snapshot of existing usage stats (maximum once per week)
+                var lastSnapshotDate = DataRepository.GetLastSnapshotDate();
+                var oneWeekLater = lastSnapshotDate.AddDays(6); // using 6 days here to avoid having to deal with any timezone issues
+                if (oneWeekLater.CompareTo(DateTime.Now) < 0)
+                {
+                    var usageSnapshot = DataRepository.GetUsageSnapshot();
+                    var userID = DataRepository.UserID;
+
+                    // only log this for significant users
+                    if (usageSnapshot["Total lifeforms"] >= minLifeformCount)
+                    {
+                        var eventProperties = new Dictionary<string, string>();
+                        foreach (var pair in usageSnapshot)
+                        {
+                            eventProperties[pair.Key] = $"{pair.Value} ({userID})";
+                        }
+
+                        AnalyticsUtil.TrackEventWithProperties("Usage snapshot", eventProperties);
+
+                        // hack a delay to avoid clashing with other initialization tasks that read/write
+                        // TODO: find the right way to do this?
+                        await Task.Delay(2000);
+                        DataRepository.SetLastSnapshotDateToNow();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                AnalyticsUtil.TrackError(ex);
+                if (Debugger.IsAttached) { throw; }
+            }
         }
 
         private async void CheckForUpdate()

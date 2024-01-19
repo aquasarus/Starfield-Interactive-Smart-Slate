@@ -403,6 +403,16 @@ namespace Starfield_Interactive_Smart_Slate
                 {
                     cmd.ExecuteNonQuery();
                 }
+
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    INSERT INTO UserInfo
+                        (InfoKey, InfoValue)
+                    VALUES
+                        (@LastSnapshotDateKey, '')", conn))
+                {
+                    cmd.Parameters.AddWithValue("@LastSnapshotDateKey", DataRepository.LastSnapshotDateKey);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 
 namespace Starfield_Interactive_Smart_Slate
@@ -13,6 +14,9 @@ namespace Starfield_Interactive_Smart_Slate
     {
         public static readonly string CnnectionString = $"Data Source={DatabaseInitializer.UserDatabasePath()};Version=3;";
         public static readonly string UserIDKey = "UserID";
+
+        public static readonly string LastSnapshotDateKey = "LastSnapshotDate";
+        public static readonly string LastSnapshotFormat = "yyyy MM dd";
 
         public static string UserID { get; set; }
 
@@ -1113,6 +1117,77 @@ namespace Starfield_Interactive_Smart_Slate
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public static DateTime GetLastSnapshotDate()
+        {
+            var lastSnapshotDateString = GetUserSettingString(LastSnapshotDateKey);
+
+            if (lastSnapshotDateString == "")
+            {
+                return DateTime.MinValue;
+            }
+            else
+            {
+                return DateTime.ParseExact(lastSnapshotDateString, LastSnapshotFormat, CultureInfo.InvariantCulture);
+            }
+        }
+
+        public static void SetLastSnapshotDateToNow()
+        {
+            SetUserSettingString(LastSnapshotDateKey, DateTime.Now.ToString(LastSnapshotFormat));
+        }
+
+        // return a usage stats snapshot, for analytics purposes
+        public static Dictionary<string, int> GetUsageSnapshot()
+        {
+            var snapshot = new Dictionary<string, int>();
+
+            using (SQLiteConnection conn = CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    SELECT COUNT (*) FROM
+                    (
+	                    SELECT * FROM Faunas WHERE FaunaDeleted = 0
+	                    UNION ALL
+	                    SELECT * FROM Floras WHERE FloraDeleted = 0
+                    )
+
+                    UNION ALL
+                    SELECT COUNT(*) FROM
+                    (
+	                    SELECT *
+	                    FROM Faunas f
+	                    LEFT JOIN FaunaPictures fp ON f.FaunaID = fp.FaunaID
+	                    WHERE f.FaunaDeleted = 0
+	                    UNION ALL 
+	                    SELECT *
+	                    FROM Floras f
+	                    LEFT JOIN FloraPictures fp ON f.FloraID = fp.FLoraID
+	                    WHERE f.FloraDeleted = 0
+                    )
+
+                    UNION ALL
+                    SELECT COUNT(*) FROM Outposts WHERE OutpostDeleted = 0
+
+                    UNION ALL
+                    SELECT COUNT(*) FROM Outposts WHERE OutpostDeleted = 1;
+                ", conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    reader.Read();
+                    snapshot["Total lifeforms"] = reader.GetInt32(0);
+                    reader.Read();
+                    snapshot["Total pictures"] = reader.GetInt32(0);
+                    reader.Read();
+                    snapshot["Total outposts"] = reader.GetInt32(0);
+                    reader.Read();
+                    snapshot["Total outposts deleted"] = reader.GetInt32(0);
+                }
+            }
+
+            return snapshot;
         }
     }
 }
