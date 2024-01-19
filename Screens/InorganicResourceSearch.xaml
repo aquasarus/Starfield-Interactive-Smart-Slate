@@ -109,11 +109,11 @@
                 VerticalContentAlignment="Center"
                 BorderBrush="Gray"
                 BorderThickness="1"
-                Content="🛈 Resource Found In:"
+                Content="🛈 Resource(s) Found In:"
                 Style="{StaticResource HeaderStyle}"
                 ToolTipService.InitialShowDelay="200">
                 <Label.ToolTip>
-                    <ToolTip Content="Parent planet is grayed out if only the moon(s) contain selected resource." />
+                    <ToolTip Content="Parent planet is grayed out if only the moon(s) contain selected resource.&#x0a;Hold CTRL to select multiple resources." />
                 </Label.ToolTip>
             </Label>
             <ListView Name="inorganicSolarSystemResultsListView" Grid.Row="1"
