@@ -32,18 +32,17 @@ namespace Starfield_Interactive_Smart_Slate
                 Title = "Edit Fauna";
                 lifeformNameTitle.Content = "Fauna Name 🛈";
                 lifeformNameTooltip.Content = "Fauna";
-                OutpostProductionCheckBox.Content = "🐄 (Outpost production allowed)";
             }
             else
             {
                 Title = "Edit Flora";
                 lifeformNameTitle.Content = "Flora Name 🛈";
                 lifeformNameTooltip.Content = "Flora";
-                OutpostProductionCheckBox.Content = "🥕 (Outpost production allowed)";
             }
 
             lifeformNameTextbox.Text = entity.Name;
 
+            OutpostProductionCheckBox.Content = entity.FarmableLabel;
             OutpostProductionCheckBox.IsChecked = entity.IsFarmable;
 
             if (entity.IsSurveyed)

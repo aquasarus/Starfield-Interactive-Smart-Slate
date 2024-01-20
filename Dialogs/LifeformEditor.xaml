@@ -86,7 +86,7 @@
             Margin="5,10,5,0"
             VerticalContentAlignment="Center"
             Click="OutpostProductionCheckBox_Click"
-            Content="🐄 (Outpost production allowed)"
+            Content="🐄 Outpost production allowed"
             IsChecked="{Binding IsFarmable}" />
         <Label Grid.Row="5"
             Content="Notes"

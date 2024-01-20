@@ -538,6 +538,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.Style>
@@ -570,8 +571,11 @@
                                 Content="{Binding DisplayedEntity.ResourceString}"
                                 FontSize="20"
                                 Visibility="{Binding DisplayedEntity.SupportsResources, Converter={StaticResource VisibleIfTrueConverter}}" />
-
                             <Label Grid.Row="3"
+                                Content="{Binding DisplayedEntity.FarmableLabel}"
+                                Visibility="{Binding DisplayedEntity.IsFarmable, Converter={StaticResource VisibleIfTrueConverter}}" />
+
+                            <Label Grid.Row="4"
                                 Content="Pictures 🛈"
                                 Style="{StaticResource ContentSubtitleStyle}"
                                 ToolTipService.InitialShowDelay="300">
@@ -579,7 +583,7 @@
                                     <ToolTip Content="To add new picture:&#x0a;    - Click + button, or&#x0a;    - Drag file(s) into Entity Overview, or&#x0a;    - Ctrl + V to paste from clipboard.&#x0a;        - Best when combined with Windows screen cap tool: WinKey + Shift + S.&#x0a;    - Files will be copied into your app data folder.&#x0a;&#x0a;Left-click picture to view.&#x0a;&#x0a;Right-click picture to delete.&#x0a;    - Actual file in operating system will be preserved." />
                                 </Label.ToolTip>
                             </Label>
-                            <ItemsControl Name="pictureGrid" Grid.Row="4"
+                            <ItemsControl Name="pictureGrid" Grid.Row="5"
                                 Margin="0,5,0,0"
                                 HorizontalAlignment="Left"
                                 ItemsSource="{Binding DisplayedEntity.Pictures}"
@@ -653,10 +657,10 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                            <Label Grid.Row="5"
+                            <Label Grid.Row="6"
                                 Content="Notes"
                                 Style="{StaticResource ContentSubtitleStyle}" />
-                            <Label Grid.Row="6">
+                            <Label Grid.Row="7">
                                 <TextBlock Name="entityNotesTextBlock"
                                     FontSize="17"
                                     Text="{Binding DisplayedEntity.Notes}"

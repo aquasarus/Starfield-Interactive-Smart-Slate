@@ -10,6 +10,8 @@ namespace Starfield_Interactive_Smart_Slate.Models.Entities
 
         public abstract LifeformType LifeformType { get; }
 
+        public abstract string FarmableLabel { get; }
+
         public override bool SupportsResources => true;
 
         public List<Resource> PrimaryDrops { get; set; }

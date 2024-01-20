@@ -6,6 +6,8 @@
 
         public override string SubtitleLabel => "· Flora";
 
+        public override string FarmableLabel => "🥕 Outpost production allowed";
+
         public Flora DeepCopy()
         {
             return new Flora
