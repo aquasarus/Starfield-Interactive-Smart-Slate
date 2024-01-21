@@ -314,8 +314,13 @@
                         VerticalContentAlignment="Center"
                         BorderBrush="Gray"
                         BorderThickness="1"
-                        Content="Faunas"
-                        Style="{StaticResource HeaderStyle}" />
+                        Content="Faunas 🛈"
+                        Style="{StaticResource HeaderStyle}"
+                        ToolTipService.InitialShowDelay="300">
+                        <Label.ToolTip>
+                            <ToolTip Content="Right-click to delete.&#x0a;Check GitHub Wiki for how to recover a deleted outpost." />
+                        </Label.ToolTip>
+                    </Label>
                     <Button Name="addFaunaButton" Grid.Column="1"
                         Width="65"
                         Click="AddFaunaClicked"
@@ -374,8 +379,13 @@
                         VerticalContentAlignment="Center"
                         BorderBrush="Gray"
                         BorderThickness="1"
-                        Content="Floras"
-                        Style="{StaticResource HeaderStyle}" />
+                        Content="Floras 🛈"
+                        Style="{StaticResource HeaderStyle}"
+                        ToolTipService.InitialShowDelay="300">
+                        <Label.ToolTip>
+                            <ToolTip Content="Right-click to delete.&#x0a;Check GitHub Wiki for how to recover a deleted outpost." />
+                        </Label.ToolTip>
+                    </Label>
                     <Button Name="addFloraButton" Grid.Column="1"
                         Width="65"
                         Click="AddFloraClicked"
