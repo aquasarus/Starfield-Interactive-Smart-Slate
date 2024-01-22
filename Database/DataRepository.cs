@@ -40,10 +40,11 @@ namespace Starfield_Interactive_Smart_Slate
                 ", conn))
                 {
                     cmd.Parameters.AddWithValue("@InfoKey", UserIDKey);
-                    var reader = cmd.ExecuteReader();
-                    reader.Read();
-
-                    UserID = reader.GetString(0);
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        UserID = reader.GetString(0);
+                    }
                 }
             }
         }
@@ -63,10 +64,11 @@ namespace Starfield_Interactive_Smart_Slate
                 ", conn))
                 {
                     cmd.Parameters.AddWithValue("@InfoKey", infoKey);
-                    var reader = cmd.ExecuteReader();
-                    reader.Read();
-
-                    return reader.GetString(0) == "1";
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        return reader.GetString(0) == "1";
+                    }
                 }
             }
         }
@@ -86,10 +88,12 @@ namespace Starfield_Interactive_Smart_Slate
                 ", conn))
                 {
                     cmd.Parameters.AddWithValue("@InfoKey", infoKey);
-                    var reader = cmd.ExecuteReader();
-                    reader.Read();
 
-                    return reader.GetString(0);
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
                 }
             }
         }
@@ -156,16 +160,18 @@ namespace Starfield_Interactive_Smart_Slate
                     ORDER BY
                         ResourceRarity, ResourceName", conn))
                 {
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        resources.Add(new Resource(
-                            reader.GetInt32(0),
-                            (ResourceType)int.Parse(reader["ResourceType"].ToString()),
-                            reader["ResourceName"].ToString(),
-                            (reader["ResourceShortName"] as string) ?? null,
-                            (Rarity)int.Parse(reader["ResourceRarity"].ToString())
-                        ));
+                        while (reader.Read())
+                        {
+                            resources.Add(new Resource(
+                                reader.GetInt32(0),
+                                (ResourceType)int.Parse(reader["ResourceType"].ToString()),
+                                reader["ResourceName"].ToString(),
+                                (reader["ResourceShortName"] as string) ?? null,
+                                (Rarity)int.Parse(reader["ResourceRarity"].ToString())
+                            ));
+                        }
                     }
                 }
             }
@@ -1175,15 +1181,17 @@ namespace Starfield_Interactive_Smart_Slate
                     SELECT COUNT(*) FROM Outposts WHERE OutpostDeleted = 1;
                 ", conn))
                 {
-                    var reader = cmd.ExecuteReader();
-                    reader.Read();
-                    snapshot["Total lifeforms"] = reader.GetInt32(0);
-                    reader.Read();
-                    snapshot["Total pictures"] = reader.GetInt32(0);
-                    reader.Read();
-                    snapshot["Total outposts"] = reader.GetInt32(0);
-                    reader.Read();
-                    snapshot["Total outposts deleted"] = reader.GetInt32(0);
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        snapshot["Total lifeforms"] = reader.GetInt32(0);
+                        reader.Read();
+                        snapshot["Total pictures"] = reader.GetInt32(0);
+                        reader.Read();
+                        snapshot["Total outposts"] = reader.GetInt32(0);
+                        reader.Read();
+                        snapshot["Total outposts deleted"] = reader.GetInt32(0);
+                    }
                 }
             }
 

@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -206,23 +205,23 @@ namespace Starfield_Interactive_Smart_Slate
             });
         }
 
-        private async void LogUsageSnapshot()
+        private void LogUsageSnapshot()
         {
             try
             {
-                // get minimum lifeform count dynamically from a config file stored on GitHub
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response =
-                    await client.GetAsync("https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Configs/analytics_min_lifeform_count.txt");
-                response.EnsureSuccessStatusCode();
-                string htmlContent = await response.Content.ReadAsStringAsync();
-                var minLifeformCount = int.Parse(htmlContent);
-
                 // log snapshot of existing usage stats (maximum once per week)
                 var lastSnapshotDate = DataRepository.GetLastSnapshotDate();
+
                 var oneWeekLater = lastSnapshotDate.AddDays(6); // using 6 days here to avoid having to deal with any timezone issues
                 if (oneWeekLater.CompareTo(DateTime.Now) < 0)
                 {
+                    // get minimum lifeform count dynamically from a config file stored on GitHub
+                    HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(3) };
+                    HttpResponseMessage response = client.GetAsync("https://raw.githubusercontent.com/aquasarus/Starfield-Interactive-Smart-Slate/main/Configs/analytics_min_lifeform_count.txt").Result;
+                    response.EnsureSuccessStatusCode();
+                    string htmlContent = response.Content.ReadAsStringAsync().Result;
+                    var minLifeformCount = int.Parse(htmlContent);
+
                     var usageSnapshot = DataRepository.GetUsageSnapshot();
                     var userID = DataRepository.UserID;
 
@@ -236,10 +235,6 @@ namespace Starfield_Interactive_Smart_Slate
                         }
 
                         AnalyticsUtil.TrackEventWithProperties("Usage snapshot", eventProperties);
-
-                        // hack a delay to avoid clashing with other initialization tasks that read/write
-                        // TODO: find the right way to do this?
-                        await Task.Delay(2000);
                         DataRepository.SetLastSnapshotDateToNow();
                     }
                 }
