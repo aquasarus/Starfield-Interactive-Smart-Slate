@@ -1,4 +1,6 @@
-﻿# Welcome to Starfield ISS (Interactive Smart Slate)
+**Important:** Development on this project is currently on pause. Other stuff in real life has taken up all of my time and I also no longer have access to a copy of Starfield (game pass expired). If the upcoming DLC is good and I end up playing this game again, I may return to improve the app further. Still, if you run into problems, feel free to open an issue and I'll see what I can do :).
+
+ # Welcome to Starfield ISS (Interactive Smart Slate)
 *An Explorer's Survey Compendium, featuring a vastly higher tech Data Slate than Starfield's in-game version.*
 
 - [This project also lives on **Nexus Mods**](https://www.nexusmods.com/starfield/mods/7074)
@@ -73,12 +75,6 @@ Starfield has such great potential for exploration content, but Survey Data in i
 - Found a problem? [Submit your **bug report** here.](https://github.com/aquasarus/Starfield-Interactive-Smart-Slate/issues)
 
 ## Upcoming Features
-No promises, but here's a list of what I want to work on next:
-- Searching for multiple resources simultaneously.
-- Extending current pictures/notes functionality to planets and moons.
-- The beginning of localization (supporting languages other than English).
-- Integrating the "farmable" attribute of lifeforms into the app.
-
 Here are some potential features in the distant future:
 - **Cataloging planet/moon traits.** I need to work on obtaining a comprehensive list of traits first.
 - **Cataloging secondary (chance-based) resource drops for fauna.**
