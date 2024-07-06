@@ -9,7 +9,7 @@ namespace Starfield_Interactive_Smart_Slate
     public static class DatabaseInitializer
     {
         public static readonly string DefaultDatabasePath = "Database/DataSlate.db";
-        public static int TargetDatabaseVersion = 10;
+        public static int TargetDatabaseVersion = 11;
 
         public static string UserDatabaseFolder()
         {
@@ -411,6 +411,22 @@ namespace Starfield_Interactive_Smart_Slate
                         (@LastSnapshotDateKey, '')", conn))
                 {
                     cmd.Parameters.AddWithValue("@LastSnapshotDateKey", DataRepository.LastSnapshotDateKey);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void MigrateV10toV11()
+        {
+            using (SQLiteConnection conn = DataRepository.CreateConnection())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(@"
+                    UPDATE CelestialBodies
+                    SET TotalFauna = 13
+                    WHERE BodyName = 'Serpentis IV'
+                ", conn))
+                {
                     cmd.ExecuteNonQuery();
                 }
             }
